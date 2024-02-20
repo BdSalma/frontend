@@ -13,7 +13,7 @@ import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
-
+import {OffersComponent} from './offers/offers.component';
 const routes: Routes = [
 {path:'dashboard',component:DashboradComponent},
 {path:'billing',component:BillingComponent},
@@ -28,6 +28,7 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
+{path:'offers',component:OffersComponent}
 
 
 
