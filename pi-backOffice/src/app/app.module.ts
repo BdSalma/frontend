@@ -22,9 +22,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { OffersComponent } from './offers/offers.component';
 import { ForumComponent } from './ForumComponenets/forum/forum.component';
 import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
-import { ForumServiceComponent } from './Service/forum-service/forum-service.component';
-import { PackServiceComponent } from './Service/pack-service/pack-service.component';
-import { StandServiceComponent } from './Service/stand-service/stand-service.component';
 import { AboutComponent } from './FrontOffice/about/about.component';
 import { BlogSingleComponent } from './FrontOffice/blog-single/blog-single.component';
 import { BlogComponent } from './FrontOffice/blog/blog.component';
@@ -34,6 +31,12 @@ import { ScheduleComponent } from './FrontOffice/schedule/schedule.component';
 import { SpeakersComponent } from './FrontOffice/speakers/speakers.component';
 import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
 import { NavbarFrontComponent } from './FrontOffice/navbar-front/navbar-front.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
+import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
+import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,9 +60,6 @@ import { NavbarFrontComponent } from './FrontOffice/navbar-front/navbar-front.co
     OffersComponent,
     ForumComponent,
     AddForumComponent,
-    ForumServiceComponent,
-    PackServiceComponent,
-    StandServiceComponent,
     AboutComponent,
     BlogSingleComponent,
     BlogComponent,
@@ -68,11 +68,18 @@ import { NavbarFrontComponent } from './FrontOffice/navbar-front/navbar-front.co
     ScheduleComponent,
     SpeakersComponent,
     FooterFrontComponent,
-    NavbarFrontComponent
+    NavbarFrontComponent,
+    PacksListComponent,
+    AddPackComponent,
+    AddStandComponent,
+    StandListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

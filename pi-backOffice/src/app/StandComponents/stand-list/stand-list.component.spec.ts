@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StandServiceComponent } from './stand-service.component';
+import { StandListComponent } from './stand-list.component';
 
-describe('StandServiceComponent', () => {
-  let component: StandServiceComponent;
-  let fixture: ComponentFixture<StandServiceComponent>;
+describe('StandListComponent', () => {
+  let component: StandListComponent;
+  let fixture: ComponentFixture<StandListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StandServiceComponent ]
+      declarations: [ StandListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StandServiceComponent);
+    fixture = TestBed.createComponent(StandListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

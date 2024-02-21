@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PackServiceComponent } from './pack-service.component';
+import { AddPackComponent } from './add-pack.component';
 
-describe('PackServiceComponent', () => {
-  let component: PackServiceComponent;
-  let fixture: ComponentFixture<PackServiceComponent>;
+describe('AddPackComponent', () => {
+  let component: AddPackComponent;
+  let fixture: ComponentFixture<AddPackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PackServiceComponent ]
+      declarations: [ AddPackComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PackServiceComponent);
+    fixture = TestBed.createComponent(AddPackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
