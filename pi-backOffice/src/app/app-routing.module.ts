@@ -13,30 +13,27 @@ import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
-import {OffersComponent} from './offers/offers.component';
+import { OffersComponent } from './offers/offers.component';
 const routes: Routes = [
-{path:'dashboard',component:DashboradComponent},
-{path:'billing',component:BillingComponent},
-{path:'profile',component:ProfileComponent},
-{path:'icons',component:IconsComponent},
-{path:'signIn',component:SignInComponent},
-{path:'signUp',component:SignUpComponent},
-{path:'table',component:TableComponent},
-{path:'map',component:MapComponent},
-{path:'notification',component:NotificationsComponent},
-{path:'rtl',component:RtlComponent},
-{path:'template',component:TemplateComponent},
-{path:'typography',component:TypographyComponent},
-{path:'virtualReality',component:VirtualRealityComponent},
-{path:'offers',component:OffersComponent}
-
-
-
-
+  { path: '', pathMatch: 'full', component: DashboradComponent },
+  { path: 'dashboard', component: DashboradComponent },
+  { path: 'billing', component: BillingComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'icons', component: IconsComponent },
+  { path: 'signIn', component: SignInComponent },
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'table', component: TableComponent },
+  { path: 'map', component: MapComponent },
+  { path: 'notification', component: NotificationsComponent },
+  { path: 'rtl', component: RtlComponent },
+  { path: 'template', component: TemplateComponent },
+  { path: 'typography', component: TypographyComponent },
+  { path: 'virtualReality', component: VirtualRealityComponent },
+  { path: 'offers', component: OffersComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
