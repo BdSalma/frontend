@@ -14,6 +14,9 @@ import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 import {OffersComponent} from './offers/offers.component';
+import { ForumComponent } from './ForumComponenets/forum/forum.component';
+import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
+import { AboutComponent } from './FrontOffice/about/about.component';
 const routes: Routes = [
 {path:'dashboard',component:DashboradComponent},
 {path:'billing',component:BillingComponent},
@@ -28,7 +31,10 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
-{path:'offers',component:OffersComponent}
+{path:'offers',component:OffersComponent},
+{path:'forumList',component:ForumComponent},
+{path:'addForum',component:AddForumComponent},
+{path:'about',component:AboutComponent},
 
 
 

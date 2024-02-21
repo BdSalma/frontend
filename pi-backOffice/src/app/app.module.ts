@@ -20,6 +20,20 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { OffersComponent } from './offers/offers.component';
+import { ForumComponent } from './ForumComponenets/forum/forum.component';
+import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
+import { ForumServiceComponent } from './Service/forum-service/forum-service.component';
+import { PackServiceComponent } from './Service/pack-service/pack-service.component';
+import { StandServiceComponent } from './Service/stand-service/stand-service.component';
+import { AboutComponent } from './FrontOffice/about/about.component';
+import { BlogSingleComponent } from './FrontOffice/blog-single/blog-single.component';
+import { BlogComponent } from './FrontOffice/blog/blog.component';
+import { ContactComponent } from './FrontOffice/contact/contact.component';
+import { IndexComponent } from './FrontOffice/index/index.component';
+import { ScheduleComponent } from './FrontOffice/schedule/schedule.component';
+import { SpeakersComponent } from './FrontOffice/speakers/speakers.component';
+import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
+import { NavbarFrontComponent } from './FrontOffice/navbar-front/navbar-front.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +54,21 @@ import { OffersComponent } from './offers/offers.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    OffersComponent
+    OffersComponent,
+    ForumComponent,
+    AddForumComponent,
+    ForumServiceComponent,
+    PackServiceComponent,
+    StandServiceComponent,
+    AboutComponent,
+    BlogSingleComponent,
+    BlogComponent,
+    ContactComponent,
+    IndexComponent,
+    ScheduleComponent,
+    SpeakersComponent,
+    FooterFrontComponent,
+    NavbarFrontComponent
   ],
   imports: [
     BrowserModule,
