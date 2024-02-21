@@ -9,5 +9,4 @@ export class Candidature {
     lettre!: string;
     interview!: Interview;
     offer!: Offer;
-    individu!: Individu;
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { DashboradComponent } from './dashborad/dashborad.component';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';import { DashboradComponent } from './dashborad/dashborad.component';
 import { BillingComponent } from './billing/billing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { IconsComponent } from './icons/icons.component';
@@ -14,9 +14,14 @@ import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 import { OffersComponent } from './offers/offers.component';
+import { AddOfferComponent } from './add-offer/add-offer.component';
+import { UpdateOfferComponent } from './update-offer/update-offer.component';
 
 const routes: Routes = [
+{path:'',component:DashboradComponent},
 {path:'offre',component:OffersComponent},
+{path:'editOffer/:id',component:UpdateOfferComponent},
+{path:'addOffer',component:AddOfferComponent},
 {path:'dashboard',component:DashboradComponent},
 {path:'billing',component:BillingComponent},
 {path:'profile',component:ProfileComponent},
@@ -31,15 +36,10 @@ const routes: Routes = [
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
 
-
-
-
-
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule,RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,6 +1,7 @@
 import { Category } from "./category";
 import {Society} from "./society";
 import { Candidature} from "./candidature";
+import { User } from "./user";
 export class Offer{
     id! : number;
     dateEmission!:Date;
@@ -11,5 +12,6 @@ export class Offer{
     duree!:string;
     description!:string;
     candidatures!: Candidature[];
+    individus!:User[];
     society!:Society
 }
