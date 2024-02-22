@@ -20,7 +20,8 @@ export class ForumServiceService {
   }
 
   getForumById(id: number): Observable<Forum> {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.apiURL}/find-forum/${id}`;
+    console.log(this.http.get<Forum>(url));
     return this.http.get<Forum>(url);
   }
 
@@ -34,8 +35,7 @@ export class ForumServiceService {
   }
 
   updateForum(Forum: Forum,id:Number) {
-    const url = `${this.apiURL}/find-all-forums`;
-  
+    const url = `${this.apiURL}/update-forum/${id}`;
     return this.http.put<Forum>(url, Forum)
   }
 

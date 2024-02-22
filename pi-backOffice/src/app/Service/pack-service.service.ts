@@ -19,7 +19,7 @@ export class PackServiceService {
   }
 
   getpackById(id: number): Observable<Pack> {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.apiURL}/find-pack/${id}`;
     return this.http.get<Pack>(url);
   }
 
@@ -32,8 +32,10 @@ export class PackServiceService {
     return this.http.post<Pack>(url, pack);
   }
 
-  updatepack(pack: Pack,id:Number) {
-    const url = `${this.apiURL}/${id}`;
+  updatepack(id:Number,pack: Pack) {
+    const url = `${this.apiURL}/update-pack/${id}`;
+    console.log(url);
+    
     return this.http.put<Pack>(url, pack)
   }
 

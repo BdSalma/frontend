@@ -1,3 +1,4 @@
+import { Status } from './../model/status';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,7 +20,7 @@ export class StandServiceService {
   }
 
   getStandById(id: number): Observable<Stand> {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.apiURL}/find-stand/${id}`;
     return this.http.get<Stand>(url);
   }
 
@@ -34,10 +35,13 @@ export class StandServiceService {
   }
 
   updateStand(Stand: Stand,id:Number) {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.apiURL}/update-stand/${id}`;
     return this.http.put<Stand>(url, Stand)
   }
 
+  getStandByStatut(Status: boolean){
+    const url = `${this.apiURL}/delete-stand/${Status}`;
+  }
   deleteStand(id: number) {
     const url = `${this.apiURL}/delete-stand/${id}`;
     return this.http.delete(url);

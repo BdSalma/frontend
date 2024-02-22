@@ -6,6 +6,7 @@
         <div class="col-9">
             <app-navbar></app-navbar>
             <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+              
                 <br>
                 <div class="row">
                     <div class="col-12">
@@ -13,64 +14,62 @@
                         <div class="card my-4">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <h6 class="text-white text-capitalize ps-3">Modifier le pack </h6>
+                                    <h6 class="text-white text-capitalize ps-3">Modifier Forum</h6>
                                 </div>
                             </div>
                             <div class="card-body px-0 pb-2">
-                                <div class="col-md-12 mb-lg-0 mb-4">
-                                    <div class="card mt-4">
-                                        <div class="card-header pb-0 p-3">
-                                            <div class="row">
-                                                <div class="row">
-                                                    <form [formGroup]="updatePackForm" (ngSubmit)="onSubmit()">
-                                                        <div class="row mb-3">
-                                                            <h6 class="mb-0">Type de pack</h6>
-                                                            <div class="col-sm-10 input-group input-group-outline">
-                                                                <select class="form-select" formControlName="typePack">
-                                                                    <option value="" disabled selected>Select Type
-                                                                    </option>
-                                                                    <option value="Gold">Gold</option>
-                                                                    <option value="Silver">Silver</option>
-                                                                    <option value="Platinum">Platinum</option>
-                                                                    <option value="Diamond"> Diamond</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="text-danger"
-                                                                *ngIf="updatePackForm.get('typePack')?.invalid && updatePackForm.get('typePack')?.touched">
-                                                                <span class="text-sm">The type of pack is
-                                                                    required</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <h6 class="mb-0">Prix</h6>
-                                                            <div class="col-sm-10 input-group input-group-outline">
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Prix" formControlName="prix" />
-                                                            </div>
-                                                            <div class="text-danger"
-                                                                *ngIf="updatePackForm.get('prix')?.invalid && updatePackForm.get('prix')?.touched">
-                                                                The price is required
-                                                            </div>
-                                                        </div>
-                                                        <div class="text-center">
-                                                            <button type="submit" class="btn bg-gradient-primary"
-                                                                [disabled]="updatePackForm.invalid">
-                                                                Modifier
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
+                               
+                                <form [formGroup]="updateForumForm" (ngSubmit)="onSubmit()">
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="theme">Thème :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <input type="text" class="form-control" placeholder="Thème" formControlName="theme">
+                                        </div>
+                                        <div class="text-danger" *ngIf="updateForumForm.get('theme')?.invalid && updateForumForm.get('theme')?.touched">
+                                            Le thème est requis
                                         </div>
                                     </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="date">Date :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <input type="date" class="form-control" formControlName="date">
+                                        </div>
+                                        <div class="text-danger" *ngIf="updateForumForm.get('date')?.invalid && updateForumForm.get('date')?.touched">
+                                            Veuillez sélectionner une date future
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="localisation">Localisation :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <input type="text" class="form-control" placeholder="Localisation" formControlName="localisation">
+                                        </div>
+                                        <div class="text-danger" *ngIf="updateForumForm.get('localisation')?.invalid && updateForumForm.get('localisation')?.touched">
+                                            La localisation est requise
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="description">Description :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
+                                        </div>
+                                        <div class="text-danger" *ngIf="updateForumForm.get('description')?.invalid && updateForumForm.get('description')?.touched">
+                                            La description est requise
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn bg-gradient-primary" [disabled]="updateForumForm.invalid">
+                                            Modifier
+                                        </button>
+                                    </div>
+                                </form>
+                                
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+             
                 <br>
-                <br><br><br><br>x
+                <br><br><br><br>
                 <app-footer></app-footer>
             </main>
         </div>

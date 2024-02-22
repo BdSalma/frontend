@@ -38,6 +38,8 @@ import { AddStandComponent } from './StandComponents/add-stand/add-stand.compone
 import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
+import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
+import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.componen
     AddPackComponent,
     AddStandComponent,
     StandListComponent,
-    EditPackComponent
+    EditPackComponent,
+    EditStandComponent,
+    EditForumComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,9 @@ import { StandListComponent } from './StandComponents/stand-list/stand-list.comp
 import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
 import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
 import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
+import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
+import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 const routes: Routes = [
 {path:'dashboard',component:DashboradComponent},
 {path:'billing',component:BillingComponent},
@@ -43,6 +46,9 @@ const routes: Routes = [
 {path:'packList',component:PacksListComponent},
 {path:'addStand',component:AddStandComponent},
 {path:'addPack',component:AddPackComponent},
+{path: 'editPack/:id', component: EditPackComponent },
+{path: 'editStand/:id', component: EditStandComponent },
+{path: 'editForum/:id', component: EditForumComponent },
 ];
 
 @NgModule({

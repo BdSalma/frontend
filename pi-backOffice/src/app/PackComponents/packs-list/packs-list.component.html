@@ -42,50 +42,50 @@
                 </div>
               </div>
               <div class="card-body px-0 pb-2">
-                <div class="table-responsive p-0">
-                  <table class="table align-items-center mb-0">
+                <div class="table-responsive">
+                  <table class="table table-sm align-items-center mb-0">
                     <thead>
                       <tr>
                         <th
-                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
                           Type du Pack
                         </th>
 
                         <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
                           Prix
                         </th>
                         <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
                           Numéro du Stand
                         </th>
                         <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
                           statut de réservation
                         </th>
                         <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
                           Date de réservation
                         </th>
                         <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
                           Réservé Par
                         </th>
                         <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
                           Date de Validation
                         </th>
                         <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-sm"
                         >
-                          Action
+                          Actions
                         </th>
                       </tr>
                     </thead>
@@ -131,7 +131,7 @@
                           </h6>
                         </td>
                         <td class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm"> {{ pack.reserver?.username}}</h6>
+                          <h6 class="mb-0 text-sm"> {{ pack.reserver?.username ?? "_"}}</h6>
                         </td>
                         <td class="align-middle text-center text-sm">
                           <h6 class="mb-0 text-sm">
@@ -145,14 +145,10 @@
                               href="javascript:;"
                               (click)="deletePack(pack.id)"
                               ><i class="material-icons text-sm me-2">delete</i
-                              >Delete</button>
-                            <button
-                              class="btn btn-link text-dark px-3 mb-0"
-                              href="javascript:;"
-                              (click)="editPack(pack)"
-                              ><i class="material-icons text-sm me-2">edit</i
-                              >Edit</button
-                            >
+                              ></button>
+                              <button class="btn btn-link text-dark px-3 mb-0" [routerLink]="['/editPack', pack.id]">
+                                <i class="material-icons text-sm me-2">edit</i>
+                              </button>
                           </div>
                         </td>
                       </tr>
@@ -163,6 +159,10 @@
             </div>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <app-footer></app-footer>

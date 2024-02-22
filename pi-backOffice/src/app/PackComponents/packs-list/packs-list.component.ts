@@ -9,12 +9,11 @@ import { Pack } from 'src/app/model/pack';
   styleUrls: ['./packs-list.component.css']
 })
 export class PacksListComponent {
-editPack(_t44: Pack) {
-throw new Error('Method not implemented.');
-}
+
 
   constructor(
     private packService: PackServiceService,
+   
    
   ) {}
 
@@ -37,4 +36,6 @@ throw new Error('Method not implemented.');
     ))
 );
 }
+
+
  }
