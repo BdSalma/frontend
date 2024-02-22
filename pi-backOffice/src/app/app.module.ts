@@ -37,6 +37,7 @@ import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
 import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
 import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PacksListComponent,
     AddPackComponent,
     AddStandComponent,
-    StandListComponent
+    StandListComponent,
+    EditPackComponent
   ],
   imports: [
     BrowserModule,

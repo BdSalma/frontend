@@ -22,4 +22,14 @@ export class ForumComponent implements OnInit {
     });
   }
 
+  cancelForum(id: number) {
+    this.forumService.deleteForum(id).subscribe( () =>
+    (this.forums = this.forums.filter(
+      (forum: Forum) => forum.id != id
+    ))
+);
 }
+    }
+    
+
+

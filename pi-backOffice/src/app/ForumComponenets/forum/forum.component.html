@@ -57,39 +57,60 @@
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Localisation
                                                 </th>
+                                                <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                              Actions
+                                            </th>
                                                 <th class="text-secondary opacity-7"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let forum of forums">
                                                 <td>                                                  
-                                                        <h6 class="mb-0 text-sm">{{forum.theme}}</h6>
+                                                    <h6 class="mb-0 text-sm">
+                                                        {{ forum?.theme ?? "_" }}
+                                                      </h6>
                                                 </td>
 
                                                 <td class="align-middle text-center text-sm">
-                                                    <span
-                                                        class="badge badge-sm bg-gradient-secondary">{{forum.forumStatus}}</span>
+                                                
+                                                    <div *ngIf="forum.forumStatus.toString() === 'Done'">
+                                                        <span class="badge badge-sm bg-gradient-dark">Done</span>
+                                                    </div>
+                                                    <div *ngIf="forum.forumStatus.toString() === 'In_Progress'">
+                                                        <span class="badge badge-sm bg-gradient-info">En cours</span>
+                                                    </div>
+                                                    <div *ngIf="forum.forumStatus.toString() === 'Canceled'">
+                                                        <span class="badge badge-sm bg-gradient-warning">Annulé</span>
+                                                    </div>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span
-                                                        class="text-secondary text-xs font-weight-bold">{{forum.date}}</span>
+                                                    <h6 class="mb-0 text-sm">
+                                                        {{ forum?.date ?? "_" }}
+                                                      </h6>
+                    
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span
-                                                        class="text-secondary text-xs font-weight-bold">{{forum.localisation}}</span>
+                                                      <h6 class="mb-0 text-sm">
+                                                        {{ forum?.localisation ?? "_" }}
+                                                      </h6>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="javascript:;"
-                                                        class="text-secondary font-weight-bold text-xs"
-                                                        data-toggle="tooltip" data-original-title="Edit user">
-                                                        Modifier
-                                                    </a>
-                                                    <a href="javascript:;"
-                                                        class="text-secondary font-weight-bold text-xs"
-                                                        data-toggle="tooltip" data-original-title="Edit user">
-                                                        Annuler
-                                                    </a>
-                                                </td>
+                                                    <div class="ms-auto text-end">
+                                                      <button
+                                                        class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                        href="javascript:;"
+                                                        (click)="cancelForum(forum.id)"
+                                                        ><i class="material-icons text-sm me-2">delete</i
+                                                        >Delete</button>
+                                                      <a
+                                                        class="btn btn-link text-dark px-3 mb-0"
+                                                        href="javascript:;"
+                                                        ><i class="material-icons text-sm me-2">edit</i
+                                                        >Edit</a
+                                                      >
+                                                    </div>
+                                                  </td>
                                             </tr>
                                         </tbody>
                                     </table>

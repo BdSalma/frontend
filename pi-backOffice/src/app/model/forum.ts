@@ -9,7 +9,7 @@ export class Forum {
     localisation!: string;
     description!: string;
     theme!: string;
-    forumStatus !: forumStatus; 
+    forumStatus !: string; 
     users!: User[];
     packs!: Pack[];
 }

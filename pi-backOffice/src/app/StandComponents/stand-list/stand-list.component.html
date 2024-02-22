@@ -36,12 +36,12 @@
                                 </div>
                             </div>
                             <div class="card-body px-0 pb-2">
-                                <div class="table-responsive p-0">
+                                <div class="table-responsive-sm p-0"> <!-- Added "table-responsive-sm" class -->
                                     <table class="table align-items-center mb-0">
                                         <thead>
                                             <tr>
                                                 <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Numéro
                                                 </th>
 
@@ -53,36 +53,42 @@
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Statut
                                                 </th>
+                                                <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    Actions
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let stand of stands">
                                                 <td class="align-middle text-center text-sm">                                                  
-                                                        <h6 class="mb-0 text-sm">{{stand.number}}</h6>
+                                                        <h6 class="mb-0 text-md">{{stand.number}}</h6>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span
-                                                        class="badge badge-sm bg-gradient-secondary">{{stand.zone}}
-                                                    </span>
+                                               
+                                                    <h6 class="mb-0 text-md">{{stand.zone}}</h6>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span
-                                                        class="text-secondary text-xs font-weight-bold">{{stand.reserved}}
-                                                    </span>
+                                            
+                                                    <div *ngIf="stand.reserved.toString() === 'true'">
+                                                        <span class="badge badge-sm bg-gradient-danger">Réservé</span>
+                                                    </div>
+                                                    <div *ngIf="stand.reserved.toString() === 'false'">
+                                                        <span class="badge badge-sm bg-gradient-info">Non réservé</span>
+                                                    </div>
                                                 </td>
                                               
-                                                <td class="align-middle">
-                                                    <a href="javascript:;"
-                                                        class="text-secondary font-weight-bold text-xs"
-                                                        data-toggle="tooltip" data-original-title="Edit user">
-                                                        Modifier
-                                                    </a>
-                                                    <a href="javascript:;"
-                                                        class="text-secondary font-weight-bold text-xs"
-                                                        data-toggle="tooltip" data-original-title="Edit user">
-                                                        Annuler
-                                                    </a>
+                                                <td class="align-middle text-center">
+                                                    <div class="d-inline-block"> <!-- Wrap buttons in a div with d-inline-block class -->
+                                                        <button class="btn btn-link text-danger text-gradient px-3 mb-0" (click)="deleteStand(stand.id)">
+                                                            <i class="material-icons text-sm me-2">delete</i>Delete
+                                                        </button>
+                                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;">
+                                                            <i class="material-icons text-sm me-2">edit</i>Edit
+                                                        </a>
+                                                    </div>
                                                 </td>
+                                                
                                             </tr>
                                         </tbody>
                                     </table>

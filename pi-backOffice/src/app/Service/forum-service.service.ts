@@ -40,7 +40,7 @@ export class ForumServiceService {
   }
 
   deleteForum(id: number) {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.apiURL}/delete-forum/${id}`;
     return this.http.delete(url);
   }
 

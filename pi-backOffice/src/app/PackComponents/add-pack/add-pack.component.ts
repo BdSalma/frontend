@@ -11,20 +11,22 @@ import { PackServiceService } from 'src/app/Service/pack-service.service';
 })
 export class AddPackComponent {
 
-  addForumForm!: FormGroup;
+  addPackForm!: FormGroup;
   zones: string[] = [];
   constructor(private route: ActivatedRoute, private packService: PackServiceService, private router: Router) {}
   ngOnInit() {
-    this.addForumForm = new FormGroup({
-      zone: new FormControl('', [Validators.required]),
-      number: new FormControl(0, [Validators.required])
+    this.addPackForm = new FormGroup({
+      typePack: new FormControl(null, [Validators.required]), // Assuming typePack is of TypePack type
+       prix: new FormControl(0, [Validators.required, Validators.min(0)]) // Assuming prix is a number
     });
   }
   onSubmit() {
-    console.log(this.addForumForm.value);
-    this.packService.addpack(this.addForumForm.value).subscribe(() => {
-      this.router.navigateByUrl("/standList"); // Corrected to use parentheses instead of square brackets
+   
+    this.packService.addpack(this.addPackForm.value).subscribe(() => {
+    this.router.navigateByUrl("/packList"); // Corrected to use parentheses instead of square brackets
     });
   }
+
+ 
 }
 

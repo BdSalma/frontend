@@ -28,6 +28,7 @@ export class PackServiceService {
   }
   addpack(pack: Pack): Observable<Pack> {
     const url = `${this.apiURL}/add-pack`;
+    console.log(url,pack)
     return this.http.post<Pack>(url, pack);
   }
 
@@ -37,7 +38,7 @@ export class PackServiceService {
   }
 
   deletepack(id: number) {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.apiURL}/delete-pack/${id}`;
     return this.http.delete(url);
   }
 

@@ -39,7 +39,7 @@ export class StandServiceService {
   }
 
   deleteStand(id: number) {
-    const url = `${this.apiURL}/${id}`;
+    const url = `${this.apiURL}/delete-stand/${id}`;
     return this.http.delete(url);
   }
 

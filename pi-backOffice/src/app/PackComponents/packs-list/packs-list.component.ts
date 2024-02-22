@@ -9,14 +9,19 @@ import { Pack } from 'src/app/model/pack';
   styleUrls: ['./packs-list.component.css']
 })
 export class PacksListComponent {
+editPack(_t44: Pack) {
+throw new Error('Method not implemented.');
+}
+
   constructor(
     private packService: PackServiceService,
    
   ) {}
-  reserved!: reservationStatus.Reserved;
-  onHold!: reservationStatus.On_Hold;
-  notReserved!: reservationStatus.Not_Reserved;
 
+    reserved:reservationStatus =  reservationStatus.Reserved;
+    onHold:reservationStatus = reservationStatus.On_Hold;
+    notReserved:reservationStatus = reservationStatus.Not_Reserved;
+ 
   packs: Pack[]=[];
   ngOnInit(): void {
     this.packService.listpack().subscribe((data) => {
@@ -25,4 +30,11 @@ export class PacksListComponent {
     });
   }
 
+  deletePack(id: number) {
+    this.packService.deletepack(id).subscribe( () =>
+    (this.packs = this.packs.filter(
+      (pack: Pack) => pack.id != id
+    ))
+);
+}
  }

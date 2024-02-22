@@ -19,44 +19,50 @@
                             </div>
                             <div class="card-body px-0 pb-2">
                                
-                                    <form [formGroup]="addForumForm" (ngSubmit)="onSubmit()">
-                                        <div class="row mb-3">
-                                          <label class="col-sm-2 col-form-label" for="zone">Zone:</label>
-                                          <div class="col-sm-10 input-group input-group-outline">
-                                            <select class="form-select" formControlName="zone">
-                                              <option value="" disabled selected>Select Zone</option>
-                                              <option value="Zone1">Zone 1</option>
-                                              <option value="Zone2">Zone 2</option>
-                                              <option value="Zone3">Zone 3</option>
-                                            </select>
-                                          </div>
-                                          <div class="text-danger" *ngIf="addForumForm.get('zone')?.invalid && addForumForm.get('zone')?.touched">
-                                            <span class="text-sm">The zone is required</span>
-                                          </div>
+                                <form [formGroup]="addForumForm" (ngSubmit)="onSubmit()">
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="theme">Thème :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <input type="text" class="form-control" placeholder="Thème" formControlName="theme">
                                         </div>
-                                        <div class="row mb-3">
-                                          <label class="col-sm-2 col-form-label" for="number">Number:</label>
-                                          <div class="col-sm-10 input-group input-group-outline">
-                                            <input
-                                              type="number"
-                                              class="form-control"
-                                              placeholder="Number"
-                                              formControlName="number"
-                                            />
-                                          </div>
-                                          <div class="text-danger" *ngIf="addForumForm.get('number')?.invalid && addForumForm.get('number')?.touched">
-                                            The number is required
-                                          </div>
+                                        <div class="text-danger" *ngIf="addForumForm.get('theme')?.invalid && addForumForm.get('theme')?.touched">
+                                            Le thème est requis
                                         </div>
-                                        <div class="text-center">
-                                          <button
-                                            type="button"
-                                            class="btn bg-gradient-primary"
-                                          >
-                                            Add
-                                          </button>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="date">Date :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <input type="date" class="form-control" formControlName="date">
                                         </div>
-                                      </form>
+                                        <div class="text-danger" *ngIf="addForumForm.get('date')?.invalid && addForumForm.get('date')?.touched">
+                                            Veuillez sélectionner une date future
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="localisation">Localisation :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <input type="text" class="form-control" placeholder="Localisation" formControlName="localisation">
+                                        </div>
+                                        <div class="text-danger" *ngIf="addForumForm.get('localisation')?.invalid && addForumForm.get('localisation')?.touched">
+                                            La localisation est requise
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label" for="description">Description :</label>
+                                        <div class="col-sm-10 input-group input-group-outline">
+                                            <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
+                                        </div>
+                                        <div class="text-danger" *ngIf="addForumForm.get('description')?.invalid && addForumForm.get('description')?.touched">
+                                            La description est requise
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn bg-gradient-primary" [disabled]="addForumForm.invalid">
+                                            Ajouter
+                                        </button>
+                                    </div>
+                                </form>
+                                
                                 </div>
                             </div>
                         </div>
