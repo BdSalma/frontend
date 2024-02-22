@@ -20,6 +20,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { OffersComponent } from './offers/offers.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RequestsComponent } from './requests/requests.component';
+import { AddRequestComponent } from './add-request/add-request.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +44,16 @@ import { OffersComponent } from './offers/offers.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    OffersComponent
+    OffersComponent,
+    RequestsComponent,
+    AddRequestComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,7 +14,10 @@ import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 import {OffersComponent} from './offers/offers.component';
+import { RequestsComponent } from './requests/requests.component';
+import { AddRequestComponent } from './add-request/add-request.component';
 const routes: Routes = [
+  { path: '', pathMatch: 'full', component: DashboradComponent },
 {path:'dashboard',component:DashboradComponent},
 {path:'billing',component:BillingComponent},
 {path:'profile',component:ProfileComponent},
@@ -28,8 +31,10 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
-{path:'offers',component:OffersComponent}
+{path:'offers',component:OffersComponent},
+{path:'supplyrequests',component:RequestsComponent},
 
+{path:'addRequest',component:AddRequestComponent}
 
 
 
