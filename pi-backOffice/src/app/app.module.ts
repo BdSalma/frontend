@@ -26,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { NotApprovedComponent } from './not-approved/not-approved.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
     OffersComponent,
     NotFoundComponent,
     EmailVerificationComponent,
-    
+    NotApprovedComponent,
   ],
   imports: [
     BrowserModule,

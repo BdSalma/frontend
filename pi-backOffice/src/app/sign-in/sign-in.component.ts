@@ -33,12 +33,11 @@ export class SignInComponent {
           refresh_token: string;
           expires_in: string;
         };
-        this.consumer.updateToken(loginResponse.access_token)
+        this.consumer.updateToken(loginResponse.access_token);
         this.checkValidity(loginResponse);
       },
       error: (error) => {
-        // this.toastr.error(error.error.message);
-        console.log(error);
+        this.toastr.error(error.error.message);
       },
     });
   }
@@ -58,17 +57,18 @@ export class SignInComponent {
           'expires_in',
           JSON.stringify(loginResponse.expires_in)
         );
+        this.consumer.autoLogout(loginResponse.expires_in * 3000);
         this.toastr.success('You have logged in successfully');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
       },
       error: (error) => {
         if (error.error.message == 'Not verified') {
           console.error(loginResponse.access_token);
           this.router.navigate(['/emailVerification']);
         } else if (error.error.message == 'Not approved') {
-          console.error('ok2');
+          this.router.navigate(['/notApproved']);
         } else {
-          console.error(error.error.message);
+          this.toastr.error(error.error.message);
         }
       },
     });

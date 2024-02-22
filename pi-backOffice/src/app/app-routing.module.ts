@@ -16,9 +16,11 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { OffersComponent } from './offers/offers.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { NotApprovedComponent } from './not-approved/not-approved.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
+  { path: 'notApproved', component: NotApprovedComponent },
   { path: 'dashboard', component: DashboradComponent },
   { path: 'billing', component: BillingComponent },
   { path: 'profile', component: ProfileComponent },
