@@ -14,8 +14,11 @@ import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 import { OffersComponent } from './offers/offers.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
+  { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'dashboard', component: DashboradComponent },
   { path: 'billing', component: BillingComponent },
   { path: 'profile', component: ProfileComponent },
@@ -30,6 +33,7 @@ const routes: Routes = [
   { path: 'typography', component: TypographyComponent },
   { path: 'virtualReality', component: VirtualRealityComponent },
   { path: 'offers', component: OffersComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

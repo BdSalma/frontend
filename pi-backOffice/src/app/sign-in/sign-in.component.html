@@ -37,19 +37,50 @@
               </div>
             </div>
             <div class="card-body">
-              <form role="form" class="text-start">
+              <form
+                [formGroup]="signInForm"
+                (ngSubmit)="login(signInForm.value)"
+                class="text-start"
+              >
                 <div class="input-group input-group-outline my-3">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="username"
+                    placeholder="Username or Email"
+                  />
+                </div>
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    signInForm.get('username')?.invalid &&
+                    signInForm.get('username')?.touched
+                  "
+                >
+                  This Field is required
                 </div>
                 <div class="input-group input-group-outline mb-3">
-                  <label class="form-label">Password</label>
-                  <input type="password" class="form-control" />
+                  <input
+                    type="password"
+                    class="form-control"
+                    formControlName="password"
+                    placeholder="Password"
+                  />
+                </div>
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    signInForm.get('password')?.invalid &&
+                    signInForm.get('password')?.touched
+                  "
+                >
+                  The password is required
                 </div>
                 <div class="text-center">
                   <button
-                    type="button"
+                    type="submit"
                     class="btn bg-gradient-primary w-100 my-4 mb-2"
+                    [disabled]="signInForm.invalid"
                   >
                     Sign in
                   </button>
