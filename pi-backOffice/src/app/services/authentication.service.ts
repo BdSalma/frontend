@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../model/user';
+import { Observable } from 'rxjs/internal/Observable';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -47,6 +49,14 @@ export class Authentication {
     );
   }
 
+  register(registerRequest: any) {
+    return this.http.post(
+      'http://localhost:8087/auth/create-user',
+      registerRequest,
+      httpOptions
+    );
+  }
+
   logout() {
     return this.http.post(
       'http://localhost:8087/auth/logout',
@@ -58,7 +68,6 @@ export class Authentication {
   }
 
   checkValidity() {
-    console.log(this.displayToken);
     return this.http.get('http://localhost:8087/auth/check-user', {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.verificationToken}`,
@@ -67,7 +76,6 @@ export class Authentication {
   }
 
   emailVerification() {
-    console.log(this.verificationToken);
     return this.http.put(
       'http://localhost:8087/auth/emailVerification',
       {},
@@ -86,8 +94,6 @@ export class Authentication {
       if (tokenExpirationDate > currentDate) {
         const remainingTime = tokenExpirationDate - currentDate;
         this.autoLogout(remainingTime);
-        this.router.navigate(['/']);
-        this.toastr.warning('Your session has expired');
       } else {
         localStorage.clear();
         this.router.navigate(['/signIn']);
@@ -98,15 +104,28 @@ export class Authentication {
   }
 
   autoLogout(expirationDate: number) {
-    console.log(expirationDate);
+    if (this.clearTimeout) {
+      clearTimeout(this.clearTimeout);
+    }
     this.clearTimeout = setTimeout(() => {
-      this.logout();
-      this.toastr.warning('Your session has expired');
-      this.router.navigate(['/signIn']);
-      localStorage.clear();
-      if (this.clearTimeout) {
-        clearTimeout(this.clearTimeout);
-      }
+      this.logout().subscribe({
+        next: () => {
+          this.toastr.warning('Your session has expired');
+          localStorage.clear();
+          this.router.navigate(['/signIn']);
+        },
+        error: (error) => {
+          this.toastr.error(error.error.message);
+        },
+      });
     }, expirationDate);
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>('http://localhost:8087/auth/user-details', {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
   }
 }

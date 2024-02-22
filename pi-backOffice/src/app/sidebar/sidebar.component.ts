@@ -22,12 +22,12 @@ export class SidebarComponent {
         const logoutResponse = response as {
           message: string;
         };
-        localStorage.clear();
-        this.toastr.success(logoutResponse.message);
-        this.router.navigate(['/signIn']);
         if (this.consumer.clearTimeout) {
           clearTimeout(this.consumer.clearTimeout);
         }
+        this.toastr.success(logoutResponse.message);
+        localStorage.clear();
+        this.router.navigate(['/signIn']);
       },
       error: (error) => {
         this.toastr.error(error.error.message);

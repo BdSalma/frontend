@@ -1,3 +1,8 @@
 export enum IndividuRole {
-    Admin,Professor,Student,Alumni,Community,FinancialDirection
+  Admin = 'Admin',
+  Professor = 'Professor',
+  Student = 'Student',
+  Alumni = 'Alumni',
+  Community = 'Community',
+  FinancialDirection = 'FinancialDirection',
 }

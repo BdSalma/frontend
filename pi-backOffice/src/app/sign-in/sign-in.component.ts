@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Authentication } from '../services/authentication.service';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-sign-in',
@@ -34,6 +35,7 @@ export class SignInComponent {
           expires_in: string;
         };
         this.consumer.updateToken(loginResponse.access_token);
+
         this.checkValidity(loginResponse);
       },
       error: (error) => {
@@ -57,19 +59,31 @@ export class SignInComponent {
           'expires_in',
           JSON.stringify(loginResponse.expires_in)
         );
-        this.consumer.autoLogout(loginResponse.expires_in * 3000);
+        this.consumer.autoLogout(loginResponse.expires_in * 1000);
         this.toastr.success('You have logged in successfully');
+        this.getUser();
         this.router.navigate(['/']);
       },
       error: (error) => {
         if (error.error.message == 'Not verified') {
-          console.error(loginResponse.access_token);
           this.router.navigate(['/emailVerification']);
         } else if (error.error.message == 'Not approved') {
           this.router.navigate(['/notApproved']);
         } else {
           this.toastr.error(error.error.message);
         }
+      },
+    });
+  }
+
+  getUser(): void {
+    this.consumer.getUser().subscribe({
+      next: (response: User) => {
+        localStorage.setItem('user', JSON.stringify(response));
+        console.log('User details:', response);
+      },
+      error: (error) => {
+        console.error('Error fetching user details:', error);
       },
     });
   }
