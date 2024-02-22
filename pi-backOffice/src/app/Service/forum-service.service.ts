@@ -44,4 +44,9 @@ export class ForumServiceService {
     return this.http.delete(url);
   }
 
+  cancelForum(id: number) {
+    const url = `${this.apiURL}/cancel-forum`;
+    return this.http.delete(url);
+  }
+
 }
