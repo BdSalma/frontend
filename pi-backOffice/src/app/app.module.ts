@@ -19,6 +19,14 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { IndexComponent } from './index/index.component';
+import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
+import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +46,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     VirtualRealityComponent,
     NavbarComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    IndexComponent,
+    NavbarIndexComponent,
+    FooterIndexComponent,
+    HeaderComponent,
+    ContactUsComponent,
+    AboutUsComponent,
+    SignInIndexComponent,
+    SignUpIndexComponent
   ],
   imports: [
     BrowserModule,
