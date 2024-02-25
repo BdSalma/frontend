@@ -40,7 +40,7 @@ onSubmit(){
 }
 update(){
   this.offerS.putProduct(this.id,this.registerForm.value).subscribe(
-    {next:()=>this.router.navigateByUrl('/offre'),
+    {next:()=>this.router.navigate(['/offre']),
     error:(error)=>console.log(error)}
   )
 

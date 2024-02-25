@@ -21,4 +21,12 @@ export class OfferService {
   putProduct(id:number,o:Offer){
     return this.http.put(`http://localhost:8087/Offer/updateOffer/${id}`,o);
   }
+  affectOfferToSociety(o:Offer){
+        return this.http.post(`http://localhost:8087/Offer/add-offer/2`,o)
+
+  }
+  offerBySociety(){
+
+    return this.http.get(`http://localhost:8087/Offer/allOffers/1`)
+}
 }

@@ -52,7 +52,7 @@
                             </div>
                             <div class="input-group input-group-outline mb-3">
                                 <label >Durée :</label>
-                                <input type="text" class="form-control" placeholder="Duree de l'offre">
+                                <input type="text" class="form-control" formControlName="duree" placeholder="Duree de l'offre">
                               </div>
                               <div *ngIf="registerForm.controls['duree'].errors && registerForm.get('duree')?.touched">
                                   <div *ngIf="registerForm.controls['duree'].hasError('required')">Obligatoire</div>

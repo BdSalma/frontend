@@ -23,6 +23,11 @@ import { OffersComponent } from './offers/offers.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddOfferComponent } from './add-offer/add-offer.component';
 import { UpdateOfferComponent } from './update-offer/update-offer.component';
+import { DetailOfferComponent } from './detail-offer/detail-offer.component';
+import { OfferBySocietyComponent } from './offer-by-society/offer-by-society.component';
+import { IndexComponent } from './index/index.component';
+import { NavIndexComponent } from './nav-index/nav-index.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { UpdateOfferComponent } from './update-offer/update-offer.component';
     SidebarComponent,
     OffersComponent,
     AddOfferComponent,
-    UpdateOfferComponent
+    UpdateOfferComponent,
+    DetailOfferComponent,
+    OfferBySocietyComponent,
+    IndexComponent,
+    NavIndexComponent,
+    FooterIndexComponent
   ],
   imports: [
     BrowserModule,

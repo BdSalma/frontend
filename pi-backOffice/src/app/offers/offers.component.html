@@ -55,10 +55,11 @@
                           <span class="text-secondary text-xs font-weight-bold">{{offer.duree}}</span>
                         </td>
                         <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">{{offer.description}}</span>
+                          <span>{{ offer.description.length > 100 ? offer.description.slice(0, 100) + '...' : offer.description }}</span>                 
+                                     <a [routerLink]="['/DetailOffre', offer.idOffre]">Voir les détails</a>
                         </td>
                         <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">{{offer.society}}</span>
+                          <span class="text-secondary text-xs font-weight-bold">{{offer.user}}</span>
                         </td>
                         <td class="align-middle">
                           <button (click)="deleteOffer(offer.idOffre)">
@@ -66,7 +67,10 @@
                           </button> 
                           <a [routerLink]="['/editOffer',offer.idOffre]">
                             <i class="fas fa-pencil-alt"></i>
-                          </a>                         
+                          </a>      
+                          <a [routerLink]="['/editOffer',offer.idOffre]">
+                            <i class="fas fa-detail-alt"></i>
+                          </a>                   
                         </td>
                       </tr>
                     </tbody>

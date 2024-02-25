@@ -35,7 +35,7 @@ export class AddOfferComponent {
     this.registerForm.reset();
   }
 ajouter(){
-  this.offerS.AddOffer(this.registerForm.value).subscribe(
+  this.offerS.affectOfferToSociety(this.registerForm.value).subscribe(
     {next:()=>this.router.navigateByUrl('/offre'),
     error:(error)=>console.log(error)}
   )

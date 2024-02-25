@@ -16,10 +16,14 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { OffersComponent } from './offers/offers.component';
 import { AddOfferComponent } from './add-offer/add-offer.component';
 import { UpdateOfferComponent } from './update-offer/update-offer.component';
+import { DetailOfferComponent } from './detail-offer/detail-offer.component';
+import { OfferBySocietyComponent } from './offer-by-society/offer-by-society.component';
 
 const routes: Routes = [
 {path:'',component:DashboradComponent},
 {path:'offre',component:OffersComponent},
+{path:'offerBySociety',component:OfferBySocietyComponent},
+{path:'DetailOffre/:id',component:DetailOfferComponent},
 {path:'editOffer/:id',component:UpdateOfferComponent},
 {path:'addOffer',component:AddOfferComponent},
 {path:'dashboard',component:DashboradComponent},
