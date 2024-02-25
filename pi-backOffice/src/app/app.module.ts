@@ -19,7 +19,6 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { OffersComponent } from './offers/offers.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,7 @@ import { OffersComponent } from './offers/offers.component';
     VirtualRealityComponent,
     NavbarComponent,
     FooterComponent,
-    SidebarComponent,
-    OffersComponent
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
