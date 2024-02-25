@@ -19,4 +19,13 @@ export class UserService {
   public save(user: Sponsor) {
     return this.http.post<Sponsor>(this.usersUrl, user);
   }
+  deleteSponsor(idSponsor: number): Observable<void> {
+    const url = `${this.usersUrl}/${idSponsor}`;
+    return this.http.delete<void>(url);
+  }
+  
+  public updateSponsor(sponsor: Sponsor): Observable<Sponsor> {
+    const url = `${this.usersUrl}/${sponsor.name}`;
+    return this.http.put<Sponsor>(url, sponsor);
+  }
 }

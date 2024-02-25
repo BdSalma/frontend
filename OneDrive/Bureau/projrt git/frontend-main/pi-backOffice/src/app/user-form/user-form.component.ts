@@ -11,6 +11,8 @@ import { Sponsor } from '../sponsor';
 export class UserFormComponent {
 
   sponsor: Sponsor;
+  sponsors: Sponsor[] = []; // Array of sponsors
+
 
   constructor(
     private route: ActivatedRoute, 
