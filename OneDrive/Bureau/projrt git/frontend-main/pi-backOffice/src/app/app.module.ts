@@ -24,7 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { OffersComponent } from './offers/offers.component';
 import { UserService } from './user-service.service';
-
+import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +46,8 @@ import { UserService } from './user-service.service';
     SidebarComponent,
     OffersComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+    SponsorEditComponent
   ],
   imports: [
     BrowserModule,
@@ -58,3 +59,5 @@ import { UserService } from './user-service.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

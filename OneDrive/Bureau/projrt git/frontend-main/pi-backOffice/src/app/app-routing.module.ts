@@ -16,6 +16,7 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import {OffersComponent} from './offers/offers.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'adduser', component: UserFormComponent },
@@ -32,7 +33,10 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
-{path:'offers',component:OffersComponent}
+{path:'offers',component:OffersComponent},
+{ path: 'edituser/:id', component: SponsorEditComponent }
+
+
 
 
 

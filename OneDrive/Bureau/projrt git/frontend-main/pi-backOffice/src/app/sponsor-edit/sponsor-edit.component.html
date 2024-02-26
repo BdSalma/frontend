@@ -1,91 +1,97 @@
 <body class="g-sidenav-show  bg-gray-200">
 
-    
-  <body>
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
+    <body>
+        <div class="container position-sticky z-index-sticky top-0">
+          <div class="row">
             <div class="col-3">
-                <app-sidebar></app-sidebar>
+              <app-sidebar></app-sidebar>
             </div>
             <div class="col-9">
-                <app-navbar></app-navbar>
-                <main class="main-content mt-0">
-                    <section>
-                        <div class="page-header min-vh-100">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card card-plain">
-                                            <div class="card-header">
-                                                <h4 class="font-weight-bolder">Sponsorship Information</h4>
-                                            </div>
-                                            <div class="card-body">
-                                                <form (ngSubmit)="onSubmit()" #sponsorForm="ngForm">
-                                                    <div class="form-group mb-4">
-                                                        <label for="name" class="form-label">Name</label>
-                                                        <input type="text" [(ngModel)]="sponsor.name" class="form-control" id="name" name="name" placeholder="Enter the sponsor's name" required #name="ngModel">
-                                                        <div *ngIf="name.invalid && name.touched" class="alert alert-danger mt-2">Name is required</div>
-                                                    </div>
-
-                                                    <div class="form-group mb-4">
-                                                        <label for="contactName" class="form-label">Contact Name</label>
-                                                        <input type="text" [(ngModel)]="sponsor.contactName" class="form-control" id="contactName" name="contactName" placeholder="Enter the contact name" required #contactName="ngModel">
-                                                        <div *ngIf="contactName.invalid && contactName.touched" class="alert alert-danger mt-2">Contact name is required</div>
-                                                    </div>
-
-                                                    <div class="form-group mb-4">
-                                                        <label for="contactEmail" class="form-label">Contact Email</label>
-                                                        <input type="email" [(ngModel)]="sponsor.contactEmail" class="form-control" id="contactEmail" name="contactEmail" placeholder="Enter the contact email" required #contactEmail="ngModel">
-                                                        <div *ngIf="contactEmail.invalid && contactEmail.touched" class="alert alert-danger mt-2">Contact email is required</div>
-                                                    </div>
-
-                                                    <div class="form-group mb-4">
-                                                        <label for="contactPhone" class="form-label">Contact Phone</label>
-                                                        <input type="tel" [(ngModel)]="sponsor.contactPhone" class="form-control" id="contactPhone" name="contactPhone" placeholder="Enter the contact phone" required #contactPhone="ngModel">
-                                                        <div *ngIf="contactPhone.invalid && contactPhone.touched" class="alert alert-danger mt-2">Contact phone is required</div>
-                                                    </div>
-
-                                                    <div class="form-group mb-4">
-                                                        <label for="website" class="form-label">Website</label>
-                                                        <input type="url" [(ngModel)]="sponsor.website" class="form-control" id="website" name="website" placeholder="Enter the website URL" #website="ngModel">
-                                                    </div>
-
-                                                    <div class="form-group mb-4">
-                                                        <label for="logoUrl" class="form-label">Logo URL</label>
-                                                        <input type="url" [(ngModel)]="sponsor.logoUrl" class="form-control" id="logoUrl" name="logoUrl" placeholder="Enter the logo URL" #logoUrl="ngModel">
-                                                    </div>
-
-                                                    <div class="form-group mb-4">
-                                                        <label for="description" class="form-label">Description</label>
-                                                        <textarea class="form-control" id="description" [(ngModel)]="sponsor.description" name="description" rows="5" required #description="ngModel" placeholder="Enter a detailed description"></textarea>
-                                                        <div *ngIf="description.invalid && description.touched" class="alert alert-danger mt-2">Description is required</div>
-                                                    </div>
-
-                                                    <div class="text-center">
-                                                        <button type="submit" [disabled]="!sponsorForm.form.valid" class="btn btn-info">Submit</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+              <app-navbar></app-navbar>
+              <main class="main-content mt-0">
+                <section>
+                  <div class="page-header min-vh-100">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card card-plain">
+                            <div class="card-header">
+                              <h4 class="font-weight-bolder">Edit Sponsorship Information</h4>
                             </div>
+                            <div class="card-body">
+                              <form (ngSubmit)="onSubmit()" #sponsorForm="ngForm">
+      
+                                <!-- Name -->
+                                <div class="form-group">
+                                  <label for="name">Name</label>
+                                  <input type="text" [(ngModel)]="sponsor.name" class="form-control" id="name" name="name" placeholder="Enter the sponsor's name" required #name="ngModel">
+                                  <div *ngIf="name.invalid && name.touched" class="alert alert-danger">Name is required</div>
+                                </div>
+      
+                                <!-- Contact Name -->
+                                <div class="form-group">
+                                  <label for="contactName">Contact Name</label>
+                                  <input type="text" [(ngModel)]="sponsor.contactName" class="form-control" id="contactName" name="contactName" placeholder="Enter the contact name" required #contactName="ngModel">
+                                  <div *ngIf="contactName.invalid && contactName.touched" class="alert alert-danger">Contact name is required</div>
+                                </div>
+      
+                                <!-- Contact Email -->
+                                <div class="form-group">
+                                  <label for="contactEmail">Contact Email</label>
+                                  <input type="email" [(ngModel)]="sponsor.contactEmail" class="form-control" id="contactEmail" name="contactEmail" placeholder="Enter the contact email" required #contactEmail="ngModel">
+                                  <div *ngIf="contactEmail.invalid && contactEmail.touched" class="alert alert-danger">Contact email is required</div>
+                                </div>
+      
+                                <!-- Contact Phone -->
+                                <div class="form-group">
+                                  <label for="contactPhone">Contact Phone</label>
+                                  <input type="tel" [(ngModel)]="sponsor.contactPhone" class="form-control" id="contactPhone" name="contactPhone" placeholder="Enter the contact phone" required #contactPhone="ngModel">
+                                  <div *ngIf="contactPhone.invalid && contactPhone.touched" class="alert alert-danger">Contact phone is required</div>
+                                </div>
+      
+                                <!-- Website -->
+                                <div class="form-group">
+                                  <label for="website">Website</label>
+                                  <input type="url" [(ngModel)]="sponsor.website" class="form-control" id="website" name="website" placeholder="Enter the website URL" #website="ngModel">
+                                </div>
+      
+                                <!-- Logo URL -->
+                                <div class="form-group">
+                                  <label for="logoUrl">Logo URL</label>
+                                  <input type="url" [(ngModel)]="sponsor.logoUrl" class="form-control" id="logoUrl" name="logoUrl" placeholder="Enter the logo URL" #logoUrl="ngModel">
+                                </div>
+      
+                                <!-- Description -->
+                                <div class="form-group">
+                                  <label for="description">Description</label>
+                                  <textarea class="form-control" id="description" [(ngModel)]="sponsor.description" name="description" rows="3" required #description="ngModel"></textarea>
+                                  <div *ngIf="description.invalid && description.touched" class="alert alert-danger">Description is required</div>
+                                </div>
+      
+                                <!-- Buttons -->
+                                <div class="text-center">
+                                  <button type="submit" [disabled]="!sponsorForm.form.valid" class="btn btn-info">Submit</button>
+                                </div>
+      
+                              </form>
+                            </div>
+                          </div>
                         </div>
-                    </section>
-                    <app-footer></app-footer>
-                </main>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <app-footer></app-footer>
+              </main>
             </div>
+          </div>
         </div>
-    </div>
-</body>
+      </body>
+      
 
+      
 
-
-
-
-
-
-          <div class="fixed-plugin">
+      <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
           <i class="material-icons py-2">settings</i>
         </a>

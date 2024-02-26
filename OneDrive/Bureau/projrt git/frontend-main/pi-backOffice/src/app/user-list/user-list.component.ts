@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sponsor } from '../sponsor';
 import { UserService } from '../user-service.service';
 
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -10,6 +11,27 @@ import { UserService } from '../user-service.service';
 export class UserListComponent implements OnInit {
   sponsors!: Sponsor[];
   sponsor: Sponsor = new Sponsor(); // Make sure this matches your model
+
+
+  initiateCall(phoneNumber: string): void {
+    // Vous pouvez exécuter des actions ici avant de transmettre la valeur 'true'
+    console.log("Initiating call...");
+    // Transmettre la valeur 'true' à d'autres composants ou services si nécessaire
+    if (phoneNumber) {
+      // Exemple: Vous pouvez déclencher une méthode dans un service qui gère l'appel
+      this.userService.makeCall(phoneNumber).subscribe(
+        () => {
+          console.log("Appel initié avec succès !");
+          // Gérer la réussite de l'appel ici
+        },
+        (error) => {
+          console.error("Erreur lors de l'initiation de l'appel :", error);
+          // Gérer les erreurs ici
+        }
+      );
+    }
+  }
+
 
   constructor(private userService: UserService) {}
 
