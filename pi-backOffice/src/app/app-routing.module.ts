@@ -12,13 +12,19 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
+import { CandidatureComponent} from './candidature/candidature.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
+import { UpdateComponent } from './candidature/update.component';
+import { InterviewComponent } from './interview/interview.component';
+import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', component: DashboradComponent },
 {path:'dashboard',component:DashboradComponent},
 {path:'billing',component:BillingComponent},
 {path:'profile',component:ProfileComponent},
 {path:'icons',component:IconsComponent},
+{path:'candidat',component:CandidatureComponent},
 {path:'signIn',component:SignInComponent},
 {path:'signUp',component:SignUpComponent},
 {path:'table',component:TableComponent},
@@ -28,9 +34,9 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
-
-
-
+{path:'updateC/:id',component:UpdateComponent},
+{path:'addInterv/:id',component:InterviewComponent},
+{path:'listInterv',component:ListInterviewComponent}
 
 ];
 
