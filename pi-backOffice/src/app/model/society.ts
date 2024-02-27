@@ -4,6 +4,7 @@ import { SocietyRole } from "./societyRole";
 import { User } from "./user";
 
 export class Society extends User {
+
     override id!: string;
     matricule!: number;
     logo!: string;

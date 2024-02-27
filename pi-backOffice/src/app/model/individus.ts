@@ -4,6 +4,7 @@ import { RequestSupply } from "./requestSupply";
 import { User } from "./user";
 
 export class Individu extends User {
+
     override id!: string;
     identity!: string;
     firstName!: string;
@@ -12,5 +13,4 @@ export class Individu extends User {
     requestSupplies!: RequestSupply[];
     candidatures!: Candidature[];
 
-   
-}
+   }

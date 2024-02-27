@@ -1,6 +1,7 @@
 import { Interview } from "./interview";
 import {Offer} from "./offer"
 import { Individu } from "./individus";
+
 import { Status } from "./status";
 export class Candidature {
     idCandidature!: number;
