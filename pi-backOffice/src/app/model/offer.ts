@@ -5,6 +5,7 @@ export class Offer{
     dateEmission!:Date;
     OffreCategory! : Category;
 
+
     offerName!:string;
     Candidatnumber! : number;
     candidatProfil! : string;

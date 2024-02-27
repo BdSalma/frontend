@@ -11,4 +11,5 @@ export class Sponsor {
     logoUrl!: string;
     description!: string;
     user!: User;
+
 }

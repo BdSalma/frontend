@@ -15,6 +15,7 @@ import { TypographyComponent } from './typography/typography.component';
 import { CandidatureComponent} from './candidature/candidature.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 
+
 import { UpdateComponent } from './candidature/update.component';
 import { InterviewComponent } from './interview/interview.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';

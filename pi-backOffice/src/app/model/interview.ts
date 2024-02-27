@@ -1,4 +1,5 @@
 import { Candidature } from "./candidature";
+
 import { InterviewType } from "./interviewType";
 import { Room } from "./room";
 
@@ -9,6 +10,7 @@ export class Interview {
     interviewType!:InterviewType;
     candidature!: Candidature;
     room!: Room[];
+
 
 
 }

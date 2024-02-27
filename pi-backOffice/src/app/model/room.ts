@@ -7,4 +7,5 @@ export class Room {
     status!: string;
     interview!: Interview;
 
+
 }

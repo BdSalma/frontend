@@ -11,4 +11,5 @@ export class User {
     forums!: Forum[];
     reclamations!: Reclamation[];
     sponsors!: Sponsor[];
+
 }

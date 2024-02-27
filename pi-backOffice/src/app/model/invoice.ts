@@ -1,6 +1,7 @@
 import { RequestSupply } from "./requestSupply";
 
 export class Invoice {
+<<<<<<< HEAD
 
     idInvoice!: number;
     description!: string;
@@ -8,4 +9,6 @@ export class Invoice {
     status!: boolean;
     comment!: string;
     requestSupply!: RequestSupply;
+
+   
 }

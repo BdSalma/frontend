@@ -4,6 +4,7 @@ import { Invoice } from "./invoice";
 
 export class RequestSupply {
 
+
     idRequestSupply!: number;
     quantity!: number;
     category!: string;

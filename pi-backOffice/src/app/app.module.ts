@@ -21,6 +21,14 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { IndexComponent } from './index/index.component';
+import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
+import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 
 import { UpdateComponent } from './candidature/update.component';
 import { InterviewComponent } from './interview/interview.component';
@@ -56,10 +64,12 @@ import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
     FooterComponent,
     SidebarComponent,
 
+
     CandidatureComponent,
     UpdateComponent,
     InterviewComponent,
     ListInterviewComponent,
+
 
     IndexComponent,
     NavbarIndexComponent,
