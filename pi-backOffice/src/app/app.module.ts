@@ -20,6 +20,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { OffersComponent } from './offers/offers.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
+import {  HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,11 +43,15 @@ import { OffersComponent } from './offers/offers.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    OffersComponent
+    OffersComponent,
+    ReclamationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

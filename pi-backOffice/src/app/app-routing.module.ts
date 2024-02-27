@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
 import { DashboradComponent } from './dashborad/dashborad.component';
 import { BillingComponent } from './billing/billing.component';
@@ -14,8 +14,11 @@ import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 import {OffersComponent} from './offers/offers.component';
+import { NgModule } from '@angular/core';
+import { ReclamationComponent } from './reclamation/reclamation.component';
 const routes: Routes = [
 {path:'dashboard',component:DashboradComponent},
+{path:'',pathMatch:"full",component:DashboradComponent},
 {path:'billing',component:BillingComponent},
 {path:'profile',component:ProfileComponent},
 {path:'icons',component:IconsComponent},
@@ -23,6 +26,7 @@ const routes: Routes = [
 {path:'signUp',component:SignUpComponent},
 {path:'table',component:TableComponent},
 {path:'map',component:MapComponent},
+{path:'reclamation',component:ReclamationComponent},
 {path:'notification',component:NotificationsComponent},
 {path:'rtl',component:RtlComponent},
 {path:'template',component:TemplateComponent},
