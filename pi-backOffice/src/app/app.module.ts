@@ -25,7 +25,6 @@ import { AddOfferComponent } from './add-offer/add-offer.component';
 import { UpdateOfferComponent } from './update-offer/update-offer.component';
 import { DetailOfferComponent } from './detail-offer/detail-offer.component';
 import { OfferBySocietyComponent } from './offer-by-society/offer-by-society.component';
-import { NavIndexComponent } from './nav-index/nav-index.component';
 import { IndexComponent } from './index/index.component';
 import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
 import { FooterIndexComponent } from './footer-index/footer-index.component';
@@ -34,6 +33,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
 import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
+import { IndexOffersComponent } from './index-offers/index-offers.component';
+import { PageOffersComponent } from './page-offers/page-offers.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -60,22 +62,23 @@ import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
     DetailOfferComponent,
     OfferBySocietyComponent,
     IndexComponent,
-    NavIndexComponent,
     FooterIndexComponent,
     NavbarIndexComponent,
-    FooterIndexComponent,
     HeaderComponent,
     ContactUsComponent,
     AboutUsComponent,
     SignInIndexComponent,
-    SignUpIndexComponent
+    SignUpIndexComponent,
+    IndexOffersComponent,
+    PageOffersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

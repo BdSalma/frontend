@@ -23,8 +23,12 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
 import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
+import { IndexOffersComponent } from './index-offers/index-offers.component';
+import { PageOffersComponent } from './page-offers/page-offers.component';
 const routes: Routes = [
-{path:'',component:DashboradComponent},
+{path:'',component:IndexComponent},
+{path:'moreOffers',component:PageOffersComponent},
+{path:'offersIndex',component:IndexOffersComponent},
 {path:'offre',component:OffersComponent},
 {path:'offerBySociety',component:OfferBySocietyComponent},
 {path:'DetailOffre/:id',component:DetailOfferComponent},

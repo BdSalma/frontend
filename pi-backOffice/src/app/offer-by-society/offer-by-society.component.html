@@ -16,6 +16,11 @@
                   <a style="margin-left:800px" class="btn btn-outline-primary btn-sm mb-0 me-3" routerLink='/addOffer'>Ajouter un offre</a>
                   <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                     <h6 class="text-white text-capitalize ps-3">Liste des offres</h6>
+                    <select [(ngModel)]="searchCategory" (change)="searchApartments()">
+                      <option [attr.placeholder]="placeholderText" disabled selected>Choisissez une catégorie</option>
+                      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                    </select>
+                               
                   </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -30,8 +35,7 @@
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Candidat profil</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Duree</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Society</th>
-                          <th class="text-secondary opacity-7">options</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">options</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -55,11 +59,8 @@
                             <span class="text-secondary text-xs font-weight-bold">{{offer.duree}}</span>
                           </td>
                           <td class="align-middle text-center">
-                            <span>{{ offer.description.length > 100 ? offer.description.slice(0, 100) + '...' : offer.description }}</span>                 
-                                       <a [routerLink]="['/DetailOffre', offer.idOffre]">Voir les détails</a>
-                          </td>
-                          <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{offer.user}}</span>
+                            <span class="text-secondary text-xs font-weight-bold">{{ offer.description.length > 100 ? offer.description.slice(0, 100) + '...' : offer.description }}</span>                 
+                                       <a class="text-secondary text-xs font-weight-bold" [routerLink]="['/DetailOffre', offer.idOffre]">Voir les détails</a>
                           </td>
                           <td class="align-middle">
                             <button (click)="deleteOffer(offer.idOffre)">
@@ -67,10 +68,7 @@
                             </button> 
                             <a [routerLink]="['/editOffer',offer.idOffre]">
                               <i class="fas fa-pencil-alt"></i>
-                            </a>      
-                            <a [routerLink]="['/editOffer',offer.idOffre]">
-                              <i class="fas fa-detail-alt"></i>
-                            </a>                   
+                            </a>                 
                           </td>
                         </tr>
                       </tbody>

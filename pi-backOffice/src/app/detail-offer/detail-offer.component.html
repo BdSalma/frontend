@@ -15,7 +15,7 @@
     <div class="card">
       <div class="card-header p-3 pt-2">
         <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-            <a routerLink="/offre"><i class="material-icons opacity-10">weekend</i></a>
+            <i class="material-icons opacity-10">weekend</i>
         </div>
         <div class="text-end pt-1">
           <p class="text-sm mb-0 text-capitalize">{{offer.offerName}}</p>
@@ -24,9 +24,11 @@
       </div>
       <hr class="dark horizontal my-0">
       <div class="card-footer p-3">
-        <h5>Profil souhaitée: {{offer.candidatProfil}}</h5>
+        <h5>{{offer.offerName}}</h5>
         <p class="mb-0"><span class="text-success text-sm font-weight-bolder">nombre: {{offer.candidatnumber}}</span></p>
-        <p class="mb-0">{{offer.description}}</p>
+        <p class="mb-0">*{{offer.description}}</p>
+        <p class="mb-0">*Profil souhaitée:{{offer.candidatProfil}}</p>
+
       </div>
     </div>
   </div>

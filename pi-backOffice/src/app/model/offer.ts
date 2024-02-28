@@ -5,7 +5,7 @@ import { User } from "./user";
 export class Offer{
     id! : number;
     dateEmission!:Date;
-    OffreCategory! : Category;
+    offreCategory! : Category;
     offerName!:string;
     Candidatnumber! : number;
     candidatProfil! : string;

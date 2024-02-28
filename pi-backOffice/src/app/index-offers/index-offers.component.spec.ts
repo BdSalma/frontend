@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavIndexComponent } from './nav-index.component';
+import { IndexOffersComponent } from './index-offers.component';
 
-describe('NavIndexComponent', () => {
-  let component: NavIndexComponent;
-  let fixture: ComponentFixture<NavIndexComponent>;
+describe('IndexOffersComponent', () => {
+  let component: IndexOffersComponent;
+  let fixture: ComponentFixture<IndexOffersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavIndexComponent ]
+      declarations: [ IndexOffersComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NavIndexComponent);
+    fixture = TestBed.createComponent(IndexOffersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

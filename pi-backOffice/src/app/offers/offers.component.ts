@@ -1,21 +1,32 @@
 import { Component } from '@angular/core';
-import {OfferService} from "../service/offer.service"
+import { OfferService } from "../service/offer.service";
 import { Offer } from '../model/offer';
 import { Router } from '@angular/router';
+import { Category } from '../model/category';
+
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.component.html',
-  styleUrls: ['./offers.component.css']
 })
 export class OffersComponent {
   listOffer!:any;
-  constructor(private offerS:OfferService,private router:Router){}
+  searchCategory: Category | undefined;
+  categories: string[] = Object.keys(Category).filter((key:any) => !isNaN(Number(Category[key])));
+  Society!:any;
+  placeholderText = "Choisissez une catégorie";
+
+  constructor(private offerS: OfferService, private router: Router) { }
+
   ngOnInit(): void {
     this.loadOffers();
   }
 
-  loadOffers() {
-    this.offerS.getOffers().subscribe(
+  searchApartments(): void {
+    if (!this.searchCategory) {
+      alert("Veuillez sélectionner une catégorie");
+      return;
+    }
+    this.offerS.offerByCategory(this.searchCategory).subscribe(
       (data) => {
         this.listOffer = data;
       },
@@ -25,12 +36,10 @@ export class OffersComponent {
     );
   }
 
-  deleteOffer(offerId: number) {
-    this.offerS.DeleteOffer(offerId).subscribe(
-      () => {
-        console.log('Offer deleted successfully.');
-        // Actualiser la liste des offres après la suppression
-        this.loadOffers();
+  loadOffers() {
+    this.offerS.getOffers().subscribe(
+      (data) => {
+        this.listOffer = data;
       },
       (error) => {
         console.log(error);

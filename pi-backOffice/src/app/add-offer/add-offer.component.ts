@@ -11,7 +11,7 @@ import { Category } from '../model/category';
 })
 export class AddOfferComponent {
   registerForm!: FormGroup;
-  categoryOptions = Object.keys(Category); // Obtenez les noms des catégories de l'énumération Category
+  categoryOptions: string[] = Object.keys(Category).filter((key:any) => !isNaN(Number(Category[key])));
 
 
   constructor(private offerS:OfferService,private router:Router){}
@@ -36,7 +36,7 @@ export class AddOfferComponent {
   }
 ajouter(){
   this.offerS.affectOfferToSociety(this.registerForm.value).subscribe(
-    {next:()=>this.router.navigateByUrl('/offre'),
+    {next:()=>this.router.navigateByUrl('/offerBySociety'),
     error:(error)=>console.log(error)}
   )
 
