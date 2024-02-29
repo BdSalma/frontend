@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { NotApprovedComponent } from './not-approved/not-approved.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NotApprovedComponent } from './not-approved/not-approved.component';
     NotFoundComponent,
     EmailVerificationComponent,
     NotApprovedComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,

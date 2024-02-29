@@ -35,7 +35,6 @@ export class SignInComponent {
           expires_in: string;
         };
         this.consumer.updateToken(loginResponse.access_token);
-
         this.checkValidity(loginResponse);
       },
       error: (error) => {
@@ -59,9 +58,9 @@ export class SignInComponent {
           'expires_in',
           JSON.stringify(loginResponse.expires_in)
         );
+        this.getUser(loginResponse.access_token,loginResponse.refresh_token,loginResponse.expires_in);
         this.consumer.autoLogout(loginResponse.expires_in * 1000);
         this.toastr.success('You have logged in successfully');
-        this.getUser();
         this.router.navigate(['/']);
       },
       error: (error) => {
@@ -76,10 +75,11 @@ export class SignInComponent {
     });
   }
 
-  getUser(): void {
-    this.consumer.getUser().subscribe({
-      next: (response: User) => {
+  getUser(token:string,refreshToken:string,expiration:string) {
+    this.consumer.getUser(token).subscribe({
+      next: (response) => {
         localStorage.setItem('user', JSON.stringify(response));
+        this.consumer.updateLocals(response,token,refreshToken,expiration);
         console.log('User details:', response);
       },
       error: (error) => {

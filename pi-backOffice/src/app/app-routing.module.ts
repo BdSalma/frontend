@@ -17,13 +17,16 @@ import { OffersComponent } from './offers/offers.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { NotApprovedComponent } from './not-approved/not-approved.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'dashboard', component: DashboradComponent },
   { path: 'billing', component: BillingComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent,canActivate:[AuthGuardGuard] },
+  { path: 'update-profile', component: UpdateProfileComponent,canActivate:[AuthGuardGuard] },
   { path: 'icons', component: IconsComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },

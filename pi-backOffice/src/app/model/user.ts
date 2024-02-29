@@ -7,7 +7,7 @@ export class User {
     username!: string;
     password!: string;
     email!: string;
-    forums!: Forum[];
-    reclamations!: Reclamation[];
-    sponsors!: Sponsor[];
+    // forums!: Forum[];
+    // reclamations!: Reclamation[];
+    // sponsors!: Sponsor[];
 }

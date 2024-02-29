@@ -13,9 +13,14 @@ import { SocietyRole } from '../model/societyRole';
 })
 export class SignUpComponent {
   signUpForm!: FormGroup;
-  individuRole: IndividuRole[] = Object.values(IndividuRole).filter(
-    (role) => role !== IndividuRole.Admin
-  );
+  individuRole: IndividuRole[] = Object.values(IndividuRole).filter((role) => {
+    return (
+      role !== IndividuRole.Admin &&
+      role !== IndividuRole.Community &&
+      role !== IndividuRole.FinancialDirection
+    );
+  });
+
   societyRole: SocietyRole[] = Object.values(SocietyRole);
   roles: (IndividuRole | SocietyRole)[] = [
     ...this.individuRole,
@@ -43,7 +48,6 @@ export class SignUpComponent {
       matricule: [''],
       logo: [''],
       sector: [''],
-      sitFin: [''],
 
       identity: [''],
       firstName: [''],
@@ -57,7 +61,10 @@ export class SignUpComponent {
     form2.email = form.get('email')!.value;
     form2.password = form.get('password')!.value;
     form2.role = form.get('role')!.value;
-    if (form.get('role')!.value && this.individuRole.includes(form.get('role')!.value)) {
+    if (
+      form.get('role')!.value &&
+      this.individuRole.includes(form.get('role')!.value)
+    ) {
       form2.identity = form.get('identity')!.value;
       form2.firstName = form.get('firstName')!.value;
       form2.lastName = form.get('lastName')!.value;

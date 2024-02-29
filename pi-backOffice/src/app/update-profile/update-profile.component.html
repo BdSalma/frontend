@@ -1,0 +1,148 @@
+<body class="g-sidenav-show bg-gray-200">
+  <div class="row">
+    <div class="col-3">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-9">
+      <app-navbar></app-navbar>
+      <div class="main-content position-relative max-height-vh-100 h-100">
+        <div class="container-fluid px-2 px-md-4">
+          <div
+            class="page-header min-height-300 border-radius-xl mt-4"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            "
+          >
+            <span class="mask bg-gradient-primary opacity-6"></span>
+          </div>
+          <div class="card card-body mx-3 mx-md-4 mt-n6">
+            <div class="row">
+              <div class="col-lg-8">
+                <form
+                  role="form"
+                  [formGroup]="updateProfile"
+                  (ngSubmit)="update(updateProfile.value)"
+                >
+                  <div
+                    *ngIf="
+                      updateProfile.get('role')!.value &&
+                      individuRole.includes(updateProfile.get('role')!.value)
+                    "
+                  >
+                    <div class="input-group input-group-outline row mb-3">
+                      <label for="firstName" class="col-sm-4 col-form-label"
+                        >First name :</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="firstName"
+                        placeholder="First name"
+                        id="firstName"
+                      />
+                    </div>
+
+                    <div class="input-group input-group-outline row mb-3">
+                      <label for="lastName" class="col-sm-4 col-form-label"
+                        >Last name :</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="lastName"
+                        placeholder="Last name"
+                        id="lastName"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="
+                      updateProfile.get('role')!.value &&
+                      societyRole.includes(updateProfile.get('role')!.value)
+                    "
+                  >
+                    <div class="input-group input-group-outline row mb-3">
+                      <label for="matricule" class="col-sm-4 col-form-label"
+                        >Matricule :</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="matricule"
+                        placeholder="Matricule"
+                        id="matricule"
+                      />
+                    </div>
+
+                    <div class="input-group input-group-outline row mb-3">
+                      <label for="logo" class="col-sm-4 col-form-label"
+                        >Logo :</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="logo"
+                        placeholder="Logo"
+                        id="logo"
+                      />
+                    </div>
+
+                    <div class="input-group input-group-outline row mb-3">
+                      <label for="adresse" class="col-sm-4 col-form-label"
+                        >Adresse :</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="adresse"
+                        placeholder="Adresse"
+                        id="adresse"
+                      />
+                    </div>
+
+                    <div class="input-group input-group-outline row mb-3">
+                      <label
+                        for="representative"
+                        class="col-sm-4 col-form-label"
+                        >Representative :</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="representative"
+                        placeholder="Representative"
+                        id="representative"
+                      />
+                    </div>
+
+                    <div class="input-group input-group-outline row mb-3">
+                      <label for="sector" class="col-sm-4 col-form-label"
+                        >Sector :</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="sector"
+                        placeholder="Sector"
+                        id="sector"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button
+                      type="submit"
+                      class="btn bg-gradient-primary w-100 my-4 mb-2"
+                      [disabled]="updateProfile.invalid"
+                    >
+                      Update changes
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

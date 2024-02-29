@@ -16,6 +16,7 @@ export class Authentication {
   token: string | null = null;
   refresh_token: string | null = null;
   expires_in: string | null = null;
+  user: any | null = null;
   verificationToken: string;
   clearTimeout: any;
 
@@ -31,14 +32,31 @@ export class Authentication {
     this.refresh_token = output2 ? JSON.parse(output2) : null;
     const output3 = window.localStorage.getItem('expires_in');
     this.expires_in = output3 ? JSON.parse(output3) : null;
+    const output4 = window.localStorage.getItem('user');
+    this.user = output4 ? JSON.parse(output4) : null;
   }
 
   updateToken(value: string): void {
     this.verificationToken = value;
   }
 
+  updateLocals(user: any,token:string,refresh_token:string,expires_in:string) {
+    this.user = user;
+    this.token = token;
+    this.refresh_token = refresh_token;
+    this.expires_in = expires_in;
+  }
+
+  updateLocalUser(user: any) {
+    this.user = user;
+  }
+
   get displayToken(): string {
     return this.verificationToken;
+  }
+
+  get getUserFromLocal(): User | null {
+    return this.user;
   }
 
   login(loginRequest: any) {
@@ -121,11 +139,23 @@ export class Authentication {
     }, expirationDate);
   }
 
-  getUser(): Observable<User> {
-    return this.http.get<User>('http://localhost:8087/auth/user-details', {
+  getUser(accessToken:string) {
+    return this.http.get('http://localhost:8087/auth/user-details', {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.token}`,
+        Authorization: `Bearer ${accessToken}`,
       }),
     });
+  }
+
+  updateUser(id:string,updateRequest: any) {
+    return this.http.put(
+      `http://localhost:8087/auth/update-user/${id}`,
+      updateRequest,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+          'Content-Type': 'application/json'
+        }),
+      });
   }
 }
