@@ -1,9 +1,7 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  CanActivateChildFn,
-  CanActivateFn,
   Router,
   RouterStateSnapshot,
   UrlTree,
@@ -15,7 +13,8 @@ import { Authentication } from '../services/authentication.service';
   providedIn: 'root',
 })
 export class AuthGuardGuard implements CanActivate {
-  constructor(private authService: Authentication) {}
+  constructor(private authService: Authentication, private router: Router) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -24,10 +23,24 @@ export class AuthGuardGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const router: Router = inject(Router);
-    const protectedRoutes: string[] = ['/profile','update-profile'];
-    return protectedRoutes.includes(state.url) && !this.authService.user
-      ? router.navigate(['/signIn'])
-      : true;
+    const protectedRoutes: { [key: string]: string[] } = {
+      '/profile': [],
+      '/update-profile': [],
+      // '/profile': ['Student', 'Admin'],
+    };
+    const currentRoute = state.url;
+    const userRole = this.authService.user?.role;
+    const routeRoles = protectedRoutes[currentRoute];
+    const hasRole =
+      routeRoles.length > 0
+        ? userRole && routeRoles.some((role) => userRole.includes(role))
+        : true;
+    if (protectedRoutes[currentRoute] && !this.authService.isLoggedIn) {
+      return this.router.parseUrl('/signIn');
+    }
+    if (protectedRoutes[currentRoute] && !hasRole) {
+      return false;
+    }
+    return true;
   }
 }

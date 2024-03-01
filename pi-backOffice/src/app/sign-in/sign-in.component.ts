@@ -60,6 +60,7 @@ export class SignInComponent {
         );
         this.getUser(loginResponse.access_token,loginResponse.refresh_token,loginResponse.expires_in);
         this.consumer.autoLogout(loginResponse.expires_in * 1000);
+        this.consumer.isLoggedIn=true;
         this.toastr.success('You have logged in successfully');
         this.router.navigate(['/']);
       },

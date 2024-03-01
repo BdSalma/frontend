@@ -27,6 +27,7 @@ export class SidebarComponent {
         }
         this.toastr.success(logoutResponse.message);
         localStorage.clear();
+        this.consumer.isLoggedIn=false;
         this.router.navigate(['/signIn']);
       },
       error: (error) => {

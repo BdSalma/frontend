@@ -14,6 +14,7 @@ const httpOptions = {
 })
 export class Authentication {
   token: string | null = null;
+  isLoggedIn = false;
   refresh_token: string | null = null;
   expires_in: string | null = null;
   user: any | null = null;
@@ -111,6 +112,7 @@ export class Authentication {
       const tokenExpirationDate = new Date(this.expires_in).getTime();
       if (tokenExpirationDate > currentDate) {
         const remainingTime = tokenExpirationDate - currentDate;
+        this.isLoggedIn=true;
         this.autoLogout(remainingTime);
       } else {
         localStorage.clear();
@@ -130,6 +132,7 @@ export class Authentication {
         next: () => {
           this.toastr.warning('Your session has expired');
           localStorage.clear();
+          this.isLoggedIn=false;
           this.router.navigate(['/signIn']);
         },
         error: (error) => {
