@@ -26,6 +26,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
 import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
+import { ListCandidatureComponent } from './list-candidature/list-candidature.component';
+import { PostulerComponent } from './postuler/postuler.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
@@ -50,7 +52,9 @@ const routes: Routes = [
 {path:'virtualReality',component:VirtualRealityComponent},
 {path:'updateC/:id',component:UpdateComponent},
 {path:'addInterv/:id',component:InterviewComponent},
-{path:'listInterv',component:ListInterviewComponent}
+{path:'listInterv',component:ListInterviewComponent},
+{path:'listCandidat',component:ListCandidatureComponent},
+{path:'postuler',component:PostulerComponent}
 
 ];
 

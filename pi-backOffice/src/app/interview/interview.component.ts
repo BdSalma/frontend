@@ -16,7 +16,7 @@ export class InterviewComponent implements OnInit {
   rooms: Room[] = [];
   isOnline: boolean = false;
   isInRoom: boolean = false;
-
+  
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -30,7 +30,7 @@ export class InterviewComponent implements OnInit {
       date: ['', Validators.required],
       lien: [''],
       room: [[]],
-      interviewType: ['online']
+      interviewType: ['choisir une option']
     });
   
     this.registerForm.get('interviewType')?.valueChanges.subscribe((type) => {
