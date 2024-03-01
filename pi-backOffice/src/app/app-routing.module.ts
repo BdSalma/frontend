@@ -16,6 +16,13 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import {OffersComponent} from './offers/offers.component';
 import { RequestsComponent } from './requests/requests.component';
 import { AddRequestComponent } from './add-request/add-request.component';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { AddInvoiceComponent } from './add-invoice/add-invoice.component';
+import { DevisComponent } from './devis/devis.component';
+import { AddDevisComponent } from './add-devis/add-devis.component';
+import { UpdateInvoiceComponent } from './update-invoice/update-invoice.component';
+import { UpdateDevisComponent } from './update-devis/update-devis.component';
+import { UpdateRequestComponent } from './update-request/update-request.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
 {path:'dashboard',component:DashboradComponent},
@@ -33,9 +40,15 @@ const routes: Routes = [
 {path:'virtualReality',component:VirtualRealityComponent},
 {path:'offers',component:OffersComponent},
 {path:'supplyrequests',component:RequestsComponent},
-
-{path:'addRequest',component:AddRequestComponent}
-
+{path:'addRequest',component:AddRequestComponent},
+{path:'invoices',component:InvoicesComponent},
+{path:'addInvoice',component:AddInvoiceComponent},
+{path:'devis',component:DevisComponent},
+{path:'addDevis',component:AddDevisComponent},
+{path:'editInvoice/:id',component:UpdateInvoiceComponent},
+{path:'editDevis/:id',component:UpdateDevisComponent},
+{path:'editRequest/:id',component:UpdateRequestComponent},
+{ path: 'add-devis/:requestId', component: AddDevisComponent }
 
 
 ];

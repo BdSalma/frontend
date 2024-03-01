@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RequestsComponent {
   listRequests!:any;
+
   constructor(private requests:RequestSupplyService,private router:Router){}
   ngOnInit(): void {
     this.loadRequests();
@@ -24,5 +25,22 @@ export class RequestsComponent {
       }
     );
   }
+  deleteRequest(RequestId: number) {
+    this.requests.DeleteRequest(RequestId).subscribe(
+      () => {
+        console.log('Offer deleted successfully.');
+        // Actualiser la liste des offres après la suppression
+        this.loadRequests();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  navigateToAddDevis(requestId: number) {
+    this.router.navigate(['/add-devis', requestId]);
+  }
+
+  
 
 }

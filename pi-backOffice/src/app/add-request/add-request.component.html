@@ -6,71 +6,82 @@
       <div class="col-9">
         <app-navbar></app-navbar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-          <div class="container-fluid py-4">
-            <div class="page-header min-vh-100">
-              <div class="container">
-                <div class="row">
-                  <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                    <div class="card card-plain">
-                      <div class="card-header">
-                        <h4 class="font-weight-bolder">Add your request</h4>
-                      </div>
-                      <div class="card-body">
-                        <form role="form" [formGroup]="requestForm" (ngSubmit)="onSubmit()">
-                          <div class="input-group input-group-outline mb-3">
-                            <label >Quantity :&nbsp;&nbsp;&nbsp;         </label>
-                            <input type="text" class="form-control" formControlName="quantity" placeholder="quantity">
-                          </div>
-                          <div *ngIf="requestForm.controls['quantity'].errors && requestForm.get('quantity')?.touched">
+          <br>
+            <div class="row">
+              <div class="col-12">
+                <div class="card my-4">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+
+                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Add your request</h6>
+                  </div>
+                </div> 
+                <div class="card-body px-0 pb-2">
+                  <div class="col-md-12 mb-lg-0 mb-4">
+                    <div class="card mt-4">
+                        <div class="card-header pb-0 p-3">
+                          <div class="row">
+                            <div class="row">
+                            <form role="form" [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+                              
+                            <div class="input-group input-group-outline mb-3">
+                            <h6 class="mb-0">Quantity : </h6>
+                            <input type="number" class="form-control" formControlName="quantity" placeholder="quantity">
+                            </div>
+                            <div class="text-danger" *ngIf="requestForm.controls['quantity'].errors && requestForm.get('quantity')?.touched">
                               <div *ngIf="requestForm.controls['quantity'].hasError('required')">required</div>
-                          </div>
-                          <div class="input-group input-group-outline mb-3">
-                              <label for="category">category :</label>
+                            </div>
+                            <div class="input-group input-group-outline mb-3">
+                              <h6 class="mb-0">category :</h6>
                               <input type="text" class="form-control" formControlName="category" placeholder="category">
 
-                              <!-- Affichage des erreurs de validation -->
-                              <div *ngIf="requestForm.controls['category'].errors && requestForm.get('category')?.touched">
+                              <div class="text-danger" *ngIf="requestForm.controls['category'].errors && requestForm.get('category')?.touched">
                                 <div *ngIf="requestForm.controls['category'].hasError('required')">Obligatoire</div>
                               </div>
                             </div>
                           <div class="input-group input-group-outline mb-3">
-                            <label >validity:</label>
+                            <h6 class="mb-0">date:</h6>
                             <input type="date" class="form-control" formControlName="date" placeholder="date">
                           </div>
-                          <div *ngIf="requestForm.controls['date'].errors && requestForm.get('date')?.touched">
+                          <div class="text-danger" *ngIf="requestForm.controls['date'].errors && requestForm.get('date')?.touched">
                               <div *ngIf="requestForm.controls['date'].hasError('required')">Obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                            <label >Description</label>
+                            <h6 class="mb-0">Description :</h6>
                             <input type="text" class="form-control" formControlName="description" placeholder="description">
                           </div>
-                          <div *ngIf="requestForm.controls['description'].errors && requestForm.get('description')?.touched">
+                          <div class="text-danger" *ngIf="requestForm.controls['description'].errors && requestForm.get('description')?.touched">
                               <div *ngIf="requestForm.controls['description'].hasError('required')">Obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                              <label >validity :</label>
-                              <input type="text" class="form-control"formControlName="validity" placeholder="validity">
+                              <h6 class="mb-0">validity :</h6>
+                              <input type="number" class="form-control"formControlName="validity" placeholder="validity">
                             </div>
-                            <div *ngIf="requestForm.controls['validity'].errors && requestForm.get('validity')?.touched">
+                            <div class="text-danger" *ngIf="requestForm.controls['validity'].errors && requestForm.get('validity')?.touched">
                                 <div *ngIf="requestForm.controls['validity'].hasError('required')">Obligatoire</div>
                             </div>
                             
                           <div class="text-center">
-                            <button type="submit" [disabled]="requestForm.invalid" (click)="ajouter()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Ajouter</button>
+                            <button type="submit" [disabled]="requestForm.invalid" (click)="ajouter()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">add</button>
                             <button type="submit" (click)="reset()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Cancel</button>
                           </div>
                         </form>
                       </div>
-                    </div>
                   </div>
-                </div>
               </div>
-            </div>
           </div>
-          <app-footer></app-footer>
-        </main>
       </div>
-    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<br>
+<br><br><br><br>x
+<app-footer></app-footer>
+</main>
+</div>
+</div>
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>

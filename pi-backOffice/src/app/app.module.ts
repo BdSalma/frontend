@@ -24,6 +24,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RequestsComponent } from './requests/requests.component';
 import { AddRequestComponent } from './add-request/add-request.component';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { AddInvoiceComponent } from './add-invoice/add-invoice.component';
+import { DevisComponent } from './devis/devis.component';
+import { AddDevisComponent } from './add-devis/add-devis.component';
+import { UpdateInvoiceComponent } from './update-invoice/update-invoice.component';
+import { UpdateDevisComponent } from './update-devis/update-devis.component';
+import { UpdateRequestComponent } from './update-request/update-request.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +53,14 @@ import { AddRequestComponent } from './add-request/add-request.component';
     SidebarComponent,
     OffersComponent,
     RequestsComponent,
-    AddRequestComponent
+    AddRequestComponent,
+    InvoicesComponent,
+    AddInvoiceComponent,
+    DevisComponent,
+    AddDevisComponent,
+    UpdateInvoiceComponent,
+    UpdateDevisComponent,
+    UpdateRequestComponent
   ],
   imports: [
     BrowserModule,

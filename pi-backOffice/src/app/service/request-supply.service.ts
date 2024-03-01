@@ -17,5 +17,11 @@ export class RequestSupplyService {
   AddRequest(r:RequestSupply){
     return this.http.post(`http://localhost:8087/requestSupply/addRequestSupply`,r)
   }
+  getById(id:number){
+    return this.http.get(`http://localhost:8087/requestSupply/getRequestSupply/${id}`);
+  }
+  putRequest(id:number,o:RequestSupply){
+    return this.http.put(`http://localhost:8087/requestSupply/updateRequestSupply/${id}`,o);
+  }
  
 }
