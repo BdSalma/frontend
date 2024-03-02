@@ -18,7 +18,7 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { OffersComponent } from './offers/offers.component';
+
 import { ForumComponent } from './ForumComponenets/forum/forum.component';
 import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +33,14 @@ import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.com
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ForumPacksComponent } from './forum-packs/forum-packs.component';
+import { IndexComponent } from './index/index.component';
+import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
+import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +61,7 @@ import { ForumPacksComponent } from './forum-packs/forum-packs.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    OffersComponent,
+
     ForumComponent,
     AddForumComponent,
     PacksListComponent,
@@ -64,7 +72,15 @@ import { ForumPacksComponent } from './forum-packs/forum-packs.component';
     EditStandComponent,
     EditForumComponent,
     PopUpComponent,
-    ForumPacksComponent
+    ForumPacksComponent,
+    IndexComponent,
+    NavbarIndexComponent,
+    FooterIndexComponent,
+    HeaderComponent,
+    ContactUsComponent,
+    AboutUsComponent,
+    SignInIndexComponent,
+    SignUpIndexComponent
   ],
   imports: [
     BrowserModule,

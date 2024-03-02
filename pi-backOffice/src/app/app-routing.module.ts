@@ -13,7 +13,7 @@ import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
-import {OffersComponent} from './offers/offers.component';
+
 import { ForumComponent } from './ForumComponenets/forum/forum.component';
 import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
 import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
@@ -23,12 +23,22 @@ import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
 import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
 import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
+import { IndexComponent } from './index/index.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
+import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 const routes: Routes = [
 {path:'dashboard',component:DashboradComponent},
+{path:'index',component:IndexComponent},
+{path:'contact',component:ContactUsComponent},
+{path:'about',component:AboutUsComponent},
 {path:'billing',component:BillingComponent},
 {path:'profile',component:ProfileComponent},
 {path:'icons',component:IconsComponent},
 {path:'signIn',component:SignInComponent},
+{path:'signInindex',component:SignInIndexComponent},
+{path:'signUpindex',component:SignUpIndexComponent},
 {path:'signUp',component:SignUpComponent},
 {path:'table',component:TableComponent},
 {path:'map',component:MapComponent},
@@ -37,7 +47,7 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
-{path:'offers',component:OffersComponent},
+
 {path:'forumList',component:ForumComponent},
 {path:'addForum',component:AddForumComponent},
 {path:'standList',component:StandListComponent},
@@ -47,6 +57,10 @@ const routes: Routes = [
 {path: 'editPack/:id', component: EditPackComponent },
 {path: 'editStand/:id', component: EditStandComponent },
 {path: 'editForum/:id', component: EditForumComponent },
+
+
+
+
 ];
 
 @NgModule({
