@@ -13,8 +13,6 @@ export class PacksListComponent {
 
   constructor(
     private packService: PackServiceService,
-   
-   
   ) {}
 
     reserved:reservationStatus =  reservationStatus.Reserved;
