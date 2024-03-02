@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ForumComponent implements OnInit {
 
+
   constructor(
     private forumService: ForumServiceService, private dialog: MatDialog, private router: Router
   ) { }

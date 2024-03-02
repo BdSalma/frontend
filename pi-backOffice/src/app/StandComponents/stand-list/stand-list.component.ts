@@ -10,13 +10,11 @@ import { StandServiceService } from 'src/app/Service/stand-service.service';
 })
 export class StandListComponent {
 
-
   constructor(
     private standService: StandServiceService,
   ) {}
 
   stands: Stand[]=[];
-
   ngOnInit(): void {
     this.standService.listStand().subscribe((data) => {
       console.log(data);
