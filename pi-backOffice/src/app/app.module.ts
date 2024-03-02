@@ -22,15 +22,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { OffersComponent } from './offers/offers.component';
 import { ForumComponent } from './ForumComponenets/forum/forum.component';
 import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
-import { AboutComponent } from './FrontOffice/about/about.component';
-import { BlogSingleComponent } from './FrontOffice/blog-single/blog-single.component';
-import { BlogComponent } from './FrontOffice/blog/blog.component';
-import { ContactComponent } from './FrontOffice/contact/contact.component';
-import { IndexComponent } from './FrontOffice/index/index.component';
-import { ScheduleComponent } from './FrontOffice/schedule/schedule.component';
-import { SpeakersComponent } from './FrontOffice/speakers/speakers.component';
-import { FooterFrontComponent } from './FrontOffice/footer-front/footer-front.component';
-import { NavbarFrontComponent } from './FrontOffice/navbar-front/navbar-front.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
 import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
@@ -40,6 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
 import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ForumPacksComponent } from './forum-packs/forum-packs.component';
 
 @NgModule({
   declarations: [
@@ -63,22 +57,15 @@ import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.com
     OffersComponent,
     ForumComponent,
     AddForumComponent,
-    AboutComponent,
-    BlogSingleComponent,
-    BlogComponent,
-    ContactComponent,
-    IndexComponent,
-    ScheduleComponent,
-    SpeakersComponent,
-    FooterFrontComponent,
-    NavbarFrontComponent,
     PacksListComponent,
     AddPackComponent,
     AddStandComponent,
     StandListComponent,
     EditPackComponent,
     EditStandComponent,
-    EditForumComponent
+    EditForumComponent,
+    PopUpComponent,
+    ForumPacksComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +73,7 @@ import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.com
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

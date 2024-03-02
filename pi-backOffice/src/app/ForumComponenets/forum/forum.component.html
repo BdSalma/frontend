@@ -14,10 +14,12 @@
                                     <h6 class="mb-0">Liste des Forum</h6>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <a class="btn bg-gradient-dark mb-0" routerLink="/addForum"><i
+                                    <button class="btn bg-gradient-dark mb-0" (click)="addForum()"><i
                                             class="material-icons text-sm">add</i>&nbsp;&nbsp;Ajouter un nouveau
-                                        Forum</a>
+                                    Forum</button>
                                 </div>
+                                <div *ngIf="openPopup">
+                            </div>
                             </div>
                         </div>
                         <div class="card-body p-3">

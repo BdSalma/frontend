@@ -22,6 +22,18 @@
                                         <div class="card-header pb-0 p-3">
                                             <div class="row">
                                                 <form [formGroup]="addForumForm">
+                                               
+                                                    <div class="row mb-3">
+                                                        <h6 class="mb-0">Numéro du stand</h6>
+                                                        <div class="col-sm-10 input-group input-group-outline">
+                                                            <input type="number" class="form-control"
+                                                                placeholder="Numéro du stand" formControlName="number" />
+                                                        </div>
+                                                        <div class="text-danger"
+                                                            *ngIf="addForumForm.get('number')?.invalid && addForumForm.get('number')?.touched">
+                                                            The number is required
+                                                        </div>
+                                                    </div>
                                                     <div class="row mb-3">
                                                         <h6 class="mb-0">Zone</h6>
                                                         <div class="col-sm-10 input-group input-group-outline">
@@ -36,21 +48,10 @@
                                                             *ngIf="addForumForm.get('zone')?.invalid && addForumForm.get('zone')?.touched">
                                                             <span class="text-sm">The zone is required</span>
                                                         </div>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <h6 class="mb-0">Numéro du stand</h6>
-                                                        <div class="col-sm-10 input-group input-group-outline">
-                                                            <input type="number" class="form-control"
-                                                                placeholder="Numéro du stand" formControlName="number" />
-                                                        </div>
-                                                        <div class="text-danger"
-                                                            *ngIf="addForumForm.get('number')?.invalid && addForumForm.get('number')?.touched">
-                                                            The number is required
-                                                        </div>
-                                                    </div>
+                                                    </div>        
                                                     <div class="text-center">
                                                         <button type="button" (click)="onSubmit()" class="btn bg-gradient-primary" >
-                                                           Add
+                                                           Ajouter
                                                         </button>
                                                     </div>
                                                 </form>
@@ -62,7 +63,6 @@
                         </div>
                     </div>
                 </div>
-
                 <br>
                 <br><br><br><br>x
                 <app-footer></app-footer>

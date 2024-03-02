@@ -5,7 +5,7 @@ import { User } from "./user";
 import { reservationStatus } from "./reservationStatus";
 export class Pack {
     id!: number;
-    typePack!: TypePack;
+    typePack!: string;
     prix!: number;
     reservationStatus!: reservationStatus;
     forum!: Forum;

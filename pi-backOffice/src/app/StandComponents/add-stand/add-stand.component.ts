@@ -16,8 +16,10 @@ export class AddStandComponent {
       constructor(private route: ActivatedRoute, private standService: StandServiceService, private router: Router) {}
       ngOnInit() {
         this.addForumForm = new FormGroup({
+          number: new FormControl(0, [Validators.required]),
           zone: new FormControl('', [Validators.required]),
-          number: new FormControl(0, [Validators.required])
+        
+        
         });
       }
       onSubmit() {

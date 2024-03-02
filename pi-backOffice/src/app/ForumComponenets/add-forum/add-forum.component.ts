@@ -34,6 +34,7 @@ throw new Error('Method not implemented.');
     return selectedDate > currentDate ? null : { 'invalidFutureDate': true };
   }
   onSubmit() {
+    
     this.forumService.addForum(this.addForumForm.value).subscribe(() => {
       this.router.navigateByUrl("/forumList"); // Corrected to use parentheses instead of square brackets
       });

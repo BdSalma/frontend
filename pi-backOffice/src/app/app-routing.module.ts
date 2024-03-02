@@ -16,7 +16,6 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import {OffersComponent} from './offers/offers.component';
 import { ForumComponent } from './ForumComponenets/forum/forum.component';
 import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
-import { AboutComponent } from './FrontOffice/about/about.component';
 import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
 import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
 import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
@@ -41,7 +40,6 @@ const routes: Routes = [
 {path:'offers',component:OffersComponent},
 {path:'forumList',component:ForumComponent},
 {path:'addForum',component:AddForumComponent},
-{path:'about',component:AboutComponent},
 {path:'standList',component:StandListComponent},
 {path:'packList',component:PacksListComponent},
 {path:'addStand',component:AddStandComponent},

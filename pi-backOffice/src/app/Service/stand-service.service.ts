@@ -41,9 +41,7 @@ export class StandServiceService {
 
   getStandByStatut(Status: boolean){
     const url = `${this.apiURL}/find-stand-By-Status/${Status}`;
-    console.log(url);
-    
-    return this.http.get<Stand[]>(this.apiURL);
+    return this.http.get<Stand[]>(url);
 
   }
   deleteStand(id: number) {

@@ -26,9 +26,8 @@ export class PackServiceService {
   getCurrentpack():Observable<Pack>{
     return this.http.get<Pack>(this.apiURL);
   }
-  addpack(pack: Pack): Observable<Pack> {
-    const url = `${this.apiURL}/add-pack`;
-    console.log(url,pack)
+  addpack(pack: Pack, id : number): Observable<Pack> {
+    const url = `${this.apiURL}/create_Pack_And_Assign_To_Stand/${id}`;
     return this.http.post<Pack>(url, pack);
   }
 
