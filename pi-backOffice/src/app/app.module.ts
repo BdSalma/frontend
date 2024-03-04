@@ -19,7 +19,6 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { OffersComponent } from './offers/offers.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -31,6 +30,12 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { AssociationsComponent } from './Users/associations/associations.component';
 import { IndividualsComponent } from './Users/individuals/individuals.component';
 import { UserDetailsComponent } from './Users/user-details/user-details.component';
+import { IndexComponent } from './index/index.component';
+import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,6 @@ import { UserDetailsComponent } from './Users/user-details/user-details.componen
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    OffersComponent,
     NotFoundComponent,
     EmailVerificationComponent,
     NotApprovedComponent,
@@ -59,6 +63,12 @@ import { UserDetailsComponent } from './Users/user-details/user-details.componen
     AssociationsComponent,
     IndividualsComponent,
     UserDetailsComponent,
+    IndexComponent,
+    NavbarIndexComponent,
+    FooterIndexComponent,
+    HeaderComponent,
+    ContactUsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,9 @@ import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
-import { OffersComponent } from './offers/offers.component';
+import { IndexComponent } from './index/index.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { NotApprovedComponent } from './not-approved/not-approved.component';
@@ -27,6 +29,11 @@ const routes: Routes = [
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'dashboard', component: DashboradComponent },
+  { path: 'billing', component: BillingComponent },
+  { path: 'dashboard', component: DashboradComponent },
+  { path: 'index', component: IndexComponent },
+  { path: 'contact', component: ContactUsComponent },
+  { path: 'about', component: AboutUsComponent },
   { path: 'billing', component: BillingComponent },
   {
     path: 'individuals',
@@ -62,7 +69,6 @@ const routes: Routes = [
   { path: 'template', component: TemplateComponent },
   { path: 'typography', component: TypographyComponent },
   { path: 'virtualReality', component: VirtualRealityComponent },
-  { path: 'offers', component: OffersComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
