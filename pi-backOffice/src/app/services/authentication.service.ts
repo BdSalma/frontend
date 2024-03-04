@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../model/user';
 import { Observable } from 'rxjs/internal/Observable';
+import { Individu } from '../model/individus';
+import { IndividuRole } from '../model/individusRole';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -41,7 +43,12 @@ export class Authentication {
     this.verificationToken = value;
   }
 
-  updateLocals(user: any,token:string,refresh_token:string,expires_in:string) {
+  updateLocals(
+    user: any,
+    token: string,
+    refresh_token: string,
+    expires_in: string
+  ) {
     this.user = user;
     this.token = token;
     this.refresh_token = refresh_token;
@@ -112,7 +119,7 @@ export class Authentication {
       const tokenExpirationDate = new Date(this.expires_in).getTime();
       if (tokenExpirationDate > currentDate) {
         const remainingTime = tokenExpirationDate - currentDate;
-        this.isLoggedIn=true;
+        this.isLoggedIn = true;
         this.autoLogout(remainingTime);
       } else {
         localStorage.clear();
@@ -132,7 +139,7 @@ export class Authentication {
         next: () => {
           this.toastr.warning('Your session has expired');
           localStorage.clear();
-          this.isLoggedIn=false;
+          this.isLoggedIn = false;
           this.router.navigate(['/signIn']);
         },
         error: (error) => {
@@ -142,7 +149,7 @@ export class Authentication {
     }, expirationDate);
   }
 
-  getUser(accessToken:string) {
+  getUser(accessToken: string) {
     return this.http.get('http://localhost:8087/auth/user-details', {
       headers: new HttpHeaders({
         Authorization: `Bearer ${accessToken}`,
@@ -150,15 +157,83 @@ export class Authentication {
     });
   }
 
-  updateUser(id:string,updateRequest: any) {
+  updateUser(id: string, updateRequest: any) {
     return this.http.put(
       `http://localhost:8087/auth/update-user/${id}`,
       updateRequest,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }),
-      });
+      }
+    );
+  }
+
+  getAllIndividu() {
+    return this.http.get<Individu[]>(
+      'http://localhost:8087/auth/get-All-individu',
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  approveUser(id: string) {
+    return this.http.put(
+      `http://localhost:8087/auth/approve-user/${id}`,
+      {},
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+          'Content-Type': 'application/json',
+        }),
+      }
+    );
+  }
+
+  activateUser(id: string) {
+    return this.http.put(
+      `http://localhost:8087/auth/activate-user/${id}`,
+      {},
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+          'Content-Type': 'application/json',
+        }),
+      }
+    );
+  }
+
+  getUserById(id: string) {
+    return this.http.get(`http://localhost:8087/auth/user-id/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
+  }
+
+  getAllIndividuFilteredByRole(role: IndividuRole) {
+    return this.http.get<Individu[]>(
+      `http://localhost:8087/auth/individus-byRole/${role}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  getAllIndividuFilteredByField(search: String) {
+    return this.http.get<Individu[]>(
+      `http://localhost:8087/auth/individus-byFiled/${search}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
   }
 }

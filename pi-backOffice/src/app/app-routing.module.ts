@@ -19,14 +19,39 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
 import { NotApprovedComponent } from './not-approved/not-approved.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { IndividualsComponent } from './Users/individuals/individuals.component';
+import { AssociationsComponent } from './Users/associations/associations.component';
+import { UserDetailsComponent } from './Users/user-details/user-details.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'dashboard', component: DashboradComponent },
   { path: 'billing', component: BillingComponent },
-  { path: 'profile', component: ProfileComponent,canActivate:[AuthGuardGuard] },
-  { path: 'update-profile', component: UpdateProfileComponent,canActivate:[AuthGuardGuard] },
+  {
+    path: 'individuals',
+    component: IndividualsComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'user-details/:id',
+    component: UserDetailsComponent,
+  },
+  {
+    path: 'associations',
+    component: AssociationsComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'update-profile',
+    component: UpdateProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
   { path: 'icons', component: IconsComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },

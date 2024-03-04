@@ -26,7 +26,8 @@ export class AuthGuardGuard implements CanActivate {
     const protectedRoutes: { [key: string]: string[] } = {
       '/profile': [],
       '/update-profile': [],
-      // '/profile': ['Student', 'Admin'],
+      '/individuals': ['Admin'],
+      '/associations': ['Admin']
     };
     const currentRoute = state.url;
     const userRole = this.authService.user?.role;

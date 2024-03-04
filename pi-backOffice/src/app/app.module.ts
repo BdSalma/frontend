@@ -28,6 +28,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { NotApprovedComponent } from './not-approved/not-approved.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AssociationsComponent } from './Users/associations/associations.component';
+import { IndividualsComponent } from './Users/individuals/individuals.component';
+import { UserDetailsComponent } from './Users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     EmailVerificationComponent,
     NotApprovedComponent,
     UpdateProfileComponent,
+    AssociationsComponent,
+    IndividualsComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
