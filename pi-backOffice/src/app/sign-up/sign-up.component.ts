@@ -74,7 +74,6 @@ export class SignUpComponent {
       form2.adresse = form.get('adresse')!.value;
       form2.representative = form.get('representative')!.value;
       form2.sector = form.get('sector')!.value;
-      form2.sitFin = form.get('sitFin')!.value;
     }
     this.consumer.register(form2).subscribe({
       next: () => {
@@ -82,7 +81,7 @@ export class SignUpComponent {
         this.router.navigate(['/signIn']);
       },
       error: (error) => {
-        // this.toastr.error(error.error.message);
+        this.toastr.error(error.error.message);
         console.error(error);
       },
     });

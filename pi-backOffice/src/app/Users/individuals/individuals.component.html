@@ -36,35 +36,42 @@
                 class="card-header p-0 position-relative mt-n4 mx-3 z-index-2"
               >
                 <div
-                  class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+                  class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 px-3"
                 >
-                  <!-- <form [formGroup]="listFilter" class="text-start" (ngSubmit)="searchFilter(listFilter)"> -->
-                  <form [formGroup]="listFilter" class="text-start">
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-select" formControlName="role">
-                        <option value="" selected>Select Role</option>
-                        <option
-                          *ngFor="let role of individuRole"
-                          [value]="role"
+                  <form
+                    [formGroup]="listFilter"
+                    class="text-start"
+                    (ngSubmit)="searchFilter(listFilter)"
+                  >
+                    <div class="row">
+                      <div class="col-md-4 mb-3">
+                        <select class="form-select" formControlName="role">
+                          <option value="" selected>Select Role</option>
+                          <option
+                            *ngFor="let role of individuRole"
+                            [value]="role"
+                          >
+                            {{ role }}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <input
+                          type="text"
+                          class="form-control bg-light"
+                          formControlName="search"
+                          placeholder="Search..."
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <button
+                          type="submit"
+                          class="btn bg-gradient-dark w-100"
                         >
-                          {{ role }}
-                        </option>
-                      </select>
+                          Search
+                        </button>
+                      </div>
                     </div>
-                    <div class="input-group input-group-outline my-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="search"
-                        placeholder="Search..."
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      class="btn bg-gradient-primary w-100 my-4 mb-2"
-                    >
-                      Search
-                    </button>
                   </form>
                 </div>
               </div>
