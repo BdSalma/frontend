@@ -17,6 +17,7 @@ import {OffersComponent} from './offers/offers.component';
 import { NgModule } from '@angular/core';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 const routes: Routes = [
+  
 {path:'dashboard',component:DashboradComponent},
 {path:'',pathMatch:"full",component:DashboradComponent},
 {path:'billing',component:BillingComponent},

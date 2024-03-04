@@ -45,4 +45,14 @@ export class ReclamationComponent {
           ))
       );
   }
+  ReviewReclamation(user : User, reclamation: Reclamation){
+    this.reclamationService
+    .Review(user.id,reclamation.id)
+    .subscribe(
+      () =>
+        (this.reclamations = this.reclamations.filter(
+          (rec: Reclamation) => rec != reclamation
+        ))
+    );
+  }
 }
