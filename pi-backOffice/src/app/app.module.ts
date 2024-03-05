@@ -21,11 +21,9 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
 import { UpdateComponent } from './candidature/update.component';
 import { InterviewComponent } from './interview/interview.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
-
 import { IndexComponent } from './index/index.component';
 import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
 import { FooterIndexComponent } from './footer-index/footer-index.component';
@@ -36,7 +34,7 @@ import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
 import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 import { ListCandidatureComponent } from './list-candidature/list-candidature.component';
 import { PostulerComponent } from './postuler/postuler.component';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,14 +55,10 @@ import { PostulerComponent } from './postuler/postuler.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-
-
     CandidatureComponent,
     UpdateComponent,
     InterviewComponent,
     ListInterviewComponent,
-
-
     IndexComponent,
     NavbarIndexComponent,
     FooterIndexComponent,
@@ -81,6 +75,7 @@ import { PostulerComponent } from './postuler/postuler.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule, 
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

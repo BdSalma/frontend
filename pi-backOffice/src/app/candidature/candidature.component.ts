@@ -44,4 +44,17 @@ export class CandidatureComponent {
     // Navigate to the update component with the client's ID as parameter
     this.router.navigate(['/listInterv']);
   }
+  acceptCandidature(candidateId: number) {
+    this.candidatureService.accepterCandidature(candidateId).subscribe(
+      (response: Candidature) => {
+        console.log('Candidature accepted:', response);
+        this.router.navigate(['/candidat']);
+      },
+      error => {
+        console.error('Error accepting candidature', error);
+        // Handle error as needed
+      }
+    );
+  }
+  
 }

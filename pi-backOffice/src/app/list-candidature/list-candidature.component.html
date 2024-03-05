@@ -29,12 +29,8 @@
                             <thead>
                               <tr>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">CV</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lettre</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-                                
+                               
                               </tr>
                             </thead>
                             <tbody>
@@ -43,30 +39,16 @@
                                   <div class="d-flex px-2 py-1">
                                 
                                     <div class="d-flex flex-column justify-content-center">
-                                      <h6 class="mb-0 text-sm"> {{c.individu.firstName}} {{c.individu.lastName}}</h6>
-                                      <p class="text-xs text-secondary mb-0">{{c.individu.email}}</p>
+                                      <h6 class="mb-0 text-sm"> {{c.individu.firstName}}</h6>
+                                      <p class="text-xs text-secondary mb-0">votre candidature et en cours de traitement</p>
                                     </div>
                                   </div>
-                                 
                                 </td>
-                                <td>
-                                 {{c.individu.role}}
-                                </td>
-                                <td>
-                                  {{c.cv}}
-                                 </td>
-                                 <td>
-                                  {{c.lettre}}
-                                 </td>
+                               
                                 <td class="align-middle text-center text-sm">
                                   <span class="badge badge-sm bg-gradient-success">{{c.status}}</span>
                                 </td>
-                                <td class="align-middle text-center">
-                                  {{c.date}}
-                                </td>
-                                
                               </tr>
-                              
                             </tbody>
                           </table>
                         </div>

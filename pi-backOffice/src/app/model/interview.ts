@@ -10,7 +10,5 @@ export class Interview {
     interviewType!:InterviewType;
     candidature!: Candidature;
     room!: Room[];
-
-
-
+    titre!:string;
 }

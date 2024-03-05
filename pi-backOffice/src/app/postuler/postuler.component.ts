@@ -14,6 +14,7 @@ export class PostulerComponent {
   candidat: any;
   registerForm!: FormGroup;
   selectedFile: File | undefined;
+  selectedFile1: File | undefined;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -35,6 +36,12 @@ export class PostulerComponent {
       this.selectedFile = fileList[0];
     }
   }
+  onFileChange1(event: any) {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      this.selectedFile1 = fileList[0];
+    }
+  }
   reset() {
     this.registerForm.reset();
   }
@@ -45,7 +52,7 @@ export class PostulerComponent {
     
       const formData = new FormData();
       formData.append('cv', this.selectedFile!, this.selectedFile!.name); // Use ! to assert non-null
-      formData.append('lettre', this.registerForm.value.lettre); // Append lettre value from form
+      formData.append('lettre', this.selectedFile1!, this.selectedFile1!.name); // Append lettre value from form
 
     this.candidatureService.addCandidat(formData).subscribe(
       {

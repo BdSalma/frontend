@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Candidature } from '../model/candidature';
 @Injectable({
   providedIn: 'root'
 })
@@ -41,6 +42,20 @@ export class CandidatureService {
         // Handle download errors (explained below)
       });
   }
+  downloadLettre(candidateId: number) {
+    this.fetchBlob(this.baseUrl + '/download-lettre/' + candidateId)
+      .subscribe(lettreBlob => {
+        const url = window.URL.createObjectURL(lettreBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'lettre.pdf'; // Adjust filename as needed
+        link.click();
+        link.remove();
+      }, error => {
+        console.error('Error downloading Lettre:', error);
+        // Handle download errors (explained below)
+      });
+  }
   
   private fetchBlob(url: string): Observable<Blob> {
     const headers = new HttpHeaders();
@@ -50,7 +65,7 @@ export class CandidatureService {
   }
   
   addCandidat(formData: FormData): Observable<any> {
-    let url = `${this.baseUrl}/addcandidat/2/1?lettre=${formData.get('lettre')}`; // Replace with your actual URL
+    let url = `${this.baseUrl}/addcandidat/2/1`; // Replace with your actual URL
     return this.http.post<any>(url, formData); // Use generics for response type
   }
  
@@ -63,6 +78,10 @@ export class CandidatureService {
   
   updateCandidature(id: number, updatedData: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/updateCandidat/${id}`, updatedData);
+  }
+  accepterCandidature(id: number): Observable<Candidature> {
+    const url = `${this.baseUrl}/accepterCandidat/${id}`;
+    return this.http.put<Candidature>(url, {});
   }
   getById(id:number): Observable<any>{
      return this.http.get(`${this.baseUrl}/${id}`);

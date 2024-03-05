@@ -36,7 +36,7 @@
                                       
                                       <label class="form-label">Lettre</label>
                                       <div class="input-group input-group-outline mb-3">
-                                        <textarea class="form-control" formControlName="lettre"></textarea>
+                                        <input type="file" (change)="onFileChange1($event)" />
                                       </div>
                                       <div *ngIf="registerForm.controls['lettre'].errors &&
                                         registerForm.get('lettre')?.touched">

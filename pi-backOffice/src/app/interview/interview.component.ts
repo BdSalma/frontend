@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CandidatureService } from '../service/candidature.service';
 import { Room } from '../model/room';
+import { Interview } from '../model/interview';
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',
@@ -14,6 +15,7 @@ export class InterviewComponent implements OnInit {
   candidat: any;
   registerForm!: FormGroup;
   rooms: Room[] = [];
+  calendarConfig = {}; 
   isOnline: boolean = false;
   isInRoom: boolean = false;
   
@@ -30,7 +32,8 @@ export class InterviewComponent implements OnInit {
       date: ['', Validators.required],
       lien: [''],
       room: [[]],
-      interviewType: ['choisir une option']
+      interviewType: ['choisir une option'],
+      titre:['']
     });
   
     this.registerForm.get('interviewType')?.valueChanges.subscribe((type) => {
@@ -47,8 +50,25 @@ export class InterviewComponent implements OnInit {
         console.error('Error fetching rooms', error);
       }
     );
+    
+    this.fetchInterviews();
   }
-
+  fetchInterviews() {
+    this.candidatureService.getInterview().subscribe(
+      (interviews: Interview[]) => {
+        this.calendarConfig = {
+          initialView: 'dayGridMonth', // Adjust initial view as needed
+          events: interviews.map(interview => ({
+            id: interview.idInterview, // Assuming it's a unique identifier
+            title: interview.titre,
+            start: interview.date,
+          })),
+          // Other calendar options: selectable, selectHelper, eventClick, etc.
+        };
+      },
+      error => console.error('Error fetching interviews:', error)
+    );
+  }
   reset() {
     this.registerForm.reset();
   }
@@ -80,6 +100,7 @@ export class InterviewComponent implements OnInit {
       interviewType: this.registerForm.value.interviewType,
       date: this.registerForm.value.date,
       lien: this.registerForm.value.lien,
+      titre :this.registerForm.value.titre,
       room: [
         {
           idRoom: this.registerForm.value.room,
@@ -99,4 +120,27 @@ export class InterviewComponent implements OnInit {
       }
     );
   }
+  Add1(){
+    console.log('Data to be sent:', this.registerForm.value);
+  
+    const interviewData = {
+      idInterview: this.id,
+      interviewType: this.registerForm.value.interviewType,
+      date: this.registerForm.value.date,
+      lien: this.registerForm.value.lien,
+      titre :this.registerForm.value.titre,
+      
+    };
+  
+    const url = `http://localhost:8087/interview/addIEnligne/${this.id}`;
+    
+    this.candidatureService.addInterview(url, interviewData).subscribe(
+      {
+        next: () => this.router.navigateByUrl('/candidat'),
+        error: (error) => console.log(error)
+      }
+    );   
+  }
+
+   
 }
