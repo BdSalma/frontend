@@ -4,6 +4,9 @@ import { Offer } from '../model/offer';
 import { Router } from '@angular/router';
 import { Category } from '../model/category';
 
+
+
+
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.component.html',
@@ -40,10 +43,32 @@ export class OffersComponent {
     this.offerS.getOffers().subscribe(
       (data) => {
         this.listOffer = data;
+        
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+  acceptOffer(idOffer: number): void {
+    this.offerS.acceptOffer(idOffer).subscribe(() => {
+      alert('Offer accepted successfully');
+      this.loadOffers();
+      // Optionally, you can handle success response here
+    }, error => {
+      console.error('Error accepting offer:', error);
+      // Optionally, you can handle error response here
+    });
+  }
+
+  refuseOffer(idOffer: number): void {
+    this.offerS.refuseOffer(idOffer).subscribe(() => {
+      alert('Offer refused successfully');
+      this.loadOffers();
+      // Optionally, you can handle success response here
+    }, error => {
+      console.error('Error refusing offer:', error);
+      // Optionally, you can handle error response here
+    });
   }
 }

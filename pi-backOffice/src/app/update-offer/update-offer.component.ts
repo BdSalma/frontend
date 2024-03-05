@@ -12,7 +12,7 @@ export class UpdateOfferComponent {
   id!:number;
   offer:any
   registerForm!: FormGroup;
-  categoryOptions = Object.keys(Category); // Obtenez les noms des catégories de l'énumération Category
+  categoryOptions: string[] = Object.keys(Category).filter((key:any) => !isNaN(Number(Category[key])));
   constructor(private fb:FormBuilder,private offerS:OfferService,private router:Router,private route: ActivatedRoute){  
 }
 ngOnInit(){

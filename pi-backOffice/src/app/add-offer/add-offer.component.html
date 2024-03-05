@@ -1,68 +1,69 @@
-<body lass="g-sidenav-show  bg-gray-200">
-      <div class="row">
-        <div class="col-3">
-          <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-9">
-          <app-navbar></app-navbar>
-          <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-            <div class="container-fluid py-4">
-              <div class="page-header min-vh-100">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                      <div class="card card-plain">
-                        <div class="card-header">
-                          <h4 class="font-weight-bolder">Ajouter vos offres</h4>
-                        </div>
-                        <div class="card-body">
+<body class="g-sidenav-show bg-gray-200">
+  <div class="row">
+    <div class="col-3">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-9">
+      <app-navbar></app-navbar>
+      <div class="main-content position-relative max-height-vh-100 h-100">
+        <div class="container-fluid px-2 px-md-4">
+          <div
+            class="page-header min-height-300 border-radius-xl mt-4"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            "
+          >
+            <span class="mask bg-gradient-primary opacity-6"></span>
+          </div>
+          <div class="card card-body mx-3 mx-md-4 mt-n6">
+            <div class="row">
+              <div class="col-lg-8">
                           <form role="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                             <div class="input-group input-group-outline mb-3">
-                              <label >Nom Offre :&nbsp;&nbsp;&nbsp;         </label>
+                              <label for="offerName" class="col-sm-4 col-form-label">Nom Offre :</label>
                               <input type="text" class="form-control" formControlName="offerName" placeholder="Nom de l'offre">
                             </div>
-                            <div *ngIf="registerForm.controls['offerName'].errors && registerForm.get('offerName')?.touched">
-                                <div *ngIf="registerForm.controls['offerName'].hasError('required')">Obligatoire</div>
+                            <div class="text-danger mb-3" *ngIf="registerForm.controls['offerName'].errors && registerForm.get('offerName')?.touched">
+                                <div class="text-danger mb-3" *ngIf="registerForm.controls['offerName'].hasError('required')">ce champ est obligatoire</div>
                             </div>
                             <div class="input-group input-group-outline mb-3">
-                                <label for="category">Catégorie :</label>
+                                <label for="category" class="col-sm-4 col-form-label">Catégorie :</label>
                                 <select class="form-control" id="category" formControlName="offreCategory">
                                     <option value="" disabled selected>Veuillez choisir une catégorie</option>
                                   <option *ngFor="let category of categoryOptions" [value]="category">{{ category }}</option>
                                 </select>
-                                <!-- Affichage des erreurs de validation -->
-                                <div *ngIf="registerForm.controls['offreCategory'].errors && registerForm.get('offreCategory')?.touched">
-                                  <div *ngIf="registerForm.controls['offreCategory'].hasError('required')">Obligatoire</div>
+                                <div class="text-danger mb-3" *ngIf="registerForm.controls['offreCategory'].errors && registerForm.get('offreCategory')?.touched">
+                                  <div class="text-danger mb-3" *ngIf="registerForm.controls['offreCategory'].hasError('required')">ce champ est obligatoire</div>
                                 </div>
                               </div>
                             <div class="input-group input-group-outline mb-3">
-                              <label >Nombre Candidat :</label>
+                              <label class="col-sm-4 col-form-label" >Nombre Candidat :</label>
                               <input type="number" class="form-control" formControlName="candidatnumber" placeholder="Nombre de Candidat Souhaité">
                             </div>
-                            <div *ngIf="registerForm.controls['candidatnumber'].errors && registerForm.get('candidatnumber')?.touched">
-                                <div *ngIf="registerForm.controls['candidatnumber'].hasError('required')">Obligatoire</div>
-                                <div *ngIf="registerForm.controls['candidatnumber'].hasError('minlength')">minLength 2</div>
+                            <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].errors && registerForm.get('candidatnumber')?.touched">
+                                <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].hasError('required')">ce champ est obligatoire</div>
+                                <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].hasError('minlength')">minimum 2 candidature</div>
                             </div>
                             <div class="input-group input-group-outline mb-3">
-                              <label >Profil candidat :</label>
+                              <label class="col-sm-4 col-form-label" >Profil candidat :</label>
                               <input type="text" class="form-control" formControlName="candidatProfil" placeholder="le profil souhaité">
                             </div>
-                            <div *ngIf="registerForm.controls['candidatProfil'].errors && registerForm.get('candidatProfil')?.touched">
-                                <div *ngIf="registerForm.controls['candidatProfil'].hasError('required')">Obligatoire</div>
+                            <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatProfil'].errors && registerForm.get('candidatProfil')?.touched">
+                                <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatProfil'].hasError('required')">ce champ est obligatoire</div>
                             </div>
                             <div class="input-group input-group-outline mb-3">
-                                <label >Durée :</label>
+                                <label class="col-sm-4 col-form-label">Durée :</label>
                                 <input type="text" class="form-control" formControlName="duree" placeholder="Duree de l'offre">
                               </div>
-                              <div *ngIf="registerForm.controls['duree'].errors && registerForm.get('duree')?.touched">
-                                  <div *ngIf="registerForm.controls['duree'].hasError('required')">Obligatoire</div>
+                              <div class="text-danger mb-3" *ngIf="registerForm.controls['duree'].errors && registerForm.get('duree')?.touched">
+                                  <div class="text-danger mb-3" *ngIf="registerForm.controls['duree'].hasError('required')">ce champ est obligatoire</div>
                               </div>
                               <div class="input-group input-group-outline mb-3">
-                                <label >Description :</label>
+                                <label class="col-sm-4 col-form-label" >Description :</label>
                                 <textarea  class="form-control" formControlName="description" placeholder="Description de l'offre"></textarea>
                               </div>
-                              <div *ngIf="registerForm.controls['description'].errors && registerForm.get('description')?.touched">
-                                  <div *ngIf="registerForm.controls['description'].hasError('required')">Obligatoire</div>
+                              <div class="text-danger mb-3" *ngIf="registerForm.controls['description'].errors && registerForm.get('description')?.touched">
+                                  <div class="text-danger mb-3" *ngIf="registerForm.controls['description'].hasError('required')">ce champ est obligatoire</div>
                               </div>
                             <div class="text-center">
                               <button type="submit" [disabled]="registerForm.invalid" (click)="ajouter()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Ajouter</button>
@@ -72,15 +73,14 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <app-footer></app-footer>
-          </main>
+                    <app-footer></app-footer>
+
+                    </div>
+                    </div>
+                    
+                    </div>
         </div>
-      </div>
-  
+
     <!--   Core JS Files   -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

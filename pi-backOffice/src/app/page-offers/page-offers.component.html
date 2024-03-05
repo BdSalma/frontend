@@ -17,13 +17,8 @@
                 </div>
               </div>
               <div class="row mt-5">
-                <form role="form" (ngSubmit)="filterOffers(category.value, society.value, offerName.value)">
-                  <select [(ngModel)]="searchCategory" #category [ngModelOptions]="{standalone: true}">
-                    <option value="" disabled selected>Veuillez choisir une catégorie</option>       
-                    <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-                  </select>
-                  <input type="text" #society placeholder="Society">
-                  <input type="text" #offerName placeholder="Offer Name">
+                <form role="form" (ngSubmit)="filterOffers(criteria.value)">
+                  <input type="text" #criteria placeholder="recherche...">
                   <button class="btn btn-primary" type="submit">Filter</button>
                 </form>
                 <div class="row mt-5">

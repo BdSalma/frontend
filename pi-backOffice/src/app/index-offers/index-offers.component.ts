@@ -26,7 +26,7 @@ export class IndexOffersComponent {
     offer.showFullDescriptionFlag = !offer.showFullDescriptionFlag;
   }
   loadOffers() {
-    this.offerS.getOffers().subscribe(
+    this.offerS.getAcceptedOffer().subscribe(
       (data) => {
         this.listOffer = data;
       },

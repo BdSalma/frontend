@@ -20,7 +20,7 @@ export class PageOffersComponent {
   }
 
   loadOffers() {
-    this.offerS.getOffers().subscribe(
+    this.offerS.getAcceptedOffer().subscribe(
       (data) => {
         this.listOffer = data;
       },
@@ -42,8 +42,8 @@ export class PageOffersComponent {
     // Toggle the showFullDescriptionFlag for the clicked offer
     offer.showFullDescriptionFlag = !offer.showFullDescriptionFlag;
   }
-  filterOffers(category: string, society: string, offerName: string): void {
-    this.offerS.filterOffers(category, society, offerName).subscribe(
+  filterOffers(criteria:string): void {
+    this.offerS.filterOffers(criteria).subscribe(
       (data) => {
         this.listOffer = data;
       },

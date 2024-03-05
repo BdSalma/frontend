@@ -15,10 +15,12 @@
               <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                   <h6 class="text-white text-capitalize ps-3">Liste des offres</h6>
-                  <select [(ngModel)]="searchCategory" (change)="searchApartments()">
-  <option [attr.placeholder]="placeholderText" disabled selected>Choisissez une catégorie</option>
-  <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-</select>
+                  <div class="input-group input-group-outline mb-3" style="height: 50px;width:200px;background-color: white;" >
+                  <select [(ngModel)]="searchCategory" id="category" (change)="searchApartments()">
+                    <option value="" disabled selected>Veuillez choisir une catégorie</option>
+                    <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                  </select>
+                  </div>
                 </div>
               </div>
               <div class="card-body px-0 pb-2">
@@ -26,6 +28,8 @@
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Society</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Offer name</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Offer category</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Emission</th>
@@ -33,11 +37,21 @@
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Candidat profil</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Duree</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Society</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Accept/Refuse</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let offer of listOffer">
+                        <td class="align-middle text-center">
+                          <span [ngClass]="{
+                            'badge badge-sm bg-gradient-success': offer.etatOffer === 'Approuvé',
+                            'badge badge-sm bg-gradient-warning': offer.etatOffer === 'Enattente',
+                            'badge badge-sm bg-gradient-danger': offer.etatOffer === 'réfusée'
+                          }">{{offer.etatOffer}}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                          <span class="text-secondary text-xs font-weight-bold">{{offer.society.username}}</span>
+                        </td>
                         <td class="align-middle text-center">
                           <span class="text-secondary text-xs font-weight-bold">{{offer.offerName}}</span>
                         </td>
@@ -58,22 +72,30 @@
                         </td>
                         <td class="align-middle text-center">
                           <span class="text-secondary text-xs font-weight-bold">{{ offer.description.length > 100 ? offer.description.slice(0, 100) + '...' : offer.description }}</span>                 
-                                     <a class="text-secondary text-xs font-weight-bold" [routerLink]="['/DetailOffre', offer.idOffre]">Voir les détails</a>
+                            <a class="text-secondary text-xs font-weight-bold" [routerLink]="['/DetailOffre', offer.idOffre]">Voir les détails</a>
                         </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">{{offer.society.username}}</span>
-                        </td>
-                        
+                          <td class="align-middle">
+                            <div class="ms-auto text-end">
+                              <button class="btn btn-link text-success text-gradient px-3 mb-0" href="javascript:;" (click)="acceptOffer(offer.idOffre)">
+                                <i class="fas fa-check-circle text-sm me-2"></i> Valider
+                              </button>
+                          
+                              <button class="btn btn-link text-warning text-gradient px-3 mb-0" href="javascript:;" (click)="refuseOffer(offer.idOffre)">
+                                <i class="fas fa-times-circle text-sm me-2"></i> Annuler
+                              </button>
+                            </div>
+                          </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+            <app-footer></app-footer>
+
           </div>
         </div>
       </div>
-      <app-footer></app-footer>
     </main>
   </div>
     </div>
