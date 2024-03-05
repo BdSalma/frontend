@@ -55,4 +55,7 @@ getAverageOffersPerDay() {
 getNbAcceptedOffer(){
   return this.http.get<number>('http://localhost:8087/Offer/nbAcceptedOffer');
 }
+getEnAttenteOffer(){
+  return this.http.get('http://localhost:8087/Offer/ListAcceptedOffer');
+}
 }

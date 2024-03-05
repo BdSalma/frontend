@@ -25,6 +25,7 @@ import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
 import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 import { IndexOffersComponent } from './index-offers/index-offers.component';
 import { PageOffersComponent } from './page-offers/page-offers.component';
+import { ListOffersComponent } from './list-offers/list-offers.component';
 const routes: Routes = [
 {path:'',component:IndexComponent},
 {path:'moreOffers',component:PageOffersComponent},
@@ -52,6 +53,8 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
+{path:'listOffers',component:ListOffersComponent}
+
 
 ];
 

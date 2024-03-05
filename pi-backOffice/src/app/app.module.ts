@@ -36,6 +36,7 @@ import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 import { IndexOffersComponent } from './index-offers/index-offers.component';
 import { PageOffersComponent } from './page-offers/page-offers.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ListOffersComponent } from './list-offers/list-offers.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SignInIndexComponent,
     SignUpIndexComponent,
     IndexOffersComponent,
-    PageOffersComponent
+    PageOffersComponent,
+    ListOffersComponent
   ],
   imports: [
     BrowserModule,
