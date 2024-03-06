@@ -4,11 +4,11 @@
   }
   
   .chat-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    height: 400px;
+    position: fixed; /* Utilisez fixed pour qu'il reste à la même place même lors du scroll */
+    bottom: 0px;
+    right: 0px; /* Changez right par left pour l'aligner à gauche */
+    width: 350px;
+    height: 500px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -16,10 +16,22 @@
     flex-direction: column;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     z-index: 1000;
-  }
+}
   
+.chatbot-logo {
+  width: 100px;  /* Ou toute autre taille appropriée */
+  height: auto; /* Pour garder le ratio */
+  margin-bottom: 10px; /* Espace entre le logo et le bouton */
+}
 
-  
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Empiler verticalement le logo et le bouton */
+  height: 10vh; /* Prenez toute la hauteur de la fenêtre pour centrage vertical */
+}
+ 
   /* Zone oÃ¹ les messages sont affichÃ©s */
   .messages {
     flex-grow: 1;

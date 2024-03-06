@@ -10,27 +10,27 @@
   <app-header></app-header>
   
 
-  <div class="chat-container" *ngIf="isChatVisible"></div>
-  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
-<div class="chat-container">
-  <div class="messages">
-    <div *ngFor="let message of messages" [ngClass]="{'user-msg': message.sender === 'user', 'bot-msg': message.sender === 'bot'}">
-      {{ message.text }}
-      <!-- Section pour afficher les boutons de suggestions -->
-      <div *ngIf="message.suggestions && message.sender === 'bot'" class="suggestions">
-        <button *ngFor="let suggestion of message.suggestions" (click)="onSuggestionClick(suggestion)" class="suggestion-btn">
-          {{ suggestion }}
-        </button>
+  <div class="centered-container">
+    <img src="assets/chatbot.png" alt="Chatbot Logo" class="chatbot-logo" />
+    <button (click)="toggleChatVisibility()">Discuter avec le chatbot</button>
+  </div>
+
+  <div class="chat-container" *ngIf="isChatVisible">
+    <div class="messages">
+      <div *ngFor="let message of messages" [ngClass]="{'user-msg': message.sender === 'user', 'bot-msg': message.sender === 'bot'}">
+        {{ message.text }}
+        <div *ngIf="message.suggestions && message.sender === 'bot'" class="suggestions">
+          <button *ngFor="let suggestion of message.suggestions" (click)="onSuggestionClick(suggestion)" class="suggestion-btn">
+            {{ suggestion }}
+          </button>
+        </div>
       </div>
     </div>
+    <input type="text" [(ngModel)]="userInput" (keyup.enter)="sendMessage(userInput); userInput='';" placeholder="Posez votre question...">
+    <button (click)="close()">Fermer le Chat</button>
+    <button (click)="downloadDiscussion()">Télécharger la Discussion</button>
   </div>
-  <input type="text" [(ngModel)]="userInput" (keyup.enter)="sendMessage(userInput); userInput='';" placeholder="Posez votre question...">
-  <button (click)="close()">Fermer le Chat</button>
-  <!-- Votre code existant... -->
-<button (click)="downloadDiscussion()">Télécharger la Discussion</button>
-
-</div>
-<button (click)="toggleChatVisibility()">Discuter avec le chatbot</button>
+  
 <section class="pt-3 pb-4" id="count-stats">
   <div class="container">
       <div class="row">
@@ -307,7 +307,7 @@
 </section>
 
   
-</div>
+
 <app-footer-index></app-footer-index>
 <script src="../assets/jsB/core/popper.min.js" type="text/javascript"></script>
 <script src="../assets/jsB/core/bootstrap.min.js" type="text/javascript"></script>
