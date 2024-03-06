@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,10 +18,26 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { OffersComponent } from './offers/offers.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import {  HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { NotApprovedComponent } from './not-approved/not-approved.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AssociationsComponent } from './Users/associations/associations.component';
+import { IndividualsComponent } from './Users/individuals/individuals.component';
+import { UserDetailsComponent } from './Users/user-details/user-details.component';
+import { IndexComponent } from './index/index.component';
+import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { NgModule } from '@angular/core';
+import { FeedBackComponent } from './feed-back/feed-back.component';
 
 @NgModule({
   declarations: [
@@ -43,15 +58,38 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    OffersComponent,
-    ReclamationComponent
+    ReclamationComponent,
+    NotFoundComponent,
+    EmailVerificationComponent,
+    NotApprovedComponent,
+    UpdateProfileComponent,
+    AssociationsComponent,
+    IndividualsComponent,
+    UserDetailsComponent,
+    IndexComponent,
+    NavbarIndexComponent,
+    FooterIndexComponent,
+    HeaderComponent,
+    ContactUsComponent,
+    AboutUsComponent,
+    FeedBackComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:5000,
+      tapToDismiss:true,
+      closeButton:true,
+      preventDuplicates:true,
+      progressBar:true,
+      disableTimeOut:false,
+      positionClass: 'toast-top-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

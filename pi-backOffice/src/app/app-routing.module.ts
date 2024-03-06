@@ -13,35 +13,74 @@ import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
-import {OffersComponent} from './offers/offers.component';
 import { NgModule } from '@angular/core';
 import { ReclamationComponent } from './reclamation/reclamation.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { NotApprovedComponent } from './not-approved/not-approved.component';
+import { IndexComponent } from './index/index.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { IndividualsComponent } from './Users/individuals/individuals.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { UserDetailsComponent } from './Users/user-details/user-details.component';
+import { AssociationsComponent } from './Users/associations/associations.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FeedBackComponent } from './feed-back/feed-back.component';
+
 const routes: Routes = [
-  
-{path:'dashboard',component:DashboradComponent},
-{path:'',pathMatch:"full",component:DashboradComponent},
-{path:'billing',component:BillingComponent},
-{path:'profile',component:ProfileComponent},
-{path:'icons',component:IconsComponent},
-{path:'signIn',component:SignInComponent},
-{path:'signUp',component:SignUpComponent},
-{path:'table',component:TableComponent},
-{path:'map',component:MapComponent},
-{path:'reclamation',component:ReclamationComponent},
-{path:'notification',component:NotificationsComponent},
-{path:'rtl',component:RtlComponent},
-{path:'template',component:TemplateComponent},
-{path:'typography',component:TypographyComponent},
-{path:'virtualReality',component:VirtualRealityComponent},
-{path:'offers',component:OffersComponent}
+  { path: '', pathMatch: 'full', component: DashboradComponent },
+  { path: 'emailVerification', component: EmailVerificationComponent },
+  { path: 'notApproved', component: NotApprovedComponent },
+  { path: 'dashboard', component: DashboradComponent },
+  { path: 'billing', component: BillingComponent },
+  { path: 'dashboard', component: DashboradComponent },
+  { path: 'index', component: IndexComponent },
+  { path: 'contact', component: ContactUsComponent },
+  { path: 'about', component: AboutUsComponent },
+  {path:'reclamation',component:ReclamationComponent},
+  {path:'feed',component:FeedBackComponent},
 
-
-
-
+  { path: 'billing', component: BillingComponent },
+  {
+    path: 'individuals',
+    component: IndividualsComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'user-details/:id',
+    component: UserDetailsComponent,
+  },
+  {
+    path: 'associations',
+    component: AssociationsComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'update-profile',
+    component: UpdateProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  { path: 'icons', component: IconsComponent },
+  { path: 'signIn', component: SignInComponent },
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'table', component: TableComponent },
+  { path: 'map', component: MapComponent },
+  { path: 'notification', component: NotificationsComponent },
+  { path: 'rtl', component: RtlComponent },
+  { path: 'template', component: TemplateComponent },
+  { path: 'typography', component: TypographyComponent },
+  { path: 'virtualReality', component: VirtualRealityComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

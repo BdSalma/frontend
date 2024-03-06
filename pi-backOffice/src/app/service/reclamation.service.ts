@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reclamation } from '../model/reclamation';
+import { Authentication } from '../services/authentication.service';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -11,7 +12,7 @@ const httpOptions = {
 export class ReclamationService {
   
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private auth : Authentication ) { }
 
   getReclamation(){
     return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/retrieve')
@@ -22,6 +23,22 @@ export class ReclamationService {
   Review(id: String, Rid:number){
     return  this.http.post('http://localhost:8087/reclamation/review/'+id+'/'+Rid,
     httpOptions)
+   }
+   
+   getFeed(){
+    return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/feed')
+   }
+
+   //http://localhost:8087/reclamation/create
+   createReclamation( reclamation : any){
+    return  this.http.post<any>('http://localhost:8087/reclamation/create',reclamation,
+    {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+        'Content-Type': 'application/json',
+      }),
+    })
+   
    }
 
 }
