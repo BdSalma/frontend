@@ -1,0 +1,118 @@
+<body class="g-sidenav-show  bg-gray-200">
+    <div class="row">
+      <div class="col-3">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-9">
+        <app-navbar></app-navbar>
+      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <div class="container-fluid py-4">
+          <div class="row">
+            <div class="col-12">
+              <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Liste des offres</h6>
+                    <a  style="margin-left:750px" class="btn btn-light btn-sm mb-0 me-3" routerLink='/addOffer'>Ajouter un offre</a>
+                    <div class="input-group input-group-outline mb-3" style="height: 50px;width:200px;background-color: white;" >
+                    <select [(ngModel)]="searchCategory" id="category" (change)="searchApartments()">
+                      <option value="" disabled selected>Veuillez choisir une catégorie</option>
+                      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                    </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                  <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Society</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Offer name</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Offer category</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Emission</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Candidat number</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Candidat profil</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Duree</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">options</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let offer of listOffer">
+                          <td class="align-middle text-center">
+                            <span style="color: white;"[ngClass]="{
+                              'badge badge-sm bg-gradient-success': offer.etatOffer === 'Approuvé',
+                              'badge badge-sm bg-gradient-warning': offer.etatOffer === 'Enattente',
+                              'badge badge-sm bg-gradient-danger': offer.etatOffer === 'réfusée'
+                            }">{{offer.etatOffer}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{offer.society.username}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{offer.offerName}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{offer.offreCategory}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{offer.dateEmission}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{offer.candidatnumber}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{offer.candidatProfil}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{offer.duree}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{ offer.description.length > 100 ? offer.description.slice(0, 100) + '...' : offer.description }}</span>                 
+                                       <a class="text-secondary text-xs font-weight-bold" [routerLink]="['/DetailOffre', offer.idOffre]">Voir les détails</a>
+                          </td>
+                          <td class="align-middle">
+  <div class="ms-auto text-end">
+    <button class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" (click)="deleteOffer(offer.idOffre)">
+      <i class="fas fa-trash text-sm me-2"></i> Supprimer
+    </button>
+    <button class="btn btn-link text-dark px-3 mb-0" [routerLink]="['/editOffer',offer.idOffre]">
+      <i class="fas fa-edit text-sm me-2"></i> Modifier
+    </button>
+  </div>
+</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <app-footer></app-footer>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+      </div>
+      <!--   Core JS Files   -->
+      <script src="../assets/js/core/popper.min.js"></script>
+      <script src="../assets/js/core/bootstrap.min.js"></script>
+      <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+      <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+      <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+          var options = {
+            damping: '0.5'
+          }
+          Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+      </script>
+      <!-- Github buttons -->
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+      <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+      <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
+    </body>

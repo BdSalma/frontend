@@ -5,5 +5,4 @@ export class Stand {
     zone!: TypeStand;
     statut!: boolean;
     pack!: Pack;
-
 }

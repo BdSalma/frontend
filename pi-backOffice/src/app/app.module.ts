@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboradComponent } from './dashborad/dashborad.component';
@@ -33,6 +32,12 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { AssociationsComponent } from './Users/associations/associations.component';
 import { IndividualsComponent } from './Users/individuals/individuals.component';
 import { UserDetailsComponent } from './Users/user-details/user-details.component';
+import { OffersComponent } from './offers/offers.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AddOfferComponent } from './add-offer/add-offer.component';
+import { UpdateOfferComponent } from './update-offer/update-offer.component';
+import { DetailOfferComponent } from './detail-offer/detail-offer.component';
+import { OfferBySocietyComponent } from './offer-by-society/offer-by-society.component';
 import { IndexComponent } from './index/index.component';
 import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
 import { FooterIndexComponent } from './footer-index/footer-index.component';
@@ -42,6 +47,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ListCandidatureComponent } from './list-candidature/list-candidature.component';
 import { PostulerComponent } from './postuler/postuler.component';
 import { Authentication } from './services/authentication.service';
+import { IndexOffersComponent } from './index-offers/index-offers.component';
+import { PageOffersComponent } from './page-offers/page-offers.component';
+import { ListOffersComponent } from './list-offers/list-offers.component';
 
 @NgModule({
   declarations: [
@@ -74,15 +82,23 @@ import { Authentication } from './services/authentication.service';
     AssociationsComponent,
     IndividualsComponent,
     UserDetailsComponent,
+    OffersComponent,
+    AddOfferComponent,
+    UpdateOfferComponent,
+    DetailOfferComponent,
+    OfferBySocietyComponent,
     IndexComponent,
-    NavbarIndexComponent,
     FooterIndexComponent,
+    NavbarIndexComponent,
     HeaderComponent,
     ContactUsComponent,
     AboutUsComponent,
     ListCandidatureComponent,
     PostulerComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    IndexOffersComponent,
+    PageOffersComponent,
+    ListOffersComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +118,7 @@ import { Authentication } from './services/authentication.service';
       disableTimeOut:false,
       positionClass: 'toast-top-right',
     }),
+
   ],
   providers: [Authentication],
   bootstrap: [AppComponent]

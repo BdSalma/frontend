@@ -8,5 +8,4 @@ export class Pack {
     statut!: boolean;
     forum!: Forum;
     stand!: Stand;
-
 }

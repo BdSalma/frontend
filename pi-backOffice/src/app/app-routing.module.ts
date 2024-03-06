@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { DashboradComponent } from './dashborad/dashborad.component';
+import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';import { DashboradComponent } from './dashborad/dashborad.component';
 import { BillingComponent } from './billing/billing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { IconsComponent } from './icons/icons.component';
@@ -21,10 +21,6 @@ import { InterviewComponent } from './interview/interview.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
 
 
-import { IndexComponent } from './index/index.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-
 import { ListCandidatureComponent } from './list-candidature/list-candidature.component';
 import { PostulerComponent } from './postuler/postuler.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -36,8 +32,27 @@ import { IndividualsComponent } from './Users/individuals/individuals.component'
 import { AssociationsComponent } from './Users/associations/associations.component';
 import { UserDetailsComponent } from './Users/user-details/user-details.component';
 
+
+import { OffersComponent } from './offers/offers.component';
+import { AddOfferComponent } from './add-offer/add-offer.component';
+import { UpdateOfferComponent } from './update-offer/update-offer.component';
+import { DetailOfferComponent } from './detail-offer/detail-offer.component';
+import { OfferBySocietyComponent } from './offer-by-society/offer-by-society.component';
+import { IndexComponent } from './index/index.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { IndexOffersComponent } from './index-offers/index-offers.component';
+import { PageOffersComponent } from './page-offers/page-offers.component';
+import { ListOffersComponent } from './list-offers/list-offers.component';
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: DashboradComponent },
+{path:'',component:IndexComponent},
+{path:'moreOffers',component:PageOffersComponent},
+{path:'offersIndex',component:IndexOffersComponent},
+{path:'offre',component:OffersComponent},
+{path:'offerBySociety',component:OfferBySocietyComponent},
+{path:'DetailOffre/:id',component:DetailOfferComponent},
+{path:'editOffer/:id',component:UpdateOfferComponent},
+{path:'addOffer',component:AddOfferComponent},
 {path:'dashboard',component:DashboradComponent},
 {path:'index',component:IndexComponent},
 {path:'about',component:AboutUsComponent},
@@ -89,8 +104,10 @@ const routes: Routes = [
   { path: '**', component: NotFoundComponent },
 ];
 
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [CommonModule,RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
