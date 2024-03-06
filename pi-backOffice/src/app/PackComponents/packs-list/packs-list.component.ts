@@ -2,9 +2,10 @@ import { Router } from '@angular/router';
 import { StandServiceService } from 'src/app/Service/stand-service.service';
 import { reservationStatus } from './../../model/reservationStatus';
 import { Component } from '@angular/core';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
+
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
+import { PackServiceService } from 'src/app/Service/pack-service.service';
 
 @Component({
   selector: 'app-packs-list',
