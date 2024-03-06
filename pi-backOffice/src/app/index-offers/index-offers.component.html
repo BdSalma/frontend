@@ -12,7 +12,7 @@
           <div *ngIf="i<=2" class="col-lg-4 col-md-8">
             <div class="card border border-primary" [ngClass]="i % 2 === 0 ? 'card-plain' : 'bg-gradient-primary'">
                 <div style="margin-left: 280px;" class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4">
-                    <a routerLink="/offre"><i class="material-icons opacity-10" >weekend</i></a>
+                    <a [routerLink]="['/postuler', offer.idOffre]"><i class="material-icons opacity-10" >weekend</i></a>
                 </div>
                 <div class="card-body">
                     <div class="author">

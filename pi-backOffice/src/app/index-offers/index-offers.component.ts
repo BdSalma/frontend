@@ -25,6 +25,7 @@ export class IndexOffersComponent {
     // Toggle the showFullDescriptionFlag for the clicked offer
     offer.showFullDescriptionFlag = !offer.showFullDescriptionFlag;
   }
+  
   loadOffers() {
     this.offerS.getAcceptedOffer().subscribe(
       (data) => {
@@ -35,5 +36,4 @@ export class IndexOffersComponent {
       }
     );
   }
-
 }

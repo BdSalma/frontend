@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,6 +49,9 @@ import { Authentication } from './services/authentication.service';
 import { IndexOffersComponent } from './index-offers/index-offers.component';
 import { PageOffersComponent } from './page-offers/page-offers.component';
 import { ListOffersComponent } from './list-offers/list-offers.component';
+import { NgModule } from '@angular/core';
+import { FeedBackComponent } from './feed-back/feed-back.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { ListOffersComponent } from './list-offers/list-offers.component';
     UpdateComponent,
     InterviewComponent,
     ListInterviewComponent,
+    ReclamationComponent,
     NotFoundComponent,
     EmailVerificationComponent,
     NotApprovedComponent,
@@ -98,7 +101,8 @@ import { ListOffersComponent } from './list-offers/list-offers.component';
     AboutUsComponent,
     IndexOffersComponent,
     PageOffersComponent,
-    ListOffersComponent
+    ListOffersComponent,
+    FeedBackComponent
   ],
   imports: [
     BrowserModule,

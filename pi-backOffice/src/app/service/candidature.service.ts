@@ -12,8 +12,8 @@ export class CandidatureService {
   private baseUrl2 = "http://localhost:8087/room";
   constructor(private http: HttpClient,private auth:Authentication) {
    }
-  getData(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/candidatbyoffer/1`, {
+  getData(id:number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/candidatbyoffer/${id}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,
       }),
@@ -76,8 +76,8 @@ export class CandidatureService {
     return this.http.get(url, { headers, responseType: 'blob' });
   }
   
-  addCandidat(formData: FormData): Observable<Candidature> { // Specify return type
-    const url = `${this.baseUrl}/addcandidat/1`; // Replace with actual URL
+  addCandidat(id: number, formData: FormData): Observable<Candidature> { // Specify return type
+    const url = `${this.baseUrl}/addcandidat/${id}`; // Replace with actual URL
     return this.http.post<Candidature>(url, formData, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`

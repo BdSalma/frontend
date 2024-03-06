@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CandidatureService } from '../service/candidature.service';
 import { Candidature } from '../model/candidature';
 @Component({
@@ -9,14 +9,17 @@ import { Candidature } from '../model/candidature';
   styleUrls: ['./candidature.component.css']
 })
 export class CandidatureComponent {
+  id!: number;
   candidat: Candidature [] = [];
-  constructor(private http: HttpClient,private router: Router,private candidatureService: CandidatureService){}
+  constructor(private http: HttpClient,private router: Router,private candidatureService: CandidatureService,private route: ActivatedRoute){
+    this.id=this.route.snapshot.params['id']
+  }
   ngOnInit():void {
     this.fetchCandidat();
     
   }
   fetchCandidat() {
-    this.candidatureService.getData().subscribe(
+    this.candidatureService.getData(this.id).subscribe(
       (response: Candidature[]) => {
         console.log('API Response:', response); // Log the API response
         this.candidat = response;
@@ -48,7 +51,7 @@ export class CandidatureComponent {
     this.candidatureService.accepterCandidature(candidateId).subscribe(
       (response: Candidature) => {
         console.log('Candidature accepted:', response);
-        this.router.navigate(['/candidat']);
+        this.fetchCandidat();
       },
       error => {
         console.error('Error accepting candidature', error);

@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from '../model/category';
 import { SocietyRole } from '../model/societyRole';
 import { IndividuRole } from '../model/individusRole';
 import { ToastrService } from 'ngx-toastr';

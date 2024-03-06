@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';import { DashboradComponent } from './dashborad/dashborad.component';
 import { BillingComponent } from './billing/billing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { IconsComponent } from './icons/icons.component';
@@ -23,13 +22,11 @@ import { ListInterviewComponent } from './interview/list-interview/list-intervie
 
 import { ListCandidatureComponent } from './list-candidature/list-candidature.component';
 import { PostulerComponent } from './postuler/postuler.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { NotApprovedComponent } from './not-approved/not-approved.component';
-import { UpdateProfileComponent } from './update-profile/update-profile.component';
-import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { IndividualsComponent } from './Users/individuals/individuals.component';
-import { AssociationsComponent } from './Users/associations/associations.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { UserDetailsComponent } from './Users/user-details/user-details.component';
 
 
@@ -44,19 +41,27 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { IndexOffersComponent } from './index-offers/index-offers.component';
 import { PageOffersComponent } from './page-offers/page-offers.component';
 import { ListOffersComponent } from './list-offers/list-offers.component';
+import { AssociationsComponent } from './Users/associations/associations.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FeedBackComponent } from './feed-back/feed-back.component';
+import { RouterModule, Routes } from '@angular/router';
+import { DashboradComponent } from './dashborad/dashborad.component';
+
 const routes: Routes = [
 {path:'',component:IndexComponent},
 {path:'moreOffers',component:PageOffersComponent},
 {path:'offersIndex',component:IndexOffersComponent},
-{path:'offre',component:OffersComponent},
-{path:'offerBySociety',component:OfferBySocietyComponent},
+{path:'offre',component:OffersComponent,canActivate: [AuthGuardGuard]},
+{path:'offerBySociety',component:OfferBySocietyComponent,canActivate: [AuthGuardGuard]},
 {path:'DetailOffre/:id',component:DetailOfferComponent},
 {path:'editOffer/:id',component:UpdateOfferComponent},
 {path:'addOffer',component:AddOfferComponent},
 {path:'dashboard',component:DashboradComponent},
 {path:'index',component:IndexComponent},
 {path:'about',component:AboutUsComponent},
-{path:'candidat',component:CandidatureComponent},
+{path:'candidat/:id',component:CandidatureComponent},
+
 {path:'table',component:TableComponent},
 {path:'map',component:MapComponent},
 {path:'notification',component:NotificationsComponent},
@@ -64,12 +69,16 @@ const routes: Routes = [
 {path:'updateC/:id',component:UpdateComponent},
 {path:'addInterv/:id',component:InterviewComponent},
 {path:'listInterv',component:ListInterviewComponent},
-{path:'listCandidat',component:ListCandidatureComponent},
-{path:'postuler',component:PostulerComponent},
+{path:'listCandidat',component:ListCandidatureComponent,canActivate: [AuthGuardGuard]},
+{path:'postuler/:id',component:PostulerComponent},
   { path: '', pathMatch: 'full', component: DashboradComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'contact', component: ContactUsComponent },
+  { path: 'about', component: AboutUsComponent },
+  {path:'reclamation',component:ReclamationComponent},
+  {path:'feed',component:FeedBackComponent},
+
   { path: 'billing', component: BillingComponent },
   {
     path: 'individuals',

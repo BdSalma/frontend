@@ -74,7 +74,7 @@ export class InterviewComponent implements OnInit {
   }
 
   Annuler() {
-    this.router.navigate(['/candidat']);
+    this.router.navigate(['/listInterv']);
   }
 
   onSubmit() {
@@ -115,7 +115,7 @@ export class InterviewComponent implements OnInit {
     
     this.candidatureService.addInterview(url, interviewData).subscribe(
       {
-        next: () => this.router.navigateByUrl('/candidat'),
+        next: () => this.router.navigateByUrl('/listInterv'),
         error: (error) => console.log(error)
       }
     );
@@ -136,7 +136,7 @@ export class InterviewComponent implements OnInit {
     
     this.candidatureService.addInterview(url, interviewData).subscribe(
       {
-        next: () => this.router.navigateByUrl('/candidat'),
+        next: () => this.router.navigateByUrl('/listInterv'),
         error: (error) => console.log(error)
       }
     );   

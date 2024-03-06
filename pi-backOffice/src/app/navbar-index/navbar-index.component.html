@@ -8,12 +8,6 @@
         <img src="../assets/img/esprit.png" style="height: 50px;" alt="main_logo">
         <span class="ms-1 font-weight-bold text-black">Esprit piazza</span>
       </a>
-      <a class="navbar-brand font-weight-bolder ms-sm-3" routerLink="/listCandidat" >
-        <span class="ms-1 font-weight-bold text-black">Candidature</span>
-      </a>
-      <a class="navbar-brand font-weight-bolder ms-sm-3" routerLink="/postuler" >
-        <span class="ms-1 font-weight-bold text-black">Postuler</span>
-      </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon mt-2">
           <span class="navbar-toggler-bar bar1"></span>
@@ -29,10 +23,12 @@
             </a>
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
-    <a routerLink="/about" class="dropdown-item border-radius-md">
-      <span>About Us</span>
-    </a>
-  </li>
+            <a class="dropdown-item border-radius-md" routerLink="/listCandidat" >
+              <span >Candidature</span>
+            </a>
+            </li>
+            
+            
   <li class="nav-item dropdown dropdown-hover mx-2">
     <a routerLink="/contact" class="dropdown-item border-radius-md">
       <span>Contact Us</span>
@@ -50,12 +46,12 @@
       Landing Pages
     </h6>
     <li class="nav-item dropdown dropdown-hover mx-2">
-      <a routerLink="/signUpindex" class="dropdown-item border-radius-md">
+      <a routerLink="/signUp" class="dropdown-item border-radius-md">
         <span>SignUp</span>
       </a>
       </li>
       <li class="nav-item dropdown dropdown-hover mx-2">
-      <a routerLink="/signInindex" class="dropdown-item border-radius-md">
+      <a routerLink="/signIn" class="dropdown-item border-radius-md">
         <span>Sign In</span>
       </a>
     </div>

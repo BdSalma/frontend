@@ -28,7 +28,6 @@
                       <thead>
                         <tr>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Society</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Offer name</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Offer category</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Emission</th>
@@ -47,10 +46,7 @@
                               'badge badge-sm bg-gradient-warning': offer.etatOffer === 'Enattente',
                               'badge badge-sm bg-gradient-danger': offer.etatOffer === 'réfusée'
                             }">{{offer.etatOffer}}</span>
-                          </td>
-                          <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{offer.society.username}}</span>
-                          </td>
+                          </td>                        
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{offer.offerName}}</span>
                           </td>

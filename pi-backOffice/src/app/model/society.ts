@@ -1,5 +1,4 @@
 import { Devis } from "./devis";
-import { Offer } from "./offer";
 import { SocietyRole } from "./societyRole";
 import { User } from "./user";
 
@@ -14,5 +13,4 @@ export class Society extends User {
     sitFin!: string;
     role!: SocietyRole;
     devis!: Devis[];
-    offers!: Offer[];
 }

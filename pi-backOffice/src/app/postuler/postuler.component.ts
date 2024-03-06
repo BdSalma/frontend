@@ -21,7 +21,7 @@ export class PostulerComponent {
     private http: HttpClient,
     private router: Router,
     private candidatureService: CandidatureService
-  ) {}
+  ) {this.id=this.route.snapshot.params['id']}
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       cv: ['',Validators.required],
@@ -53,7 +53,7 @@ export class PostulerComponent {
     formData.append('cv', this.selectedFile!, this.selectedFile!.name);
     formData.append('lettre', this.selectedFile1!, this.selectedFile1!.name);
   
-    this.candidatureService.addCandidat(formData).subscribe({
+    this.candidatureService.addCandidat(this.id,formData).subscribe({
       next: (candidature) => {
         // Handle successful response
         console.log('Candidature created:', candidature);

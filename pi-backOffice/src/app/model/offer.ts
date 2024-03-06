@@ -1,7 +1,7 @@
-import { Category } from "./category";
 import {Society} from "./society";
 import { Candidature} from "./candidature";
 import { User } from "./user";
+import { Category } from "./category";
 export class Offer{
     id! : number;
     dateEmission!:Date;

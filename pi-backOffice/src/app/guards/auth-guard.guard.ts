@@ -27,7 +27,14 @@ export class AuthGuardGuard implements CanActivate {
       '/profile': [],
       '/update-profile': [],
       '/individuals': ['Admin'],
-      '/associations': ['Admin']
+      '/associations': ['Admin'],
+      '/offerBySociety': ['Exposant'],
+      '/offre': ['Admin'],
+      '/listCandidat':['Student'],
+      '/dashboard': ['Admin','Exposant'],
+
+
+
     };
     const currentRoute = state.url;
     const userRole = this.authService.user?.role;
