@@ -69,11 +69,12 @@ export class DevisService {
     })
   }
   updateDevisStatus(id: number, newStatus: boolean) {
-    return this.http.put(`http://localhost:8087/devis/updateDevisStatus/${id}/true`,{
+    return this.http.put(`http://localhost:8087/devis/updateDevisStatus/${id}/${newStatus}`, null, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,
       })
     });
   }
+  
  
 }

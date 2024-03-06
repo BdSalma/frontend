@@ -13,10 +13,7 @@
                   <div class="col-6 d-flex align-items-center">
                       <h6 class="mb-0"> list des factures </h6>
                   </div>
-                  <div class="col-6 text-end">
-                      <a class="btn bg-gradient-dark mb-0" routerLink="/addInvoice"><i
-                              class="material-icons text-sm">add</i>&nbsp;&nbsp;ajouter facture</a>
-                  </div>
+                 
               </div>
           </div>
         
@@ -39,7 +36,7 @@
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">commentaire</th>
 
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                          <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th> -->
 
                           <th class="text-secondary opacity-7">options</th>
                         </tr>
@@ -59,14 +56,14 @@
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{invoice.comment}}</span>
                           </td>
-                          <td class="align-middle text-center">
+                          <!-- <td class="align-middle text-center">
                             <div  *ngIf="invoice.status" >
                               <span class="badge badge-sm bg-gradient-info" >Accepté</span>
                           </div>
                           
                           <div *ngIf="!invoice.status">
                               <span class="badge badge-sm bg-gradient-danger" >Refusé</span>
-                          </div>
+                          </div></td> -->
                           <td class="align-middle">
                             
                               <button class="btn btn-link text-dark px-3 mb-0" [routerLink]="['/editInvoice',invoice.idInvoice]">

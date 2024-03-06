@@ -47,7 +47,7 @@
 
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">fichier</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                            <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th> -->
 
 
                           <th class="text-secondary opacity-7">options</th>
@@ -70,7 +70,7 @@
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{devis.description}}</span>
                           </td>
-                          <td class="align-middle text-center">
+                          <!-- <td class="align-middle text-center">
                             <div  *ngIf="devis.status" >
                               <span class="badge badge-sm bg-gradient-info" >Accepté</span>
                           </div>
@@ -80,7 +80,7 @@
                           </div>
 
 
-                          </td>
+                          </td> -->
                           <td class="align-middle">
                             <button *ngIf="devis.status" class="btn btn-link text-dark px-3 mb-0" (click)="navigateToAddInvoice(devis.requestSupply?.idRequestSupply)">
                                 <i class="material-icons text-sm me-2">add</i>ajouter facture

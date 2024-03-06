@@ -51,7 +51,7 @@ export class DevisComponent {
   updateDevisStatus(id: number, newStatus: boolean) {
     // Display a simple alert before updating the status
     const userConfirmation = confirm('Etes-vous sûr de vouloir mettre à jour le statut de ce Devis?');
-  
+    console.log(this.devis);
     if (userConfirmation) {
       this.devis.updateDevisStatus(id, newStatus).subscribe(
         () => {

@@ -36,7 +36,7 @@
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">commentaire</th>
 
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                          <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th> -->
 
                         </tr>
                       </thead>
@@ -47,22 +47,20 @@
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{invoice.file}}</span>
                           </td>
-                         
-                        
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{invoice.description}}</span>
                           </td>
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{invoice.comment}}</span>
                           </td>
-                          <td class="align-middle text-center">
+                          <!-- <td class="align-middle text-center">
                             <div  *ngIf="invoice.status" >
                               <span class="badge badge-sm bg-gradient-info" >Accepté</span>
                           </div>
                           
                           <div *ngIf="!invoice.status">
                               <span class="badge badge-sm bg-gradient-danger" >Refusé</span>
-                          </div>                          </td>
+                          </div>                          </td> -->
                           
                          
                         </tr>

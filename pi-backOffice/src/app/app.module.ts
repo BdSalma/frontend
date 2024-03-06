@@ -50,6 +50,17 @@ import { RequestsIndexComponent } from './requests-index/requests-index.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DevisBySocietyComponent } from './devis-by-society/devis-by-society.component';
 import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
+import { ForumComponent } from './ForumComponenets/forum/forum.component';
+import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
+import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
+import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
+import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
+import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
+import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
+import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
+import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
+import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +106,17 @@ import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
     RequestsIndexComponent,
     DevisBySocietyComponent,
     MyInvoicesComponent,
+    ForumComponent,
+    AddForumComponent,
+    PacksListComponent,
+    AddPackComponent,
+    AddStandComponent,
+    StandListComponent,
+    EditPackComponent,
+    EditStandComponent,
+    EditForumComponent,
+    ForumPacksComponent,
+    ReservationPackComponent,
     AboutUsComponent
   ],
   imports: [
