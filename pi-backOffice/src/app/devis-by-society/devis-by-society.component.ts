@@ -23,6 +23,7 @@ idsociety!:string;
       this.devis.getDevisBySociety(this.idsociety).subscribe(
         (data) => {
           this.listDeviss = data;
+          console.log(data);
         },
         (error) => {
           console.error('Error fetching devis:', error);

@@ -30,14 +30,22 @@ import { AddDevisComponent } from './add-devis/add-devis.component';
 import { UpdateInvoiceComponent } from './update-invoice/update-invoice.component';
 import { UpdateDevisComponent } from './update-devis/update-devis.component';
 import { UpdateRequestComponent } from './update-request/update-request.component';
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { NotApprovedComponent } from './not-approved/not-approved.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AssociationsComponent } from './Users/associations/associations.component';
+import { IndividualsComponent } from './Users/individuals/individuals.component';
+import { UserDetailsComponent } from './Users/user-details/user-details.component';
 import { IndexComponent } from './index/index.component';
 import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
 import { FooterIndexComponent } from './footer-index/footer-index.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
-import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
+
 import { RequestsIndexComponent } from './requests-index/requests-index.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DevisBySocietyComponent } from './devis-by-society/devis-by-society.component';
@@ -71,17 +79,23 @@ import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
     UpdateInvoiceComponent,
     UpdateDevisComponent,
     UpdateRequestComponent,
+    NotFoundComponent,
+    EmailVerificationComponent,
+    NotApprovedComponent,
+    UpdateProfileComponent,
+    AssociationsComponent,
+    IndividualsComponent,
+    UserDetailsComponent,
     IndexComponent,
     NavbarIndexComponent,
     FooterIndexComponent,
     HeaderComponent,
     ContactUsComponent,
     AboutUsComponent,
-    SignInIndexComponent,
-    SignUpIndexComponent,
     RequestsIndexComponent,
     DevisBySocietyComponent,
     MyInvoicesComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +104,19 @@ import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:5000,
+      tapToDismiss:true,
+      closeButton:true,
+      preventDuplicates:true,
+      progressBar:true,
+      disableTimeOut:false,
+      positionClass: 'toast-top-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

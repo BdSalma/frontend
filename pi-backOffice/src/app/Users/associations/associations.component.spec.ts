@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignInIndexComponent } from './sign-in-index.component';
+import { AssociationsComponent } from './associations.component';
 
-describe('SignInIndexComponent', () => {
-  let component: SignInIndexComponent;
-  let fixture: ComponentFixture<SignInIndexComponent>;
+describe('AssociationsComponent', () => {
+  let component: AssociationsComponent;
+  let fixture: ComponentFixture<AssociationsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SignInIndexComponent ]
+      declarations: [ AssociationsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SignInIndexComponent);
+    fixture = TestBed.createComponent(AssociationsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

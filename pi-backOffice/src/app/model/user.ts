@@ -7,6 +7,8 @@ export class User {
     username!: string;
     password!: string;
     email!: string;
+    approve!:boolean;
+    activate!:boolean;
     forums!: Forum[];
     reclamations!: Reclamation[];
     sponsors!: Sponsor[];

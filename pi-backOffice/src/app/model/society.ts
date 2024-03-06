@@ -10,6 +10,7 @@ export class Society extends User {
     owner!: string;
     sector!: string;
     sitFin!: string;
+    representative!: string;
     role!: SocietyRole;
     devis!: Devis[];
     offers!: Offer[];

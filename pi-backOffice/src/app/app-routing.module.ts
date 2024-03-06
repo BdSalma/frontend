@@ -25,45 +25,76 @@ import { UpdateRequestComponent } from './update-request/update-request.componen
 import { IndexComponent } from './index/index.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
-import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
 import { RequestsIndexComponent } from './requests-index/requests-index.component';
 import { DevisBySocietyComponent } from './devis-by-society/devis-by-society.component';
 import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AssociationsComponent } from './Users/associations/associations.component';
+import { IndividualsComponent } from './Users/individuals/individuals.component';
+import { UserDetailsComponent } from './Users/user-details/user-details.component';
+import { NotApprovedComponent } from './not-approved/not-approved.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
-{path:'dashboard',component:DashboradComponent},
-{path:'index',component:IndexComponent},
-{path:'contact',component:ContactUsComponent},
-{path:'about',component:AboutUsComponent},
-{path:'billing',component:BillingComponent},
-{path:'profile',component:ProfileComponent},
-{path:'icons',component:IconsComponent},
-{path:'signIn',component:SignInComponent},
-{path:'signInindex',component:SignInIndexComponent},
-{path:'signUpindex',component:SignUpIndexComponent},
-{path:'signUp',component:SignUpComponent},
-{path:'table',component:TableComponent},
-{path:'map',component:MapComponent},
-{path:'notification',component:NotificationsComponent},
-{path:'rtl',component:RtlComponent},
-{path:'template',component:TemplateComponent},
-{path:'typography',component:TypographyComponent},
-{path:'virtualReality',component:VirtualRealityComponent},
-{path:'supplyrequests',component:RequestsComponent},
-{path:'addRequest',component:AddRequestComponent},
-{path:'invoices',component:InvoicesComponent},
-{path:'addInvoice/:requestId',component:AddInvoiceComponent},
-{path:'devis/:requestId',component:DevisComponent},
-{path:'devis',component:DevisBySocietyComponent},
-{path:'addDevis',component:AddDevisComponent},
-{path:'editInvoice/:id',component:UpdateInvoiceComponent},
-{path:'editDevis/:id',component:UpdateDevisComponent},
-{path:'editRequest/:id',component:UpdateRequestComponent},
-{ path: 'createDevisAndAssignToRequest/:requestId', component: AddDevisComponent },
-{ path: 'supply-requests', component: RequestsIndexComponent },
-{ path: 'my-invoices/:societyId', component: MyInvoicesComponent },
-
+  { path: 'supplyrequests', component: RequestsComponent },
+  { path: 'addRequest', component: AddRequestComponent },
+  { path: 'invoices', component: InvoicesComponent },
+  { path: 'addInvoice/:requestId', component: AddInvoiceComponent },
+  { path: 'devis/:requestId', component: DevisComponent },
+  { path: 'devis', component: DevisBySocietyComponent },
+  { path: 'addDevis', component: AddDevisComponent },
+  { path: 'editInvoice/:id', component: UpdateInvoiceComponent },
+  { path: 'editDevis/:id', component: UpdateDevisComponent },
+  { path: 'editRequest/:id', component: UpdateRequestComponent },
+  { path: 'createDevisAndAssignToRequest/:requestId', component: AddDevisComponent },
+  { path: 'supply-requests', component: RequestsIndexComponent },
+  { path: 'my-invoices/:societyId', component: MyInvoicesComponent },
+  { path: 'emailVerification', component: EmailVerificationComponent },
+  { path: 'notApproved', component: NotApprovedComponent },
+  { path: 'dashboard', component: DashboradComponent },
+  { path: 'billing', component: BillingComponent },
+  { path: 'dashboard', component: DashboradComponent },
+  { path: 'index', component: IndexComponent },
+  { path: 'contact', component: ContactUsComponent },
+  { path: 'about', component: AboutUsComponent },
+  { path: 'billing', component: BillingComponent },
+  {
+    path: 'individuals',
+    component: IndividualsComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'user-details/:id',
+    component: UserDetailsComponent,
+  },
+  {
+    path: 'associations',
+    component: AssociationsComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'update-profile',
+    component: UpdateProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  { path: 'icons', component: IconsComponent },
+  { path: 'signIn', component: SignInComponent },
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'table', component: TableComponent },
+  { path: 'map', component: MapComponent },
+  { path: 'notification', component: NotificationsComponent },
+  { path: 'rtl', component: RtlComponent },
+  { path: 'template', component: TemplateComponent },
+  { path: 'typography', component: TypographyComponent },
+  { path: 'virtualReality', component: VirtualRealityComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
