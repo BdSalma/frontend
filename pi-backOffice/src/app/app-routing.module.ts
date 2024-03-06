@@ -13,7 +13,6 @@ import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
-import {OffersComponent} from './offers/offers.component';
 import { RequestsComponent } from './requests/requests.component';
 import { AddRequestComponent } from './add-request/add-request.component';
 import { InvoicesComponent } from './invoices/invoices.component';
@@ -23,13 +22,26 @@ import { AddDevisComponent } from './add-devis/add-devis.component';
 import { UpdateInvoiceComponent } from './update-invoice/update-invoice.component';
 import { UpdateDevisComponent } from './update-devis/update-devis.component';
 import { UpdateRequestComponent } from './update-request/update-request.component';
+import { IndexComponent } from './index/index.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
+import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
+import { RequestsIndexComponent } from './requests-index/requests-index.component';
+import { DevisBySocietyComponent } from './devis-by-society/devis-by-society.component';
+import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: DashboradComponent },
 {path:'dashboard',component:DashboradComponent},
+{path:'index',component:IndexComponent},
+{path:'contact',component:ContactUsComponent},
+{path:'about',component:AboutUsComponent},
 {path:'billing',component:BillingComponent},
 {path:'profile',component:ProfileComponent},
 {path:'icons',component:IconsComponent},
 {path:'signIn',component:SignInComponent},
+{path:'signInindex',component:SignInIndexComponent},
+{path:'signUpindex',component:SignUpIndexComponent},
 {path:'signUp',component:SignUpComponent},
 {path:'table',component:TableComponent},
 {path:'map',component:MapComponent},
@@ -38,18 +50,19 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
-{path:'offers',component:OffersComponent},
 {path:'supplyrequests',component:RequestsComponent},
 {path:'addRequest',component:AddRequestComponent},
 {path:'invoices',component:InvoicesComponent},
-{path:'addInvoice',component:AddInvoiceComponent},
-{path:'devis',component:DevisComponent},
+{path:'addInvoice/:requestId',component:AddInvoiceComponent},
+{path:'devis/:requestId',component:DevisComponent},
+{path:'devis',component:DevisBySocietyComponent},
 {path:'addDevis',component:AddDevisComponent},
 {path:'editInvoice/:id',component:UpdateInvoiceComponent},
 {path:'editDevis/:id',component:UpdateDevisComponent},
 {path:'editRequest/:id',component:UpdateRequestComponent},
-{ path: 'add-devis/:requestId', component: AddDevisComponent }
-
+{ path: 'createDevisAndAssignToRequest/:requestId', component: AddDevisComponent },
+{ path: 'supply-requests', component: RequestsIndexComponent },
+{ path: 'my-invoices/:societyId', component: MyInvoicesComponent },
 
 ];
 

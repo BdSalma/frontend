@@ -26,7 +26,17 @@ export class DevisService {
     return this.http.put(`http://localhost:8087/devis/updateDevis/${id}`,o);
   }
 
-  createDevisAndAssignToRequest(requestSupplyId: number, devis: Devis) {
-    return this.http.post(`http://localhost:8087/create_Devis_And_Assign_To_Request/${requestSupplyId}`, devis);
+  createDevisAndAssignToRequest(requestId: number, devis: Devis) {
+    return this.http.post(`http://localhost:8087/devis/createDevisAndAssignToRequest/${requestId}/bbb`, devis);
   }
+  getDevisByRequest(requestId: number){
+    return this.http.get(`http://localhost:8087/devis/getDevisByRequestSupply/${requestId}`);
+  }
+  getDevisBySociety(societyId : String){
+    return this.http.get(`http://localhost:8087/devis/getDevisBySociety/bbb`);
+  }
+  updateDevisStatus(id: number, newStatus: boolean) {
+    return this.http.put(`http://localhost:8087/devis/updateDevisStatus/${id}/${newStatus}`, {});
+  }
+ 
 }

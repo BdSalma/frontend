@@ -6,44 +6,50 @@
       <div class="col-9">
         <app-navbar></app-navbar>
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-          <div class="container-fluid py-4">
-            <div class="page-header min-vh-100">
-              <div class="container">
-                <div class="row">
-                  <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                    <div class="card card-plain">
-                      <div class="card-header">
-                        <h4 class="font-weight-bolder">Add Devis</h4>
-                      </div>
-                      <div class="card-body">
+            <br>
+            <div class="row">
+              <div class="col-12">
+                <div class="card my-4">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                      <h6 class="text-white text-capitalize ps-3">ajouter devis </h6>
+                    </div>
+                  </div> 
+                  <div class="card-body px-0 pb-2">
+                    <div class="col-md-12 mb-lg-0 mb-4">
+                      <div class="card mt-4">                      
+                        
+                        <div class="card-header pb-0 p-3">
+                          <div class="row">
+                            <div class="row">
                         <form  role="form" [formGroup]="devisForm" (ngSubmit)="onSubmit()">
 
                           <div class="input-group input-group-outline mb-3">
-                            <label >file :&nbsp;&nbsp;&nbsp;         </label>
-                            <input type="file" class="form-control" formControlName="file" placeholder="file">
+                            <label >fichier :&nbsp;&nbsp;&nbsp;         </label>
+                            <input type="file" class="form-control" formControlName="file" placeholder="fichier">
                           </div>
-                          <div *ngIf="devisForm.controls['file'].errors && devisForm.get('file')?.touched">
-                              <div *ngIf="devisForm.controls['file'].hasError('required')">required</div>
+                          <div class="text-danger" *ngIf="devisForm.controls['file'].errors && devisForm.get('file')?.touched">
+                              <div *ngIf="devisForm.controls['file'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                            <label >Description</label>
+                            <label >Description : </label>
                             <input type="text" class="form-control" formControlName="description" placeholder="description">
                           </div>
-                          <div *ngIf="devisForm.controls['description'].errors && devisForm.get('description')?.touched">
-                              <div *ngIf="devisForm.controls['description'].hasError('required')">Obligatoire</div>
+                          <div class="text-danger" *ngIf="devisForm.controls['description'].errors && devisForm.get('description')?.touched">
+                              <div *ngIf="devisForm.controls['description'].hasError('required')">Ce champ est obligatoire</div>
                           </div><div class="input-group input-group-outline mb-3">
-                            <label >price</label>
-                            <input type="text" class="form-control" formControlName="price" placeholder="price">
+                            <label >Prix : </label>
+                            <input type="text" class="form-control" formControlName="price" placeholder="prix">
                           </div>
-                          <div *ngIf="devisForm.controls['price'].errors && devisForm.get('price')?.touched">
-                              <div *ngIf="devisForm.controls['price'].hasError('required')">Obligatoire</div>
+                          <div class="text-danger" *ngIf="devisForm.controls['price'].errors && devisForm.get('price')?.touched">
+                              <div *ngIf="devisForm.controls['price'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                            <label >quantity</label>
-                            <input type="text" class="form-control" formControlName="quantity" placeholder="quantity">
+                            <label >quantité : </label>
+                            <input type="text" class="form-control" formControlName="quantity" placeholder="quantité">
                           </div>
-                          <div *ngIf="devisForm.controls['quantity'].errors && devisForm.get('quantity')?.touched">
-                              <div *ngIf="devisForm.controls['quantity'].hasError('required')">Obligatoire</div>
+                          <div class="text-danger" *ngIf="devisForm.controls['quantity'].errors && devisForm.get('quantity')?.touched">
+                              <div *ngIf="devisForm.controls['quantity'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           
                             
@@ -54,16 +60,20 @@
                         </form>
                       </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <app-footer></app-footer>
-        </main>
-      </div>
+        </div>
     </div>
-
+  </div>
+  </div>
+  </div>
+  
+  <br>
+  <br><br><br><br>x
+  <app-footer></app-footer>
+  </main>
+  </div>
+  </div>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>

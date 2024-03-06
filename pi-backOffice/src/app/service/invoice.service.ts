@@ -23,4 +23,11 @@ export class InvoiceService {
   putInvoice(id:number,o:Invoice){
     return this.http.put(`http://localhost:8087/invoice/updateInvoice/${id}`,o);
   }
+
+  addAndAssignInvoiceToRequest(invoice: Invoice, requestSupplyId: number) {
+    return this.http.post(`http://localhost:8087/invoice/assignToRequest/${requestSupplyId}`, invoice);
+  }
+  getInvoicesBySociety(societyId: String) {
+    return this.http.get(`http://localhost:8087/invoice/getInvoicesBySociety/bbb}`);
+  }
 }

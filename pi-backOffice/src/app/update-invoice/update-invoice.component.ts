@@ -16,8 +16,8 @@ export class UpdateInvoiceComponent {
 }
 ngOnInit(){
   this.updateForm= new FormGroup({
-    file:new FormControl('',Validators.required),
-      description: new FormControl('', Validators.required),
+    status:new FormControl('',Validators.required),
+      comment: new FormControl('', Validators.required),
 
   });
   this.id=this.route.snapshot.params['id'];

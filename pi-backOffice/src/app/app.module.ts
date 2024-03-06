@@ -19,7 +19,6 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { OffersComponent } from './offers/offers.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RequestsComponent } from './requests/requests.component';
@@ -31,6 +30,18 @@ import { AddDevisComponent } from './add-devis/add-devis.component';
 import { UpdateInvoiceComponent } from './update-invoice/update-invoice.component';
 import { UpdateDevisComponent } from './update-devis/update-devis.component';
 import { UpdateRequestComponent } from './update-request/update-request.component';
+import { IndexComponent } from './index/index.component';
+import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
+import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
+import { RequestsIndexComponent } from './requests-index/requests-index.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DevisBySocietyComponent } from './devis-by-society/devis-by-society.component';
+import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +62,6 @@ import { UpdateRequestComponent } from './update-request/update-request.componen
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    OffersComponent,
     RequestsComponent,
     AddRequestComponent,
     InvoicesComponent,
@@ -60,14 +70,26 @@ import { UpdateRequestComponent } from './update-request/update-request.componen
     AddDevisComponent,
     UpdateInvoiceComponent,
     UpdateDevisComponent,
-    UpdateRequestComponent
+    UpdateRequestComponent,
+    IndexComponent,
+    NavbarIndexComponent,
+    FooterIndexComponent,
+    HeaderComponent,
+    ContactUsComponent,
+    AboutUsComponent,
+    SignInIndexComponent,
+    SignUpIndexComponent,
+    RequestsIndexComponent,
+    DevisBySocietyComponent,
+    MyInvoicesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

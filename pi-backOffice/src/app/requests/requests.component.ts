@@ -16,7 +16,7 @@ export class RequestsComponent {
   }
 
   loadRequests() {
-    this.requests.getRequests().subscribe(
+    this.requests.getRequestsByIndividus().subscribe(
       (data) => {
         this.listRequests = data;
       },
@@ -37,10 +37,16 @@ export class RequestsComponent {
       }
     );
   }
-  navigateToAddDevis(requestId: number) {
-    this.router.navigate(['/add-devis', requestId]);
+  confirmDelete(requestId: number) {
+    const confirmed = window.confirm('Êtes-vous sûr de vouloir supprimer cette demande ?');
+    if (confirmed) {
+      this.deleteRequest(requestId);
+    }
   }
 
+  navigateTolistDevis(requestId: any) {
+    this.router.navigate(['/devis', requestId]);
+  }
   
 
 }

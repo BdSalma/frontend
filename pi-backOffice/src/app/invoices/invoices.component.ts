@@ -24,16 +24,5 @@ export class InvoicesComponent {
       }
     );
   }
-  deleteInvoice(InvoiceId: number) {
-    this.Invoices.DeleteInvoice(InvoiceId).subscribe(
-      () => {
-        console.log('Offer deleted successfully.');
-        // Actualiser la liste des offres après la suppression
-        this.loadInvoices();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+ 
 }

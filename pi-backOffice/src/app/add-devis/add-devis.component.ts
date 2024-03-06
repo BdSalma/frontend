@@ -11,7 +11,7 @@ import { DevisService } from '../service/devis.service';
 export class AddDevisComponent {
   devisForm!: FormGroup;
 
-  @Input() requestSupplyId!: number; // Remove @Input decorator
+ requestId!: number; 
 
   constructor(
     private devis: DevisService,
@@ -27,35 +27,46 @@ export class AddDevisComponent {
       quantity: new FormControl('', Validators.required)
     });
 
-    this.requestSupplyId = +this.route.snapshot.params['requestId']; // Get requestId from route parameters
-
+    const params = this.route.snapshot.params;
+    if (params['requestId']) {
+      this.requestId = +params['requestId'];
+    } else {
+      console.error('Missing requestId in route parameters');
+      // Handle missing requestId (e.g., redirect, display error message)
+    }
   }
 
   onSubmit() {
     console.log(this.devisForm.value);
-    alert('Success\n\n' + JSON.stringify(this.devisForm.value, null, 4));
+    //alert('Success\n\n' + JSON.stringify(this.devisForm.value, null, 4));
   }
 
   reset() {
     this.devisForm.reset();
   }
 
-  // ajouter() {
-  //   this.devis.createDevisAndAssignToRequest(this.requestSupplyId, this.devisForm.value).subscribe(
-  //     () => {
-  //       console.log('Devis created and assigned successfully.');
-  //       this.router.navigateByUrl('/devis');
-  //     },
-  //     error => {
-  //       console.error('Error creating and assigning Devis:', error);
-  //     }
-  //   );
-  // }
-  ajouter(){
-  this.devis.AddDevis(this.devisForm.value).subscribe(
-    {next:()=>this.router.navigateByUrl('/devis'),
-    error:(error)=>console.log(error)}
-  )
+  ajouter() {
+    if (this.devisForm.valid) {
+      this.devis.createDevisAndAssignToRequest(this.requestId, this.devisForm.value).subscribe(
+        () => {
+          console.log(this.requestId);
+          console.log('Devis created and assigned successfully.');
+          this.router.navigateByUrl('/devis'); // Navigate to 'devis' route after success
+        },
+        error => {
+          console.error('Error creating and assigning Devis:', error);
+          // Handle errors during devis creation (e.g., display error message)
+        }
+      );
+    } else {
+      console.error('Devis form is invalid!');
+    }
+  }
+  // ajouter(){
+  // this.devis.AddDevis(this.devisForm.value).subscribe(
+  //   {next:()=>this.router.navigateByUrl('/devis'),
+  //   error:(error)=>console.log(error)}
+  // )
 
-}
+// }
 }
