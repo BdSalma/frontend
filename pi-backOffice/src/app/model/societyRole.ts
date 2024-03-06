@@ -1,4 +1,4 @@
 export enum SocietyRole {
-    Exposant,
-    Fourniseur
+    Exposant = 'Exposant',
+    Fourniseur = 'Fourniseur'
 }

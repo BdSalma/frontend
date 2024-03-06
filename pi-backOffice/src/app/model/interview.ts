@@ -1,5 +1,4 @@
 import { Candidature } from "./candidature";
-
 import { InterviewType } from "./interviewType";
 import { Room } from "./room";
 
@@ -11,4 +10,5 @@ export class Interview {
     candidature!: Candidature;
     room!: Room[];
     titre!:string;
+    rooms!: Room[];
 }

@@ -5,7 +5,6 @@ import { User } from "./user";
 
 export class Individu extends User {
 
-
     override id!: string;
     identity!: string;
     firstName!: string;

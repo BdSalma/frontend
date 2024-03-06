@@ -1,7 +1,6 @@
 import { RequestSupply } from "./requestSupply";
 import {Society} from "./society";
 export class Devis {
-
     id!: number;
     price!: number;
     quantity!: number;
@@ -10,5 +9,4 @@ export class Devis {
     status!: boolean;
     requestSupply!: RequestSupply;
     society!: Society;
-
 }

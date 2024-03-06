@@ -3,8 +3,6 @@ import { Individu } from "./individus";
 import { Invoice } from "./invoice";
 
 export class RequestSupply {
-
-
     idRequestSupply!: number;
     quantity!: number;
     category!: string;
@@ -14,5 +12,4 @@ export class RequestSupply {
     devis!: Devis[];
     invoice!: Invoice;
     individu!: Individu;
-
 }

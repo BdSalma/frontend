@@ -5,7 +5,6 @@ import { User } from "./user";
 
 export class Society extends User {
 
-
     override id!: string;
     matricule!: number;
     logo!: string;
@@ -16,5 +15,4 @@ export class Society extends User {
     role!: SocietyRole;
     devis!: Devis[];
     offers!: Offer[];
-
 }

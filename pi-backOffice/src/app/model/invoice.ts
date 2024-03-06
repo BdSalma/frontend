@@ -7,6 +7,4 @@ export class Invoice {
     status!: boolean;
     comment!: string;
     requestSupply!: RequestSupply;
-
-   
 }

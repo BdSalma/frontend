@@ -7,5 +7,4 @@ export class Reclamation {
     description!: string;
     typeReclamation!: TypeReclamation;
     user!: User;
-
 }

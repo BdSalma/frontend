@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Candidature } from '../model/candidature';
+import { Authentication } from '../services/authentication.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,12 +10,21 @@ export class CandidatureService {
   private baseUrl = "http://localhost:8087/candidat";
   private baseUrl1 = "http://localhost:8087/interview";
   private baseUrl2 = "http://localhost:8087/room";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auth:Authentication) {
+   }
   getData(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/candidatbyoffer/2`);
+    return this.http.get(`${this.baseUrl}/candidatbyoffer/1`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
   getDataCandidat(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/candidatbyuser/1`);
+    return this.http.get(`${this.baseUrl}/candidatbyuser`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
@@ -58,48 +68,74 @@ export class CandidatureService {
   }
   
   private fetchBlob(url: string): Observable<Blob> {
-    const headers = new HttpHeaders();
-    headers.set('Accept', 'application/octet-stream'); // Set appropriate headers
-  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`, // Add authorization header
+      Accept: 'application/octet-stream' // Set appropriate header for PDF download
+    });
+
     return this.http.get(url, { headers, responseType: 'blob' });
   }
   
-  addCandidat(formData: FormData): Observable<any> {
-    let url = `${this.baseUrl}/addcandidat/2/1`; // Replace with your actual URL
-    return this.http.post<any>(url, formData); // Use generics for response type
+  addCandidat(formData: FormData): Observable<Candidature> { // Specify return type
+    const url = `${this.baseUrl}/addcandidat/1`; // Replace with actual URL
+    return this.http.post<Candidature>(url, formData, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    });    
   }
+  
  
   getRooms(): Observable<any> {
-    return this.http.get(`${this.baseUrl2}/allrooms`);
+    return this.http.get(`${this.baseUrl2}/allrooms`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
   getInterview(): Observable<any> {
-    return this.http.get(`${this.baseUrl1}/allInterview`);
+    return this.http.get(`${this.baseUrl1}/allInterview`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
   
   updateCandidature(id: number, updatedData: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/updateCandidat/${id}`, updatedData);
+    return this.http.put(`${this.baseUrl}/updateCandidat/${id}`, updatedData, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
   accepterCandidature(id: number): Observable<Candidature> {
     const url = `${this.baseUrl}/accepterCandidat/${id}`;
-    return this.http.put<Candidature>(url, {});
+    return this.http.put<Candidature>(url, {}, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
   getById(id:number): Observable<any>{
-     return this.http.get(`${this.baseUrl}/${id}`);
+     return this.http.get(`${this.baseUrl}/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
   delete(id:number): Observable<any>{
-    return this.http.delete(`${this.baseUrl1}/deleteI/${id}`);
+    return this.http.delete(`${this.baseUrl1}/deleteI/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
  }
- /* addInterview(id: number,interview:any,roomId?: number): Observable<any> {
-    let url = `${this.baseUrl1}/addI/${id}`;
-  
-  if (roomId !== undefined && roomId !== null) {
-    url += `?room=${roomId}`;
-  }
-
-  return this.http.post(url, interview);
-  } */
 
   addInterview(url: string, interview: any): Observable<any> {
-    return this.http.post(url, interview);
+    return this.http.post(url, interview , {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
   }
 }

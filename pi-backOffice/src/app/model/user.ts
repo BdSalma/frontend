@@ -8,8 +8,9 @@ export class User {
     username!: string;
     password!: string;
     email!: string;
-    forums!: Forum[];
     reclamations!: Reclamation[];
     sponsors!: Sponsor[];
-
+    approve!:boolean;
+    activate!:boolean;
+    forums!: Forum[];
 }

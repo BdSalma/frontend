@@ -49,18 +49,24 @@ export class PostulerComponent {
     console.log(this.registerForm.value);
   }
   Add() {
-    
-      const formData = new FormData();
-      formData.append('cv', this.selectedFile!, this.selectedFile!.name); // Use ! to assert non-null
-      formData.append('lettre', this.selectedFile1!, this.selectedFile1!.name); // Append lettre value from form
-
-    this.candidatureService.addCandidat(formData).subscribe(
-      {
-        next: () => this.router.navigateByUrl('/listCandidat'),
-        error: (error) => console.log(error)
+    const formData = new FormData();
+    formData.append('cv', this.selectedFile!, this.selectedFile!.name);
+    formData.append('lettre', this.selectedFile1!, this.selectedFile1!.name);
+  
+    this.candidatureService.addCandidat(formData).subscribe({
+      next: (candidature) => {
+        // Handle successful response
+        console.log('Candidature created:', candidature);
+        this.router.navigateByUrl('/listCandidat');
+      },
+      error: (error) => {
+        // Handle errors gracefully
+        console.error('Error creating candidature:', error);
+        // Display appropriate error messages to the user
       }
-    );
+    });
   }
+  
   goToCandidature() {
     // Navigate to the update component with the client's ID as parameter
     this.router.navigate(['/listCandidat']);
