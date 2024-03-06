@@ -25,6 +25,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { OffersComponent } from './offers/offers.component';
 import { UserService } from './user-service.service';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
+import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
+import { IndexComponent } from './index/index.component';
+import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterIndexComponent } from './footer-index/footer-index.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialog } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,13 +55,20 @@ import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
     OffersComponent,
     UserListComponent,
     UserFormComponent,
-    SponsorEditComponent
+    SponsorEditComponent,
+    ChatbotDialogComponent,
+    IndexComponent,
+    NavbarIndexComponent,
+    HeaderComponent,
+    FooterIndexComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -1,0 +1,28 @@
+.btn-chatbot {
+    font-size: 1.2rem; /* Ajuster la taille de la police */
+    padding: 15px 40px; /* Ajuster les marges intérieures pour rendre le bouton plus grand */
+    border-radius: 30px; /* Rendre le bouton plus arrondi */
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Supprimer la bordure */
+    transition: background-color 0.3s ease; /* Ajouter une transition au survol */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Ajouter une ombre */
+}
+
+.btn-chatbot:hover {
+    background-color: #45a049; /* Couleur de fond au survol */
+}
+
+.btn-chatbot:active {
+    background-color: #3e8e41; /* Couleur de fond lorsque le bouton est enfoncé */
+}
+
+.btn-chatbot:focus {
+    outline: none; /* Supprimer la bordure de focus */
+}
+
+.icon-chatbot {
+    width: 200px; /* Définir la largeur de l'image */
+    height: auto; /* Laisser la hauteur ajustée automatiquement pour conserver les proportions de l'image */
+    margin-right: 20px; /* Ajouter un peu d'espace entre l'image et le texte */
+}

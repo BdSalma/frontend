@@ -17,6 +17,9 @@ import {OffersComponent} from './offers/offers.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
+import { IndexComponent } from './index/index.component';
+import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
+
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'adduser', component: UserFormComponent },
@@ -34,8 +37,8 @@ const routes: Routes = [
 {path:'typography',component:TypographyComponent},
 {path:'virtualReality',component:VirtualRealityComponent},
 {path:'offers',component:OffersComponent},
-{ path: 'edituser/:id', component: SponsorEditComponent }
-
+{ path: 'edituser/:id', component: SponsorEditComponent },
+{ path: 'sponsor', component: ChatbotDialogComponent }
 
 
 
