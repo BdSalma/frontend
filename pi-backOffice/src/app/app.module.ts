@@ -57,10 +57,15 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 import { UserService } from './user-service.service';
+import { CommonModule } from '@angular/common';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    
+FooterComponent,
+SidebarComponent,
+    ReclamationComponent,
     ChatbotDialogComponent,
     SponsorEditComponent,
     UserListComponent,
@@ -122,6 +127,7 @@ import { UserService } from './user-service.service';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CommonModule,
     ToastrModule.forRoot({
       timeOut:5000,
       tapToDismiss:true,
@@ -132,8 +138,10 @@ import { UserService } from './user-service.service';
       positionClass: 'toast-top-right',
     }),
 
-  ],
+  ], 
+  exports: [],
   providers: [Authentication,UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
