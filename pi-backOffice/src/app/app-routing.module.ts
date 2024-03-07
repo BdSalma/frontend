@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { DashboradComponent } from './dashborad/dashborad.component';
+import { CommonModule } from '@angular/common';
 import { BillingComponent } from './billing/billing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { IconsComponent } from './icons/icons.component';
@@ -12,6 +11,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { RtlComponent } from './rtl/rtl.component';
 import { TemplateComponent } from './template/template.component';
 import { TypographyComponent } from './typography/typography.component';
+import { CandidatureComponent } from './candidature/candidature.component';
 import { VirtualRealityComponent } from './virtual-reality/virtual-reality.component';
 import { RequestsComponent } from './requests/requests.component';
 import { AddRequestComponent } from './add-request/add-request.component';
@@ -47,7 +47,53 @@ import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.comp
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
 import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
+
+
+import { UpdateComponent } from './candidature/update.component';
+import { InterviewComponent } from './interview/interview.component';
+import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
+
+
+import { ListCandidatureComponent } from './list-candidature/list-candidature.component';
+import { PostulerComponent } from './postuler/postuler.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
+
+
+import { OffersComponent } from './offers/offers.component';
+import { AddOfferComponent } from './add-offer/add-offer.component';
+import { UpdateOfferComponent } from './update-offer/update-offer.component';
+import { DetailOfferComponent } from './detail-offer/detail-offer.component';
+import { OfferBySocietyComponent } from './offer-by-society/offer-by-society.component';
+
+import { IndexOffersComponent } from './index-offers/index-offers.component';
+import { PageOffersComponent } from './page-offers/page-offers.component';
+import { ListOffersComponent } from './list-offers/list-offers.component';
+
+import { FeedBackComponent } from './feed-back/feed-back.component';
+import { RouterModule, Routes } from '@angular/router';
+import { DashboradComponent } from './dashborad/dashborad.component';
+
 const routes: Routes = [
+  { path: '', component: IndexComponent },
+  { path: 'moreOffers', component: PageOffersComponent },
+  { path: 'offersIndex', component: IndexOffersComponent },
+  { path: 'offre', component: OffersComponent, canActivate: [AuthGuardGuard] },
+  { path: 'offerBySociety', component: OfferBySocietyComponent, canActivate: [AuthGuardGuard] },
+  { path: 'DetailOffre/:id', component: DetailOfferComponent },
+  { path: 'editOffer/:id', component: UpdateOfferComponent },
+  { path: 'addOffer', component: AddOfferComponent },
+  { path: 'dashboard', component: DashboradComponent },
+  { path: 'index', component: IndexComponent },
+  { path: 'candidat/:id', component: CandidatureComponent },
+  { path: 'table', component: TableComponent },
+  { path: 'map', component: MapComponent },
+  { path: 'notification', component: NotificationsComponent },
+  { path: 'template', component: TemplateComponent },
+  { path: 'updateC/:id', component: UpdateComponent },
+  { path: 'addInterv/:id', component: InterviewComponent },
+  { path: 'listInterv', component: ListInterviewComponent },
+  { path: 'listCandidat', component: ListCandidatureComponent, canActivate: [AuthGuardGuard] },
+  { path: 'postuler/:id', component: PostulerComponent },
   { path: '', pathMatch: 'full', component: DashboradComponent },
   { path: 'supplyrequests', component: RequestsComponent },
   { path: 'addRequest', component: AddRequestComponent },
@@ -64,24 +110,22 @@ const routes: Routes = [
   { path: 'my-invoices/:societyId', component: MyInvoicesComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
-  { path: 'dashboard', component: DashboradComponent },
-  { path: 'billing', component: BillingComponent },
-  { path: 'dashboard', component: DashboradComponent },
-  { path: 'index', component: IndexComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'about', component: AboutUsComponent },
+  { path: 'reclamation', component: ReclamationComponent },
+  { path: 'feed', component: FeedBackComponent },
   { path: 'billing', component: BillingComponent },
-  {path:'forumList',component:ForumComponent},
-  {path:'addForum',component:AddForumComponent},
-  {path:'standList',component:StandListComponent},
-  {path:'packList',component:PacksListComponent},
-  {path:'addStand',component:AddStandComponent},
-  {path:'addPack',component:AddPackComponent},
-  {path: 'editPack/:id', component: EditPackComponent },
-  {path: 'editStand/:id', component: EditStandComponent },
-  {path: 'editForum/:id', component: EditForumComponent },
-  {path: 'packForum', component: ForumPacksComponent },
-  {path: 'reservationPack/:typePack', component: ReservationPackComponent },
+  { path: 'forumList', component: ForumComponent },
+  { path: 'addForum', component: AddForumComponent },
+  { path: 'standList', component: StandListComponent },
+  { path: 'packList', component: PacksListComponent },
+  { path: 'addStand', component: AddStandComponent },
+  { path: 'addPack', component: AddPackComponent },
+  { path: 'editPack/:id', component: EditPackComponent },
+  { path: 'editStand/:id', component: EditStandComponent },
+  { path: 'editForum/:id', component: EditForumComponent },
+  { path: 'packForum', component: ForumPacksComponent },
+  { path: 'reservationPack/:typePack', component: ReservationPackComponent },
   {
     path: 'individuals',
     component: IndividualsComponent,
@@ -109,15 +153,13 @@ const routes: Routes = [
   { path: 'icons', component: IconsComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
-  { path: 'table', component: TableComponent },
-  { path: 'map', component: MapComponent },
-  { path: 'notification', component: NotificationsComponent },
   { path: 'rtl', component: RtlComponent },
-  { path: 'template', component: TemplateComponent },
   { path: 'typography', component: TypographyComponent },
   { path: 'virtualReality', component: VirtualRealityComponent },
   { path: '**', component: NotFoundComponent },
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

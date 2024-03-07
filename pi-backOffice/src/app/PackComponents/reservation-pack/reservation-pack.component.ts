@@ -4,7 +4,7 @@ import { PackServiceService } from 'src/app/Service/pack-service.service';
 import { StandServiceService } from 'src/app/Service/stand-service.service';
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
-import { TypePack } from 'src/app/model/typePack';
+
 
 @Component({
   selector: 'app-reservation-pack',
