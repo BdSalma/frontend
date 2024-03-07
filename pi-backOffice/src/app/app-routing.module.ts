@@ -47,7 +47,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FeedBackComponent } from './feed-back/feed-back.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboradComponent } from './dashborad/dashborad.component';
-
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
+import { UserService } from './user-service.service';
+import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 const routes: Routes = [
 {path:'',component:IndexComponent},
 {path:'moreOffers',component:PageOffersComponent},
@@ -110,7 +114,13 @@ const routes: Routes = [
   { path: 'rtl', component: RtlComponent },
   { path: 'typography', component: TypographyComponent },
   { path: 'virtualReality', component: VirtualRealityComponent },
-  { path: '**', component: NotFoundComponent },
+
+  { path: 'edituser/:id', component: SponsorEditComponent },
+  { path: 'sponsor', component: ChatbotDialogComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'adduser', component: UserFormComponent },
+  { path: '**', component: NotFoundComponent }
+
 ];
 
 

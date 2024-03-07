@@ -52,10 +52,19 @@ import { ListOffersComponent } from './list-offers/list-offers.component';
 import { NgModule } from '@angular/core';
 import { FeedBackComponent } from './feed-back/feed-back.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
-
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
+import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
+import { UserService } from './user-service.service';
 @NgModule({
   declarations: [
     AppComponent,
+    
+    ChatbotDialogComponent,
+    SponsorEditComponent,
+    UserListComponent,
+    UserFormComponent,
     DashboradComponent,
     BillingComponent,
     ProfileComponent,
@@ -124,7 +133,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
     }),
 
   ],
-  providers: [Authentication],
+  providers: [Authentication,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

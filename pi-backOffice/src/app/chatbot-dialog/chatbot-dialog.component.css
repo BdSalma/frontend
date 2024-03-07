@@ -1,0 +1,123 @@
+.page-container {
+    position: relative;
+    min-height: 100vh; /* Assurez-vous qu'il est au moins aussi haut que la fenêtre du navigateur */
+  }
+  
+  .chat-container {
+    position: fixed; /* Utilisez fixed pour qu'il reste à la même place même lors du scroll */
+    bottom: 0px;
+    right: 0px; /* Changez right par left pour l'aligner à gauche */
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+  
+.chatbot-logo {
+  width: 100px;  /* Ou toute autre taille appropriée */
+  height: auto; /* Pour garder le ratio */
+  margin-bottom: 10px; /* Espace entre le logo et le bouton */
+}
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Empiler verticalement le logo et le bouton */
+  height: 10vh; /* Prenez toute la hauteur de la fenêtre pour centrage vertical */
+}
+ 
+  /* Zone oÃ¹ les messages sont affichÃ©s */
+  .messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f0f0f0;
+  }
+  
+  /* Style pour les messages de l'utilisateur */
+  .user-msg {
+    margin: 5px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    text-align: right;
+    max-width: 80%;
+    margin-left: auto;
+  }
+  
+  /* Style pour les messages du bot */
+  .bot-msg {
+    margin: 5px;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    text-align: left;
+    max-width: 80%;
+  }
+  
+  /* Champ de saisie de message */
+  input {
+    outline: none;
+    border: none;
+    padding: 10px;
+    width: calc(100% - 20px);
+  }
+  
+  /* Bouton de fermeture */
+  button {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 10px;
+    cursor: pointer;
+  }
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  /* Animation pour les messages */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.user-msg, .bot-msg {
+  animation: slideUp 0.5s ease-out;
+}
+/* Style pour les boutons de suggestions avec effet de hover */
+.suggestion-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suggestion-btn:hover {
+  background-color: #0056b3;
+}
+
+  .chat-container {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+    
