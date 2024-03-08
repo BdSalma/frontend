@@ -37,11 +37,11 @@ export class IndividualsComponent {
       search: [''],
     });
     this.listFilter.get('role')?.valueChanges.subscribe((role) => {
-      this.filterProductsByPrice(role);
+      this.roleFilter(role);
     });
   }
 
-  filterProductsByPrice(form: FormGroup) {
+  searchFilter(form: FormGroup) {
     this.consumer.getAllIndividuFilteredByField(form.get('search')!.value).subscribe({
       next: (filteredIndividus: Individu[]) => {
         this.individus = filteredIndividus;
@@ -54,7 +54,7 @@ export class IndividualsComponent {
       },
     });
   }
-  searchFilter(role: IndividuRole) {
+  roleFilter(role: IndividuRole) {
     this.consumer.getAllIndividuFilteredByRole(role).subscribe({
       next: (filteredIndividus: Individu[]) => {
         this.individus = filteredIndividus;

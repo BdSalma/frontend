@@ -12,6 +12,6 @@ export class AppComponent {
   constructor(private consumer: Authentication) {}
 
   ngOnInit() {
-    //this.consumer.autoLogin();
+    this.consumer.autoLogin();
   }
 }

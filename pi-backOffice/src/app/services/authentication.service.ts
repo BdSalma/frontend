@@ -6,6 +6,8 @@ import { User } from '../model/user';
 import { Observable } from 'rxjs/internal/Observable';
 import { Individu } from '../model/individus';
 import { IndividuRole } from '../model/individusRole';
+import { Society } from '../model/society';
+import { SocietyRole } from '../model/societyRole';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -170,17 +172,6 @@ export class Authentication {
     );
   }
 
-  getAllIndividu() {
-    return this.http.get<Individu[]>(
-      'http://localhost:8087/auth/get-All-individu',
-      {
-        headers: new HttpHeaders({
-          Authorization: `Bearer ${this.token}`,
-        }),
-      }
-    );
-  }
-
   approveUser(id: string) {
     return this.http.put(
       `http://localhost:8087/auth/approve-user/${id}`,
@@ -215,6 +206,17 @@ export class Authentication {
     });
   }
 
+  getAllIndividu() {
+    return this.http.get<Individu[]>(
+      'http://localhost:8087/auth/get-All-individu',
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
   getAllIndividuFilteredByRole(role: IndividuRole) {
     return this.http.get<Individu[]>(
       `http://localhost:8087/auth/individus-byRole/${role}`,
@@ -229,6 +231,50 @@ export class Authentication {
   getAllIndividuFilteredByField(search: String) {
     return this.http.get<Individu[]>(
       `http://localhost:8087/auth/individus-byFiled/${search}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+
+  getAllSocieties() {
+    return this.http.get<Society[]>(
+      'http://localhost:8087/auth/get-All-society',
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  getAllSocietiesFilteredByRole(role: SocietyRole) {
+    return this.http.get<Society[]>(
+      `http://localhost:8087/auth/societies-byRole/${role}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  getAllSocietiesFilteredByField(search: String) {
+    return this.http.get<Society[]>(
+      `http://localhost:8087/auth/societies-byFiled/${search}`,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+  getAllUsers() {
+    return this.http.get<any[]>(
+      'http://localhost:8087/auth/all-users',
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,

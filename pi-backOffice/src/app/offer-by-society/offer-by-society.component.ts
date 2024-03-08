@@ -38,7 +38,9 @@ export class OfferBySocietyComponent {
     this.offerS.offerBySociety().subscribe(
       (data) => {
         this.listOffer = data;
-        console.log(data)
+        console.log("looooooooooooooog");
+        
+        console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeee",data)
       },
       (error) => {
         console.log(error);
