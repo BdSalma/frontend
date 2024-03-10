@@ -26,7 +26,7 @@ export class SponsorEditComponent implements OnInit {
     this.userService.updateSponsor(this.sponsor).subscribe(updatedSponsor => {
       console.log('Sponsor updated successfully:', updatedSponsor);
       // Optionally, navigate back to the sponsor list or another page
-      this.router.navigate(['/sponsor-list']);
+      this.router.navigate(['/users']);
     });
   }
 }
