@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Forum } from '../../model/forum';
 import { Individu } from 'src/app/model/individus';
-import { Authentication } from 'src/app/services/authentication.service';
+import { Authentication } from '../../service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/model/user';
 import { IndividuRole } from 'src/app/model/individusRole';
@@ -28,7 +28,7 @@ export class IndividualsComponent {
     );
   });
   ngOnInit(): void {
-    this.consumer.getAllIndividu().subscribe((data) => {
+    this.consumer.getAllIndividu().subscribe((data :Individu[]) => {
       console.log(data);
       this.individus = data;
     });
@@ -36,7 +36,7 @@ export class IndividualsComponent {
       role: [''],
       search: [''],
     });
-    this.listFilter.get('role')?.valueChanges.subscribe((role) => {
+    this.listFilter.get('role')?.valueChanges.subscribe((role :IndividuRole) => {
       this.roleFilter(role);
     });
   }
@@ -47,7 +47,7 @@ export class IndividualsComponent {
         this.individus = filteredIndividus;
       },
       error: () => {
-        this.consumer.getAllIndividu().subscribe((data) => {
+        this.consumer.getAllIndividu().subscribe((data:Individu[]) => {
           console.log(data);
           this.individus = data;
         });
@@ -60,7 +60,7 @@ export class IndividualsComponent {
         this.individus = filteredIndividus;
       },
       error: () => {
-        this.consumer.getAllIndividu().subscribe((data) => {
+        this.consumer.getAllIndividu().subscribe((data:Individu[]) => {
           console.log(data);
           this.individus = data;
         });

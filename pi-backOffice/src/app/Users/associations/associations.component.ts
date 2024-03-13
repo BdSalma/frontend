@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Society } from 'src/app/model/society';
 import { SocietyRole } from 'src/app/model/societyRole';
-import { Authentication } from 'src/app/services/authentication.service';
+import { Authentication } from '../../service/authentication.service';
 
 @Component({
   selector: 'app-associations',
@@ -94,3 +94,4 @@ export class AssociationsComponent {
     });
   }
 }
+

@@ -1,11 +1,16 @@
-import { TypePack } from "./typePack";
 import {Stand} from "./stand"
 import { Forum } from "./forum";
+import { User } from "./user";
+import { reservationStatus } from "./reservationStatus";
 export class Pack {
     id!: number;
-    typePack!: TypePack;
+    typePack!: string;
     prix!: number;
-    statut!: boolean;
+    reservationStatus!: string;
     forum!: Forum;
     stand!: Stand;
+    reserver !: User; 
+    reservationDate!: Date; 
+    validationDate!: Date; 
+
 }
