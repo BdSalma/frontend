@@ -47,7 +47,7 @@ export class UpdateProfileComponent {
   }
   update(form: any) {
     console.log(form);
-    this.consumer.updateUser(this.userData.id, form).subscribe({
+    this.consumer.updateUser(form).subscribe({
       next: (response) => {
         localStorage.setItem('user', JSON.stringify(response));
         this.consumer.updateLocalUser(response);

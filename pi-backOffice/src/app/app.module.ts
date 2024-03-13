@@ -67,6 +67,8 @@ import { ReservationPackComponent } from './PackComponents/reservation-pack/rese
 import { SidebarComponent } from './globals/sidebar/sidebar.component';
 import { Authentication } from './service/authentication.service';
 import { AboutUsComponent } from './screens/about-us/about-us.component';
+import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowrd.component';
+import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
 
 @NgModule({
   declarations: [
@@ -133,6 +135,8 @@ import { AboutUsComponent } from './screens/about-us/about-us.component';
     PageOffersComponent,
     ListOffersComponent,
     FeedBackComponent,
+    UpdatePassowrdComponent,
+    ResetPassowrdComponent,
   ],
   imports: [
     BrowserModule,

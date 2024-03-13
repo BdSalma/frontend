@@ -20,6 +20,7 @@ export class NavbarIndexComponent {
   ngOnInit() {
     this.login = this.consumer.isLoggedIn;
     this.user = this.consumer.user;
+    console.log(this.user.role)
   }
 
   logout() {

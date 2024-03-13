@@ -60,6 +60,8 @@ import { FeedBackComponent } from './reclamation management/feed-back/feed-back.
 import { RouterModule, Routes } from '@angular/router';
 import { DashboradComponent } from './screens/dashborad/dashborad.component';
 import { AboutUsComponent } from './screens/about-us/about-us.component';
+import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowrd.component';
+import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
@@ -170,6 +172,16 @@ const routes: Routes = [
     path: 'update-profile',
     component: UpdateProfileComponent,
     canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'update-password',
+    component: UpdatePassowrdComponent,
+    // canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'forget-password',
+    component: ResetPassowrdComponent,
+    // canActivate: [AuthGuardGuard],
   },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },

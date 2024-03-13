@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../model/user';
@@ -119,7 +123,7 @@ export class Authentication {
       const currentDate = new Date().getTime();
       const tokenExpirationDate = new Date(this.expires_in).getTime();
       if (tokenExpirationDate > currentDate) {
-        console.log(new Date(this.expires_in))
+        console.log(new Date(this.expires_in));
         const remainingTime = tokenExpirationDate - currentDate;
         this.isLoggedIn = true;
         this.autoLogout(remainingTime);
@@ -144,7 +148,7 @@ export class Authentication {
           this.isLoggedIn = false;
           this.router.navigate(['/']);
         },
-        error: (error : HttpErrorResponse) => {
+        error: (error: HttpErrorResponse) => {
           this.toastr.error(error.error.message);
         },
       });
@@ -159,9 +163,9 @@ export class Authentication {
     });
   }
 
-  updateUser(id: string, updateRequest: any) {
+  updateUser(updateRequest: any) {
     return this.http.put(
-      `http://localhost:8087/auth/update-user/${id}`,
+      `http://localhost:8087/auth/update-user`,
       updateRequest,
       {
         headers: new HttpHeaders({
@@ -239,7 +243,6 @@ export class Authentication {
     );
   }
 
-
   getAllSocieties() {
     return this.http.get<Society[]>(
       'http://localhost:8087/auth/get-All-society',
@@ -274,13 +277,31 @@ export class Authentication {
   }
 
   getAllUsers() {
-    return this.http.get<any[]>(
-      'http://localhost:8087/auth/all-users',
+    return this.http.get<any[]>('http://localhost:8087/auth/all-users', {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      }),
+    });
+  }
+
+  updatePassword(updateRequest: any) {
+    return this.http.put(
+      `http://localhost:8087/auth/update-password`,
+      updateRequest,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
+          'Content-Type': 'application/json',
         }),
       }
+    );
+  }
+
+  resetPassword(updateRequest: any) {
+    return this.http.put(
+      `http://localhost:8087/auth/forgot-password`,
+      updateRequest,
+      httpOptions
     );
   }
 }

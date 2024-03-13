@@ -36,15 +36,15 @@
         >
           <ul class="navbar-nav navbar-nav-hover ms-auto">
             <li
-              *ngIf="
-                user &&
-                (user.role === 'Admin' ||
-                  user.role === 'FinancialDirection' ||
-                  user.role === 'Community' ||
-                  user.role === 'Professor' ||
-                  user.role === 'Exposant' ||
-                  user.role === 'Fourniseur')
-              "
+            *ngIf="
+            user &&
+            (user.role === 'Admin' ||
+              user.role === 'FinancialDirection' ||
+              user.role === 'Community' ||
+              user.role === 'Professor' ||
+              user.role === 'Exposant' ||
+              user.role === 'Fourniseur')
+          "
               class="nav-item dropdown dropdown-hover mx-2"
             >
               <a routerLink="/dashboard" class="dropdown-item border-radius-md">
@@ -171,7 +171,7 @@
                 </li>
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a
-                    routerLink="/profile"
+                    routerLink="/update-password"
                     class="dropdown-item border-radius-md d-flex align-items-center"
                   >
                     <i class="material-icons" style="font-size: 20px">lock</i>
