@@ -17,6 +17,8 @@ export class PageOffersComponent {
   constructor(private offerS:OfferService,private router:Router){}
   ngOnInit(): void {
     this.loadOffers();
+    this.offerS.sendOffers();
+
   }
 
   loadOffers() {

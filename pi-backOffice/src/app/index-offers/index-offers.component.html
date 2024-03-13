@@ -2,7 +2,7 @@
         <div class="container">
       <div class="row">
         <div class="col-lg-6 mx-auto text-center">
-          <h2 class="text-gradient text-primary mb-3">Les offres disponibles</h2>
+          <h2 class="text-primary mb-3" style="color: #ed3637">Les offres disponibles</h2>
           <h2 class="mb-0">+50 offres disponibles</h2>
         </div>
       </div>
@@ -10,15 +10,15 @@
       <div class="row mt-3">
         <ng-container *ngFor="let offer of listOffer; let i = index">
           <div *ngIf="i<=2" class="col-lg-4 col-md-8">
-            <div class="card border border-primary" [ngClass]="i % 2 === 0 ? 'card-plain' : 'bg-gradient-primary'">
-                <div style="margin-left: 280px;" class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4">
+            <div class="card border border-primary" [ngStyle]="i % 2 !== 0 ? {'background-color': '#ed3637'} : null">
+              <div style="margin-left: 280px;" class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4">
                     <a [routerLink]="['/postuler', offer.idOffre]"><i class="material-icons opacity-10" >weekend</i></a>
                 </div>
                 <div class="card-body">
                     <div class="author">
                         <div class="name">
-                            <h6 class="mb-0 font-weight-bolder">{{offer.offerName}}</h6>
-                            <div class="stats">
+                          <span class="d-inline-block" [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'">Entreprise: {{offer.society.username}}</span>
+                          <div class="stats">
                                 <i class="far fa-clock" [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'">{{offer.dateEmission}}</i>
                             </div>
                         </div>

@@ -74,7 +74,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboradComponent } from './dashborad/dashborad.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
+  { path: '',pathMatch: 'full',component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },
   { path: 'offersIndex', component: IndexOffersComponent },
   { path: 'offre', component: OffersComponent },
@@ -94,7 +94,6 @@ const routes: Routes = [
   { path: 'listInterv', component: ListInterviewComponent },
   { path: 'listCandidat', component: ListCandidatureComponent},
   { path: 'postuler/:id', component: PostulerComponent },
-  { path: '', pathMatch: 'full', component: DashboradComponent },
   { path: 'supplyrequests', component: RequestsComponent },
   { path: 'addRequest', component: AddRequestComponent },
   { path: 'invoices', component: InvoicesComponent },

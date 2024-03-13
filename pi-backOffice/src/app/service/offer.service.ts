@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { Category } from '../model/category';
 import { Society } from '../model/society';
 import { Authentication } from '../services/authentication.service';
-
+import { interval } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -39,6 +40,7 @@ export class OfferService {
       }),
     })
   }
+
   putProduct(id:number,o:Offer){
     return this.http.put(`http://localhost:8087/Offer/updateOffer/${id}`,o, {
       headers: new HttpHeaders({
@@ -105,6 +107,18 @@ getEnAttenteOffer(){
       Authorization: `Bearer ${this.auth.token}`
     }),
   });
+}
+startSendingOffers(): void {
+  interval(86400000) // Interval d'une journée (en millisecondes)
+    .pipe(
+      switchMap(() => this.sendOffers())
+    )
+    .subscribe(response => {
+      console.log('Offers sent:', response); // Afficher la réponse si nécessaire
+    });
+}
 
+ sendOffers(): Observable<any> {
+  return this.http.get<any>('http://localhost:8087/Offer/test-send-offers');
 }
 }

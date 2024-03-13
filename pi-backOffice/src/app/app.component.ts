@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Authentication } from './services/authentication.service';
+import { OfferService } from './service/offer.service';
 
 @Component({
   selector: 'app-root',
