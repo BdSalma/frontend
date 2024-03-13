@@ -36,6 +36,7 @@
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Duree</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">options</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Candidature</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -78,7 +79,9 @@
       <i class="fas fa-edit text-sm me-2"></i> Modifier
     </button>
   </div>
-</td>
+</td>                   <td><a  class="btn bg-gradient-dark" [routerLink]="['/candidat', offer?.idOffre]">
+                          candidature
+                        </a></td>
                         </tr>
                       </tbody>
                     </table>

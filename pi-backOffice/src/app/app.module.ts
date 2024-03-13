@@ -52,6 +52,11 @@ import { ListOffersComponent } from './list-offers/list-offers.component';
 import { NgModule } from '@angular/core';
 import { FeedBackComponent } from './feed-back/feed-back.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
+import { UserLitComponent } from './user-lit/user-lit.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { EditSposorComponent } from './edit-sposor/edit-sposor.component';
+import { UserService } from './service/user-service.service';
+import { DetailCandidatComponent } from './detail-candidat/detail-candidat.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +107,11 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
     IndexOffersComponent,
     PageOffersComponent,
     ListOffersComponent,
-    FeedBackComponent
+    FeedBackComponent,
+    UserLitComponent,
+    UserFormComponent,
+    EditSposorComponent,
+    DetailCandidatComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +133,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
     }),
 
   ],
-  providers: [Authentication],
+  providers: [Authentication,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

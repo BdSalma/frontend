@@ -2,6 +2,7 @@ import { Interview } from "./interview";
 import { Individu } from "./individus";
 
 import { Status } from "./status";
+import { Offer } from "./offer";
 export class Candidature {
     idCandidature!: number;
     date!: Date;
@@ -10,4 +11,5 @@ export class Candidature {
     lettre!: string;
     interview!: Interview;
     individu!: Individu;
+    offer!:Offer;
 }

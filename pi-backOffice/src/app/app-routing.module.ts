@@ -47,9 +47,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FeedBackComponent } from './feed-back/feed-back.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboradComponent } from './dashborad/dashborad.component';
+import { UserLitComponent } from './user-lit/user-lit.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { EditSposorComponent } from './edit-sposor/edit-sposor.component';
+import { DetailCandidatComponent } from './detail-candidat/detail-candidat.component';
+
 
 const routes: Routes = [
-{path:'',component:IndexComponent},
+{path:'',pathMatch: 'full',component:IndexComponent},
 {path:'moreOffers',component:PageOffersComponent},
 {path:'offersIndex',component:IndexOffersComponent},
 {path:'offre',component:OffersComponent,canActivate: [AuthGuardGuard]},
@@ -61,7 +66,6 @@ const routes: Routes = [
 {path:'index',component:IndexComponent},
 {path:'about',component:AboutUsComponent},
 {path:'candidat/:id',component:CandidatureComponent},
-
 {path:'table',component:TableComponent},
 {path:'map',component:MapComponent},
 {path:'notification',component:NotificationsComponent},
@@ -71,46 +75,29 @@ const routes: Routes = [
 {path:'listInterv',component:ListInterviewComponent},
 {path:'listCandidat',component:ListCandidatureComponent,canActivate: [AuthGuardGuard]},
 {path:'postuler/:id',component:PostulerComponent},
-  { path: '', pathMatch: 'full', component: DashboradComponent },
-  { path: 'emailVerification', component: EmailVerificationComponent },
-  { path: 'notApproved', component: NotApprovedComponent },
-  { path: 'contact', component: ContactUsComponent },
-  { path: 'about', component: AboutUsComponent },
-  {path:'reclamation',component:ReclamationComponent},
-  {path:'feed',component:FeedBackComponent},
-
-  { path: 'billing', component: BillingComponent },
-  {
-    path: 'individuals',
-    component: IndividualsComponent,
-    canActivate: [AuthGuardGuard],
-  },
-  {
-    path: 'user-details/:id',
-    component: UserDetailsComponent,
-  },
-  {
-    path: 'associations',
-    component: AssociationsComponent,
-    canActivate: [AuthGuardGuard],
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuardGuard],
-  },
-  {
-    path: 'update-profile',
-    component: UpdateProfileComponent,
-    canActivate: [AuthGuardGuard],
-  },
-  { path: 'icons', component: IconsComponent },
+{ path: 'emailVerification', component: EmailVerificationComponent },
+{ path: 'notApproved', component: NotApprovedComponent },
+{ path: 'contact', component: ContactUsComponent },
+{ path: 'about', component: AboutUsComponent },
+{path:'reclamation',component:ReclamationComponent},
+{ path: 'users', component: UserLitComponent },
+{ path: 'adduser', component: UserFormComponent },
+{ path: 'edituser/:id', component: EditSposorComponent },
+{path:'feed',component:FeedBackComponent},
+{ path: 'billing', component: BillingComponent },
+{path:'detail-candidat/:id',component:DetailCandidatComponent},
+{path: 'individuals',component: IndividualsComponent,canActivate: [AuthGuardGuard],},
+{path: 'user-details/:id',component: UserDetailsComponent,},
+{path: 'associations',component: AssociationsComponent,canActivate: [AuthGuardGuard],},
+{path: 'profile',component: ProfileComponent,canActivate: [AuthGuardGuard],},
+{path: 'update-profile',component: UpdateProfileComponent,canActivate: [AuthGuardGuard],},
+{ path: 'icons', component: IconsComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'rtl', component: RtlComponent },
   { path: 'typography', component: TypographyComponent },
   { path: 'virtualReality', component: VirtualRealityComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 
