@@ -18,29 +18,27 @@ import { VirtualRealityComponent } from './virtual-reality/virtual-reality.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
-import { ForumComponent } from './ForumComponenets/forum/forum.component';
-import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
-import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
-import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
-import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
-import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
-import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
-import { PopUpComponent } from './pop-up/pop-up.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { ForumPacksComponent } from './forum-packs/forum-packs.component';
+import { RequestsComponent } from './requests/requests.component';
+import { AddRequestComponent } from './add-request/add-request.component';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { AddInvoiceComponent } from './add-invoice/add-invoice.component';
+import { DevisComponent } from './devis/devis.component';
+import { AddDevisComponent } from './add-devis/add-devis.component';
+import { UpdateInvoiceComponent } from './update-invoice/update-invoice.component';
+import { UpdateDevisComponent } from './update-devis/update-devis.component';
+import { UpdateRequestComponent } from './update-request/update-request.component';
 import { IndexComponent } from './index/index.component';
 import { NavbarIndexComponent } from './navbar-index/navbar-index.component';
 import { FooterIndexComponent } from './footer-index/footer-index.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { SignInIndexComponent } from './sign-in-index/sign-in-index.component';
-import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
+import { RequestsIndexComponent } from './requests-index/requests-index.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DevisBySocietyComponent } from './devis-by-society/devis-by-society.component';
+import { MyInvoicesComponent } from './my-invoices/my-invoices.component';
 
 @NgModule({
   declarations: [
@@ -61,34 +59,32 @@ import { SignUpIndexComponent } from './sign-up-index/sign-up-index.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-
-    ForumComponent,
-    AddForumComponent,
-    PacksListComponent,
-    AddPackComponent,
-    AddStandComponent,
-    StandListComponent,
-    EditPackComponent,
-    EditStandComponent,
-    EditForumComponent,
-    PopUpComponent,
-    ForumPacksComponent,
+    RequestsComponent,
+    AddRequestComponent,
+    InvoicesComponent,
+    AddInvoiceComponent,
+    DevisComponent,
+    AddDevisComponent,
+    UpdateInvoiceComponent,
+    UpdateDevisComponent,
+    UpdateRequestComponent,
     IndexComponent,
     NavbarIndexComponent,
     FooterIndexComponent,
     HeaderComponent,
     ContactUsComponent,
     AboutUsComponent,
-    SignInIndexComponent,
-    SignUpIndexComponent
+    RequestsIndexComponent,
+    DevisBySocietyComponent,
+    MyInvoicesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
+    AppRoutingModule,
     ReactiveFormsModule,
-    MatDialogModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

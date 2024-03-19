@@ -109,15 +109,15 @@
                        
                         <td class="align-middle text-center text-sm">
                            
-                            <div *ngIf="pack.reservationStatus.toString() === 'Reserved'">
-                                <span class="badge badge-sm bg-gradient-danger" >Réservé</span>
+                            <div *ngIf="pack.reservationStatus === 'Reserved'">
+                                <span class="badge badge-sm bg-gradient-primary" >Réservé</span>
                             </div>
                             
-                            <div *ngIf="pack.reservationStatus.toString() === 'Not_Reserved'">
-                                <span class="badge badge-sm bg-gradient-info" >Non reservé</span>
+                            <div *ngIf="pack.reservationStatus === 'Not_Reserved'">
+                                <span class="badge badge-sm bg-gradient-info" >Non réservé</span>
                             </div>
                             
-                            <div *ngIf="pack.reservationStatus.toString() === 'onHold'">
+                            <div *ngIf="pack.reservationStatus === 'On_Hold'">
                                 <span class="badge badge-sm bg-gradient-warning">En cours</span>
                             </div>
                         </td>
@@ -137,17 +137,24 @@
                         </td>
                         <td class="align-middle">
                           <div class="ms-auto text-end">
-                            <button
-                              class="btn btn-link text-danger text-gradient px-3 mb-0"
-                              href="javascript:;"
-                              (click)="deletePack(pack.id)"
-                              ><i class="material-icons text-sm me-2">delete</i
-                              ></button>
-                              <button class="btn btn-link text-dark px-3 mb-0" [routerLink]="['/editPack', pack.id]">
-                                <i class="material-icons text-sm me-2">edit</i>
-                              </button>
+                            <button class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" (click)="deletePack(pack.id)">
+                              <i class="fas fa-trash text-sm me-2"></i> Supprimer
+                            </button>
+                        
+                            <button class="btn btn-link text-success text-gradient px-3 mb-0" href="javascript:;" (click)="validateReservation(pack.id)">
+                              <i class="fas fa-check-circle text-sm me-2"></i> Valider
+                            </button>
+                        
+                            <button class="btn btn-link text-warning text-gradient px-3 mb-0" href="javascript:;" (click)="cancelReservation(pack.id)">
+                              <i class="fas fa-times-circle text-sm me-2"></i> Annuler
+                            </button>
+                        
+                            <button class="btn btn-link text-dark px-3 mb-0" [routerLink]="['/editPack', pack.id]">
+                              <i class="fas fa-edit text-sm me-2"></i> Modifier
+                            </button>
                           </div>
                         </td>
+                        
                       </tr>
                     </tbody>
                   </table>

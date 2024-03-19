@@ -7,7 +7,7 @@ export class Pack {
     id!: number;
     typePack!: string;
     prix!: number;
-    reservationStatus!: reservationStatus;
+    reservationStatus!: string;
     forum!: Forum;
     stand!: Stand;
     reserver !: User; 

@@ -4,7 +4,6 @@ import { SocietyRole } from "./societyRole";
 import { User } from "./user";
 
 export class Society extends User {
-   
     matricule!: number;
     logo!: string;
     adresse!: string;

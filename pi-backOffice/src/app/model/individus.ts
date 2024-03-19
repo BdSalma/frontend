@@ -4,7 +4,7 @@ import { RequestSupply } from "./requestSupply";
 import { User } from "./user";
 
 export class Individu extends User {
-
+    
     identity!: string;
     firstName!: string;
     lastName!: string;
