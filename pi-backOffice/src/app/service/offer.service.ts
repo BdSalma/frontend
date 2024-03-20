@@ -18,6 +18,12 @@ export class OfferService {
   getAcceptedOffer(){
     return this.http.get('http://localhost:8087/Offer/AcceptedOffer');
   }
+  getOfferOrderBy(){
+    return this.http.get('http://localhost:8087/Offer/OfferOrderBy');
+  }
+  addFavoris(id:number){
+    return this.http.post(`http://localhost:8087/Offer/favoris/${id}`,{})
+  }
   getById(id:number){
     return this.http.get(`http://localhost:8087/Offer/offer/${id}`,{
       headers: new HttpHeaders({
@@ -26,6 +32,7 @@ export class OfferService {
     })
   
   }
+
   DeleteOffer(id:number){
     return this.http.delete(`http://localhost:8087/Offer/deleteOffer/${id}`,{
       headers: new HttpHeaders({

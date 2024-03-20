@@ -36,17 +36,6 @@ import { IndividualsComponent } from './Users/individuals/individuals.component'
 import { UserDetailsComponent } from './Users/user-details/user-details.component';
 import { NotApprovedComponent } from './not-approved/not-approved.component';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
-import { ForumComponent } from './ForumComponenets/forum/forum.component';
-import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
-import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
-import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
-import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
-import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
-import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
-import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
-import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
-import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
-import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
 
 
 import { UpdateComponent } from './candidature/update.component';
@@ -114,17 +103,6 @@ const routes: Routes = [
   { path: 'reclamation', component: ReclamationComponent },
   { path: 'feed', component: FeedBackComponent },
   { path: 'billing', component: BillingComponent },
-  { path: 'forumList', component: ForumComponent },
-  { path: 'addForum', component: AddForumComponent },
-  { path: 'standList', component: StandListComponent },
-  { path: 'packList', component: PacksListComponent },
-  { path: 'addStand', component: AddStandComponent },
-  { path: 'addPack', component: AddPackComponent },
-  { path: 'editPack/:id', component: EditPackComponent },
-  { path: 'editStand/:id', component: EditStandComponent },
-  { path: 'editForum/:id', component: EditForumComponent },
-  { path: 'packForum', component: ForumPacksComponent },
-  { path: 'reservationPack/:typePack', component: ReservationPackComponent },
   {
     path: 'individuals',
     component: IndividualsComponent,

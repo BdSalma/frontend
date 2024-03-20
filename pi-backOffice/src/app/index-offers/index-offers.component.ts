@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OfferService } from '../service/offer.service';
+import { Authentication } from '../services/authentication.service';
+import { Offer } from '../model/offer';
 @Component({
   selector: 'app-index-offers',
   templateUrl: './index-offers.component.html',
@@ -8,10 +10,11 @@ import { OfferService } from '../service/offer.service';
 })
 export class IndexOffersComponent {
   listOffer!:any;
-  constructor(private offerS:OfferService,private router:Router){}
+  user!: any;
+  constructor(private offerS:OfferService,private router:Router,private consumer: Authentication){}
   ngOnInit(): void {
     this.loadOffers();
-  }
+    this.user=this.consumer.user  }
   truncateDescription(text: string, maxLength: number, showFullDescription: boolean): string {
     if (showFullDescription) {
       return text; // Return full description if showFullDescription is true
@@ -36,4 +39,16 @@ export class IndexOffersComponent {
       }
     );
   }
+  addFavoris(id:number){
+    this.offerS.addFavoris(id).subscribe((data) => {
+      this.loadOffers();
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+}
+  
+
+
 }

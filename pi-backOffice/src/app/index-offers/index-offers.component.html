@@ -6,12 +6,12 @@
           <h2 class="mb-0">+50 offres disponibles</h2>
         </div>
       </div>
-      <a routerLink="/moreOffers" class="btn btn-primary" style="margin-left: 950px;" >+ Offres >>></a>
       <div class="row mt-3">
         <ng-container *ngFor="let offer of listOffer; let i = index">
           <div *ngIf="i<=2" class="col-lg-4 col-md-8">
             <div class="card border border-primary" [ngStyle]="i % 2 !== 0 ? {'background-color': '#ed3637'} : null">
               <div style="margin-left: 280px;" class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4">
+                
                     <a [routerLink]="['/postuler', offer.idOffre]"><i class="material-icons opacity-10" >weekend</i></a>
                 </div>
                 <div class="card-body">
@@ -29,14 +29,31 @@
                       <a style="font-weight: bolder;" *ngIf="offer.description.length > 50" (click)="showFullDescription(offer)">
                         {{ offer.showFullDescriptionFlag ? 'Voir moins' : 'Voir plus' }}
                       </a>
-                    </p>                </div>
+                    </p>      
+                    <div class="rating mt-3">
+                      <a (click)="addFavoris(offer.idOffre)">
+                      <i class="fas fa-star" [ngStyle]="i % 2 !== 0 ? {'color': 'white'}:{'color': '#ed3637'}"></i>
+                    </a>
+                    </div>          
+                  </div>
+                    
             </div>
         </div>   
              
         </ng-container>
 
       </div>
-
+      <br><br>
+      <div class="row">
+        <div class="col-12 text-center">
+          <a
+            routerLink="/moreOffers"
+            class="btn btn-primary mb-5 mb-sm-0"
+          >
+            Voir plus
+          </a>
+        </div>
+      </div>
       <hr class="horizontal dark my-5">
     </div>
   </section>
