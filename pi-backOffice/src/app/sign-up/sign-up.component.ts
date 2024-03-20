@@ -81,7 +81,7 @@ export class SignUpComponent {
         this.router.navigate(['/signIn']);
       },
       error: (error) => {
-        // this.toastr.error(error.error.message);
+        this.toastr.error(error.error.message);
         console.error(error);
       },
     });

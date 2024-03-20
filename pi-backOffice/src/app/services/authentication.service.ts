@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../model/user';
-import { Observable } from 'rxjs/internal/Observable';
 import { Individu } from '../model/individus';
 import { IndividuRole } from '../model/individusRole';
 import { Society } from '../model/society';
@@ -120,15 +119,16 @@ export class Authentication {
       const currentDate = new Date().getTime();
       const tokenExpirationDate = new Date(this.expires_in).getTime();
       if (tokenExpirationDate > currentDate) {
+        console.log(new Date(this.expires_in))
         const remainingTime = tokenExpirationDate - currentDate;
         this.isLoggedIn = true;
         this.autoLogout(remainingTime);
       } else {
         localStorage.clear();
-        this.router.navigate(['/signIn']);
+        this.router.navigate(['/']);
       }
     } else {
-      this.router.navigate(['/signIn']);
+      this.router.navigate(['/']);
     }
   }
 
@@ -142,9 +142,9 @@ export class Authentication {
           this.toastr.warning('Your session has expired');
           localStorage.clear();
           this.isLoggedIn = false;
-          this.router.navigate(['/signIn']);
+          this.router.navigate(['/']);
         },
-        error: (error) => {
+        error: (error : HttpErrorResponse) => {
           this.toastr.error(error.error.message);
         },
       });
@@ -272,6 +272,7 @@ export class Authentication {
       }
     );
   }
+
   getAllUsers() {
     return this.http.get<any[]>(
       'http://localhost:8087/auth/all-users',
