@@ -11,6 +11,7 @@ import { Individu } from '../model/individus';
 import { IndividuRole } from '../model/individusRole';
 import { Society } from '../model/society';
 import { SocietyRole } from '../model/societyRole';
+import { jwtDecode } from 'jwt-decode';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -23,7 +24,6 @@ export class Authentication {
   token: string | null = null;
   isLoggedIn = false;
   refresh_token: string | null = null;
-  expires_in: string | null = null;
   user: any | null = null;
   verificationToken: string;
   clearTimeout: any;
@@ -38,8 +38,6 @@ export class Authentication {
     this.token = output ? JSON.parse(output) : null;
     const output2 = window.localStorage.getItem('refresh_token');
     this.refresh_token = output2 ? JSON.parse(output2) : null;
-    const output3 = window.localStorage.getItem('expires_in');
-    this.expires_in = output3 ? JSON.parse(output3) : null;
     const output4 = window.localStorage.getItem('user');
     this.user = output4 ? JSON.parse(output4) : null;
   }
@@ -48,16 +46,10 @@ export class Authentication {
     this.verificationToken = value;
   }
 
-  updateLocals(
-    user: any,
-    token: string,
-    refresh_token: string,
-    expires_in: string
-  ) {
+  updateLocals(user: any, token: string, refresh_token: string) {
     this.user = user;
     this.token = token;
     this.refresh_token = refresh_token;
-    this.expires_in = expires_in;
   }
 
   updateLocalUser(user: any) {
@@ -119,17 +111,35 @@ export class Authentication {
   }
 
   autoLogin() {
-    if (this.token && this.expires_in) {
+    if (this.token) {
       const currentDate = new Date().getTime();
-      const tokenExpirationDate = new Date(this.expires_in).getTime();
-      if (tokenExpirationDate > currentDate) {
-        console.log(new Date(this.expires_in));
-        const remainingTime = tokenExpirationDate - currentDate;
-        this.isLoggedIn = true;
-        this.autoLogout(remainingTime);
-      } else {
-        localStorage.clear();
-        this.router.navigate(['/']);
+      const decodedToken: { exp?: number } = jwtDecode(this.token);
+      if (decodedToken.exp !== undefined) {
+        const tokenExpirationDate = new Date(decodedToken.exp * 1000).getTime();
+        if (tokenExpirationDate > currentDate) {
+          const remainingTime = tokenExpirationDate - currentDate;
+          this.isLoggedIn = true;
+          this.autoLogout(remainingTime);
+        } else {
+          this.refreshToken().subscribe({
+            next: (response) => {
+              const loginResponse = response as {
+                access_token: string;
+              };
+              this.token = loginResponse.access_token;
+              localStorage.setItem(
+                'token',
+                JSON.stringify(loginResponse.access_token)
+              );
+            },
+            error: () => {
+              this.toastr.warning('Your session has expired');
+              localStorage.clear();
+              this.isLoggedIn = false;
+              this.router.navigate(['/']);
+            },
+          });
+        }
       }
     } else {
       this.router.navigate(['/']);
@@ -143,10 +153,24 @@ export class Authentication {
     this.clearTimeout = setTimeout(() => {
       this.logout().subscribe({
         next: () => {
-          this.toastr.warning('Your session has expired');
-          localStorage.clear();
-          this.isLoggedIn = false;
-          this.router.navigate(['/']);
+          this.refreshToken().subscribe({
+            next: (response) => {
+              const loginResponse = response as {
+                access_token: string;
+              };
+              this.token = loginResponse.access_token;
+              localStorage.setItem(
+                'token',
+                JSON.stringify(loginResponse.access_token)
+              );
+            },
+            error: () => {
+              this.toastr.warning('Your session has expired');
+              localStorage.clear();
+              this.isLoggedIn = false;
+              this.router.navigate(['/']);
+            },
+          });
         },
         error: (error: HttpErrorResponse) => {
           this.toastr.error(error.error.message);
@@ -301,6 +325,16 @@ export class Authentication {
     return this.http.put(
       `http://localhost:8087/auth/forgot-password`,
       updateRequest,
+      httpOptions
+    );
+  }
+
+  refreshToken() {
+    return this.http.post(
+      `http://localhost:8087/auth/refreshToken`,
+      {
+        token: this.refresh_token,
+      },
       httpOptions
     );
   }

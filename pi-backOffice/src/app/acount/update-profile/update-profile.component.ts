@@ -46,12 +46,10 @@ export class UpdateProfileComponent {
     this.updateProfile.patchValue(this.userData);
   }
   update(form: any) {
-    console.log(form);
     this.consumer.updateUser(form).subscribe({
       next: (response) => {
         localStorage.setItem('user', JSON.stringify(response));
         this.consumer.updateLocalUser(response);
-        console.log(response);
         this.toastr.success('Your account has been updated successfully');
         this.router.navigate(['/profile']);
       },

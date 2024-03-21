@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Authentication } from '../../service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../model/user';
+import { jwtDecode } from "jwt-decode";
 
 @Component({
   selector: 'app-sign-in',
@@ -54,16 +55,13 @@ export class SignInComponent {
           'refresh_token',
           JSON.stringify(loginResponse.refresh_token)
         );
-        localStorage.setItem(
-          'expires_in',
-          JSON.stringify(loginResponse.expires_in)
-        );
         this.getUser(
           loginResponse.access_token,
           loginResponse.refresh_token,
-          loginResponse.expires_in
         );
-        this.consumer.autoLogout(loginResponse.expires_in * 1000);
+        const decodedToken = jwtDecode(loginResponse.access_token) as any;
+        const expirationTime = new Date(decodedToken.exp * 1000).getTime();
+        this.consumer.autoLogout(expirationTime);
         this.consumer.isLoggedIn = true;
         this.router.navigateByUrl('/').then(() => {
           window.location.reload();
@@ -82,12 +80,11 @@ export class SignInComponent {
     });
   }
 
-  getUser(token: string, refreshToken: string, expiration: string) {
+  getUser(token: string, refreshToken: string) {
     this.consumer.getUser(token).subscribe({
       next: (response) => {
         localStorage.setItem('user', JSON.stringify(response));
-        this.consumer.updateLocals(response, token, refreshToken, expiration);
-        console.log('User details:', response);
+        this.consumer.updateLocals(response, token, refreshToken);
       },
       error: (error) => {
         console.error('Error fetching user details:', error);
@@ -95,3 +92,4 @@ export class SignInComponent {
     });
   }
 }
+

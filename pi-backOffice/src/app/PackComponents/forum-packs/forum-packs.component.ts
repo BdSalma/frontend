@@ -2,9 +2,9 @@ import { TypePack } from '../../model/typePack';
 import { Component } from '@angular/core';
 import { Pack } from '../../model/pack';
 import { reservationStatus } from '../../model/reservationStatus';
-import { PackServiceService } from '../../Service/pack-service.service';
+import { PackService } from '../../service/pack.service';
 import { RouteReuseStrategy, Router } from '@angular/router';
-import { StandServiceService } from '../../Service/stand-service.service';
+import { StandService } from '../../service/stand.service';
 import { Stand } from '../../model/stand';
 
 @Component({
@@ -14,8 +14,8 @@ import { Stand } from '../../model/stand';
 })
 export class ForumPacksComponent {
   constructor(
-    private packService: PackServiceService,
-    private StandServiceService: StandServiceService,
+    private packService: PackService,
+    private StandService: StandService,
     private Router: Router
   ) {}
 

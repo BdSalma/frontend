@@ -1,4 +1,4 @@
-import { ForumServiceService } from 'src/app/Service/forum-service.service';
+import { ForumService } from 'src/app/service/forum.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,7 +18,7 @@ throw new Error('Method not implemented.');
 
   addForumForm!: FormGroup;
   zones: string[] = [];
-  constructor(private route: ActivatedRoute, private router:Router, private forumService: ForumServiceService) {}
+  constructor(private route: ActivatedRoute, private router:Router, private forumService: ForumService) {}
   ngOnInit() {
     this.addForumForm = new FormGroup({
       theme: new FormControl('', [Validators.required]),

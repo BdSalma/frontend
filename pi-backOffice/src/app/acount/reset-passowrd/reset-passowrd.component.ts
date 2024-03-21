@@ -25,13 +25,11 @@ export class ResetPassowrdComponent {
   }
 
   reset(form: any) {
-    console.log(form)
     this.consumer.resetPassword(form).subscribe({
       next: () => {
         this.toastr.success('An email has been sent. Check your inbox.');
       },
       error: (error) => {
-        console.log(error)
         this.toastr.error(error.error.message);
       },
     });

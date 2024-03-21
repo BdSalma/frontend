@@ -36,7 +36,7 @@ export class UpdatePassowrdComponent {
         next: (response) => {
           localStorage.setItem('user', JSON.stringify(response));
           this.consumer.updateLocalUser(response);
-          console.log(response);
+
           this.toastr.success('Your account has been updated successfully');
           this.router.navigate(['/']);
         },

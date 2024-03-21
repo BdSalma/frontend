@@ -1,4 +1,4 @@
-import { ForumServiceService } from 'src/app/Service/forum-service.service';
+import { ForumService } from 'src/app/service/forum.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class EditForumComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private forumService: ForumServiceService
+    private forumService: ForumService
   ) {}
 
   ngOnInit() {

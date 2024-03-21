@@ -8,7 +8,7 @@ import { Authentication } from './authentication.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ForumServiceService {
+export class ForumService {
   apiURL: string = 'http://localhost:8087/forum';
 
   constructor(

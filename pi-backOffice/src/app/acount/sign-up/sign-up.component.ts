@@ -35,7 +35,6 @@ export class SignUpComponent {
   ) {}
 
   ngOnInit() {
-    console.log(this.roles);
     this.signUpForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],

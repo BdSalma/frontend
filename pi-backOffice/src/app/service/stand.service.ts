@@ -1,4 +1,4 @@
-import { Status } from './../model/status';
+import { Status } from '../model/status';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Authentication } from './authentication.service';
 @Injectable({
   providedIn: 'root'
 })
-export class StandServiceService {
+export class StandService {
 
   apiURL: string = 'http://localhost:8087/stand';
   

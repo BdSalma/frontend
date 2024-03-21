@@ -1,4 +1,4 @@
-import { reservationStatus } from './../model/reservationStatus';
+import { reservationStatus } from '../model/reservationStatus';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Authentication } from './authentication.service';
 @Injectable({
   providedIn:'root'
 })
-export class PackServiceService {
+export class PackService {
  
  
 

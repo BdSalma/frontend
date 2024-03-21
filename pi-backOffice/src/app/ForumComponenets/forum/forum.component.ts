@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Forum } from 'src/app/model/forum';
 import { Router } from '@angular/router';
-import { ForumServiceService } from 'src/app/Service/forum-service.service';
+import { ForumService } from 'src/app/service/forum.service';
 
 
 
@@ -15,7 +15,7 @@ export class ForumComponent implements OnInit {
 
 
   constructor(
-    private forumService: ForumServiceService, private router: Router
+    private forumService: ForumService, private router: Router
   ) { }
 
   forums: Forum[] = [];
