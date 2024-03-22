@@ -20,8 +20,8 @@ export class ReclamationService {
    deleteReclamation(id: number) {
     return this.http.delete('http://localhost:8087/reclamation/delete/' + id);
   }
-  Review(id: String, Rid:number){
-    return  this.http.post('http://localhost:8087/reclamation/review/'+id+'/'+Rid,
+  Review(id: String){
+    return  this.http.post('http://localhost:8087/reclamation/review/'+id+'/',
     httpOptions)
    }
    
@@ -40,5 +40,14 @@ export class ReclamationService {
     })
    
    }
+   addToFavorites(reclamationId: number) {
+    return this.http.post(`http://localhost:8087/reclamation/add-to-favorites/${reclamationId}`, {}, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+        'Content-Type': 'application/json',
+      }),
+    });
+  }
+   
 
 }

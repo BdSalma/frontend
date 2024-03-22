@@ -3,6 +3,8 @@ import { Reclamation } from '../model/reclamation';
 import { User } from '../model/user';
 import { TypeReclamation } from '../model/typeReclamation';
 import { ReclamationService } from '../service/reclamation.service';
+import { Authentication } from '../services/authentication.service';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-reclamation',
@@ -12,14 +14,20 @@ import { ReclamationService } from '../service/reclamation.service';
 export class ReclamationComponent {
   constructor(
     private reclamationService: ReclamationService,
+    private auth : Authentication
   ) {}
   reclamations : Reclamation[] = [];
   reclamationType = TypeReclamation;
+  users : any[]=[];
 
   ngOnInit(): void {
     this.reclamationService.getReclamation().subscribe((data) => {
       console.log(data);
       this.reclamations = data;
+    });
+    this.auth.getAllUsers().subscribe((data) => {
+      console.log(data);
+      this.users = data;
     });
   }
 
@@ -45,14 +53,27 @@ export class ReclamationComponent {
           ))
       );
   }
-  ReviewReclamation(user : User, reclamation: Reclamation){
+
+  ReviewReclamation(user : User){
     this.reclamationService
-    .Review(user.id,reclamation.id)
+    .Review("27d46be2-d99c-40ca-9cc6-2be316354e5a")
     .subscribe(
       () =>
-        (this.reclamations = this.reclamations.filter(
-          (rec: Reclamation) => rec != reclamation
+        (this.users = this.users.filter(
+          (rec: User) => rec != user
         ))
     );
   }
+
+  addFavorite(reclamation: Reclamation) {
+    this.reclamationService
+      .addToFavorites(reclamation.id)
+      .subscribe(
+        () =>
+          (this.reclamations = this.reclamations.filter(
+            (rec: Reclamation) => rec != reclamation
+          ))
+      );
+  }
+  
 }

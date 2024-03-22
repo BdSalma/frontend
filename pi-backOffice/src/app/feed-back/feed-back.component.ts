@@ -41,6 +41,18 @@ export class FeedBackComponent {
 
   }
 
+  addFavorite(reclamation: Reclamation) {
+    this.reclamationService
+      .addToFavorites(reclamation.id)
+      .subscribe(
+        () =>
+          (this.reclamations = this.reclamations.filter(
+            (rec: Reclamation) => rec != reclamation
+          ))
+      );
+  }
+  
+
   currentPage: number = 1;
   itemsPerPage: number = 9;
   get startIndex(): number {

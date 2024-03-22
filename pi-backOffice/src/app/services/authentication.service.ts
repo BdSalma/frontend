@@ -129,6 +129,16 @@ export class Authentication {
       this.router.navigate(['/signIn']);
     }
   }
+  getAllUsers() {
+    return this.http.get<any[]>(
+      'http://localhost:8087/auth/all-users',
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
 
   autoLogout(expirationDate: number) {
     if (this.clearTimeout) {
