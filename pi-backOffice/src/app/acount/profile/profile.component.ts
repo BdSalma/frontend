@@ -17,7 +17,6 @@ export class ProfileComponent {
   ) {}
   userData: any;
   userImage: any;
-  isLoading: boolean = false;
   ngOnInit() {
     this.userData = this.consumer.getUserFromLocal;
     this.getUserImage();
@@ -33,7 +32,6 @@ export class ProfileComponent {
   onConfirm(image: File) {
     const formData = new FormData();
     if (image) {
-      this.isLoading = true;
       formData.append('image', image, image.name);
       this.consumer.updateImage(formData).subscribe({
         next: (response) => {
@@ -50,9 +48,6 @@ export class ProfileComponent {
         },
         error: (error) => {
           this.toastr.error(error.error.message);
-        },
-        complete: () => {
-          this.isLoading = false;
         },
       });
     } else {

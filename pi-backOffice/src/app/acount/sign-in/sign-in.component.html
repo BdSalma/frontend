@@ -80,7 +80,7 @@
                   <button
                     type="submit"
                     class="btn bg-gradient-primary w-100 my-4"
-                    [disabled]="signInForm.invalid"
+                    [disabled]="signInForm.invalid || isLoading"
                   >
                     {{ isLoading ? "Loading..." : "Se connecter" }}
                   </button>
