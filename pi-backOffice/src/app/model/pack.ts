@@ -1,4 +1,3 @@
-import { TypePack } from "./typePack";
 import {Stand} from "./stand"
 import { Forum } from "./forum";
 import { User } from "./user";
