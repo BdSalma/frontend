@@ -5,9 +5,7 @@
     </div>
     <div class="col-9">
       <app-navbar [currentScreen]="'Individus'"></app-navbar>
-      <main
-        class="main-content position-relative border-radius-lg"
-      >
+      <main class="main-content position-relative border-radius-lg">
         <div class="col-md-12 mb-lg-0 mb-4">
           <div class="card mt-4">
             <div class="card-header pb-0 p-3">
@@ -33,7 +31,7 @@
           <div class="col-12">
             <div class="card my-4">
               <div
-                class="card-header p-0 position-relative mt-n4 mx-3 z-index-2"
+                class="card-header p-0 position-relative mt-n4 mx-3 z-index-1"
               >
                 <div
                   class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 px-3"
@@ -134,7 +132,7 @@
                           <div class="mr-2 ms-1" *ngIf="!individu.approve">
                             <button
                               class="btn btn-danger btn-sm"
-                              (click)="approveUser(individu.id)"
+                              (click)="openDialog(individu.id, 'approve')"
                             >
                               Inapproved
                             </button>
@@ -142,7 +140,7 @@
                           <div class="mr-2 ms-1" *ngIf="individu.activate">
                             <button
                               class="btn btn-info btn-sm"
-                              (click)="activateUser(individu.id)"
+                              (click)="openDialog(individu.id, 'activate')"
                             >
                               Activated
                             </button>
@@ -150,7 +148,7 @@
                           <div class="mr-2 ms-1" *ngIf="!individu.activate">
                             <button
                               class="btn btn-danger btn-sm"
-                              (click)="activateUser(individu.id)"
+                              (click)="openDialog(individu.id, 'activate')"
                             >
                               Desactivated
                             </button>
@@ -180,6 +178,18 @@
         <br />
         <br />
         <app-footer-index></app-footer-index>
+        <app-popup-dialog
+          [id]="currentId"
+          [title]="
+            currentAction === 'approve' ? 'Approve user' : 'Activate user'
+          "
+          [content]="
+            currentAction === 'approve'
+              ? 'Do you want to approve this user?'
+              : 'Do you want to activate this user?'
+          "
+          (send)="handleDialogAction($event)"
+        ></app-popup-dialog>
       </main>
     </div>
   </div>

@@ -17,6 +17,8 @@ export class AssociationsComponent {
     private formBuilder: FormBuilder
   ) {}
   societies: Society[] = [];
+  currentId: any;
+  currentAction: any;
   listFilter!: FormGroup;
   societyRole: SocietyRole[] = Object.values(SocietyRole);
   ngOnInit(): void {
@@ -62,36 +64,66 @@ export class AssociationsComponent {
     });
   }
 
+  openDialog(id: string, action: string) {
+    this.currentId = id;
+    this.currentAction = action;
+    const modelDiv = document.getElementById('popup');
+    if (modelDiv != null) {
+      modelDiv.style.display = 'block';
+    }
+  }
+
+  handleDialogAction(event: any) {
+    if (this.currentAction === 'approve') {
+      this.approveUser(event);
+    } else if (this.currentAction === 'activate') {
+      this.activateUser(event);
+    }
+  }
+
   approveUser(id: string) {
-    this.consumer.approveUser(id).subscribe({
-      next: (updatedIndividu: any) => {
-        const index = this.societies.findIndex((society) => society.id === id);
-        if (index !== -1) {
-          this.societies[index] = updatedIndividu;
-        }
-        this.toastr.success('User approved successfully');
-      },
-      error: (error: any) => {
-        this.toastr.error(error.error.message);
-      },
-    });
+    if (id != '') {
+      this.consumer.approveUser(id).subscribe({
+        next: (updatedSociete: any) => {
+          const index = this.societies.findIndex(
+            (societie) => societie.id === id
+          );
+          if (index !== -1) {
+            this.societies[index] = updatedSociete;
+          }
+          this.toastr.success('User approved successfully');
+          this.currentId = '';
+          this.currentAction = '';
+        },
+        error: (error: any) => {
+          this.toastr.error(error.error.message);
+        },
+      });
+    }
   }
 
   activateUser(id: string) {
-    this.consumer.activateUser(id).subscribe({
-      next: (updatedIndividu: any) => {
-        const index = this.societies.findIndex((society) => society.id === id);
-        if (index !== -1) {
-          this.societies[index] = updatedIndividu;
-        }
-        console.log(updatedIndividu);
-        const message = updatedIndividu.activate ? 'activated' : 'desactivated';
-        this.toastr.success(`User ${message} successfully`);
-      },
-      error: (error: any) => {
-        this.toastr.error(error.error.message);
-      },
-    });
+    if (id != '') {
+      this.consumer.activateUser(id).subscribe({
+        next: (updatedSociete: any) => {
+          const index = this.societies.findIndex(
+            (societie) => societie.id === id
+          );
+          if (index !== -1) {
+            this.societies[index] = updatedSociete;
+          }
+          const message = updatedSociete.activate
+            ? 'activated'
+            : 'desactivated';
+          this.toastr.success(`User ${message} successfully`);
+          this.currentId = '';
+          this.currentAction = '';
+        },
+        error: (error: any) => {
+          this.toastr.error(error.error.message);
+        },
+      });
+    }
   }
 }
 

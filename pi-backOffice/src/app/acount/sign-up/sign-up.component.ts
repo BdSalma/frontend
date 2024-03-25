@@ -13,6 +13,7 @@ import { SocietyRole } from '../../model/societyRole';
 })
 export class SignUpComponent {
   signUpForm!: FormGroup;
+  isLoading: boolean = false;
   individuRole: IndividuRole[] = Object.values(IndividuRole).filter((role) => {
     return (
       role !== IndividuRole.Admin &&
@@ -55,6 +56,7 @@ export class SignUpComponent {
   }
 
   register(form: FormGroup) {
+    this.isLoading = true;
     let form2: any = {};
     form2.username = form.get('username')!.value;
     form2.email = form.get('email')!.value;
@@ -69,17 +71,18 @@ export class SignUpComponent {
       form2.lastName = form.get('lastName')!.value;
     } else {
       form2.matricule = form.get('matricule')!.value;
-      form2.logo = form.get('logo')!.value;
       form2.adresse = form.get('adresse')!.value;
       form2.representative = form.get('representative')!.value;
       form2.sector = form.get('sector')!.value;
     }
     this.consumer.register(form2).subscribe({
       next: () => {
+        this.isLoading = false;
         this.toastr.success('Your account has been created successfully');
         this.router.navigate(['/signIn']);
       },
       error: (error) => {
+        this.isLoading = false;
         this.toastr.error(error.error.message);
         console.error(error);
       },

@@ -36,15 +36,15 @@
         >
           <ul class="navbar-nav navbar-nav-hover ms-auto">
             <li
-            *ngIf="
-            user &&
-            (user.role === 'Admin' ||
-              user.role === 'FinancialDirection' ||
-              user.role === 'Community' ||
-              user.role === 'Professor' ||
-              user.role === 'Exposant' ||
-              user.role === 'Fourniseur')
-          "
+              *ngIf="
+                user &&
+                (user.role === 'Admin' ||
+                  user.role === 'FinancialDirection' ||
+                  user.role === 'Community' ||
+                  user.role === 'Professor' ||
+                  user.role === 'Exposant' ||
+                  user.role === 'Fourniseur')
+              "
               class="nav-item dropdown dropdown-hover mx-2"
             >
               <a routerLink="/dashboard" class="dropdown-item border-radius-md">
@@ -53,6 +53,8 @@
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
               <a
+                [routerLinkActive]="['active', 'text-primary']"
+                [routerLinkActiveOptions]="{ exact: true }"
                 routerLink="/moreOffers"
                 class="dropdown-item border-radius-md"
               >
@@ -66,6 +68,8 @@
               class="nav-item dropdown dropdown-hover mx-2"
             >
               <a
+                [routerLinkActive]="['active', 'text-primary']"
+                [routerLinkActiveOptions]="{ exact: true }"
                 class="dropdown-item border-radius-md"
                 routerLink="/listCandidat"
               >
@@ -73,17 +77,32 @@
               </a>
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
-              <a routerLink="/feed" class="dropdown-item border-radius-md">
+              <a
+                [routerLinkActive]="['active', 'text-primary']"
+                [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/feed"
+                class="dropdown-item border-radius-md"
+              >
                 <span>Avis</span>
               </a>
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
-              <a routerLink="/about" class="dropdown-item border-radius-md">
+              <a
+                [routerLinkActive]="['active', 'text-primary']"
+                [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/about"
+                class="dropdown-item border-radius-md"
+              >
                 <span>About</span>
               </a>
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
-              <a routerLink="/contact" class="dropdown-item border-radius-md">
+              <a
+                [routerLinkActive]="['active', 'text-primary']"
+                [routerLinkActiveOptions]="{ exact: true }"
+                routerLink="/contact"
+                class="dropdown-item border-radius-md"
+              >
                 <span>Contact</span>
               </a>
             </li>
@@ -134,11 +153,7 @@
           </ul>
           <div class="nav-item dropdown dropdown-hover mx-2" *ngIf="login">
             <a routerLink="/profile" class="dropdown-item border-radius-md">
-              <img
-                src="../assets/img/team-4.jpg"
-                class="avatar avatar-sm"
-                alt="user4"
-              />
+              <img [src]="userImage" class="avatar avatar-sm" alt="user4" />
             </a>
             <div
               class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3"
@@ -153,6 +168,8 @@
                 </h6>
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a
+                    [routerLinkActive]="['active', 'text-primary']"
+                    [routerLinkActiveOptions]="{ exact: true }"
                     routerLink="/profile"
                     class="dropdown-item border-radius-md d-flex align-items-center"
                   >
@@ -162,6 +179,8 @@
                 </li>
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a
+                    [routerLinkActive]="['active', 'text-primary']"
+                    [routerLinkActiveOptions]="{ exact: true }"
                     routerLink="/update-profile"
                     class="dropdown-item border-radius-md d-flex align-items-center"
                   >
@@ -171,6 +190,8 @@
                 </li>
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a
+                    [routerLinkActive]="['active', 'text-primary']"
+                    [routerLinkActiveOptions]="{ exact: true }"
                     routerLink="/update-password"
                     class="dropdown-item border-radius-md d-flex align-items-center"
                   >

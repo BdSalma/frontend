@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/model/user';
 import { Authentication } from 'src/app/service/authentication.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-navbar-index',
@@ -17,29 +18,39 @@ export class NavbarIndexComponent {
   ) {}
   login: boolean = false;
   user!: any;
+  userImage!: any;
   ngOnInit() {
     this.login = this.consumer.isLoggedIn;
     this.user = this.consumer.user;
+    this.getUserImage();
   }
 
   logout() {
     this.consumer.logout().subscribe({
-      next: (response) => {
-        const logoutResponse = response as {
-          message: string;
-        };
+      next: () => {
         if (this.consumer.clearTimeout) {
           clearTimeout(this.consumer.clearTimeout);
         }
-        this.toastr.success(logoutResponse.message);
         localStorage.clear();
         this.consumer.isLoggedIn = false;
         this.login = false;
         this.user = null;
-        this.router.navigate(['/']);
+        window.location.reload();
       },
       error: (error) => {
         this.toastr.error(error.error.message);
+      },
+    });
+  }
+
+  getUserImage() {
+    this.consumer.getUserImage().subscribe({
+      next: (response) => {
+        this.userImage = URL.createObjectURL(response);
+        console.log(this.userImage);
+      },
+      error: (error) => {
+        console.log(error);
       },
     });
   }

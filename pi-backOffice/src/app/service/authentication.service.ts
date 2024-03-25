@@ -12,6 +12,7 @@ import { IndividuRole } from '../model/individusRole';
 import { Society } from '../model/society';
 import { SocietyRole } from '../model/societyRole';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -27,6 +28,7 @@ export class Authentication {
   user: any | null = null;
   verificationToken: string;
   clearTimeout: any;
+  url: any;
 
   constructor(
     private http: HttpClient,
@@ -40,6 +42,7 @@ export class Authentication {
     this.refresh_token = output2 ? JSON.parse(output2) : null;
     const output4 = window.localStorage.getItem('user');
     this.user = output4 ? JSON.parse(output4) : null;
+    this.url = environment.apiUrl;
   }
 
   updateToken(value: string): void {
@@ -66,7 +69,7 @@ export class Authentication {
 
   login(loginRequest: any) {
     return this.http.post(
-      'http://localhost:8087/auth/login',
+      `${this.url}/auth/login`,
       loginRequest,
       httpOptions
     );
@@ -74,7 +77,7 @@ export class Authentication {
 
   register(registerRequest: any) {
     return this.http.post(
-      'http://localhost:8087/auth/create-user',
+      `${this.url}/auth/create-user`,
       registerRequest,
       httpOptions
     );
@@ -82,7 +85,7 @@ export class Authentication {
 
   logout() {
     return this.http.post(
-      'http://localhost:8087/auth/logout',
+      `${this.url}/auth/logout`,
       {
         token: this.refresh_token,
       },
@@ -91,7 +94,7 @@ export class Authentication {
   }
 
   checkValidity() {
-    return this.http.get('http://localhost:8087/auth/check-user', {
+    return this.http.get(`${this.url}/auth/check-user`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.verificationToken}`,
       }),
@@ -100,7 +103,7 @@ export class Authentication {
 
   emailVerification() {
     return this.http.put(
-      'http://localhost:8087/auth/emailVerification',
+      `${this.url}/auth/emailVerification`,
       {},
       {
         headers: new HttpHeaders({
@@ -180,7 +183,7 @@ export class Authentication {
   }
 
   getUser(accessToken: string) {
-    return this.http.get('http://localhost:8087/auth/user-details', {
+    return this.http.get(`${this.url}/auth/user-details`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${accessToken}`,
       }),
@@ -189,7 +192,7 @@ export class Authentication {
 
   updateUser(updateRequest: any) {
     return this.http.put(
-      `http://localhost:8087/auth/update-user`,
+      `${this.url}/auth/update-user`,
       updateRequest,
       {
         headers: new HttpHeaders({
@@ -202,7 +205,7 @@ export class Authentication {
 
   approveUser(id: string) {
     return this.http.put(
-      `http://localhost:8087/auth/approve-user/${id}`,
+      `${this.url}/auth/approve-user/${id}`,
       {},
       {
         headers: new HttpHeaders({
@@ -215,7 +218,7 @@ export class Authentication {
 
   activateUser(id: string) {
     return this.http.put(
-      `http://localhost:8087/auth/activate-user/${id}`,
+      `${this.url}/auth/activate-user/${id}`,
       {},
       {
         headers: new HttpHeaders({
@@ -227,7 +230,7 @@ export class Authentication {
   }
 
   getUserById(id: string) {
-    return this.http.get(`http://localhost:8087/auth/user-id/${id}`, {
+    return this.http.get(`${this.url}/auth/user-id/${id}`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`,
       }),
@@ -236,7 +239,7 @@ export class Authentication {
 
   getAllIndividu() {
     return this.http.get<Individu[]>(
-      'http://localhost:8087/auth/get-All-individu',
+      `${this.url}/auth/get-All-individu`,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
@@ -247,7 +250,7 @@ export class Authentication {
 
   getAllIndividuFilteredByRole(role: IndividuRole) {
     return this.http.get<Individu[]>(
-      `http://localhost:8087/auth/individus-byRole/${role}`,
+      `${this.url}/auth/individus-byRole/${role}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
@@ -258,7 +261,7 @@ export class Authentication {
 
   getAllIndividuFilteredByField(search: String) {
     return this.http.get<Individu[]>(
-      `http://localhost:8087/auth/individus-byFiled/${search}`,
+      `${this.url}/auth/individus-byFiled/${search}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
@@ -269,7 +272,7 @@ export class Authentication {
 
   getAllSocieties() {
     return this.http.get<Society[]>(
-      'http://localhost:8087/auth/get-All-society',
+      `${this.url}/auth/get-All-society`,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
@@ -280,7 +283,7 @@ export class Authentication {
 
   getAllSocietiesFilteredByRole(role: SocietyRole) {
     return this.http.get<Society[]>(
-      `http://localhost:8087/auth/societies-byRole/${role}`,
+      `${this.url}/auth/societies-byRole/${role}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
@@ -291,7 +294,7 @@ export class Authentication {
 
   getAllSocietiesFilteredByField(search: String) {
     return this.http.get<Society[]>(
-      `http://localhost:8087/auth/societies-byFiled/${search}`,
+      `${this.url}/auth/societies-byFiled/${search}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
@@ -301,7 +304,7 @@ export class Authentication {
   }
 
   getAllUsers() {
-    return this.http.get<any[]>('http://localhost:8087/auth/all-users', {
+    return this.http.get<any[]>(`${this.url}/auth/all-users`, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`,
       }),
@@ -310,7 +313,7 @@ export class Authentication {
 
   updatePassword(updateRequest: any) {
     return this.http.put(
-      `http://localhost:8087/auth/update-password`,
+      `${this.url}/auth/update-password`,
       updateRequest,
       {
         headers: new HttpHeaders({
@@ -323,7 +326,7 @@ export class Authentication {
 
   resetPassword(updateRequest: any) {
     return this.http.put(
-      `http://localhost:8087/auth/forgot-password`,
+      `${this.url}/auth/forgot-password`,
       updateRequest,
       httpOptions
     );
@@ -331,11 +334,35 @@ export class Authentication {
 
   refreshToken() {
     return this.http.post(
-      `http://localhost:8087/auth/refreshToken`,
+      `${this.url}/auth/refreshToken`,
       {
         token: this.refresh_token,
       },
       httpOptions
+    );
+  }
+
+  updateImage(formData: FormData) {
+    return this.http.put(
+      `${this.url}/auth/update-image`,
+      formData,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  getUserImage() {
+    return this.http.get(
+      `${this.url}/auth/user-image`,
+      {
+        responseType: 'blob',
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
     );
   }
 }

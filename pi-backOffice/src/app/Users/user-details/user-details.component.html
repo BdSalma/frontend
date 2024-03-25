@@ -4,7 +4,7 @@
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-9">
-      <app-navbar></app-navbar>
+      <app-navbar [currentScreen]="'détails de l\'utilisateur'"></app-navbar>
       <div class="main-content">
         <div class="container-fluid px-2 px-md-4">
           <div
@@ -20,7 +20,7 @@
               <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
                   <img
-                    src="../assets/img/bruce-mars.jpg"
+                    src="{{ url + '/' + (user && user.image) }}"
                     alt="profile_image"
                     class="w-100 border-radius-lg shadow-sm"
                   />

@@ -19,6 +19,8 @@ export class IndividualsComponent {
     private formBuilder: FormBuilder
   ) {}
   individus: Individu[] = [];
+  currentId: any;
+  currentAction: any;
   listFilter!: FormGroup;
   individuRole: IndividuRole[] = Object.values(IndividuRole).filter((role) => {
     return (
@@ -28,31 +30,33 @@ export class IndividualsComponent {
     );
   });
   ngOnInit(): void {
-    this.consumer.getAllIndividu().subscribe((data :Individu[]) => {
-      console.log(data);
+    this.consumer.getAllIndividu().subscribe((data: Individu[]) => {
       this.individus = data;
     });
     this.listFilter = this.formBuilder.group({
       role: [''],
       search: [''],
     });
-    this.listFilter.get('role')?.valueChanges.subscribe((role :IndividuRole) => {
-      this.roleFilter(role);
-    });
+    this.listFilter
+      .get('role')
+      ?.valueChanges.subscribe((role: IndividuRole) => {
+        this.roleFilter(role);
+      });
   }
 
   searchFilter(form: FormGroup) {
-    this.consumer.getAllIndividuFilteredByField(form.get('search')!.value).subscribe({
-      next: (filteredIndividus: Individu[]) => {
-        this.individus = filteredIndividus;
-      },
-      error: () => {
-        this.consumer.getAllIndividu().subscribe((data:Individu[]) => {
-          console.log(data);
-          this.individus = data;
-        });
-      },
-    });
+    this.consumer
+      .getAllIndividuFilteredByField(form.get('search')!.value)
+      .subscribe({
+        next: (filteredIndividus: Individu[]) => {
+          this.individus = filteredIndividus;
+        },
+        error: () => {
+          this.consumer.getAllIndividu().subscribe((data: Individu[]) => {
+            this.individus = data;
+          });
+        },
+      });
   }
   roleFilter(role: IndividuRole) {
     this.consumer.getAllIndividuFilteredByRole(role).subscribe({
@@ -60,47 +64,72 @@ export class IndividualsComponent {
         this.individus = filteredIndividus;
       },
       error: () => {
-        this.consumer.getAllIndividu().subscribe((data:Individu[]) => {
-          console.log(data);
+        this.consumer.getAllIndividu().subscribe((data: Individu[]) => {
           this.individus = data;
         });
       },
     });
   }
-  
+
+  openDialog(id: string, action: string) {
+    this.currentId = id;
+    this.currentAction = action;
+    const modelDiv = document.getElementById('popup');
+    if (modelDiv != null) {
+      modelDiv.style.display = 'block';
+    }
+  }
+
+  handleDialogAction(event: any) {
+    if (this.currentAction === 'approve') {
+      this.approveUser(event);
+    } else if (this.currentAction === 'activate') {
+      this.activateUser(event);
+    }
+  }
+
   approveUser(id: string) {
-    this.consumer.approveUser(id).subscribe({
-      next: (updatedIndividu: any) => {
-        const index = this.individus.findIndex(
-          (individu) => individu.id === id
-        );
-        if (index !== -1) {
-          this.individus[index] = updatedIndividu;
-        }
-        this.toastr.success('User approved successfully');
-      },
-      error: (error: any) => {
-        this.toastr.error(error.error.message);
-      },
-    });
+    if (id != '') {
+      this.consumer.approveUser(id).subscribe({
+        next: (updatedIndividu: any) => {
+          const index = this.individus.findIndex(
+            (individu) => individu.id === id
+          );
+          if (index !== -1) {
+            this.individus[index] = updatedIndividu;
+          }
+          this.toastr.success('User approved successfully');
+          this.currentId = '';
+          this.currentAction = '';
+        },
+        error: (error: any) => {
+          this.toastr.error(error.error.message);
+        },
+      });
+    }
   }
 
   activateUser(id: string) {
-    this.consumer.activateUser(id).subscribe({
-      next: (updatedIndividu: any) => {
-        const index = this.individus.findIndex(
-          (individu) => individu.id === id
-        );
-        if (index !== -1) {
-          this.individus[index] = updatedIndividu;
-        }
-        console.log(updatedIndividu);
-        const message = updatedIndividu.activate ? 'activated' : 'desactivated';
-        this.toastr.success(`User ${message} successfully`);
-      },
-      error: (error: any) => {
-        this.toastr.error(error.error.message);
-      },
-    });
+    if (id != '') {
+      this.consumer.activateUser(id).subscribe({
+        next: (updatedIndividu: any) => {
+          const index = this.individus.findIndex(
+            (individu) => individu.id === id
+          );
+          if (index !== -1) {
+            this.individus[index] = updatedIndividu;
+          }
+          const message = updatedIndividu.activate
+            ? 'activated'
+            : 'desactivated';
+          this.toastr.success(`User ${message} successfully`);
+          this.currentId = '';
+          this.currentAction = '';
+        },
+        error: (error: any) => {
+          this.toastr.error(error.error.message);
+        },
+      });
+    }
   }
 }

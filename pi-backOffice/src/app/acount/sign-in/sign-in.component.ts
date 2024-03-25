@@ -65,7 +65,6 @@ export class SignInComponent {
         this.consumer.isLoggedIn = true;
         this.router.navigateByUrl('/').then(() => {
           window.location.reload();
-          this.toastr.success('You have logged in successfully');
         });
       },
       error: (error) => {

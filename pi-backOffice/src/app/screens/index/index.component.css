@@ -1,13 +1,12 @@
 @keyframes moveRightToLeft {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  from {
+    transform: translateX(100%);
   }
-  
-  #moving-row {
-    animation: moveRightToLeft 10s linear infinite;
+  to {
+    transform: translateX(-100%);
   }
-  
+}
+
+#moving-row {
+  animation: moveRightToLeft 10s linear infinite;
+}

@@ -7,7 +7,6 @@ import { SignInComponent } from './acount/sign-in/sign-in.component';
 import { SignUpComponent } from './acount/sign-up/sign-up.component';
 import { CandidatureComponent } from './candidature management/candidature/candidature.component';
 import { NavbarComponent } from './globals/navbar/navbar.component';
-import { FooterComponent } from './globals/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RequestsComponent } from './requests management/requests/requests.component';
 import { AddRequestComponent } from './requests management/add-request/add-request.component';
@@ -69,6 +68,8 @@ import { Authentication } from './service/authentication.service';
 import { AboutUsComponent } from './screens/about-us/about-us.component';
 import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowrd.component';
 import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
+import { ImagePopupComponent } from './globals/image-popup/image-popup.component';
+import { PopupDialogComponent } from './globals/popup-dialog/popup-dialog.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,6 @@ import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.c
     SignUpComponent,
     CandidatureComponent,
     NavbarComponent,
-    FooterComponent,
     SidebarComponent,
     RequestsComponent,
     AddRequestComponent,
@@ -137,6 +137,8 @@ import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.c
     FeedBackComponent,
     UpdatePassowrdComponent,
     ResetPassowrdComponent,
+    ImagePopupComponent,
+    PopupDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -157,7 +159,7 @@ import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.c
       progressBar: true,
       disableTimeOut: false,
       positionClass: 'toast-top-right',
-    }),
+    })
   ],
   providers: [Authentication],
   bootstrap: [AppComponent],

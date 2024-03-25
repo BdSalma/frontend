@@ -25,15 +25,25 @@
 
       <div class="card card-body mx-3 mx-md-8 mt-n6">
         <div class="row gx-4 mb-2">
-          <div class="col-auto">
-            <div class="avatar avatar-xl position-relative">
+          <div class="col-auto position-relative">
+            <div class="avatar avatar-xl">
               <img
-                src="../assets/img/bruce-mars.jpg"
+                [src]="userImage"
                 alt="profile_image"
                 class="w-100 border-radius-lg shadow-sm"
               />
+              <div
+                class="position-absolute bottom-0 end-0 p-1 bg-dark rounded-circle"
+                style="width: 30px; height: 30px; cursor: pointer"
+                (click)="openDialog()"
+              >
+                <i class="material-icons text-white" style="font-size: 23px"
+                  >edit</i
+                >
+              </div>
             </div>
           </div>
+
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">{{ userData.username }}</h5>
@@ -126,5 +136,9 @@
       </div>
     </div>
     <app-footer-index></app-footer-index>
+    <app-image-popup
+      [image]="userImage"
+      (confirm)="onConfirm($event)"
+    ></app-image-popup>
   </div>
 </body>
