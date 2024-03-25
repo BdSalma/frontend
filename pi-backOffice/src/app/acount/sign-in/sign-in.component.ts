@@ -13,6 +13,7 @@ import { jwtDecode } from "jwt-decode";
 })
 export class SignInComponent {
   signInForm!: FormGroup;
+  isLoading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -28,6 +29,7 @@ export class SignInComponent {
   }
 
   login(form: any) {
+    this.isLoading = true;
     this.consumer.login(form).subscribe({
       next: (response) => {
         const loginResponse = response as {
@@ -39,6 +41,7 @@ export class SignInComponent {
         this.checkValidity(loginResponse);
       },
       error: (error) => {
+        this.isLoading = false;
         this.toastr.error(error.error.message);
       },
     });
@@ -66,6 +69,7 @@ export class SignInComponent {
         this.router.navigateByUrl('/').then(() => {
           window.location.reload();
         });
+        this.isLoading = false;
       },
       error: (error) => {
         if (error.error.message == 'Not verified') {
@@ -75,6 +79,7 @@ export class SignInComponent {
         } else {
           this.toastr.error(error.error.message);
         }
+        this.isLoading = false;
       },
     });
   }

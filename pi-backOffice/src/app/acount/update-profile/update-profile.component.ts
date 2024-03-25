@@ -17,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./update-profile.component.css'],
 })
 export class UpdateProfileComponent {
+  isLoading: boolean = false;
   userData: any;
   updateProfile!: FormGroup;
   societyRole: SocietyRole[] = Object.values(SocietyRole);
@@ -46,6 +47,7 @@ export class UpdateProfileComponent {
     this.updateProfile.patchValue(this.userData);
   }
   update(form: any) {
+    this.isLoading = true;
     this.consumer.updateUser(form).subscribe({
       next: (response) => {
         localStorage.setItem('user', JSON.stringify(response));
@@ -55,6 +57,8 @@ export class UpdateProfileComponent {
       },
       error: (error) => {
         this.toastr.error(error.error.message);
+      },complete: () => {
+        this.isLoading = false;
       },
     });
   }

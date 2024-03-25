@@ -11,6 +11,7 @@ import { Authentication } from 'src/app/service/authentication.service';
 })
 export class UpdatePassowrdComponent {
   updatePassword!: FormGroup;
+  isLoading: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -27,11 +28,11 @@ export class UpdatePassowrdComponent {
     });
   }
   update(form: any) {
+    this.isLoading = true;
       const updateRequest = {
         oldPassword: form.oldPassword,
         newPassword: form.newPassword
       };
-    
       this.consumer.updatePassword(updateRequest).subscribe({
         next: (response) => {
           localStorage.setItem('user', JSON.stringify(response));
@@ -41,6 +42,8 @@ export class UpdatePassowrdComponent {
         },
         error: (error) => {
           this.toastr.error(error.error);
+        },complete: () => {
+          this.isLoading = false;
         },
       });
     }

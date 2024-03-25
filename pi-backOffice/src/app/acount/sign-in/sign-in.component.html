@@ -82,7 +82,7 @@
                     class="btn bg-gradient-primary w-100 my-4"
                     [disabled]="signInForm.invalid"
                   >
-                    Se connecter
+                    {{ isLoading ? "Loading..." : "Se connecter" }}
                   </button>
                 </div>
                 <p class="mt-2 text-sm text-center">
