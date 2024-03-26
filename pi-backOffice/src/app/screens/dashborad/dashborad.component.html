@@ -6,7 +6,7 @@
     <div class="col-9">
       <app-navbar [currentScreen]="'Dashboard'"></app-navbar>
       <main
-        class="main-content position-relative max-height-vh-100 h-100 border-radius-lg"
+        class="main-content position-relative border-radius-lg"
       >
         <div class="container-fluid py-4">
           <div class="row">
@@ -40,26 +40,7 @@
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
               <div class="card">
-                <div class="card-header p-3 pt-2">
-                  <div
-                    class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute"
-                  >
-                    <i class="material-icons opacity-10">person</i>
-                  </div>
-                  <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">New Clients</p>
-                    <h4 class="mb-0">3,462</h4>
-                  </div>
-                </div>
-                <hr class="dark horizontal my-0" />
-                <div class="card-footer p-3">
-                  <p class="mb-0">
-                    <span class="text-danger text-sm font-weight-bolder"
-                      >-2%</span
-                    >
-                    than yesterday
-                  </p>
-                </div>
+                <canvas id="pie-chart"></canvas>
               </div>
             </div>
             <div class="col-xl-3 col-sm-6">
@@ -860,11 +841,50 @@
   </div>
 
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="../../../assets/js/core/popper.min.js"></script>
+  <script src="../../../assets/js/core/bootstrap.min.js"></script>
+  <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="../../../assets/js/plugins/chartjs.min.js"></script>
+  <script>
+    new Chart(document.getElementById("pie-chart"), {
+      type: "pie",
+      data: {
+        labels: [
+          "Admin",
+          "Professor",
+          "Student",
+          "Alumni",
+          "Community",
+          "FinancialDirection",
+          "Exposant",
+          "Fourniseur",
+        ],
+        datasets: [
+          {
+            backgroundColor: [
+              "#e63946",
+              "#e63946",
+              "#e63946",
+              "#e63946",
+              "#e63946",
+              "#e63946",
+              "#e63946",
+              "#e63946",
+            ],
+            data: [200, 160, 400, 61, 50, 10, 77, 91],
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: "pie chart pannel",
+        },
+        responsive: true,
+      },
+    });
+  </script>
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 

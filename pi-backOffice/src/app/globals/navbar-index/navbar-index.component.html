@@ -35,6 +35,47 @@
           id="navigation"
         >
           <ul class="navbar-nav navbar-nav-hover ms-auto">
+            <li class="nav-item dropdown dropdown-hover mx-2">
+              <a class="dropdown-item border-radius-md" style="cursor: pointer">
+                <i class="material-icons">language</i>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3"
+                aria-labelledby="dropdownMenuPages"
+              >
+                <div class="d-none d-lg-block">
+                  <h6
+                    class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1"
+                  >
+                    Langue
+                  </h6>
+                  <li class="nav-item dropdown dropdown-hover mx-2">
+                    <a
+                      class="dropdown-item border-radius-md d-flex align-items-center"
+                    >
+                      <img
+                        src="./assets/img/flags/france.png"
+                        class="ms-auto ms-md-2"
+                        style="height: 20px"
+                      />
+                      <span class="ms-2">Français</span>
+                    </a>
+                  </li>
+                  <li class="nav-item dropdown dropdown-hover mx-2">
+                    <a
+                      class="dropdown-item border-radius-md d-flex align-items-center"
+                    >
+                      <img
+                        src="./assets/img/flags/uk.png"
+                        class="ms-auto ms-md-2"
+                        style="height: 20px"
+                      />
+                      <span class="ms-2">Englais</span>
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </li>
             <li
               *ngIf="
                 user &&

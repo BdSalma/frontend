@@ -38,7 +38,6 @@ export class UpdateProfileComponent {
       representative: [''],
       adresse: [''],
       matricule: [''],
-      logo: [''],
       sector: [''],
 
       firstName: [''],

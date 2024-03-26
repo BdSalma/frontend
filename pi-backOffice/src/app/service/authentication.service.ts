@@ -139,6 +139,7 @@ export class Authentication {
               this.toastr.warning('Your session has expired');
               localStorage.clear();
               this.isLoggedIn = false;
+              window.location.reload();
               this.router.navigate(['/']);
             },
           });
@@ -171,6 +172,7 @@ export class Authentication {
               this.toastr.warning('Your session has expired');
               localStorage.clear();
               this.isLoggedIn = false;
+              window.location.reload();
               this.router.navigate(['/']);
             },
           });
