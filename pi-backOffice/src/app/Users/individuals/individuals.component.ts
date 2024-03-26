@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Forum } from '../../model/forum';
 import { Individu } from 'src/app/model/individus';
-import { Authentication } from 'src/app/services/authentication.service';
+import { Authentication } from '../../service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/model/user';
 import { IndividuRole } from 'src/app/model/individusRole';
@@ -28,7 +28,7 @@ export class IndividualsComponent {
     );
   });
   ngOnInit(): void {
-    this.consumer.getAllIndividu().subscribe((data) => {
+    this.consumer.getAllIndividu().subscribe((data :Individu[]) => {
       console.log(data);
       this.individus = data;
     });
@@ -36,31 +36,31 @@ export class IndividualsComponent {
       role: [''],
       search: [''],
     });
-    this.listFilter.get('role')?.valueChanges.subscribe((role) => {
-      this.filterProductsByPrice(role);
+    this.listFilter.get('role')?.valueChanges.subscribe((role :IndividuRole) => {
+      this.roleFilter(role);
     });
   }
 
-  filterProductsByPrice(form: FormGroup) {
+  searchFilter(form: FormGroup) {
     this.consumer.getAllIndividuFilteredByField(form.get('search')!.value).subscribe({
       next: (filteredIndividus: Individu[]) => {
         this.individus = filteredIndividus;
       },
       error: () => {
-        this.consumer.getAllIndividu().subscribe((data) => {
+        this.consumer.getAllIndividu().subscribe((data:Individu[]) => {
           console.log(data);
           this.individus = data;
         });
       },
     });
   }
-  searchFilter(role: IndividuRole) {
+  roleFilter(role: IndividuRole) {
     this.consumer.getAllIndividuFilteredByRole(role).subscribe({
       next: (filteredIndividus: Individu[]) => {
         this.individus = filteredIndividus;
       },
       error: () => {
-        this.consumer.getAllIndividu().subscribe((data) => {
+        this.consumer.getAllIndividu().subscribe((data:Individu[]) => {
           console.log(data);
           this.individus = data;
         });

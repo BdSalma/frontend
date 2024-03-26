@@ -1,6 +1,7 @@
 import { User } from "./user";
 
 export class Sponsor {
+
     idSponsor!: number;
     name!: string;
     contactName!: string;

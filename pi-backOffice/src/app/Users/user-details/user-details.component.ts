@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Authentication } from 'src/app/services/authentication.service';
+import { Authentication } from '../../service/authentication.service';
 
 @Component({
   selector: 'app-user-details',

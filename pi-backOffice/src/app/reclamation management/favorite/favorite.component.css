@@ -1,0 +1,15 @@
+.favorite-icon {
+    color: #000; /* default color */
+    transition: color 0.3s ease !important; /* smooth transition for color change */
+  }
+  
+  .favorite-icon:hover {
+    color: #ff0000 !important; /* change to desired color on hover */
+  }
+  .b{
+    border: 1px solid black;
+  }
+  .fixed-card-size {
+    height: 300px; /* Adjust the height as needed */
+    width: 400px;
+  }

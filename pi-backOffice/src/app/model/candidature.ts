@@ -1,9 +1,11 @@
 import { Interview } from "./interview";
 import { Individu } from "./individus";
+
+import { Status } from "./status";
 export class Candidature {
     idCandidature!: number;
     date!: Date;
-    status!: string;
+    status!: Status;
     cv!: string;
     lettre!: string;
     interview!: Interview;
