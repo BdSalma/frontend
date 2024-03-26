@@ -16,7 +16,7 @@ export class FeedBackComponent {
 
   constructor(
     private reclamationService: ReclamationService,
-    
+
     private router: Router,
     private toastr: ToastrService,
     private formBuilder: FormBuilder
@@ -24,13 +24,13 @@ export class FeedBackComponent {
   reclamations: Reclamation[] = [];
   form!: FormGroup;
 
-  
+
   ngOnInit() {
     this.reclamationService.getFeed().subscribe((data) => {
       console.log(data);
-      
+
       this.reclamations = data;
-      
+
     });
     this.form = this.formBuilder.group({
       description: ['', [Validators.required]],
@@ -44,14 +44,23 @@ export class FeedBackComponent {
   addFavorite(reclamation: Reclamation) {
     this.reclamationService
       .addToFavorites(reclamation.id)
-      .subscribe(
-        () =>
-          (this.reclamations = this.reclamations.filter(
-            (rec: Reclamation) => rec != reclamation
-          ))
-      );
+      .subscribe({
+        next: () =>{
+          
+          this.toastr.success('Your Reclamation has been added to favorite');
+
+        },
+        error: (error) =>
+         {
+          console.error(error);
+          this.toastr.error('Something went wrong!');
+
+         }
+      })
+
+
   }
-  
+
 
   currentPage: number = 1;
   itemsPerPage: number = 9;
@@ -78,14 +87,14 @@ export class FeedBackComponent {
       this.currentPage--;
     }
   }
-  create(reclamation : any) {
-    let form2 : any = {}; 
+  create(reclamation: any) {
+    let form2: any = {};
     form2.description = reclamation.description
     console.log(form2);
-    
+
     this.reclamationService.createReclamation(form2).subscribe({
       next: (response) => {
-        
+
         this.toastr.success('Your Reclamation has been created successfully');
         console.log(response);
       },

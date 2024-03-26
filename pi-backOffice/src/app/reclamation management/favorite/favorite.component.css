@@ -9,7 +9,28 @@
   .b{
     border: 1px solid black;
   }
-  .fixed-card-size {
-    height: 300px; /* Adjust the height as needed */
-    width: 400px;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .pagination button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    color: #007bff; /* Change to your desired color */
+    transition: color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    color: #0056b3; /* Change to your desired hover color */
+  }
+  
+  .pagination span {
+    margin: 0 10px;
   }

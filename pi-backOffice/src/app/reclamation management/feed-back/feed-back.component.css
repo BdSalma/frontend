@@ -9,10 +9,7 @@
   .b{
     border: 1px solid black;
   }
-  .fixed-card-size {
-    height: 300px; /* Adjust the height as needed */
-    width: 400px;
-  }
+
   .pagination {
     display: flex;
     justify-content: center;
@@ -20,7 +17,9 @@
     margin-top: 20px;
     font-size: 16px;
   }
-  
+  .heart-white {
+    color: white; /* Change this to the desired color */
+  }
   .pagination button {
     background-color: transparent;
     border: none;

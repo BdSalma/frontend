@@ -45,7 +45,7 @@
       </div>
     </section>
 
-    
+
     <section class="py-7">
       <div class="button-container">
         <button routerLink="favorite" class="custom-button col-md-4 ">Favorites</button>
@@ -56,10 +56,10 @@
               let reclamation of reclamations.slice(startIndex, endIndex + 1);
               let i = index
             ">
-            <div class="card fixed-card-size" [ngClass]="{
+            <div class="card fixed-card-size mt-4" [ngClass]="{
                 'bg-gradient-primary': i % 2 !== 0,
                 'card-plain b': i % 2 === 0
-              }" >
+              }">
               <div class="card-body">
                 <div class="author">
                   <div class="name">
@@ -71,13 +71,14 @@
                     </div>
                   </div>
                 </div>
+                
                 <p class="mt-4" [ngClass]="{ 'text-white': i % 2 !== 0 }">
                   "{{ reclamation.description }}"
                 </p>
-                
-                <i class="fas fa-heart favorite-icon" (click)="addFavorite(reclamation)"></i>
+                <i class="fas fa-heart favorite-icon position-absolute top-5 end-0 m-2" [ngClass]="{ 'heart-white': i % 2 !== 0 }" (click)="addFavorite(reclamation)"></i>
                 <app-rating [reclamationId]="reclamation.id" [ngClass]="{ 'text-white': i % 2 !== 0 }"></app-rating>
               </div>
+
             </div>
           </div>
         </div>
@@ -90,7 +91,7 @@
             Next <i class="fas fa-chevron-right"></i>
           </button>
         </div>
-        
+
       </div>
     </section>
     <section>

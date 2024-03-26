@@ -1,8 +1,8 @@
-<!-- rating.component.html -->
 <div class="rating-container">
-    <span class="star"  *ngFor="let star of [1, 2, 3, 4, 5]" (click)="selectedRating = star">
-      <span [innerHTML]="getStarIcon(star)" (click)="selectedRating = star"></span>
-    </span>
-  </div>
-  <button class="rating-button" (click)="rateReclamation()">Submit Rating</button>
-  
+  <span class="star" *ngFor="let star of [1, 2, 3, 4, 5]" 
+        [class.selected]="star <= selectedRating" 
+        (click)="selectedRating = star">
+    <span [innerHTML]="getStarIcon(star)" (click)="selectedRating = star"></span>
+  </span>
+</div>
+<button class="rating-button" (click)="rateReclamation()">Submit Rating</button>

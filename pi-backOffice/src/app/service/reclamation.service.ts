@@ -18,7 +18,8 @@ export class ReclamationService {
     return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/retrieve')
    }
    getFavorite(){
-    return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/favorites', {headers: new HttpHeaders({
+    return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/favorites', {
+      headers: new HttpHeaders({
       Authorization: `Bearer ${this.auth.token}`,
       'Content-Type': 'application/json',
     }),} )
@@ -35,7 +36,6 @@ export class ReclamationService {
     return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/feed')
    }
 
-   //http://localhost:8087/reclamation/create
    createReclamation( reclamation : any){
     return  this.http.post<any>('http://localhost:8087/reclamation/create',reclamation,
     {
@@ -55,14 +55,17 @@ export class ReclamationService {
     });
   }
   rateReclamation(id: number, rating: number) {
-    const url = `http://localhost:8087/reclamation/${id}/rate?rating=${rating}`;
-    return this.http.put<Reclamation>(url, {} , {
+    const url = `http://localhost:8087/reclamation/${id}/rate`;
+    return this.http.put<Reclamation>(url, {rating} , {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,
         'Content-Type': 'application/json',
       }),
     });
   }
-   
+  getRating(reclamationId: number) {
+    const url = `http://localhost:8087/reclamation/${reclamationId}/rating`;
+    return this.http.get<number>(url);
+  }
 
 }

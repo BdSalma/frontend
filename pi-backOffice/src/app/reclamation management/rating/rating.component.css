@@ -3,9 +3,11 @@
   }
   
   .checked {
-    color: gold; /* or any color you prefer for checked stars */
+    color: gold !important; /* or any color you prefer for checked stars */
   }
-  
+  .star.selected {
+    color: gold; /* Selected color */
+  }
   .unchecked {
     color: #ccc; /* or any color you prefer for unchecked stars */
   }

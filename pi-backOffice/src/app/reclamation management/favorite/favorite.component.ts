@@ -21,14 +21,8 @@ export class FavoriteComponent {
   
   ngOnInit() {
     this.reclamationService.getFavorite().subscribe((data) => {
-      console.log(data);
-      
       this.reclamations = data;
-      
     });
-    
-
-
   }
 
 
