@@ -7,7 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Authentication } from '../services/authentication.service';
+import { Authentication} from '../service/authentication.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,13 +28,17 @@ export class AuthGuardGuard implements CanActivate {
       '/update-profile': [],
       '/individuals': ['Admin'],
       '/associations': ['Admin'],
-      '/offerBySociety': ['Exposant'],
-      '/offre': ['Admin'],
-      '/listCandidat':['Student'],
-      '/dashboard': ['Admin','Exposant'],
-
-
-
+      '/offerBySociety': ['Exposant','Professor'],
+      '/offre': ['Admin','Community'],
+      '/listCandidat': ['Student','Alumini'],
+      '/dashboard': ['Admin', 'Exposant','Professor','Community','FinancialDirection','Fourniseur'],
+      '/reclamation': ['Admin'],
+      '/forumList': ['Admin','Community'],
+      '/packList': ['Admin','Community'],
+      '/standList': ['Admin','Community'],
+      '/supplyrequests': ['Admin','Community'],
+      '/invoices': ['Admin','Community'],
+      '/devis': ['Fourniseur'],
     };
     const currentRoute = state.url;
     const userRole = this.authService.user?.role;
@@ -44,7 +48,7 @@ export class AuthGuardGuard implements CanActivate {
         ? userRole && routeRoles.some((role) => userRole.includes(role))
         : true;
     if (protectedRoutes[currentRoute] && !this.authService.isLoggedIn) {
-      return this.router.parseUrl('/signIn');
+      return this.router.parseUrl('/');
     }
     if (protectedRoutes[currentRoute] && !hasRole) {
       return false;
