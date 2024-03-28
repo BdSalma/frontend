@@ -15,4 +15,5 @@ export class Offer {
   candidatures!: Candidature[];
   Individus!: User[];
   society!: Society;
+  file!: File;
 }

@@ -10,9 +10,10 @@ import { Category } from '../model/category';
   styleUrls: ['./add-offer.component.css']
 })
 export class AddOfferComponent {
-  registerForm!: FormGroup;
+  registerForm!: any;
   categoryOptions: string[] = Object.keys(Category).filter((key:any) => !isNaN(Number(Category[key])));
 
+  fileBase64: string | ArrayBuffer | null = null;
 
   constructor(private offerS:OfferService,private router:Router){}
   ngOnInit(){
@@ -23,10 +24,13 @@ export class AddOfferComponent {
       candidatProfil: new FormControl('',Validators.required),
       duree:new FormControl('',Validators.required),
       description:new FormControl('',Validators.required),
+      file:new FormControl('')
 
     });
 
   }
+
+  
   onSubmit(){
     console.log(this.registerForm.value);
     alert('SUCCES\n\n'+ JSON.stringify(this.registerForm.value,null,4))
@@ -34,11 +38,27 @@ export class AddOfferComponent {
   reset(){
     this.registerForm.reset();
   }
-ajouter(){
-  this.offerS.affectOfferToSociety(this.registerForm.value).subscribe(
-    {next:()=>this.router.navigateByUrl('/offerBySociety'),
-    error:(error)=>console.log(error)}
-  )
+  showFileUpload: boolean = false;
 
-}
+  // Méthode pour changer la valeur de showFileUpload
+  toggleFileUpload(): void {
+    this.showFileUpload = !this.showFileUpload; // Inverse la valeur actuelle
+  }
+  ajouter() {
+    // Vérifiez si registerForm est null
+    if (this.registerForm) {
+      const fileBase64: string | null = this.registerForm.get('file').value;
+        this.registerForm.patchValue({
+          fileBase64: fileBase64
+        });
+        this.offerS.affectOfferToSociety(this.registerForm.value).subscribe({
+          next: () => this.router.navigateByUrl('/offerBySociety'),
+          error: (error) => console.log(error)
+        });
+      }
+     else {
+      console.error("Register form is null.");
+    }
+  }
+  
 }

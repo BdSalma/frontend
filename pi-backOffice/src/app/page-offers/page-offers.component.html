@@ -24,28 +24,34 @@
                 <div class="row mt-5">
                 <ng-container  *ngFor="let offer of listOffer; let i = index" >
                   <div class="col-lg-4 col-md-8 mb-5">
-                    <div class="card border border-primary" [ngStyle]="i % 2 !== 0 ? {'background-color': '#ed3637'} : null">
-                      <div style="margin-left: 280px;" class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4">
-                        <a  [routerLink]="['/postuler', offer.idOffre]"><i class="material-icons opacity-10" >weekend</i></a>
-                    </div>
-
+                    <div class="card border border-primary" >
+                        <img class="card-img-top" style="height: 300px;" [src]="offer.file" alt="">
+                        <div style="margin-left: 280px;" class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4">
+                            <a [routerLink]="['/postuler', offer.idOffre]"><i class="material-icons opacity-10">weekend</i></a>
+                        </div>
                         <div class="card-body">
                             <div class="author">
                                 <div class="name">
-                                  <span class="d-inline-block" [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'">Entreprise: {{offer.society.username}}</span>
-                                    <h6 class="mb-0 font-weight-bolder" [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'">{{offer.offerName}}</h6>
+                                  <span class="d-inline-block" >Entreprise: {{offer.society.username}}</span>
+                                    <h6 class="mb-0 font-weight-bolder" >{{offer.offerName}}</h6>
                                     <div class="stats">
-                                        <i class="far fa-clock" [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'">{{offer.dateEmission}}</i>
+                                        <i class="far fa-clock" >{{offer.dateEmission}}</i>
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-4" [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'">Profil souhaitée: {{offer.candidatProfil}}</p>
-                            <p class="mt-4" [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'">
+                            <p *ngIf="offer.candidatProfil" class="mt-4">Profil souhaitée: {{offer.candidatProfil}}</p>
+                            <p class="mt-4">
                               {{ truncateDescription(offer.description, 50, offer.showFullDescriptionFlag) }}
                               <a style="font-weight: bolder;" *ngIf="offer.description.length > 50" (click)="showFullDescription(offer)">
                                 {{ offer.showFullDescriptionFlag ? 'Voir moins' : 'Voir plus' }}
                               </a>
-                            </p>                        </div>
+                            </p>
+                            <div class="rating mt-3">
+                              <a (click)="addFavoris(offer.idOffre)">
+                              <i class="fas fa-star" Style="color:#ed3637"></i>
+                              </a>
+                            </div>                        
+                           </div>
                     </div>
                 </div>
                 </ng-container>
