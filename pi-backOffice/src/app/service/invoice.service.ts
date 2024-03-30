@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Invoice } from '../model/invoice';
 import { Authentication } from '../services/authentication.service';
+import { InvoiceStatus } from '../model/InvoiceStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,13 @@ export class InvoiceService {
 
   getInvoices(){
     return this.http.get('http://localhost:8087/invoice/retrieveAllInvoices',{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      })
+    });
+  }
+  getOldInvoices(){
+    return this.http.get('http://localhost:8087/invoice/retrieveOldInvoices',{
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,
       })
@@ -37,21 +45,21 @@ export class InvoiceService {
       })
     });
   }
-  putInvoice(id:number,o:Invoice){
-    return this.http.put(`http://localhost:8087/invoice/updateInvoice/${id}`,o,{
+  putInvoice(id: number, o: Invoice) {
+    return this.http.put(`http://localhost:8087/invoice/updateInvoice/${id}`, o, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,
       })
     });
   }
-
-  addAndAssignInvoiceToRequest(invoice: Invoice, requestSupplyId: number) {
-    return this.http.post(`http://localhost:8087/invoice/assignToRequest/${requestSupplyId}`, invoice,{
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.auth.token}`,
-      })
+  
+  addAndAssignInvoiceToRequest(invoice: Invoice, requestSupplyId: number,formData: FormData) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`,
     });
+    return this.http.post(`http://localhost:8087/invoice/assignToRequest/${requestSupplyId}` ,formData , { headers });
   }
+  
   getInvoicesBySociety(societyId: String) {
     return this.http.get(`http://localhost:8087/invoice/getInvoicesBySociety`,{
       headers: new HttpHeaders({
@@ -59,4 +67,24 @@ export class InvoiceService {
       })
     });
   }
+  getOldInvoicesBySociety(societyId: String) {
+    return this.http.get(`http://localhost:8087/invoice/getOldInvoicesBySociety`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      })
+    });
+  }
+
+  getFileUrl(fileName: string): string {
+    // Assuming your backend endpoint for serving files is '/devis/file'
+    return `http://localhost:8087/invoice/file/${fileName}`;
+  }
+
+  getFileContent(fileName: string) {
+    const url = `http://localhost:8087/invoice/file/${fileName}`;
+    return this.http.get(url, {
+      responseType: 'text' // Ensure response is treated as text (Base64)
+    });
+  }
+  
 }

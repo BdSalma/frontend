@@ -10,6 +10,7 @@ import { DevisService } from '../service/devis.service';
 })
 export class AddDevisComponent {
   devisForm!: FormGroup;
+  selectedFile: File | undefined;
 
  requestId!: number; 
 
@@ -35,7 +36,12 @@ export class AddDevisComponent {
       // Handle missing requestId (e.g., redirect, display error message)
     }
   }
-
+  onFileChange(event: any) {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      this.selectedFile = fileList[0];
+    }
+  }
   onSubmit() {
     console.log(this.devisForm.value);
     //alert('Success\n\n' + JSON.stringify(this.devisForm.value, null, 4));
@@ -47,7 +53,20 @@ export class AddDevisComponent {
 
   ajouter() {
     if (this.devisForm.valid) {
-      this.devis.createDevisAndAssignToRequest(this.requestId, this.devisForm.value).subscribe(
+      // Construct 'devis' object from form fields
+      const devisData = {
+        description: this.devisForm.get('description')?.value,
+        price: this.devisForm.get('price')?.value,
+        quantity: this.devisForm.get('quantity')?.value
+      };
+  
+      // Append 'devis' object to FormData
+      const formData = new FormData();
+      formData.append('devis', JSON.stringify(devisData));
+      formData.append('file', this.selectedFile!, this.selectedFile!.name);
+  
+      // Call the service function with the requestId and FormData
+      this.devis.createDevisAndAssignToRequest(this.requestId,this.devisForm.value, formData).subscribe(
         () => {
           console.log(this.requestId);
           console.log('Devis created and assigned successfully.');
@@ -62,11 +81,6 @@ export class AddDevisComponent {
       console.error('Devis form is invalid!');
     }
   }
-  // ajouter(){
-  // this.devis.AddDevis(this.devisForm.value).subscribe(
-  //   {next:()=>this.router.navigateByUrl('/devis'),
-  //   error:(error)=>console.log(error)}
-  // )
-
-// }
+  
+  
 }

@@ -22,37 +22,35 @@
                       <div class="card-header pb-0 p-3">
                         <div class="row">
                           <div class="row">
-                      <form role="form" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-                        <div class="input-group input-group-outline mb-3">
-                          <label>Status:&nbsp;&nbsp;&nbsp;</label>
-                          
-                          <div>
-                            <input type="radio" id="validate" name="status" value="true" formControlName="status">
-                            <label for="validate">Valider</label>
-                          </div>
-                          <div>
-                            <input type="radio" id="refuse" name="status" value="false" formControlName="status">
-                            <label for="refuse">Refuser</label>
-                          </div>
-                        </div>
-                        <div class="text-danger" *ngIf="updateForm.controls['status'].errors && updateForm.get('status')?.touched">
-                          <div *ngIf="updateForm.controls['status'].hasError('required')">Ce champ est obligatoire</div>
-                        </div>
-                        
-                        <div class="input-group input-group-outline mb-3">
-                          <label >commentaire</label>
-                          <input type="text" class="form-control" formControlName="comment" placeholder="commentaire">
-                        </div>
-                        <div class="text-danger" *ngIf="updateForm.controls['comment'].errors && updateForm.get('comment')?.touched">
-                            <div *ngIf="updateForm.controls['comment'].hasError('required')">Ce champ est obligatoire</div>
-                        </div>
-                        
-                          
-                        <div class="text-center">
-                          <button type="submit" [disabled]="updateForm.invalid" (click)="update()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Ajouter</button>
-                          <button type="submit" (click)="reset()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Cancel</button>
-                        </div>
-                      </form>
+                            <form role="form" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+                              <div class="input-group input-group-outline mb-3">
+                                <label class="col-sm-4 col-form-label">Status :&nbsp;&nbsp;&nbsp;</label>
+                                <div>
+                                  <input type="radio" id="validate" name="status" value="Accepted" formControlName="status">
+                                  <label for="validate">Valider</label>
+                                </div>
+                                <div>
+                                  <input type="radio" id="refuse" name="status" value="refused" formControlName="status">  <label for="refuse">Refuser</label>
+                                </div>
+                              </div>
+                              <div class="text-danger" *ngIf="updateForm.controls['status'].errors && updateForm.get('status')?.touched">
+                                <div *ngIf="updateForm.controls['status'].hasError('required')">Ce champ est obligatoire</div>
+                              </div>
+                              
+                              <div class="input-group input-group-outline mb-3">
+                                <label class="col-sm-4 col-form-label" >Commentaire :</label>
+                                <input type="text" class="form-control" formControlName="comment" placeholder="commentaire">
+                              </div>
+                              <div class="text-danger" *ngIf="updateForm.controls['comment'].errors && updateForm.get('comment')?.touched">
+                                <div *ngIf="updateForm.controls['comment'].hasError('required')">Ce champ est obligatoire</div>
+                              </div>
+                            
+                              <div class="text-center">
+                                <button type="submit" [disabled]="updateForm.invalid" (click)="update()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Ajouter</button>
+                                <button type="submit" (click)="reset()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Cancel</button>
+                              </div>
+                            </form>
+                            
                     </div>
                   </div>
               </div>
@@ -64,7 +62,7 @@
 </div>
 
 <br>
-<br><br><br><br>x
+<br><br><br><br>
 <app-footer></app-footer>
 </main>
 </div>

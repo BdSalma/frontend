@@ -25,27 +25,27 @@
                         <form  role="form" [formGroup]="devisForm" (ngSubmit)="onSubmit()">
 
                           <div class="input-group input-group-outline mb-3">
-                            <label >fichier :&nbsp;&nbsp;&nbsp;         </label>
-                            <input type="file" class="form-control" formControlName="file" placeholder="fichier">
+                            <label  class="col-sm-4 col-form-label" >Fichier :&nbsp;&nbsp;&nbsp;         </label>
+                            <input type="file" (change)="onFileChange($event)"class="form-control" formControlName="file" placeholder="fichier">
                           </div>
                           <div class="text-danger" *ngIf="devisForm.controls['file'].errors && devisForm.get('file')?.touched">
                               <div *ngIf="devisForm.controls['file'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                            <label >Description : </label>
+                            <label  class="col-sm-4 col-form-label" >Description : </label>
                             <input type="text" class="form-control" formControlName="description" placeholder="description">
                           </div>
                           <div class="text-danger" *ngIf="devisForm.controls['description'].errors && devisForm.get('description')?.touched">
                               <div *ngIf="devisForm.controls['description'].hasError('required')">Ce champ est obligatoire</div>
                           </div><div class="input-group input-group-outline mb-3">
-                            <label >Prix : </label>
+                            <label  class="col-sm-4 col-form-label" >Prix : </label>
                             <input type="text" class="form-control" formControlName="price" placeholder="prix">
                           </div>
                           <div class="text-danger" *ngIf="devisForm.controls['price'].errors && devisForm.get('price')?.touched">
                               <div *ngIf="devisForm.controls['price'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                            <label >quantité : </label>
+                            <label  class="col-sm-4 col-form-label" >quantité : </label>
                             <input type="text" class="form-control" formControlName="quantity" placeholder="quantité">
                           </div>
                           <div class="text-danger" *ngIf="devisForm.controls['quantity'].errors && devisForm.get('quantity')?.touched">
@@ -69,7 +69,7 @@
   </div>
   
   <br>
-  <br><br><br><br>x
+  <br><br><br><br>
   <app-footer></app-footer>
   </main>
   </div>

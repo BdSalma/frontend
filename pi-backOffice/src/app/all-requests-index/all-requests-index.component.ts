@@ -3,11 +3,11 @@ import { RequestSupplyService } from '../service/request-supply.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-requests-index',
-  templateUrl: './requests-index.component.html',
-  styleUrls: ['./requests-index.component.css']
+  selector: 'app-all-requests-index',
+  templateUrl: './all-requests-index.component.html',
+  styleUrls: ['./all-requests-index.component.css']
 })
-export class RequestsIndexComponent {
+export class AllRequestsIndexComponent {
   listRequests!:any;
 
   constructor(private requests:RequestSupplyService,private router:Router){}
@@ -27,7 +27,7 @@ export class RequestsIndexComponent {
     request.showFullDescriptionFlag = !request.showFullDescriptionFlag;
   }
   loadRequests() {
-    this.requests.recommendRequestsForSociety().subscribe(
+    this.requests.getRequests().subscribe(
       (data) => {
         this.listRequests = data;
       },
@@ -40,6 +40,4 @@ export class RequestsIndexComponent {
   navigateToAddDevis(requestId: number) {
     this.router.navigate(['/createDevisAndAssignToRequest', requestId]);
   }
- 
-  
 }

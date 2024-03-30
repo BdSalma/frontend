@@ -48,12 +48,12 @@ export class DevisComponent {
       }
     );
   }
-  updateDevisStatus(id: number, newStatus: boolean) {
+  updateDevisStatus(id: number, newStatus: string) {
     // Display a simple alert before updating the status
     const userConfirmation = confirm('Etes-vous sûr de vouloir mettre à jour le statut de ce Devis?');
     console.log(this.devis);
     if (userConfirmation) {
-      this.devis.updateDevisStatus(id, newStatus).subscribe(
+      this.devis.updateDevisStatus(id, "Accepted").subscribe(
         () => {
           console.log(' status de devis modifiée .');
           // Actualiser la liste des offres après la mise à jour du statut
@@ -65,4 +65,16 @@ export class DevisComponent {
       );
     }
   }
+    // // Method to open a new window/tab to view the file associated with a devis
+    // viewFile(fileName: string) {
+    //   const fileUrl = this.devis.getFileUrl(fileName); // Assuming you have a method in DevisService to construct the file URL
+    //   window.open(fileUrl, '_blank');
+    // }
+    viewFile(fileName: string) {
+      const fileUrl = this.devis.getFileUrl(fileName);
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = fileName;
+      link.click();
+    }
 }

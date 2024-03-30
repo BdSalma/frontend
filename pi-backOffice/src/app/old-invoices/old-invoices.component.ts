@@ -3,11 +3,11 @@ import { InvoiceService } from '../service/invoice.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-invoices',
-  templateUrl: './invoices.component.html',
-  styleUrls: ['./invoices.component.css']
+  selector: 'app-old-invoices',
+  templateUrl: './old-invoices.component.html',
+  styleUrls: ['./old-invoices.component.css']
 })
-export class InvoicesComponent {
+export class OldInvoicesComponent {
   listInvoices!:any;
   constructor(private Invoices:InvoiceService,private router:Router){}
   ngOnInit(): void {
@@ -15,7 +15,7 @@ export class InvoicesComponent {
   }
 
   loadInvoices() {
-    this.Invoices.getInvoices().subscribe(
+    this.Invoices.getOldInvoices().subscribe(
       (data) => {
         this.listInvoices = data;
       },
@@ -31,7 +31,4 @@ export class InvoicesComponent {
     link.download = fileName;
     link.click();
   }
-
- 
- 
 }

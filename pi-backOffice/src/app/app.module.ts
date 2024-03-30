@@ -77,6 +77,11 @@ import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.comp
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
 import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
+import { AllRequestsIndexComponent } from './all-requests-index/all-requests-index.component';
+import { OldRequestsComponent } from './old-requests/old-requests.component';
+import { OldInvoicesComponent } from './old-invoices/old-invoices.component';
+import { MyOldInvoicesComponent } from './my-old-invoices/my-old-invoices.component';
+import { OldDevisBySocietyComponent } from './old-devis-by-society/old-devis-by-society.component';
 
 @NgModule({
     declarations: [
@@ -151,7 +156,12 @@ import { ReservationPackComponent } from './PackComponents/reservation-pack/rese
     IndexOffersComponent,
     PageOffersComponent,
     ListOffersComponent,
-    FeedBackComponent
+    FeedBackComponent,
+    AllRequestsIndexComponent,
+    OldRequestsComponent,
+    OldInvoicesComponent,
+    MyOldInvoicesComponent,
+    OldDevisBySocietyComponent
     ],
     imports: [
         BrowserModule,

@@ -4,7 +4,7 @@ export class Invoice {
     idInvoice!: number;
     description!: string;
     file!: string;
-    status!: boolean;
+    status!: string;
     comment!: string;
     requestSupply!: RequestSupply;
 }

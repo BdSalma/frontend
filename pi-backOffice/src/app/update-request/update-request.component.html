@@ -13,7 +13,7 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                  <h6 class="text-white text-capitalize ps-3">modifier demande </h6>
+                  <label class="col-sm-4 col-form-label" class="text-white text-capitalize ps-3">modifier demande </label>
                 </div>
               </div> 
               <div class="card-body px-0 pb-2">
@@ -25,14 +25,14 @@
                           <form role="form" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
                             
                           <div class="input-group input-group-outline mb-3">
-                          <h6 class="mb-0">Quantité : </h6>
+                          <label class="col-sm-4 col-form-label" class="mb-0">Quantité : </label>
                           <input type="number" class="form-control" formControlName="quantity" placeholder="quantité">
                           </div>
                           <div class="text-danger" *ngIf="updateForm.controls['quantity'].errors && updateForm.get('quantity')?.touched">
                             <div *ngIf="updateForm.controls['quantity'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                            <h6 class="mb-0">categorie :</h6>
+                            <label class="col-sm-4 col-form-label" class="mb-0">categorie :</label>
                             <input type="text" class="form-control" formControlName="category" placeholder="categorie">
 
                             <div class="text-danger" *ngIf="updateForm.controls['category'].errors && updateForm.get('category')?.touched">
@@ -40,7 +40,7 @@
                             </div>
                           </div>
                         <div class="input-group input-group-outline mb-3">
-                          <h6 class="mb-0">date:</h6>
+                          <label class="col-sm-4 col-form-label" class="mb-0">date:</label>
                           <input type="date" class="form-control" formControlName="date" placeholder="date" [min]="minDatePlusFourDays.toISOString()" (change)="onChangeDate($event)" >
                         </div>
                         <div class="text-danger" *ngIf="updateForm.controls['date'].errors && updateForm.get('date')?.touched">
@@ -50,14 +50,14 @@
                             </div>
                         </div>
                         <div class="input-group input-group-outline mb-3">
-                          <h6 class="mb-0">Description :</h6>
+                          <label class="col-sm-4 col-form-label" class="mb-0">Description :</label>
                           <input type="text" class="form-control" formControlName="description" placeholder="description">
                         </div>
                         <div class="text-danger" *ngIf="updateForm.controls['description'].errors && updateForm.get('description')?.touched">
                             <div *ngIf="updateForm.controls['description'].hasError('required')">Ce champ est obligatoire</div>
                         </div>
                         <div class="input-group input-group-outline mb-3">
-                            <h6 class="mb-0">Validité :</h6>
+                            <label class="col-sm-4 col-form-label" class="mb-0">Validité :</label>
                             <input type="number" class="form-control"formControlName="validity" placeholder="validité">
                           </div>
                           <div class="text-danger" *ngIf="updateForm.controls['validity'].errors && updateForm.get('validity')?.touched">
@@ -80,7 +80,7 @@
 </div>
 
 <br>
-<br><br><br><br>x
+<br><br><br><br>
 <app-footer></app-footer>
 </main>
 </div>

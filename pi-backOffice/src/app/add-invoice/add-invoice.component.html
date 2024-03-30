@@ -24,15 +24,15 @@
                             <div class="row">
                         <form role="form" [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
                           <div class="input-group input-group-outline mb-3">
-                            <label >file :&nbsp;&nbsp;&nbsp;         </label>
-                            <input type="file" class="form-control" formControlName="file" placeholder="file">
+                            <label  class="col-sm-4 col-form-label" >Fichier :&nbsp;&nbsp;&nbsp;         </label>
+                            <input type="file"  (change)="onFileChange($event)"class="form-control" formControlName="file" placeholder="file">
                           </div>
                           <div class="text-danger" *ngIf="invoiceForm.controls['file'].errors && invoiceForm.get('file')?.touched">
                               <div *ngIf="invoiceForm.controls['file'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           
                           <div class="input-group input-group-outline mb-3">
-                            <label >Description</label>
+                            <label  class="col-sm-4 col-form-label" >Description :</label>
                             <input type="text" class="form-control" formControlName="description" placeholder="description">
                           </div>
                           <div class="text-danger" *ngIf="invoiceForm.controls['description'].errors && invoiceForm.get('description')?.touched">
@@ -56,7 +56,7 @@
   </div>
   
   <br>
-  <br><br><br><br>x
+  <br><br><br><br>
   <app-footer></app-footer>
   </main>
   </div>

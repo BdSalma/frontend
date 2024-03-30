@@ -3,21 +3,24 @@ import { InvoiceService } from '../service/invoice.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-invoices',
-  templateUrl: './invoices.component.html',
-  styleUrls: ['./invoices.component.css']
+  selector: 'app-my-old-invoices',
+  templateUrl: './my-old-invoices.component.html',
+  styleUrls: ['./my-old-invoices.component.css']
 })
-export class InvoicesComponent {
+export class MyOldInvoicesComponent {
   listInvoices!:any;
+  idsociety!:string;
+
   constructor(private Invoices:InvoiceService,private router:Router){}
   ngOnInit(): void {
     this.loadInvoices();
   }
 
   loadInvoices() {
-    this.Invoices.getInvoices().subscribe(
+    this.Invoices.getOldInvoicesBySociety(this.idsociety).subscribe(
       (data) => {
         this.listInvoices = data;
+        console.log(this.listInvoices);
       },
       (error) => {
         console.log(error);
@@ -31,7 +34,4 @@ export class InvoicesComponent {
     link.download = fileName;
     link.click();
   }
-
- 
- 
 }

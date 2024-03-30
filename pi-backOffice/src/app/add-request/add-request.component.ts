@@ -46,7 +46,7 @@ export class AddRequestComponent {
   }
   onSubmit(){
     console.log(this.requestForm.value);
-    alert('SUCCES\n\n'+ JSON.stringify(this.requestForm.value,null,4))
+    //alert('SUCCES\n\n'+ JSON.stringify(this.requestForm.value,null,4))
   }
   reset(){
     this.requestForm.reset();

@@ -1,4 +1,4 @@
-<body lass="g-sidenav-show  bg-gray-200">
+<body class="g-sidenav-show  bg-gray-200">
     <div class="row">
       <div class="col-3">
         <app-sidebar></app-sidebar>
@@ -25,14 +25,14 @@
                             <form role="form" [formGroup]="requestForm" (ngSubmit)="onSubmit()">
                               
                             <div class="input-group input-group-outline mb-3">
-                            <h6 class="mb-0">Quantité : </h6>
+                            <label class="col-sm-4 col-form-label">Quantité :</label>
                             <input type="number" class="form-control" formControlName="quantity" placeholder="quantité">
                             </div>
                             <div class="text-danger" *ngIf="requestForm.controls['quantity'].errors && requestForm.get('quantity')?.touched">
                               <div *ngIf="requestForm.controls['quantity'].hasError('required')">Ce champ est obligatoire</div>
                             </div>
                             <div class="input-group input-group-outline mb-3">
-                              <h6 class="mb-0">categorie :</h6>
+                              <label class="col-sm-4 col-form-label">Catégorie :</label>
                               <input type="text" class="form-control" formControlName="category" placeholder="categorie">
 
                               <div class="text-danger" *ngIf="requestForm.controls['category'].errors && requestForm.get('category')?.touched">
@@ -40,7 +40,7 @@
                               </div>
                             </div>
                           <div class="input-group input-group-outline mb-3">
-                            <h6 class="mb-0">date:</h6>
+                            <label class="col-sm-4 col-form-label">Date :</label>
                             <input type="date" class="form-control" formControlName="date" placeholder="date" [min]="minDatePlusFourDays.toISOString()" (change)="onChangeDate($event)" >
                           </div>
                           <div class="text-danger" *ngIf="requestForm.controls['date'].errors && requestForm.get('date')?.touched">
@@ -50,14 +50,14 @@
                               </div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                            <h6 class="mb-0">Description :</h6>
+                            <label class="col-sm-4 col-form-label">Description :</label>
                             <input type="text" class="form-control" formControlName="description" placeholder="description">
                           </div>
                           <div class="text-danger" *ngIf="requestForm.controls['description'].errors && requestForm.get('description')?.touched">
                               <div *ngIf="requestForm.controls['description'].hasError('required')">Ce champ est obligatoire</div>
                           </div>
                           <div class="input-group input-group-outline mb-3">
-                              <h6 class="mb-0">Validité :</h6>
+                              <label class="col-sm-4 col-form-label">Validité :</label>
                               <input type="number" class="form-control"formControlName="validity" placeholder="validité">
                             </div>
                             <div class="text-danger" *ngIf="requestForm.controls['validity'].errors && requestForm.get('validity')?.touched">
@@ -65,8 +65,8 @@
                             </div>
                             
                           <div class="text-center">
-                            <button type="submit" [disabled]="requestForm.invalid" (click)="ajouter()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">ajouter</button>
-                            <button type="submit" (click)="reset()" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">annuler</button>
+                            <button type="submit" [disabled]="requestForm.invalid" (click)="ajouter()" class="btn bg-gradient-primary w-100 my-4 mb-2">ajouter</button>
+                            <button type="submit" (click)="reset()" class="btn bg-gradient-primary w-100 my-4 mb-2">annuler</button>
                           </div>
                         </form>
                       </div>
@@ -80,7 +80,7 @@
 </div>
 
 <br>
-<br><br><br><br>x
+<br><br><br><br>
 <app-footer></app-footer>
 </main>
 </div>

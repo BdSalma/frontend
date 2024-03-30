@@ -19,6 +19,13 @@ export class RequestSupplyService {
       })
     });
 }
+getOldRequestsByIndividus(){
+  return this.http.get(`http://localhost:8087/requestSupply/retrieveOldRequestSuppliesByIndividus`,{
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`,
+    })
+  });
+}
   DeleteRequest(id:number){
     return this.http.delete(`http://localhost:8087/requestSupply/deleteRequestSupply/${id}`,{
       headers: new HttpHeaders({
@@ -47,5 +54,12 @@ export class RequestSupplyService {
       })
     });
   }
+  recommendRequestsForSociety(){
+    return this.http.get(`http://localhost:8087/requestSupply/recommendRequestsForSociety`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      })
+    });
+}
  
 }

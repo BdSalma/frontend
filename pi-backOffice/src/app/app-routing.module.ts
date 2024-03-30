@@ -72,6 +72,11 @@ import { ListOffersComponent } from './list-offers/list-offers.component';
 import { FeedBackComponent } from './feed-back/feed-back.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboradComponent } from './dashborad/dashborad.component';
+import { AllRequestsIndexComponent } from './all-requests-index/all-requests-index.component';
+import { OldRequestsComponent } from './old-requests/old-requests.component';
+import { OldInvoicesComponent } from './old-invoices/old-invoices.component';
+import { MyOldInvoicesComponent } from './my-old-invoices/my-old-invoices.component';
+import { OldDevisBySocietyComponent } from './old-devis-by-society/old-devis-by-society.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -107,7 +112,7 @@ const routes: Routes = [
   { path: 'editRequest/:id', component: UpdateRequestComponent },
   { path: 'createDevisAndAssignToRequest/:requestId', component: AddDevisComponent },
   { path: 'supply-requests', component: RequestsIndexComponent },
-  { path: 'my-invoices/:societyId', component: MyInvoicesComponent },
+  { path: 'my-invoices', component: MyInvoicesComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'contact', component: ContactUsComponent },
@@ -126,6 +131,13 @@ const routes: Routes = [
   { path: 'editForum/:id', component: EditForumComponent },
   { path: 'packForum', component: ForumPacksComponent },
   { path: 'reservationPack/:typePack', component: ReservationPackComponent },
+  { path: 'Allrequests', component: AllRequestsIndexComponent },
+  { path: 'Oldrequests', component: OldRequestsComponent },
+  { path: 'OldInvoices', component: OldInvoicesComponent },
+  { path: 'MyOldInvoices', component: MyOldInvoicesComponent },
+  { path: 'MyOldDevis', component: OldDevisBySocietyComponent },
+
+
   {
     path: 'individuals',
     component: IndividualsComponent,

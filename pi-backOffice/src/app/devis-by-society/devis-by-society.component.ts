@@ -44,31 +44,31 @@ idsociety!:string;
       }
     );
   }
-  retrieveDevisDetails(id: number): void {
-    this.devis.getById(id).subscribe(
-      (devis: any) => {
-        // Check if requestSupply is nested within another property (adjust property name accordingly)
-        const requestSupply = devis.somethingContainingRequestSupply?.requestSupply;
+  // retrieveDevisDetails(id: number): void {
+  //   this.devis.getById(id).subscribe(
+  //     (devis: any) => {
+  //       // Check if requestSupply is nested within another property (adjust property name accordingly)
+  //       const requestSupply = devis.somethingContainingRequestSupply?.requestSupply;
 
-        if (requestSupply) {
-          console.log('RequestSupply:', requestSupply);
-          const requestId = requestSupply.idRequestSupply;
+  //       if (requestSupply) {
+  //         console.log('RequestSupply:', requestSupply);
+  //         const requestId = requestSupply.idRequestSupply;
 
-          if (requestId) {
-            this.router.navigate(['/addInvoice', requestId]);
-          } else {
-            console.error('Invalid RequestSupply id.');
-          }
-        } else {
-          console.error('Devis is missing RequestSupply.');
-        }
-      },
-      (error) => {
-        console.error('Error fetching Devis details:', error);
-        // Handle the error as needed
-      }
-    );
-  }
+  //         if (requestId) {
+  //           this.router.navigate(['/addInvoice', requestId]);
+  //         } else {
+  //           console.error('Invalid RequestSupply id.');
+  //         }
+  //       } else {
+  //         console.error('Devis is missing RequestSupply.');
+  //       }
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching Devis details:', error);
+  //       // Handle the error as needed
+  //     }
+  //   );
+  // }
 
   navigateToAddInvoice(requestId: number | undefined): void {
     if (requestId) {
@@ -76,5 +76,12 @@ idsociety!:string;
     } else {
       console.error('Invalid or missing RequestSupply id.');
     }
+  }
+  viewFile(fileName: string) {
+    const fileUrl = this.devis.getFileUrl(fileName);
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = fileName;
+    link.click();
   }
 }

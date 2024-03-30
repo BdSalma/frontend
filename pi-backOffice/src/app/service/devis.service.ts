@@ -46,14 +46,15 @@ export class DevisService {
       })
     });
   }
-
-  createDevisAndAssignToRequest(requestId: number, devis: Devis) {
-    return this.http.post(`http://localhost:8087/devis/createDevisAndAssignToRequest/${requestId}`, devis,{
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.auth.token}`,
-      })
+  createDevisAndAssignToRequest(requestId: number, devis: Devis, formData: FormData) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`,
     });
-  }
+
+    return this.http.post(`http://localhost:8087/devis/createDevisAndAssignToRequest/${requestId}`, formData, { headers });
+}
+
+ 
   getDevisByRequest(requestId: number){
     return this.http.get(`http://localhost:8087/devis/getDevisByRequestSupply/${requestId}`,{
       headers: new HttpHeaders({
@@ -68,7 +69,14 @@ export class DevisService {
       })
     })
   }
-  updateDevisStatus(id: number, newStatus: boolean) {
+  getOldDevisBySociety(societyId : String){
+    return this.http.get(`http://localhost:8087/devis/getOldDevisBySociety`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      })
+    })
+  }
+  updateDevisStatus(id: number, newStatus: string) {
     return this.http.put(`http://localhost:8087/devis/updateDevisStatus/${id}/${newStatus}`, null, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,
@@ -76,5 +84,8 @@ export class DevisService {
     });
   }
   
- 
+  getFileUrl(fileName: string): string {
+    // Assuming your backend endpoint for serving files is '/devis/file'
+    return `http://localhost:8087/devis/file/${fileName}`;
+  }
 }

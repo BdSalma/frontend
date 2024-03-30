@@ -6,7 +6,7 @@ export class Devis {
     quantity!: number;
     description!: string;
     file!: string;
-    status!: boolean;
+    status!: String;
     requestSupply!: RequestSupply;
     society!: Society;
 }
