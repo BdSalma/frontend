@@ -43,6 +43,9 @@ export class CandidatureComponent {
     // Navigate to the update component with the client's ID as parameter
     this.router.navigate(['/addInterv', candidatId]);
   }
+  updateIntrview(idI:number){
+    this.router.navigate(['/updateI',idI]);
+  }
   goToInterview() {
     // Navigate to the update component with the client's ID as parameter
     this.router.navigate(['/listInterv']);

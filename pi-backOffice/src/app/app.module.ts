@@ -57,6 +57,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { EditSposorComponent } from './edit-sposor/edit-sposor.component';
 import { UserService } from './service/user-service.service';
 import { DetailCandidatComponent } from './detail-candidat/detail-candidat.component';
+import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { DetailCandidatComponent } from './detail-candidat/detail-candidat.compo
     UserLitComponent,
     UserFormComponent,
     EditSposorComponent,
-    DetailCandidatComponent
+    DetailCandidatComponent,
+    UpdateInterviewComponent
   ],
   imports: [
     BrowserModule,

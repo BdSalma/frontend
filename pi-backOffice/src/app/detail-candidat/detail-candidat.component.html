@@ -29,16 +29,65 @@
                               
                               <div class="text-end pt-1">
                                 <p class="text-sm mb-0 text-capitalize">{{candidat?.offer.offerName}}</p>
-                                <h4  class="text-success ">{{candidat?.status}}</h4>
+                                <h4 [ngClass]="{'text-success': candidat?.status === 'Accepted', 'text-warning': candidat?.status !== 'Accepted'}">{{candidat?.status}}</h4>
                               </div>
                             </div>
                             <hr class="dark horizontal my-0">
                             <div class="card-footer p-3">
-                              <h5>Date interview:{{candidat?.interview.date}}</h5>
-                              <p class="mb-0">salle num:</p>
-                              <p class="mb-0">lien:{{candidat.interview.lien}}</p>
-                      
+                              <ng-container *ngIf="candidat?.status === 'In_progress'">
+                                <h5>Date interview:{{candidat?.interview.date}}</h5>
+                                <div *ngIf="candidat?.interview.interviewType === 'inRoom'">
+                                  <p class="mb-0">salle num:{{candidat?.interview.room}}</p>
+                                </div>
+                                <div *ngIf="candidat?.interview.interviewType === 'online'">
+                                <p class="mb-0">lien:{{candidat.interview.lien}}</p></div>
+                              </ng-container>
+                              <ng-container *ngIf="candidat?.status === 'Finish'">
+                                <h5>Date interview:{{candidat?.interview.date}}</h5>
+                                <p class="mb-0">type:{{candidat?.interview.interviewType}}</p>
+                                <div *ngIf="candidat?.interview.interviewType === 'inRoom'">
+                                  <p class="mb-0">salle num:{{candidat.interview.room.num}}</p>
+                                </div>
+                                <div *ngIf="candidat?.interview.interviewType === 'online'">
+                                  <p class="mb-0">lien:{{candidat.interview.lien}}</p></div>                              </ng-container>
+                              
+                              <ng-container *ngIf="candidat?.status === 'Accepted'">
+                                <p class="text-success">Votre candidature a été acceptée , choisir votre date d'interview et type d'interview:</p>
+                                <form
+                                role="form"
+                                [formGroup]="registerForm" (ngSubmit)="scheduleMeeting()"  >
+                               
+                                <div class="input-group input-group-outline row mb-3">
+                                  <label class="col-sm-4 col-form-label">Date</label>
+                                    <select class="form-control" [formControlName]="'date'">
+                                      <option *ngFor="let date of candidatArray" [ngValue]="date">{{ date | date }}</option>
+                                    </select>
+
+                                </div>
+
+                                  <div class="input-group input-group-outline row mb-3">
+                                    <label for="matricule" class="col-sm-4 col-form-label"> Type d'entretien:</label>
+                                      <select class="form-control" formControlName="interviewType">
+                                           <option>choisir une option</option>
+                                          <option value="online">En ligne</option>
+                                          <option value="inRoom">En salle</option>
+                                      </select>
+                                  </div>
+                                  <div *ngIf="isInRoom">
+                                  <div class="text-center">
+                                    <button (click)="Ajouter()" type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Add</button>
+                                  </div>
+                                </div>
+                                <div *ngIf="isOnline">
+                                  <div class="text-center">
+                                    <button (click)="Add1()" type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Add</button>
+                                  </div>
+                                  
+                                </div>
+                                  </form>
+                              </ng-container>
                             </div>
+                           
                           </div>
                     </div>
                 

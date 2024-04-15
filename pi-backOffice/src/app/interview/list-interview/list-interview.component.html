@@ -28,6 +28,7 @@
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lien Meeting</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Room</th>
+                          <th  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">valider</th>
                           <th  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">supprimer</th>
                         </tr>
                       </thead>
@@ -38,7 +39,7 @@
                           </td>
                           
                           <td>
-                            {{i.lien}}     
+                            <a href="{{i.lien}}">{{i.lien}}  </a>   
                          </td>
                           <td >
                             <ng-container *ngIf="i.room && i.room.length > 0">
@@ -50,6 +51,9 @@
                               0
                             </ng-container>
                           </td>
+                          <td><button class="btn btn-link text-dark px-3 mb-0" [routerLink]="['/updateI',i.idInterview]" >
+                            <i class="fas fa-edit text-sm me-2"></i> valider interview
+                          </button></td>
                           <td>
                             <a (click)="onDeleteClick(i.idInterview)"> <!-- Call the deleteInterview method -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"

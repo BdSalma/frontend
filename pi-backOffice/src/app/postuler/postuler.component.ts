@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CandidatureService } from '../service/candidature.service';
 import { Room } from '../model/room';
 import { OfferService } from '../service/offer.service';
@@ -31,7 +31,6 @@ export class PostulerComponent {
     this.registerForm = this.fb.group({
       cv: ['',Validators.required],
       lettre:['',Validators.required],
-      
     });
   
   }
@@ -57,7 +56,6 @@ export class PostulerComponent {
     const formData = new FormData();
     formData.append('cv', this.selectedFile!, this.selectedFile!.name);
     formData.append('lettre', this.selectedFile1!, this.selectedFile1!.name);
-  
     this.candidatureService.addCandidat(this.id,formData).subscribe({
       next: (candidature) => {
         // Handle successful response

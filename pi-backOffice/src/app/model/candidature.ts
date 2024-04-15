@@ -12,4 +12,7 @@ export class Candidature {
     interview!: Interview;
     individu!: Individu;
     offer!:Offer;
+    isAccepted(): boolean {
+        return this.status === Status.Accepted;
+    }
 }

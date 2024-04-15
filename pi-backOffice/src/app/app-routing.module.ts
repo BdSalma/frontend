@@ -51,6 +51,7 @@ import { UserLitComponent } from './user-lit/user-lit.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { EditSposorComponent } from './edit-sposor/edit-sposor.component';
 import { DetailCandidatComponent } from './detail-candidat/detail-candidat.component';
+import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
 
 
 const routes: Routes = [
@@ -81,6 +82,7 @@ const routes: Routes = [
 { path: 'about', component: AboutUsComponent },
 {path:'reclamation',component:ReclamationComponent},
 { path: 'users', component: UserLitComponent },
+{path:'updateI/:id',component:UpdateInterviewComponent},
 { path: 'adduser', component: UserFormComponent },
 { path: 'edituser/:id', component: EditSposorComponent },
 {path:'feed',component:FeedBackComponent},

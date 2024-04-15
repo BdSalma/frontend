@@ -25,10 +25,11 @@
                 <ng-container  *ngFor="let offer of listOffer; let i = index" >
                   <div class="col-lg-4 col-md-8 mb-5">
                     <div class="card border border-primary" [ngClass]="i % 2 === 0 ? 'card-plain' : 'bg-gradient-primary'">
+                      <div *ngIf="!offer.userHasApplied">
                       <div style="margin-left: 280px;" class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4">
                         <a  [routerLink]="['/postuler', offer.idOffre]"><i class="material-icons opacity-10" >weekend</i></a>
                     </div>
-
+                      </div>
                         <div class="card-body">
                             <div class="author">
                                 <div class="name">

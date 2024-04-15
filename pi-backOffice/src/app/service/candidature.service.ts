@@ -3,6 +3,7 @@ import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common
 import { Observable } from 'rxjs';
 import { Candidature } from '../model/candidature';
 import { Authentication } from '../services/authentication.service';
+import { Interview } from '../model/interview';
 @Injectable({
   providedIn: 'root'
 })
@@ -85,7 +86,6 @@ export class CandidatureService {
     });    
   }
   
- 
   getRooms(): Observable<any> {
     return this.http.get(`${this.baseUrl2}/allrooms`, {
       headers: new HttpHeaders({
@@ -116,6 +116,15 @@ export class CandidatureService {
       }),
     });
   }
+  updateInterview(id:number, updatedI: any):Observable<any>{
+    return this.http.put(`${this.baseUrl1}/updateI/${id}`, updatedI, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
+
+  }
+  
   getById(id:number): Observable<any>{
      return this.http.get(`${this.baseUrl}/${id}`, {
       headers: new HttpHeaders({
@@ -123,6 +132,14 @@ export class CandidatureService {
       }),
     });
   }
+
+  getByIdInterview(id:number): Observable<any>{
+    return this.http.get(`${this.baseUrl1}/${id}`, {
+     headers: new HttpHeaders({
+       Authorization: `Bearer ${this.auth.token}`,
+     }),
+   });
+ }
   delete(id:number): Observable<any>{
     return this.http.delete(`${this.baseUrl1}/deleteI/${id}`, {
       headers: new HttpHeaders({
@@ -137,5 +154,34 @@ export class CandidatureService {
         Authorization: `Bearer ${this.auth.token}`,
       }),
     });
+  }
+
+  getOfferDates(): Observable<Date[]> {
+    const url = 'http://localhost:8087/Offer/dates'; 
+    return this.http.get<Date[]>(url);
+  }
+  hasUserAppliedToOffer(offerId: number): Observable<boolean> {
+    const url = `${this.baseUrl}/check/${offerId}`; // Assurez-vous que `this.baseUrl` est correctement défini
+    return this.http.get<boolean>(url, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+  addI(url: string, interview: any): Observable<Interview> { 
+    return this.http.post<Interview>(url, interview, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    });    
+  }
+  updateInterviewR(url: string, interview: any):Observable<Interview>{
+    return this.http.put<Interview>(url, interview, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    });  
+
   }
 }
