@@ -17,7 +17,8 @@ export class PacksListComponent {
     private StandServiceService: StandServiceService,
     private Router: Router
   ) {}
-
+  currentId!: any;
+  currentAction !: String; 
   reserved: reservationStatus = reservationStatus.Reserved;
   onHold: reservationStatus = reservationStatus.On_Hold;
   notReserved: reservationStatus = reservationStatus.Not_Reserved;
@@ -28,6 +29,25 @@ export class PacksListComponent {
     this.packService.listpack().subscribe((data) => {
       this.packs = data;
     });
+  }
+
+  openDialog(id: number, action: string) {
+    this.currentId = id;
+    this.currentAction = action;
+    const modelDiv = document.getElementById('popup');
+    if (modelDiv != null) {
+      modelDiv.style.display = 'block';
+    }
+  }
+
+  handleDialogAction(event: any) {
+    if (this.currentAction === 'supprimer') {
+      this.deletePack(event);
+    } else if (this.currentAction === 'valider') {
+      this.validateReservation(event);
+    }else{
+      this.cancelReservation(event);
+    }
   }
 
   deletePack(id: number) {
@@ -41,7 +61,6 @@ export class PacksListComponent {
   addPack() {
     this.StandServiceService.getStandByStatut(false).subscribe((data) => {
       this.stands = data;
-
       if (this.stands.length >= 1) {
         this.Router.navigate(['/addPack']);
       } else {
@@ -59,7 +78,6 @@ export class PacksListComponent {
   cancelReservation(id: number) {
     this.packService.cancelReservation(id).subscribe(()=>{
       const index = this.packs.findIndex(pack => pack.id === id);
-    
       this.packs[index].reservationStatus = 'Not_Reserved';
 
     } 

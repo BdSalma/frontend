@@ -32,12 +32,19 @@ export class ForumServiceService {
   }
 
   getCurrentForum(): Observable<Forum> {
-    const url = `${this.apiURL}/`;
-    return this.http.get<Forum>(this.apiURL);
+    const url = `${this.apiURL}/find-current-forum`;
+    return this.http.get<Forum>(url);
   }
-  addForum(Forum: Forum): Observable<Forum> {
+
+  
+  calculateForumIncomes(): Observable<any> {
+    const url = `${this.apiURL}/forum_incomes`;
+    return this.http.get<any>(url);
+  }
+  
+  addForum(formData: FormData): Observable<Forum> {
     const url = `${this.apiURL}/add-forum`;
-    return this.http.post<Forum>(url, Forum, {
+    return this.http.post<Forum>(url,formData,{
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`
       }),
@@ -55,6 +62,7 @@ export class ForumServiceService {
 
   deleteForum(id: number) {
     const url = `${this.apiURL}/delete-forum/${id}`;
+    console.log(url);
     return this.http.delete(url, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`
@@ -63,8 +71,8 @@ export class ForumServiceService {
   }
 
   cancelForum(id: number) {
-    const url = `${this.apiURL}/cancel-forum`;
-    return this.http.delete(url, {
+    const url = `${this.apiURL}/cancel-forum/${id}`;
+    return this.http.put(url, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`
       }),

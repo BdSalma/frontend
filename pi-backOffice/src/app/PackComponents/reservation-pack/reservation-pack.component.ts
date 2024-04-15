@@ -45,10 +45,7 @@ export class ReservationPackComponent {
   }
 
   bookPack(id: number) {
-    
-    
     const userId = 1;
-    this.packService.bookPack(id, userId).subscribe();
+    this.packService.bookPack(id).subscribe();
   }
-
 }

@@ -62,6 +62,7 @@ import { DashboradComponent } from './screens/dashborad/dashborad.component';
 import { AboutUsComponent } from './screens/about-us/about-us.component';
 import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowrd.component';
 import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
+import { PersonalizedPackComponent } from './PackComponents/personalized-pack/personalized-pack.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
@@ -134,6 +135,7 @@ const routes: Routes = [
   { path: 'addForum', component: AddForumComponent },
   { path: 'editForum/:id', component: EditForumComponent },
   { path: 'packForum', component: ForumPacksComponent },
+  { path: 'personalizedPack', component: PersonalizedPackComponent },
   {
     path: 'packList',
     component: PacksListComponent,

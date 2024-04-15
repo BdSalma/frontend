@@ -1,3 +1,4 @@
+import { ForumServiceService } from 'src/app/Service/forum-service.service';
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../service/offer.service';
 import { Chart } from 'chart.js';
@@ -11,7 +12,8 @@ import { Chart } from 'chart.js';
 export class DashboradComponent implements OnInit {
   averageOffersPerDay:any;
   OffreEnAttente:any;
-  constructor(private offerService: OfferService) { }
+  forumIncomes : any; 
+  constructor(private offerService: OfferService, private forumService:ForumServiceService) { }
 
   ngOnInit(): void {
     this.offerService.getAverageOffersPerDay().subscribe(
@@ -31,6 +33,17 @@ export class DashboradComponent implements OnInit {
         console.log('Error fetching average offers per day:', error);
       }
     );
+
+    this.forumService.calculateForumIncomes().subscribe(
+      data => {
+        this.forumIncomes = data;
+        console.log(this.forumIncomes);
+      },
+      error => {
+        console.log('Error fetching forum incomes:', error);
+      }
+    );
+    
   }
 
   plotChart(): void {

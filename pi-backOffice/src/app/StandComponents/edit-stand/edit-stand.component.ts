@@ -2,6 +2,7 @@ import { StandServiceService } from './../../Service/stand-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-stand',
@@ -11,11 +12,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditStandComponent {
   editStandForm!: FormGroup;
   zones: string[] = [];
+  isLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private standService: StandServiceService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -44,8 +47,16 @@ export class EditStandComponent {
   onSubmit() {
     // Use the standService.updateStand method for stand update
     this.standService.updateStand(this.editStandForm.value,this.route.snapshot.params['id'])
-      .subscribe(() => {
-        this.router.navigateByUrl("/standList");
-      });
+    .subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.toastr.success('Le stand a été modifié avec succes');
+        this.router.navigate(['/standList']);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.toastr.error(error.error.message);
+      },
+    });
   }
 }

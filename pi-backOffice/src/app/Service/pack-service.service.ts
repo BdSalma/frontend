@@ -1,5 +1,4 @@
-import { reservationStatus } from './../model/reservationStatus';
-import { TypePack } from './../model/typePack';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -78,9 +77,18 @@ export class PackServiceService {
     });
   }
 
-  bookPack(id: number, userId: number) {
-    const url = `${this.apiURL}/book_Pack/${id}/${userId}`;
+  bookPack(id: number) {
+    const url = `${this.apiURL}/book_Pack/${id}`;
     return this.http.put(url,{}, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    });
+  }
+
+  createPersonalizedPack(standId : number, pack : Pack) {
+    const url = `${this.apiURL}/createPersonalizedPackPrice/${standId}`;
+    return this.http.post(url,pack, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`
       }),

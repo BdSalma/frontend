@@ -31,7 +31,6 @@ export class ForumPacksComponent {
   }
   
   ShowAvailablePackages(typePack : TypePack){
-    
     this.Router.navigate(['reservationPack/' + typePack]);
   }
 }

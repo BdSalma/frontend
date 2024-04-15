@@ -2,6 +2,7 @@ import { StandServiceService } from './../../Service/stand-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-stand',
@@ -13,7 +14,8 @@ export class AddStandComponent {
     
       addForumForm!: FormGroup;
       zones: string[] = [];
-      constructor(private route: ActivatedRoute, private standService: StandServiceService, private router: Router) {}
+      isLoading: boolean = false;
+      constructor(private toastr: ToastrService, private route: ActivatedRoute, private standService: StandServiceService, private router: Router) {}
       ngOnInit() {
         this.addForumForm = new FormGroup({
           number: new FormControl(0, [Validators.required]),
@@ -24,8 +26,16 @@ export class AddStandComponent {
       }
       onSubmit() {
         console.log(this.addForumForm.value);
-        this.standService.addStand(this.addForumForm.value).subscribe(() => {
-          this.router.navigateByUrl("/standList"); // Corrected to use parentheses instead of square brackets
+        this.standService.addStand(this.addForumForm.value).subscribe({
+          next: () => {
+            this.isLoading = false;
+            this.toastr.success('Le stand a été ajouté avec succes');
+            this.router.navigate(['/standList']);
+          },
+          error: (error) => {
+            this.isLoading = false;
+            this.toastr.error(error.error.message);
+          },
         });
       }
 }

@@ -18,7 +18,7 @@
 }
 
 .form-select option:checked {
-  background-color: #e91e63;
+  background-color: #212529;
   color: #fff;
 }
 input {

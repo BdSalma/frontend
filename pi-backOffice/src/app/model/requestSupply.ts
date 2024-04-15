@@ -12,4 +12,5 @@ export class RequestSupply {
     devis!: Devis[];
     invoice!: Invoice;
     individu!: Individu;
+    RequestSuplyStatus!: string;
 }

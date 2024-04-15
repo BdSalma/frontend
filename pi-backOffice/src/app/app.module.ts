@@ -70,6 +70,7 @@ import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowr
 import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
 import { ImagePopupComponent } from './globals/image-popup/image-popup.component';
 import { PopupDialogComponent } from './globals/popup-dialog/popup-dialog.component';
+import { PersonalizedPackComponent } from './PackComponents/personalized-pack/personalized-pack.component';
 
 @NgModule({
   declarations: [
@@ -139,6 +140,7 @@ import { PopupDialogComponent } from './globals/popup-dialog/popup-dialog.compon
     ResetPassowrdComponent,
     ImagePopupComponent,
     PopupDialogComponent,
+    PersonalizedPackComponent,
   ],
   imports: [
     BrowserModule,
