@@ -37,7 +37,7 @@
                       </div>
                     </div>
                   <div class="input-group input-group-outline mb-3">
-                    <label class="col-sm-4 col-form-label" >Nombre Candidat :</label>
+                    <label for="candidatnumber" class="col-sm-4 col-form-label" >Nombre Candidat :</label>
                     <input type="number" class="form-control" formControlName="candidatnumber" placeholder="Nombre de Candidat Souhaité">
                   </div>
                   <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].errors && registerForm.get('candidatnumber')?.touched">

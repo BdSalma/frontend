@@ -69,6 +69,8 @@ import { ImagePopupComponent } from './globals/image-popup/image-popup.component
 import { PopupDialogComponent } from './globals/popup-dialog/popup-dialog.component';
 import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
 import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { FilterOfferComponent } from './filter-offer/filter-offer.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -138,6 +140,7 @@ import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
     ImagePopupComponent,
     PopupDialogComponent,
     ReservationPackComponent,
+    FilterOfferComponent,
   ],
   imports: [
     BrowserModule,
@@ -158,7 +161,8 @@ import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
       progressBar: true,
       disableTimeOut: false,
       positionClass: 'toast-top-right',
-    })
+    }),
+    NgxPaginationModule
   ],
   providers: [Authentication],
   bootstrap: [AppComponent],

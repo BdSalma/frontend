@@ -94,8 +94,8 @@ refuseOffer(idOffer: number): Observable<void> {
     }),
   });
 }
-getAverageOffersPerDay() {
-  return this.http.get<number>('http://localhost:8087/Offer/averageOffersPerDay', {
+getOfferCountsByCategory() {
+  return this.http.get<number>('http://localhost:8087/Offer/categoryCounts', {
     headers: new HttpHeaders({
       Authorization: `Bearer ${this.auth.token}`
     }),
@@ -128,4 +128,35 @@ startSendingOffers(): void {
  sendOffers(): Observable<any> {
   return this.http.get<any>('http://localhost:8087/Offer/test-send-offers');
 }
+
+Favoris(idOffer: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.auth.token}` // Obtenez le token JWT à partir du service d'authentification
+    });
+
+    return this.http.post(`http://localhost:8087/Offer/AddFavoris/${idOffer}`, null, { headers });
+  }
+  getFavoriteOffers(){
+    return this.http.get('http://localhost:8087/Offer/getOfferFavoris',{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    });
+  }
+  getCandidaturesByOffer(){
+    return this.http.get('http://localhost:8087/Offer/candidatures-by-offer',{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    });
+  }
+  getCandidatUsers(idOffer: number): Observable<Boolean> {
+    return this.http.get<any>(`http://localhost:8087/Offer/candidatByOffer/${idOffer}`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    });
+  }
+  
 }

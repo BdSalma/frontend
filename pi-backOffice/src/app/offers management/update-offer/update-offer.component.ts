@@ -19,10 +19,11 @@ ngOnInit(){
   this.registerForm= new FormGroup({
     offerName:new FormControl('',Validators.required),
     offreCategory: new FormControl('', Validators.required),
-    candidatnumber: new FormControl(''),
+    candidatnumber: new FormControl('',Validators.required),
     candidatProfil: new FormControl('',Validators.required),
     duree:new FormControl('',Validators.required),
     description:new FormControl('',Validators.required),
+
 
   });
   this.id=this.route.snapshot.params['id'];

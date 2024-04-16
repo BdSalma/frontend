@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-lg-6 mx-auto text-center">
         <h2 class="text-gradient text-primary mb-3">Les offres disponibles</h2>
-        <h2 class="mb-0">+50 offres disponibles</h2>
+        <h2 class="mb-0">Les offres les plus demandées</h2>
+        
+        <!-- Condition pour afficher le texte -->
       </div>
     </div>
 
@@ -18,7 +20,7 @@
               style="margin-left: 280px"
               class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4"
             >
-              <a [routerLink]="['/postuler', offer.idOffre]"
+              <a (click)="getCandidatOffer(offer.idOffre)"
                 ><i class="material-icons opacity-10">weekend</i></a
               >
             </div>
@@ -39,7 +41,7 @@
                 class="mt-4"
                 [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'"
               >
-                Profil souhaitée: {{ offer.candidatProfil }}
+                Profil souhaité : {{ offer.candidatProfil }}
               </p>
               <p
                 class="mt-4"
@@ -63,10 +65,10 @@
                 </a>
               </p>
               <div class="rating mt-3">
-                <a (click)="addFavoris(offer.idOffre)">
+                <a (click)="Favoris(offer.idOffre)">
                 <i class="fas fa-star"  [ngStyle]="i % 2 !== 0 ? {'color': 'white'}:{'color': '#d63384'}"></i>
                 </a>
-              </div>     
+              </div>      
             </div>
           </div>
         </div>
