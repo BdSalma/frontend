@@ -43,7 +43,7 @@ export class ForumService {
       }),
     });
   }
-  addForum(Forum: Forum): Observable<Forum> {
+  addForum(Forum: any): Observable<Forum> {
     const url = `${this.apiURL}/add-forum`;
     return this.http.post<Forum>(url, Forum, {
       headers: new HttpHeaders({
