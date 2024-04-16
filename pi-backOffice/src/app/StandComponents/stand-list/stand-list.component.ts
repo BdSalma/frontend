@@ -1,6 +1,6 @@
 import { Stand } from './../../model/stand';
 import { Component } from '@angular/core';
-import { StandServiceService } from 'src/app/Service/stand-service.service';
+import { StandService } from 'src/app/service/stand.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { StandServiceService } from 'src/app/Service/stand-service.service';
 export class StandListComponent {
 
   constructor(
-    private standService: StandServiceService,
+    private standService: StandService,
   ) {}
 
   stands: Stand[]=[];

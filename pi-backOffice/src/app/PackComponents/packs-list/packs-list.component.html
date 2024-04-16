@@ -4,8 +4,8 @@
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-9">
-      <app-navbar></app-navbar>
-      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+      <app-navbar [currentScreen]="'Pack'"></app-navbar>
+      <main class="main-content position-relative border-radius-lg">
         <div class="col-md-12 mb-lg-0 mb-4">
           <div class="card mt-4">
             <div class="card-header pb-0 p-3">
@@ -103,7 +103,7 @@
                         </td>
                         <td class="align-middle text-center text-sm">
                           <h6 class="mb-0 text-sm">
-                            {{ pack.stand?.number ?? "_" }}
+                            {{ pack?.stand?.number ?? "_" }}
                           </h6>
                         </td>
                        
@@ -128,7 +128,7 @@
                           </h6>
                         </td>
                         <td class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm"> {{ pack.reserver?.username ?? "_"}}</h6>
+                          <h6 class="mb-0 text-sm"> {{ pack?.reserver?.username ?? "_"}}</h6>
                         </td>
                         <td class="align-middle text-center text-sm">
                           <h6 class="mb-0 text-sm">
@@ -169,7 +169,7 @@
         <br />
         <br />
         <br />
-        <app-footer></app-footer>
+        <app-footer-index></app-footer-index>
       </main>
     </div>
   </div>

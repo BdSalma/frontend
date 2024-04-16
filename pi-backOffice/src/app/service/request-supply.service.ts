@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestSupply } from '../model/requestSupply';
-import { Authentication } from '../services/authentication.service';
+import { Authentication } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +61,26 @@ getOldRequestsByIndividus(){
       })
     });
 }
- 
+getRequestSupplyByForumTheme(theme: string) {
+  return this.http.get(`http://localhost:8087/requestSupply/getRequestSupplyByForumTheme/${theme}`, {
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`,
+    })
+  });
+}
+getIndividuStatistics() {
+  return this.http.get('http://localhost:8087/requestSupply/getIndividuStatistics', {
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`,
+    })
+  });
+}
+
+getSocietyStatistics() {
+  return this.http.get('http://localhost:8087/requestSupply/getSocietyStatistics', {
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`,
+    })
+  });
+}
 }

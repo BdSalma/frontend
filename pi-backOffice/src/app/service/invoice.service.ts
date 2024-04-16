@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Invoice } from '../model/invoice';
-import { Authentication } from '../services/authentication.service';
 import { InvoiceStatus } from '../model/InvoiceStatus';
+import { Authentication } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +10,14 @@ import { InvoiceStatus } from '../model/InvoiceStatus';
 export class InvoiceService {
   constructor(private http:HttpClient,private auth:Authentication) { }
 
-  getInvoices(){
+  getInvoices(userId: String){
     return this.http.get('http://localhost:8087/invoice/retrieveAllInvoices',{
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,
       })
     });
   }
-  getOldInvoices(){
+  getOldInvoices(userId: String){
     return this.http.get('http://localhost:8087/invoice/retrieveOldInvoices',{
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`,

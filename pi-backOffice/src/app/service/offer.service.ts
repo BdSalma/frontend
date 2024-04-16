@@ -4,7 +4,7 @@ import {Offer} from "../model/offer";
 import { Observable } from 'rxjs';
 import { Category } from '../model/category';
 import { Society } from '../model/society';
-import { Authentication } from '../services/authentication.service';
+import { Authentication } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'

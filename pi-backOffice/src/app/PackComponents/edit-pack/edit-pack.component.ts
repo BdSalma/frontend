@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
+import { PackService } from 'src/app/service/pack.service';
 import { Pack } from 'src/app/model/pack';
 
 
@@ -15,7 +15,7 @@ export class EditPackComponent {
   zones: string[] = [];
   id !: any; 
   pack!:Pack
-  constructor(private route: ActivatedRoute, private packService: PackServiceService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private packService: PackService, private router: Router) {}
 
   ngOnInit() {
     this.updatePackForm = new FormGroup({

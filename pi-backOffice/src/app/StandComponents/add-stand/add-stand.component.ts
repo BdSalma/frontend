@@ -1,4 +1,4 @@
-import { StandServiceService } from './../../Service/stand-service.service';
+import { StandService } from '../../service/stand.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +13,7 @@ export class AddStandComponent {
     
       addForumForm!: FormGroup;
       zones: string[] = [];
-      constructor(private route: ActivatedRoute, private standService: StandServiceService, private router: Router) {}
+      constructor(private route: ActivatedRoute, private standService: StandService, private router: Router) {}
       ngOnInit() {
         this.addForumForm = new FormGroup({
           number: new FormControl(0, [Validators.required]),

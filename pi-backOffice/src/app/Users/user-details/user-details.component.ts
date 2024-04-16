@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Authentication } from 'src/app/services/authentication.service';
+import { Authentication } from '../../service/authentication.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-user-details',
@@ -14,10 +15,12 @@ export class UserDetailsComponent {
   ) {}
   userId!: string;
   user!: any;
+  url!: any;
   ngOnInit() {
     this.userId = this.route.snapshot.params['id'];
     this.consumer
       .getUserById(this.userId)
       .subscribe((response) => (this.user = response));
+    this.url = environment.apiUrl;
   }
 }

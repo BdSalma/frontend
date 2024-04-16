@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
-import { StandServiceService } from 'src/app/Service/stand-service.service';
+import { PackService } from 'src/app/service/pack.service';
+import { StandService } from 'src/app/service/stand.service';
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
 
@@ -15,8 +15,8 @@ export class ReservationPackComponent {
 
 
   constructor(
-    private packService: PackServiceService,
-    private StandServiceService: StandServiceService,
+    private packService: PackService,
+    private StandService: StandService,
     private Router: Router,
     private route: ActivatedRoute
    

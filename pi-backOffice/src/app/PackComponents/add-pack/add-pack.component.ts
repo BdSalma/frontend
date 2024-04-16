@@ -1,8 +1,8 @@
-import { StandServiceService } from './../../Service/stand-service.service';
+import { StandService } from '../../service/stand.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
+import { PackService } from 'src/app/service/pack.service';
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
 
@@ -22,8 +22,8 @@ export class AddPackComponent {
   };
 
   id !: any ; 
-  constructor(private route: ActivatedRoute, private packService: PackServiceService, private router: Router, 
-              private standService:StandServiceService) {}
+  constructor(private route: ActivatedRoute, private packService: PackService, private router: Router, 
+              private standService:StandService) {}
   ngOnInit() {
     this.standService.getStandByStatut(false).subscribe((data)=>{
       console.log(data)

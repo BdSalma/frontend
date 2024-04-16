@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reclamation } from '../model/reclamation';
-import { Authentication } from '../services/authentication.service';
+import { Authentication } from './authentication.service';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };

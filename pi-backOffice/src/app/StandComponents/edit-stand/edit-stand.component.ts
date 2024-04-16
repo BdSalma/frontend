@@ -1,4 +1,4 @@
-import { StandServiceService } from './../../Service/stand-service.service';
+import { StandService } from '../../service/stand.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class EditStandComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private standService: StandServiceService,
+    private standService: StandService,
     private router: Router
   ) {}
 

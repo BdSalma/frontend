@@ -1,11 +1,11 @@
 import { Router } from '@angular/router';
-import { StandServiceService } from 'src/app/Service/stand-service.service';
+import { StandService } from 'src/app/service/stand.service';
 import { reservationStatus } from './../../model/reservationStatus';
 import { Component } from '@angular/core';
 
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
+import { PackService } from 'src/app/service/pack.service';
 
 @Component({
   selector: 'app-packs-list',
@@ -14,8 +14,8 @@ import { PackServiceService } from 'src/app/Service/pack-service.service';
 })
 export class PacksListComponent {
   constructor(
-    private packService: PackServiceService,
-    private StandServiceService: StandServiceService,
+    private packService: PackService,
+    private StandService: StandService,
     private Router: Router
   ) {}
 
@@ -40,7 +40,7 @@ export class PacksListComponent {
   }
 
   addPack() {
-    this.StandServiceService.getStandByStatut(false).subscribe((data) => {
+    this.StandService.getStandByStatut(false).subscribe((data) => {
       this.stands = data;
 
       if (this.stands.length >= 1) {
