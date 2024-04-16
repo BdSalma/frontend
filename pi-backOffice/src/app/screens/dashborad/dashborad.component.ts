@@ -1,3 +1,4 @@
+import { PackServiceService } from 'src/app/Service/pack-service.service';
 import { ForumServiceService } from 'src/app/Service/forum-service.service';
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../service/offer.service';
@@ -13,7 +14,8 @@ export class DashboradComponent implements OnInit {
   averageOffersPerDay:any;
   OffreEnAttente:any;
   forumIncomes : any; 
-  constructor(private offerService: OfferService, private forumService:ForumServiceService) { }
+  packIncomes : any; 
+  constructor(private offerService: OfferService, private forumService:ForumServiceService, private packService : PackServiceService) { }
 
   ngOnInit(): void {
     this.offerService.getAverageOffersPerDay().subscribe(
@@ -37,7 +39,16 @@ export class DashboradComponent implements OnInit {
     this.forumService.calculateForumIncomes().subscribe(
       data => {
         this.forumIncomes = data;
-        console.log(this.forumIncomes);
+      },
+      error => {
+        console.log('Error fetching forum incomes:', error);
+      }
+    );
+
+    this.packService.calculatePackIncomes().subscribe(
+      data => {
+        this.packIncomes = data;
+        console.log(this.packIncomes);
       },
       error => {
         console.log('Error fetching forum incomes:', error);

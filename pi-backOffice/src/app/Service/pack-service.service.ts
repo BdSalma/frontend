@@ -27,6 +27,16 @@ export class PackServiceService {
     });
   }
 
+  calculatePackIncomes(): Observable<any> {
+    const url = `${this.apiURL}/getPacksStatistics`;
+    return this.http.get<any>(url);
+  }
+
+  getParticipants(): Observable<any> {
+    const url = `${this.apiURL}/getListOfParticipants`;
+    return this.http.get<any>(url);
+  }
+
   getpackByTypePack(TypePack: string, reservationStatus : string): Observable<Pack[]> {
     const url = `${this.apiURL}/find-pack-By-typePack-reservationStatus/${TypePack}/${reservationStatus}`;
     return this.http.get<Pack[]>(url, {
@@ -86,9 +96,9 @@ export class PackServiceService {
     });
   }
 
-  createPersonalizedPack(standId : number, pack : Pack) {
+  createPersonalizedPack(standId : number, pack : any): Observable<any> {
     const url = `${this.apiURL}/createPersonalizedPackPrice/${standId}`;
-    return this.http.post(url,pack, {
+    return this.http.post<Pack>(url, pack, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`
       }),

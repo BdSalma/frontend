@@ -1,4 +1,4 @@
-import { TypePack } from '../../model/typePack';
+
 import { Component } from '@angular/core';
 import { Pack } from '../../model/pack';
 import { reservationStatus } from '../../model/reservationStatus';
@@ -6,6 +6,7 @@ import { PackServiceService } from '../../Service/pack-service.service';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { StandServiceService } from '../../Service/stand-service.service';
 import { Stand } from '../../model/stand';
+import { TypePack } from 'src/app/model/typePack';
 
 @Component({
   selector: 'app-forum-packs',
@@ -33,4 +34,9 @@ export class ForumPacksComponent {
   ShowAvailablePackages(typePack : TypePack){
     this.Router.navigate(['reservationPack/' + typePack]);
   }
+
+  renderToPersonalized(){
+    this.Router.navigate(['personalizedPack/']);
+  }
+  
 }

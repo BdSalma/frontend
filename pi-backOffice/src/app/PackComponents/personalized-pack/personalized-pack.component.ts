@@ -52,12 +52,22 @@ export class PersonalizedPackComponent  implements OnInit {
   };
   console.log("d5alna");
   // Recherche du stand correspondant au numéro sélectionné dans le formulaire
-    this.selectedStand = this.stands.find(stand => stand.number === this.packForm.get('stand')?.value);
-  
+  const number = this.packForm.get('stand')?.value;
+   
+  this.stands.forEach(stand => {
+  if(stand.number == number){
+    this.selectedStand = stand.id;
+  }
+  });
+     console.log( this.packForm.get('stand')?.value);
+     console.log(this.selectedStand);
+     
   // Si un stand correspondant est trouvé, envoyez la requête au service pour créer le pack personnalisé
  
     console.log(this.pack);
-     this.packService.createPersonalizedPack(this.selectedStand.id,this.pack).subscribe({
+    console.log(this.selectedStand.id);
+    
+     this.packService.createPersonalizedPack(this.selectedStand,this.pack).subscribe({
       next: () => {
         console.log(this.pack);
         this.toastr.success('La demande  a été enregistré avec succés');
