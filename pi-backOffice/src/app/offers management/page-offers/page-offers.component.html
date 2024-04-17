@@ -23,9 +23,9 @@
                   style="margin-left: 280px"
                   class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4"
                 >
-                  <a [routerLink]="['/postuler', favoris.offer.idOffre]"
-                    ><i class="material-icons opacity-10">weekend</i></a
-                  >
+                <a (click)="getCandidatOffer(favoris.offer.idOffre)"
+                ><i class="material-icons opacity-10">weekend</i></a
+              >
                 </div>
 
                 <div class="card-body">
@@ -79,10 +79,8 @@
                     <a (click)="Favoris(favoris.offer.idOffre)">
                     <i class="fas fa-star"  [ngStyle]="j % 2 !== 0 ? {'color': 'white'}:{'color': '#d63384'}"></i>
                     </a>
-                  </div>
-                  <div class="rating mt-3">
                     <a (click)="deleteFavoris(favoris.id)">
-                      <i class="fas fa-times" [ngStyle]="j % 2 !== 0 ? {'color': 'white'}:{'color': '#d63384'}"></i>
+                      <i class="fas fa-times "  style="margin-left:300px" [ngStyle]="j % 2 !== 0 ? {'color': 'white'}:{'color': '#d63384'}"></i>
                     </a>
                   </div>
                 </div>
@@ -130,9 +128,9 @@
                     style="margin-left: 280px"
                     class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4"
                   >
-                    <a [routerLink]="['/postuler', offer.idOffre]"
-                      ><i class="material-icons opacity-10">weekend</i></a
-                    >
+                  <a (click)="getCandidatOffer(offer.idOffre)"
+                  ><i class="material-icons opacity-10">weekend</i></a
+                >
                   </div>
 
                   <div class="card-body">

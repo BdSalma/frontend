@@ -25,11 +25,7 @@ export class OfferService {
     return this.http.post(`http://localhost:8087/Offer/favoris/${id}`,{})
   }
   getById(id:number){
-    return this.http.get(`http://localhost:8087/Offer/offer/${id}`,{
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.auth.token}`
-      }),
-    })
+    return this.http.get(`http://localhost:8087/Offer/offer/${id}`)
   
   }
   DeleteFavoris(id:number){

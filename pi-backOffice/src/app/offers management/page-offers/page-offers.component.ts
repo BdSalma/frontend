@@ -37,6 +37,29 @@ export class PageOffersComponent {
       this.loadFavoriteOffers(); // Charger les offres favorites de l'utilisateur connecté
     }
   }
+  getCandidatOffer(idOffer: number) {
+    if (this.user){
+    this.offerS.getCandidatUsers(idOffer)
+      .subscribe(result => {
+        if (result==true) {
+          alert('Vous avez déjà postulé à cette offre.');
+         } else 
+          {
+              this.router.navigate(['/postuler', idOffer]);
+            } 
+          }
+      , (error: any) => {
+        // Handle errors here
+        console.error('Error fetching candidat result:', error);
+      });
+    }
+    else {
+      // Handle case where user is not logged in
+      this.router.navigate(['/signIn']); // Redirect to login page
+      // OR: Show an alert to prompt the user to login
+      // alert('Please login to apply for this offer.');
+    }
+  }
   onTableDataChange(event: any) {
     this.page = event;
     this.loadFavoriteOffers();
@@ -64,8 +87,8 @@ export class PageOffersComponent {
     this.offerS.DeleteFavoris(id).subscribe(
       (data) => {
         this.FavoriteOffer = data;
-        this.loadFavoriteOffers;
-        this.loadOffers;
+        this.loadFavoriteOffers();
+        this.loadOffers();
   },
       (error) => {
         console.log(error);
@@ -115,8 +138,8 @@ export class PageOffersComponent {
 Favoris(id: number) {
   if (this.user) { // Vérifier si l'utilisateur est connecté
     this.offerS.Favoris(id).subscribe((data) => {
-      this.loadOffers();
       this.loadFavoriteOffers();
+      this.loadOffers();
     },
     (error) => {
       console.log(error);
