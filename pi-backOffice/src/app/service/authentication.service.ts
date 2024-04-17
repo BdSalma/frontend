@@ -151,6 +151,7 @@ export class Authentication {
       this.router.navigate(['/']);
     }
   }
+ 
 
   autoLogout(expirationDate: number) {
     if (this.clearTimeout) {

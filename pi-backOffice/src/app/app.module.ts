@@ -76,6 +76,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+import { RatingComponent } from './reclamation management/rating/rating.component';
+import { FavoriteComponent } from './reclamation management/favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +147,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResetPassowrdComponent,
     ImagePopupComponent,
     PopupDialogComponent,
+    RatingComponent,
+    FavoriteComponent,
   ],
   imports: [
     BrowserModule,

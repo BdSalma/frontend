@@ -8,4 +8,5 @@ export class Reclamation {
     typeReclamation!: TypeReclamation;
     dateTime!:String;
     user!: User;
+    rating!: number;
 }

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../service/offer.service';
-// import { Chart } from 'chart.js';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { Authentication } from 'src/app/service/authentication.service';
 import { ToastrService } from 'ngx-toastr';
+import { ReclamationService } from 'src/app/service/reclamation.service';
 Chart.register(...registerables);
-
 @Component({
   selector: 'app-dashborad',
   templateUrl: './dashborad.component.html',
@@ -19,7 +18,8 @@ export class DashboradComponent implements OnInit {
   constructor(
     private offerService: OfferService,
     private consumer: Authentication,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private reclamationService : ReclamationService
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +41,8 @@ export class DashboradComponent implements OnInit {
       }
     );
     this.PieChartForUsers();
+    this.PieChartForReclamation();
+
   }
 
   plotChart(): void {
@@ -110,6 +112,40 @@ export class DashboradComponent implements OnInit {
       },
       error: () => {
         this.toastr.error('Something went wrong');
+      },
+    });
+  }
+  
+  PieChartForReclamation() {
+    this.reclamationService.getCountReclamationByType().subscribe({
+      next: (response: any) => {
+        console.log('Response:', response);
+        const roles = Object.keys(response);
+        const counts = Object.values(response);
+        const backgroundColors = [
+          '#e63946',
+          '#fb8500',
+        ];
+        const myChartOfUsers = new Chart('reclamation-chart', {
+          type: 'pie',
+          data: {
+            labels: roles,
+            datasets: [
+              {
+                backgroundColor: backgroundColors,
+                data: counts,
+                label: ' Nombre',
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+          },
+        });
+      },
+      error: (er) => {
+        console.log("sdas");
+        
       },
     });
   }
