@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../service/offer.service';
-import { Chart } from 'chart.js';
-
-
+import { ReclamationService } from 'src/app/service/reclamation.service';
+import { Chart, registerables } from 'node_modules/chart.js';
+Chart.register(...registerables);
 @Component({
   selector: 'app-dashborad',
   templateUrl: './dashborad.component.html',
@@ -11,7 +11,7 @@ import { Chart } from 'chart.js';
 export class DashboradComponent implements OnInit {
   averageOffersPerDay:any;
   OffreEnAttente:any;
-  constructor(private offerService: OfferService) { }
+  constructor(private offerService: OfferService, private reclamationService : ReclamationService) { }
 
   ngOnInit(): void {
     this.offerService.getAverageOffersPerDay().subscribe(
@@ -31,6 +31,8 @@ export class DashboradComponent implements OnInit {
         console.log('Error fetching average offers per day:', error);
       }
     );
+    this.PieChartForReclamation();
+
   }
 
   plotChart(): void {
@@ -63,4 +65,37 @@ export class DashboradComponent implements OnInit {
     });
   }
   
+  PieChartForReclamation() {
+    this.reclamationService.getCountReclamationByType().subscribe({
+      next: (response: any) => {
+        console.log('Response:', response);
+        const roles = Object.keys(response);
+        const counts = Object.values(response);
+        const backgroundColors = [
+          '#e63946',
+          '#fb8500',
+        ];
+        const myChartOfUsers = new Chart('reclamation-chart', {
+          type: 'pie',
+          data: {
+            labels: roles,
+            datasets: [
+              {
+                backgroundColor: backgroundColors,
+                data: counts,
+                label: ' Nombre',
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+          },
+        });
+      },
+      error: (er) => {
+        console.log("sdas");
+        
+      },
+    });
+  }
 }

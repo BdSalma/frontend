@@ -15,7 +15,12 @@ export class ReclamationService {
   constructor(private http : HttpClient, private auth : Authentication ) { }
 
   getReclamation(){
-    return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/retrieve')
+    return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/retrieve', {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+        'Content-Type': 'application/json',
+      }),
+    })
    }
    getFavorite(){
     return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/favorites', {
@@ -28,10 +33,19 @@ export class ReclamationService {
     return this.http.delete('http://localhost:8087/reclamation/delete/' + id);
   }
   Review(id: String){
-    return  this.http.post('http://localhost:8087/reclamation/review/'+id+'/',
-    httpOptions)
+    return  this.http.post('http://localhost:8087/reclamation/review/'+id,
+    httpOptions, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+        'Content-Type': 'application/json',
+      }),
+    })
    }
    
+   Contact(email: String){
+    return  this.http.post('http://localhost:8087/reclamation/contact/'+email,
+    httpOptions)
+   }
    getFeed(){
     return  this.http.get<Reclamation[]>('http://localhost:8087/reclamation/feed')
    }
@@ -66,6 +80,17 @@ export class ReclamationService {
   getRating(reclamationId: number) {
     const url = `http://localhost:8087/reclamation/${reclamationId}/rating`;
     return this.http.get<number>(url);
+  }
+
+  getCountReclamationByType() {
+    return this.http.get(
+      `http://localhost:8087/reclamation/count-by-type`,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.auth.token}`,
+        }),
+      }
+    );
   }
 
 }

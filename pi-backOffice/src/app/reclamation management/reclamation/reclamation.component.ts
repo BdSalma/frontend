@@ -55,7 +55,7 @@ export class ReclamationComponent {
 
   ReviewReclamation(user : User){
     this.reclamationService
-    .Review("27d46be2-d99c-40ca-9cc6-2be316354e5a")
+    .Review(user.id)
     .subscribe(
       () =>
         (this.users = this.users.filter(
