@@ -60,13 +60,9 @@
                                 <div class="input-group input-group-outline row mb-3">
                                   <label class="col-sm-4 col-form-label">Date</label>
                                   <select class="form-control" formControlName="date" (change)="onSelectDate($event)">
-                                    <option *ngFor="let date of candidatArray" [ngValue]="date">{{ date | date }}</option>
+                                    <option *ngFor="let date of candidatArray" [ngValue]="date">{{ date | date: 'medium' }}</option>
                                   </select>
-                                  
-                                  
-                                  
-
-                                </div>
+                                </div>                                
 
                                   <div class="input-group input-group-outline row mb-3">
                                     <label for="matricule" class="col-sm-4 col-form-label"> Type d'entretien:</label>

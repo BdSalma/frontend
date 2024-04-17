@@ -52,7 +52,7 @@ ngOnInit(){
   );
 }
 Annuler() {
-  this.router.navigate(['/listInterv']);
+  this.router.navigate(['/offerBySociety']);
 }
 reset(){
   this.registerForm.reset();
@@ -66,7 +66,7 @@ update() {
     return;
   }
   this.service.updateInterview(this.id, this.registerForm.value).subscribe(
-    () => this.router.navigate(['/listInterv']),
+    () => this.router.navigate(['/offerBySociety']),
     error => console.error('Error updating interview', error)
   );
 }
@@ -85,7 +85,7 @@ UpdateR() {
   
   this.service.updateInterviewR(url, interviewData).subscribe(
     {
-      next: () => this.router.navigateByUrl('/listInterv'),
+      next: () => this.router.navigateByUrl('/offerBySociety'),
       error: (error) => console.log(error)
     }
   );

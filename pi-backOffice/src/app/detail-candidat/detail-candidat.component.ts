@@ -82,7 +82,7 @@ export class DetailCandidatComponent {
     
     
     Annuler() {
-      this.router.navigate(['/listInterv']);
+      this.router.navigate(['/listCandidat']);
     }
   
     onSubmit() {

@@ -75,7 +75,7 @@ export class InterviewComponent implements OnInit {
   }
 
   Annuler() {
-    this.router.navigate(['/listInterv']);
+    this.router.navigate(['/offerBySociety']);
   }
   openCalendar() {
     // Check if interviewData has a titre property before accessing it
@@ -106,7 +106,7 @@ export class InterviewComponent implements OnInit {
     
     this.candidatureService.addInterview(url, interviewData).subscribe(
       {
-        next: () => this.router.navigateByUrl('/listInterv'),
+        next: () => this.router.navigateByUrl('/offerBySociety'),
         error: (error) => console.log(error)
       }
     );
@@ -127,7 +127,7 @@ export class InterviewComponent implements OnInit {
     this.candidatureService.addInterview(url, interviewData).subscribe( (response) =>
       {
         console.log('Interview ajoutée avec succès:', response);
-         this.router.navigateByUrl('/listInterv');
+         this.router.navigateByUrl('/offerBySociety');
       },
        (error) => console.log('Erreur lors de l\'ajout de l\'interview:',error)
      
