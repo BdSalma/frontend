@@ -137,7 +137,9 @@ export class Authentication {
             },
             error: () => {
               this.toastr.warning('Your session has expired');
-              localStorage.clear();
+              localStorage.removeItem('token');
+              localStorage.removeItem('refresh_token');
+              localStorage.removeItem('user');
               this.isLoggedIn = false;
               window.location.reload();
               this.router.navigate(['/']);
@@ -149,6 +151,7 @@ export class Authentication {
       this.router.navigate(['/']);
     }
   }
+ 
 
   autoLogout(expirationDate: number) {
     if (this.clearTimeout) {
@@ -170,7 +173,9 @@ export class Authentication {
             },
             error: () => {
               this.toastr.warning('Your session has expired');
-              localStorage.clear();
+              localStorage.removeItem('token');
+              localStorage.removeItem('refresh_token');
+              localStorage.removeItem('user');
               this.isLoggedIn = false;
               window.location.reload();
               this.router.navigate(['/']);
@@ -361,6 +366,40 @@ export class Authentication {
       `${this.url}/auth/user-image`,
       {
         responseType: 'blob',
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  getUserImageByAdmin(userId: String) {
+    return this.http.get(
+      `${this.url}/auth/user-image-admin/${userId}`,
+      {
+        responseType: 'blob',
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  getCountUsersByRole() {
+    return this.http.get(
+      `${this.url}/auth/count-by-role`,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
+  }
+
+  generateQRCode(id: string) {
+    return this.http.get(
+      `${this.url}/auth/generateQRCode/${id}`,
+      {
         headers: new HttpHeaders({
           Authorization: `Bearer ${this.token}`,
         }),

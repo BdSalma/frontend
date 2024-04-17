@@ -47,30 +47,34 @@
                   <h6
                     class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1"
                   >
-                    Langue
+                    {{"Langue" | translate}}
                   </h6>
                   <li class="nav-item dropdown dropdown-hover mx-2">
                     <a
                       class="dropdown-item border-radius-md d-flex align-items-center"
+                      [ngClass]="{ 'text-primary': currentLanguage === 'fr' }"
+                      
                     >
                       <img
                         src="./assets/img/flags/france.png"
                         class="ms-auto ms-md-2"
                         style="height: 20px"
                       />
-                      <span class="ms-2">Français</span>
+                      <span class="ms-2">{{"Francais" | translate}}</span>
                     </a>
                   </li>
                   <li class="nav-item dropdown dropdown-hover mx-2">
                     <a
                       class="dropdown-item border-radius-md d-flex align-items-center"
+                      [ngClass]="{ 'text-primary': currentLanguage === 'en' }"
+                      
                     >
                       <img
                         src="./assets/img/flags/uk.png"
                         class="ms-auto ms-md-2"
                         style="height: 20px"
                       />
-                      <span class="ms-2">Englais</span>
+                      <span class="ms-2">{{"Englais" | translate}}</span>
                     </a>
                   </li>
                 </div>
@@ -99,7 +103,7 @@
                 routerLink="/moreOffers"
                 class="dropdown-item border-radius-md"
               >
-                <span>Offres</span>
+                <span>{{"Offres" | translate}}</span>
               </a>
             </li>
             <li
@@ -114,7 +118,7 @@
                 class="dropdown-item border-radius-md"
                 routerLink="/listCandidat"
               >
-                <span>Candidature</span>
+                <span>{{"Candidature" | translate}}</span>
               </a>
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
@@ -124,7 +128,7 @@
                 routerLink="/feed"
                 class="dropdown-item border-radius-md"
               >
-                <span>Avis</span>
+                <span>{{"Avis" | translate}}</span>
               </a>
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
@@ -134,7 +138,7 @@
                 routerLink="/about"
                 class="dropdown-item border-radius-md"
               >
-                <span>About</span>
+                <span>{{ "About" | translate }}</span>
               </a>
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2">
@@ -149,7 +153,7 @@
             </li>
             <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="!login">
               <a routerLink="/" class="dropdown-item border-radius-md">
-                <span>Compte</span>
+                <span>{{"Compte" | translate}}</span>
                 <img
                   src="./assets/img/down-arrow-dark.svg"
                   alt="down-arrow"
@@ -164,7 +168,7 @@
                   <h6
                     class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1"
                   >
-                    Authentifier
+                    {{"Authentifier" | translate}}
                   </h6>
                   <li class="nav-item dropdown dropdown-hover mx-2">
                     <a
@@ -174,7 +178,7 @@
                       <i class="material-icons" style="font-size: 20px"
                         >login</i
                       >
-                      <span class="ms-2">Se connecter</span>
+                      <span class="ms-2">{{"Se connecter" | translate}}</span>
                     </a>
                   </li>
                   <li class="nav-item dropdown dropdown-hover mx-2">
@@ -185,7 +189,7 @@
                       <i class="material-icons" style="font-size: 20px"
                         >person_add</i
                       >
-                      <span class="ms-2">S'inscrire</span>
+                      <span class="ms-2">{{"S'inscrire" | translate}}</span>
                     </a>
                   </li>
                 </div>
@@ -205,7 +209,7 @@
                 <h6
                   class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1"
                 >
-                  Mon compte
+                  {{"Mon compte" | translate}}
                 </h6>
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a
@@ -215,7 +219,7 @@
                     class="dropdown-item border-radius-md d-flex align-items-center"
                   >
                     <i class="material-icons" style="font-size: 20px">person</i>
-                    <span class="ms-2">Profile</span>
+                    <span class="ms-2">{{"Profile" | translate}}</span>
                   </a>
                 </li>
                 <li class="nav-item dropdown dropdown-hover mx-2">
@@ -226,7 +230,7 @@
                     class="dropdown-item border-radius-md d-flex align-items-center"
                   >
                     <i class="material-icons" style="font-size: 20px">edit</i>
-                    <span class="ms-2">Modifier Profile</span>
+                    <span class="ms-2">{{"Modifier Profile" | translate}}</span>
                   </a>
                 </li>
                 <li class="nav-item dropdown dropdown-hover mx-2">
@@ -237,7 +241,7 @@
                     class="dropdown-item border-radius-md d-flex align-items-center"
                   >
                     <i class="material-icons" style="font-size: 20px">lock</i>
-                    <span class="ms-2">Modifier mot de passe</span>
+                    <span class="ms-2">{{"Modifier mot de passe" | translate}}</span>
                   </a>
                 </li>
                 <li class="nav-item dropdown dropdown-hover mx-2">
@@ -248,7 +252,7 @@
                     <i class="material-icons turn" style="font-size: 20px"
                       >logout</i
                     >
-                    <span class="ms-2">Se déconnecter</span>
+                    <span class="ms-2">{{"Se déconnecter" | translate}}</span>
                   </a>
                 </li>
               </div>
@@ -257,8 +261,5 @@
         </div>
       </div>
     </nav>
-    <!-- End Navbar -->
   </div>
-  <!-- </div> -->
-  <!-- </div> -->
 </body>

@@ -19,6 +19,7 @@ export class AssociationsComponent {
   societies: Society[] = [];
   currentId: any;
   currentAction: any;
+  typeOfActivation: boolean=false;
   listFilter!: FormGroup;
   societyRole: SocietyRole[] = Object.values(SocietyRole);
   ngOnInit(): void {
@@ -64,9 +65,10 @@ export class AssociationsComponent {
     });
   }
 
-  openDialog(id: string, action: string) {
+  openDialog(id: string, action: string,type:boolean) {
     this.currentId = id;
     this.currentAction = action;
+    this.typeOfActivation = type;
     const modelDiv = document.getElementById('popup');
     if (modelDiv != null) {
       modelDiv.style.display = 'block';

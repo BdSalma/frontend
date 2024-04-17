@@ -15,12 +15,24 @@ export class UserDetailsComponent {
   ) {}
   userId!: string;
   user!: any;
-  url!: any;
+  userImage!: any;
   ngOnInit() {
     this.userId = this.route.snapshot.params['id'];
     this.consumer
       .getUserById(this.userId)
       .subscribe((response) => (this.user = response));
-    this.url = environment.apiUrl;
+      this.getUserImage();
+  }
+
+  getUserImage() {
+    this.consumer.getUserImageByAdmin(this.userId).subscribe({
+      next: (response) => {
+        this.userImage = URL.createObjectURL(response);
+        console.log(this.userImage);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 }

@@ -36,31 +36,27 @@ import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.comp
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
 import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
-
 import { UpdateComponent } from './candidature management/candidature/update.component';
 import { InterviewComponent } from './interview/interview.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
-
 import { ListCandidatureComponent } from './candidature management/list-candidature/list-candidature.component';
 import { PostulerComponent } from './postuler/postuler.component';
 import { ReclamationComponent } from './reclamation management/reclamation/reclamation.component';
-
 import { OffersComponent } from './offers management/offers/offers.component';
 import { AddOfferComponent } from './offers management/add-offer/add-offer.component';
 import { UpdateOfferComponent } from './offers management/update-offer/update-offer.component';
 import { DetailOfferComponent } from './offers management/detail-offer/detail-offer.component';
 import { OfferBySocietyComponent } from './offers management/offer-by-society/offer-by-society.component';
-
 import { IndexOffersComponent } from './offers management/index-offers/index-offers.component';
 import { PageOffersComponent } from './offers management/page-offers/page-offers.component';
 import { ListOffersComponent } from './offers management/list-offers/list-offers.component';
-
 import { FeedBackComponent } from './reclamation management/feed-back/feed-back.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboradComponent } from './screens/dashborad/dashborad.component';
 import { AboutUsComponent } from './screens/about-us/about-us.component';
 import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowrd.component';
 import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
+import { FavoriteComponent } from './reclamation management/favorite/favorite.component';
 import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
 
 const routes: Routes = [
@@ -76,6 +72,8 @@ const routes: Routes = [
   },
   { path: 'DetailOffre/:id', component: DetailOfferComponent },
   { path: 'editOffer/:id', component: UpdateOfferComponent },
+  { path: 'feed/favorite', component: FavoriteComponent },
+
   { path: 'addOffer', component: AddOfferComponent },
   {
     path: 'dashboard',

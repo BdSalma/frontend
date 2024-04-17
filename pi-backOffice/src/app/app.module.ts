@@ -7,7 +7,7 @@ import { SignInComponent } from './acount/sign-in/sign-in.component';
 import { SignUpComponent } from './acount/sign-up/sign-up.component';
 import { CandidatureComponent } from './candidature management/candidature/candidature.component';
 import { NavbarComponent } from './globals/navbar/navbar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RequestsComponent } from './requests management/requests/requests.component';
 import { AddRequestComponent } from './requests management/add-request/add-request.component';
 import { InvoicesComponent } from './invoices management/invoices/invoices.component';
@@ -67,10 +67,15 @@ import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowr
 import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
 import { ImagePopupComponent } from './globals/image-popup/image-popup.component';
 import { PopupDialogComponent } from './globals/popup-dialog/popup-dialog.component';
-import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
-import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
-import { FilterOfferComponent } from './filter-offer/filter-offer.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+import { RatingComponent } from './reclamation management/rating/rating.component';
+import { FavoriteComponent } from './reclamation management/favorite/favorite.component';
+import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
 
 @NgModule({
   declarations: [
@@ -139,8 +144,8 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     ResetPassowrdComponent,
     ImagePopupComponent,
     PopupDialogComponent,
-    ReservationPackComponent,
-    FilterOfferComponent,
+    RatingComponent,
+    FavoriteComponent,
   ],
   imports: [
     BrowserModule,
@@ -152,7 +157,15 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,   
+    NgxPaginationModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     ToastrModule.forRoot({
       timeOut: 5000,
       tapToDismiss: true,
@@ -162,7 +175,6 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
       disableTimeOut: false,
       positionClass: 'toast-top-right',
     }),
-    NgxPaginationModule
   ],
   providers: [Authentication],
   bootstrap: [AppComponent],

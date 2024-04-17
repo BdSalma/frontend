@@ -7,7 +7,7 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-dashborad',
   templateUrl: './dashborad.component.html',
-  styleUrls: ['./dashborad.component.css']
+  styleUrls: ['./dashborad.component.css'],
 })
 export class DashboradComponent implements OnInit {
   averageOffersPerDay: any;
@@ -21,10 +21,10 @@ export class DashboradComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerService.getNbAcceptedOffer().subscribe(
-      average => {
+      (average) => {
         this.OffreEnAttente = average;
       },
-      error => {
+      (error) => {
         console.log('Error fetching average offers per day:', error);
       }
     );
