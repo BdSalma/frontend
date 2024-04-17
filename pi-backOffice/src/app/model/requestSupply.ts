@@ -15,4 +15,5 @@ export class RequestSupply {
     invoice!: Invoice;
     individu!: Individu;
     forum!:Forum;
+    RequestSuplyStatus!: string;
 }

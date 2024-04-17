@@ -29,7 +29,7 @@
           <div class="col-12">
             <div class="card my-4">
               <div
-                class="card-header p-0 position-relative mt-n4 mx-3 z-index-2"
+                class="card-header p-0 position-relative mt-n4 mx-3 z-index-1"
               >
                 <div
                   class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
@@ -94,7 +94,7 @@
                             <span *ngIf="pack.typePack.toString() === 'Gold'" class="badge" style="background-image: linear-gradient(to right, #FFD700, #FFA500); color: #000000;">Gold</span>
                             <span *ngIf="pack.typePack.toString() === 'Platinum'" class="badge" style="background-image: linear-gradient(to right, #e3d3d5, #B76E79); color: #000000;">Platinum</span>
                             <span *ngIf="pack.typePack.toString() === 'Diamond'" class="badge" style="background-image: linear-gradient(to right, #0E4DA4, #0080FF); color: #FFFFFF;">Diamond</span>
-                            
+                            <span *ngIf="pack.typePack.toString() === 'Personalized'" class="badge" style="background-image: linear-gradient(to right, #8b0ea4, #c598d0); color: #FFFFFF;">Personalisé</span>
                           </h6>
                         </td>
 
@@ -137,15 +137,15 @@
                         </td>
                         <td class="align-middle">
                           <div class="ms-auto text-end">
-                            <button class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" (click)="deletePack(pack.id)">
+                            <button class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" (click)="openDialog(pack.id,'supprimer')">
                               <i class="fas fa-trash text-sm me-2"></i> Supprimer
                             </button>
                         
-                            <button class="btn btn-link text-success text-gradient px-3 mb-0" href="javascript:;" (click)="validateReservation(pack.id)">
+                            <button class="btn btn-link text-success text-gradient px-3 mb-0" href="javascript:;" (click)="openDialog(pack.id,'valider')">
                               <i class="fas fa-check-circle text-sm me-2"></i> Valider
                             </button>
                         
-                            <button class="btn btn-link text-warning text-gradient px-3 mb-0" href="javascript:;" (click)="cancelReservation(pack.id)">
+                            <button class="btn btn-link text-warning text-gradient px-3 mb-0" href="javascript:;" (click)="openDialog(pack.id,'annuler')">
                               <i class="fas fa-times-circle text-sm me-2"></i> Annuler
                             </button>
                         
@@ -170,6 +170,16 @@
         <br />
         <br />
         <app-footer-index></app-footer-index>
+        <app-popup-dialog
+        [id]="currentId"
+        [title]="
+          currentAction === 'supprimer' ? 'Supprimer le pack' : 'valider' ? 'Valider la reservation' : 'Annuler la reservation'
+        "
+        [content]="
+           currentAction === 'supprimer' ? 'Vous etes sure de vouloir supprimer ce pack ? ' : 'valider' ? 'Vous etes sure de valider cette réservation ' : 'Vous etes sure de vouloir annuler la reservation du pack '
+        "
+        (send)="handleDialogAction($event)"
+      ></app-popup-dialog>
       </main>
     </div>
   </div>

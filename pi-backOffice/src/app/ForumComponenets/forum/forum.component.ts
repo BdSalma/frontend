@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ForumServiceService } from 'src/app/Service/forum-service.service';
 import { Forum } from 'src/app/model/forum';
+import { PopUpComponent } from 'src/app/pop-up/pop-up.component';
 import { Router } from '@angular/router';
-import { ForumService } from 'src/app/service/forum.service';
 
 
 
+
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forum',
@@ -15,13 +18,15 @@ export class ForumComponent implements OnInit {
 
 
   constructor(
-    private forumService: ForumService, private router: Router
+    private forumService: ForumServiceService, private router: Router, private toastr: ToastrService
   ) { }
 
   forums: Forum[] = [];
   openPopup: boolean = false;
   test :boolean = false; 
-
+  currentId: any;
+  currentAction: any;
+  isLoading: boolean = false;
   ngOnInit(): void {
     this.forumService.listForum().subscribe((data) => {
       console.log(data);
@@ -30,21 +35,74 @@ export class ForumComponent implements OnInit {
   }
 
   cancelForum(id: number) {
-    this.forumService.deleteForum(id).subscribe(() =>
-    (this.forums = this.forums.filter(
-      (forum: Forum) => forum.id != id
-    ))
-    );
-  }
+    this.forumService.cancelForum(id).subscribe({
+      next: () => {
+        const index = this.forums.findIndex(forum => forum.id === id);
+        this.forums[index].forumStatus = 'Canceled';
+        this.isLoading = false;
+        this.toastr.success('Le forum a été annulé avec succes');
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.toastr.error('Une erreur est survenue lors de lannulation');
+      },
+    })}
+
+  deleteForum(id: number) {
+    this.forumService.deleteForum(id).subscribe({
+      next: () => {
+        this.forums = this.forums.filter(
+          (forum: Forum) => forum.id != id
+        )
+        this.isLoading = false;
+        this.toastr.success('Le forum a été supprimé avec succes');
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.toastr.error('Une erreur est survenue lors de la suppression');
+      },
+    })}
+ /* .subscribe({
+    next: () => {
+      this.stands = this.stands.filter(
+        (stand: Stand) => stand.id != id
+
+      )
+      this.isLoading = false;
+      this.toastr.success('Le stand a été supprimé avec succes');
+      
+    },
+    error: (error) => {
+      this.isLoading = false;
+      this.toastr.error('Une erreur est survenue lors de la suppression');
+    },
+  })*/
 
   addForum() {
     const isInProgress = this.forums.some(forum => forum.forumStatus === 'In_Progress');
     if (isInProgress) {
-        console.log("Il y a un forum en cours (statut 'In_Progress').");
+      this.toastr.error('Un forum est déjà en cours en préparation');
     } else {
-        console.log("Aucun forum en cours. Redirection vers '/addForum'");
+
         this.router.navigate(['/addForum']);
     }}
+
+    openDialog(id: number, action: string) {
+      this.currentId = id;
+      this.currentAction = action;
+      const modelDiv = document.getElementById('popup');
+      if (modelDiv != null) {
+        modelDiv.style.display = 'block';
+      }
+    }
+  
+    handleDialogAction(event: any) {
+      if (this.currentAction === 'delete') {
+        this.deleteForum(event);
+      } else{
+        this.cancelForum(event);
+      }
+    }
 }
 
 

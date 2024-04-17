@@ -1,6 +1,7 @@
 import { Stand } from './../../model/stand';
 import { Component } from '@angular/core';
-import { StandService } from 'src/app/service/stand.service';
+import { ToastrService } from 'ngx-toastr';
+import { StandServiceService } from 'src/app/Service/stand-service.service';
 
 
 @Component({
@@ -11,9 +12,9 @@ import { StandService } from 'src/app/service/stand.service';
 export class StandListComponent {
 
   constructor(
-    private standService: StandService,
+    private standService: StandServiceService,private toastr: ToastrService
   ) {}
-
+  isLoading: boolean = false;
   stands: Stand[]=[];
   ngOnInit(): void {
     this.standService.listStand().subscribe((data) => {
@@ -23,10 +24,19 @@ export class StandListComponent {
   }
   
   deleteStand(id: number) {
-    this.standService.deleteStand(id).subscribe( () =>
-    (this.stands = this.stands.filter(
-      (stand: Stand) => stand.id != id
-    ))
-  );
+    this.standService.deleteStand(id).subscribe({
+      next: () => {
+        this.stands = this.stands.filter(
+          (stand: Stand) => stand.id != id
+
+        )
+        this.isLoading = false;
+        this.toastr.success('Le stand a été supprimé avec succes');
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.toastr.error('Une erreur est survenue lors de la suppression');
+      },
+    })
   }
 }

@@ -12,5 +12,9 @@ export class Pack {
     reserver !: User; 
     reservationDate!: Date; 
     validationDate!: Date; 
-
+    numberOfOffers! : number;
+    numberOfBadges!: number;
+    numberOfFlyers!: number;
+    displayLogo!: boolean;
+    insertFlyer!: boolean
 }

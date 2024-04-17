@@ -12,4 +12,5 @@ export class Forum {
     forumStatus !: string; 
     users!: User[];
     packs!: Pack[];
+    
 }

@@ -1,8 +1,11 @@
+import { PackServiceService } from 'src/app/Service/pack-service.service';
+import { ForumServiceService } from 'src/app/Service/forum-service.service';
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../service/offer.service';
 import { RequestSupplyService } from 'src/app/service/request-supply.service';
 import { Authentication } from 'src/app/service/authentication.service';
 import { Chart, registerables } from 'node_modules/chart.js';
+import { InvoiceService } from 'src/app/service/invoice.service';
 Chart.register(...registerables);
 
 @Component({
@@ -16,12 +19,27 @@ export class DashboradComponent implements OnInit {
   individuStatistics: any;
   societyStat:any;
   user!: any;
+  forumIncomes : any; 
+  packIncomes : any;
+  totalAmountByIndividu: any;
+  invoiceAcceptancePercentage: any; 
+  id!:string;
 
-  constructor(private consumer: Authentication,private offerService: OfferService, private requestSupplyService: RequestSupplyService) { }
+  constructor(private invoiceService: InvoiceService,private consumer: Authentication,private offerService: OfferService, private requestSupplyService: RequestSupplyService, private forumService:ForumServiceService, private packService : PackServiceService) { }
+ 
 
   ngOnInit(): void {
     this.user = this.consumer.user;
-
+    this.packService.calculatePackIncomes().subscribe(
+      data => {
+        console.log("we are in");
+        this.packIncomes = data;
+        console.log(this.packIncomes);
+      },
+      error => {
+        console.log('Error fetching forum incomes:', error);
+      }
+    );
     this.offerService.getAverageOffersPerDay().subscribe(
       average => {
         this.averageOffersPerDay = average;
@@ -59,6 +77,29 @@ export class DashboradComponent implements OnInit {
         console.error('Error fetching society statistics:', error);
       }
     );
+
+    this.forumService.calculateForumIncomes().subscribe(
+      data => {
+        this.forumIncomes = data;
+      },
+      error => {
+        console.log('Error fetching forum incomes:', error);
+      }
+    );
+
+    
+    this.invoiceService.calculateTotalAmountByIndividu(this.id).subscribe(
+      (data: any) => {
+        console.log('Total amount data:', data);
+        this.totalAmountByIndividu = data; // No need to access a property here, as the response itself should contain the total amount
+      },
+      (error) => {
+        console.error('Error fetching total amount by individu:', error);
+      }
+    );
+    
+    
+    
   }
   pieChartForIndividus(): void {
     const canvas = document.getElementById('individuChart') as HTMLCanvasElement;

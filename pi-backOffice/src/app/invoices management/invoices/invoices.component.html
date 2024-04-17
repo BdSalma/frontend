@@ -77,6 +77,8 @@
                         </div>
 
                           </td> 
+                          <div class="mr-2 ms-1" *ngIf="invoice.status == 'In_progress'">
+
                           <td class="align-middle">
                             
                               <button class="btn btn-link text-dark px-3 mb-0" [routerLink]="['/editInvoice',invoice.idInvoice]">
@@ -84,7 +86,7 @@
                                 </button>
                                   
                           </td>
-                         
+                          </div>
                         </tr>
                         <tr *ngIf=" listInvoices.length === 0">
                           <td colspan="5" class="text-center">

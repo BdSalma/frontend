@@ -1,6 +1,10 @@
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { OfferService } from '../../service/offer.service';
+import { ForumServiceService } from 'src/app/Service/forum-service.service';
+
+import { OfferService } from 'src/app/service/offer.service';
+
 
 @Component({
   selector: 'app-index',
@@ -9,9 +13,12 @@ import { OfferService } from '../../service/offer.service';
 })
 export class IndexComponent {
   listOffer!:any;
-  constructor(private offerS:OfferService,private router:Router){}
+  forum !: any;
+
+  constructor(private offerS:OfferService,private router:Router, private forumService:ForumServiceService){}
   ngOnInit(): void {
     this.loadOffers();
+    this.forumService.getCurrentForum().subscribe((data)=> this.forum = data)
   }
 
   loadOffers() {

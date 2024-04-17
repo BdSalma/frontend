@@ -5,11 +5,10 @@
     </div>
     <div class="col-9">
       <app-navbar [currentScreen]="'Dashboard'"></app-navbar>
-      <main
-        class="main-content position-relative border-radius-lg"
-      >
+      <main class="main-content position-relative border-radius-lg">
         <div class="container-fluid py-4">
           <div class="row">
+            <!-- chart offer -->
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
               <div class="card">
                 <div class="card-header p-3 pt-2">
@@ -18,6 +17,37 @@
                   </div>
                 </div>
                 <hr class="dark horizontal my-0" />
+                <div class="card-footer p-3">
+                    
+                </div>
+              </div>
+            </div>
+            <!-- ind chart -->
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div class="card"*ngIf="user && (user.role === 'Admin' || user.role === 'Community' )">
+                <div class="card-header p-3 pt-2">
+                  <div class="text-end pt-1">
+                    <canvas id="individuChart" width="400" height="400"></canvas>
+                  </div>
+                </div>
+                <hr class="dark horizontal my-0" />
+                <div class="card-footer p-3">
+                    
+                </div>
+              </div>
+            </div>
+            <!-- soc chart -->
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              <div class="card" *ngIf=" user && user.role === 'Fourniseur'">
+                <div class="card-header p-3 pt-2">
+                  <div class="text-end pt-1">
+                    <canvas id="societyChart" width="400" height="400"></canvas>
+                  </div>
+                </div>
+                <hr class="dark horizontal my-0" />
+                <div class="card-footer p-3">
+                    
+                </div>
               </div>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -38,65 +68,63 @@
                 <hr class="dark horizontal my-0" />
               </div>
             </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-              <div class="card">
-                <canvas id="pie-chart"></canvas>
-              </div>
-            </div>
+              <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" *ngIf="user && (user.role === 'Admin' || user.role === 'Community' )">
+                <div class="card">
+                  <div class="card-header p-3 pt-2">
+                    <div
+                      class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute"
+                    >
+                      <a routerLink="/offre"
+                        ><i class="material-icons opacity-10">weekend</i></a
+                      >
+                    </div>
+                    <div class="text-end pt-1">
+                      <p class="text-sm mb-0">Montant total à payer :</p>
+                      <br>
 
-            
-              <!-- Individual Statistics -->
-              <div style="margin-top: 20px;"*ngIf="
-              user &&
-              (user.role === 'Admin' ||
-                user.role === 'Community' )
-            ">
-            <div class="col-lg-4 col-md-6 mt-4 mb-4">
-              <div class="card z-index-2">
-                <div class="card-body">
-                <canvas id="individuChart"></canvas>
-                </div>
-              </div>
-            </div>
-              </div>
-               <!-- Society Statistics -->
-               <div style="margin-top: 20px;"
-               *ngIf=" user && user.role === 'Fourniseur'">
-               <div class="col-lg-4 col-md-6 mt-4 mb-4">
-                <div class="card z-index-2">
-                  <div class="card-body">
-                  <canvas id="societyChart"></canvas>
+                      <h4 class="mb-0"> <span *ngFor="let entry of totalAmountByIndividu | keyvalue">
+                        <!-- {{ entry.key }}: {{ entry.value }} --> {{ entry.value }}
+
+                      </span></h4>
+                    </div>
                   </div>
-                </div>
-              </div>
-              </div>
-            
-      
-            <div class="col-xl-3 col-sm-6">
-              <div class="card">
-                <div class="card-header p-3 pt-2">
-                  <div
-                    class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
-                  >
-                    <i class="material-icons opacity-10">weekend</i>
+                  <hr class="dark horizontal my-0" />
+                  <div class="card-footer p-3">
+                    
                   </div>
-                  <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">Sales</p>
-                    <h4 class="mb-0">$103,430</h4>
                   </div>
-                </div>
-                <hr class="dark horizontal my-0" />
-                <div class="card-footer p-3">
-                  <p class="mb-0">
-                    <span class="text-success text-sm font-weight-bolder"
-                      >+5% </span
-                    >than yesterday
+              </div>
+              <div class="col-xl-3 col-sm-6">
+                <div class="card">
+                  <div class="card-header p-3 pt-2">
+                    <div
+                      class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute"
+                    >
+                      <i class="material-icons opacity-10">weekend</i>
+                    </div>
+                    <div class="text-end pt-1">
+                      <p class="text-sm mb-0 text-capitalize">Vente des packs</p>
+                      <h4 class="mb-0">{{forumIncomes.SumPrixPrcks}}</h4>
+                    </div>
+                  </div>
+                  <hr class="dark horizontal my-0" />
+                  <div class="card-footer p-3">
+                    <p class="mb-0">
+                      <span *ngIf="forumIncomes.TauxAugmentation >= 0" class="text-success text-sm font-weight-bolder">
+                          {{ forumIncomes.TauxAugmentation }}% 
+                      </span>
+                      <span *ngIf="forumIncomes.TauxAugmentation < 0" class="text-danger text-sm font-weight-bolder">
+                          {{ forumIncomes.TauxAugmentation }}% 
+                      </span>
+                      que l'année dernière
                   </p>
+                  </div>
+                  
                 </div>
               </div>
-            </div>
           </div>
-          <div class="row mt-4">
+          
+          <!-- <div class="row mt-4">
             <div class="col-lg-4 col-md-6 mt-4 mb-4">
               <div class="card z-index-2">
                 <div
@@ -184,7 +212,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row mb-4">
             <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
               <div class="card">
@@ -742,10 +770,11 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            
+             <div class="col-lg-4 col-md-6">
               <div class="card h-100">
                 <div class="card-header pb-0">
-                  <h6>Orders overview</h6>
+                  <h6>Suivi des pack</h6>
                   <p class="text-sm">
                     <i
                       class="fa fa-arrow-up text-success"
@@ -759,109 +788,132 @@
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-success text-gradient"
-                          >notifications</i
+                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/diamant.png"
+                          alt="Diamond Logo"></i
                         >
                       </span>
                       <div class="timeline-content">
                         <h6 class="text-dark text-sm font-weight-bold mb-0">
-                          $2400, Design changes
+                          Diamond
                         </h6>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                          22 DEC 7:20 PM
+                        {{packIncomes.Platinum.Percentage| number:'1.2-2' }}%
+                    
                         </p>
+                        <p
+                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                      >
+                     
+                      {{packIncomes.Diamond.Revenue | currency:'TND':'symbol':'1.2-2' }}
+                      </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-danger text-gradient"
-                          >code</i
+                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/platinum.png"
+                          alt="Diamond Logo"></i
                         >
                       </span>
                       <div class="timeline-content">
                         <h6 class="text-dark text-sm font-weight-bold mb-0">
-                          New order #1832412
+                         Platinum
                         </h6>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                          21 DEC 11 PM
+                        {{packIncomes.Platinum.Percentage| number:'1.2-2' }}%
+                        
                         </p>
+                        <p
+                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                      >
+                    
+                      {{packIncomes.Platinum.Revenue | currency:'TND':'symbol':'1.2-2' }}
+                      </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-info text-gradient"
-                          >shopping_cart</i
+                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/lingot-dor.png"
+                          alt="Diamond Logo"></i
                         >
                       </span>
                       <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">
-                          Server payments for April
-                        </h6>
+                        <h5 class="text-dark text-sm font-weight-bold mb-0">
+                          Gold
+                        </h5>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                          21 DEC 9:34 PM
+                          {{packIncomes.Gold.Percentage| number:'1.2-2' }}%
+                        
                         </p>
+                        <p
+                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                      >
+                        {{packIncomes.Gold.Revenue| currency:'TND':'symbol':'1.2-2' }}%
+                      
+                      </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-warning text-gradient"
-                          >credit_card</i
+                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/silver.png"
+                          alt="Diamond Logo"></i
                         >
                       </span>
                       <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">
-                          New card added for order #4395133
-                        </h6>
+                        <h5 class="text-dark text-sm font-weight-bold mb-0">
+                         Silver
+                        </h5>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                          20 DEC 2:20 AM
+                        {{packIncomes.Silver.Percentage| number:'1.2-2' }}%
+                       
                         </p>
+                        <p
+                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                      >
+                     
+                      {{packIncomes.Silver.Revenue | currency:'TND':'symbol':'1.2-2' }}
+                      </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-primary text-gradient"
-                          >key</i
+                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/star_616489.png"
+                          alt="Diamond Logo"></i
                         >
                       </span>
                       <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">
-                          Unlock packages for development
-                        </h6>
+                        <h5 class="text-dark text-sm font-weight-bold mb-0">
+                         Personalisé
+                        </h5>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                          18 DEC 4:54 AM
+                        {{packIncomes.Personalized.Percentage| number:'1.2-2' }}%
+                       
                         </p>
-                      </div>
-                    </div>
-                    <div class="timeline-block">
-                      <span class="timeline-step">
-                        <i class="material-icons text-dark text-gradient"
-                          >payments</i
-                        >
-                      </span>
-                      <div class="timeline-content">
-                        <h6 class="text-dark text-sm font-weight-bold mb-0">
-                          New order #9583120
-                        </h6>
                         <p
-                          class="text-secondary font-weight-bold text-xs mt-1 mb-0"
-                        >
-                          17 DEC
-                        </p>
+                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                      >
+                     
+                      {{packIncomes.Personalized.Revenue | currency:'TND':'symbol':'1.2-2' }}
+                      </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <app-footer-index></app-footer-index>

@@ -1,9 +1,8 @@
-
+import { ForumServiceService } from 'src/app/Service/forum-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ForumService } from 'src/app/service/forum.service';
 
 @Component({
   selector: 'app-add-forum',
@@ -18,7 +17,7 @@ export class AddForumComponent {
   isLoading: boolean = false;
   forumAffiche !: any; 
   affiche !: any; 
-  constructor(private route: ActivatedRoute, private router:Router,  private toastr: ToastrService, private forumService: ForumService) {}
+  constructor(private route: ActivatedRoute, private router:Router,  private toastr: ToastrService, private forumService: ForumServiceService) {}
   
   ngOnInit() {
     this.addForumForm = new FormGroup({
@@ -58,7 +57,7 @@ export class AddForumComponent {
             this.toastr.success('Le forum  a été ajouté avec succès');
             this.router.navigate(['/forumList']);
         },
-        error: () => {
+        error: (error) => {
             this.isLoading = false;
             this.toastr.error('Une erreur est survenue lors de lajout');
         },

@@ -60,7 +60,7 @@ export class AddInvoiceComponent {
               next: () => {
                   console.log('facture créer avec succée');
                   this.toastr.success('facture créer avec succée'); // Success toaster notification
-                  this.router.navigateByUrl('/invoices'); // Navigate to 'invoices' route after success
+                  this.router.navigateByUrl('/my-invoices'); // Navigate to 'invoices' route after success
               },
               error: (error) => {
                   console.error('erreur creation de facture:', error);

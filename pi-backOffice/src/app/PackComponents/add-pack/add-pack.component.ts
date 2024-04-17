@@ -1,8 +1,9 @@
-import { StandService } from '../../service/stand.service';
+import { StandServiceService } from './../../Service/stand-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PackService } from 'src/app/service/pack.service';
+import { ToastrService } from 'ngx-toastr';
+import { PackServiceService } from 'src/app/Service/pack-service.service';
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
 
@@ -20,10 +21,10 @@ export class AddPackComponent {
     typePack: '',
     prix: 0,
   };
-
+  isLoading: boolean = false;
   id !: any ; 
-  constructor(private route: ActivatedRoute, private packService: PackService, private router: Router, 
-              private standService:StandService) {}
+  constructor(private route: ActivatedRoute, private packService: PackServiceService, private router: Router, 
+              private standService:StandServiceService, private toastr: ToastrService) {}
   ngOnInit() {
     this.standService.getStandByStatut(false).subscribe((data)=>{
       console.log(data)
@@ -46,12 +47,23 @@ export class AddPackComponent {
       this.id = stand.id;
     }
     });
-    this.packService.addpack(this.pack,this.id).subscribe(() => {
-      this.router.navigateByUrl('/packList');
+    console.log(this.pack);
+    
+    this.packService.addpack(this.pack,this.id).subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.toastr.success('Le pack a été modifié avec succes');
+        this.router.navigate(['/packList']);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.toastr.error(error.error.message);
+      },
     });
-
   }
+}
+
 
  
-}
+
 

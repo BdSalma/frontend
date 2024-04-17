@@ -5,7 +5,6 @@ import { RequestSupply } from "./requestSupply";
 import { User } from "./user";
 
 export class Individu extends User {
-
     identity!: string;
     firstName!: string;
     lastName!: string;
@@ -13,6 +12,7 @@ export class Individu extends User {
     requestSupplies!: RequestSupply[];
     candidatures!: Candidature[];
     offers!:Offer[];
+}
 
 
-   }
+

@@ -1,7 +1,8 @@
-import { ForumService } from 'src/app/service/forum.service';
+import { ForumServiceService } from 'src/app/Service/forum-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit-forum',
   templateUrl: './edit-forum.component.html',
@@ -12,10 +13,12 @@ export class EditForumComponent {
   updateForumForm!: FormGroup;
   zones: string[] = [];
   forumId!: any;
+  isLoading: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private forumService: ForumService
+    private forumService: ForumServiceService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -26,22 +29,11 @@ export class EditForumComponent {
       localisation: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required])  
     });
-
-    
-     this.forumId = this.route.snapshot.params['id'];
-
-    
+    this.forumId = this.route.snapshot.params['id'];
     if (this.forumId) {
-      
       this.forumService.getForumById(this.forumId).subscribe((forumDetails) => {
        console.log(forumDetails);
-       
-        this.updateForumForm.patchValue(forumDetails)/*{
-          theme: forumDetails.theme,
-          date: forumDetails.date,
-          localisation: forumDetails.localisation,
-          description: forumDetails.description
-        });*/
+       this.updateForumForm.patchValue(forumDetails)
       });
     }
   }
@@ -52,8 +44,16 @@ export class EditForumComponent {
     return selectedDate > currentDate ? null : { 'invalidFutureDate': true };
   }
   onSubmit() {
-    this.forumService.updateForum(this.updateForumForm.value,this.forumId).subscribe(() => {
-      this.router.navigateByUrl("/forumList");
-      });
+    this.forumService.updateForum(this.updateForumForm.value,this.forumId).subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.toastr.success('Le formulaire a été modifié avec succes');
+        this.router.navigate(['/forumList']);
+      },
+      error: (error) => {
+        this.isLoading = false;
+        this.toastr.error(error.error.message);
+      },
+    });
   }
 }

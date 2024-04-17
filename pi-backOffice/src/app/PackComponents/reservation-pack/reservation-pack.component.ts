@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PackService } from 'src/app/service/pack.service';
-import { StandService } from 'src/app/service/stand.service';
+import { PackServiceService } from 'src/app/Service/pack-service.service';
+import { StandServiceService } from 'src/app/Service/stand-service.service';
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
-
+import { TypePack } from 'src/app/model/typePack';
 
 @Component({
   selector: 'app-reservation-pack',
@@ -15,8 +15,8 @@ export class ReservationPackComponent {
 
 
   constructor(
-    private packService: PackService,
-    private StandService: StandService,
+    private packService: PackServiceService,
+    private StandServiceService: StandServiceService,
     private Router: Router,
     private route: ActivatedRoute
    
@@ -45,10 +45,7 @@ export class ReservationPackComponent {
   }
 
   bookPack(id: number) {
-    
-    
     const userId = 1;
-    this.packService.bookPack(id, userId).subscribe();
+    this.packService.bookPack(id).subscribe();
   }
-
 }
