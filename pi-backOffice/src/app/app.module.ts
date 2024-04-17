@@ -58,6 +58,7 @@ import { EditSposorComponent } from './edit-sposor/edit-sposor.component';
 import { UserService } from './service/user-service.service';
 import { DetailCandidatComponent } from './detail-candidat/detail-candidat.component';
 import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
+import { InterviewValiderComponent } from './interview/interview-valider/interview-valider.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { UpdateInterviewComponent } from './interview/update-interview/update-in
     UserFormComponent,
     EditSposorComponent,
     DetailCandidatComponent,
-    UpdateInterviewComponent
+    UpdateInterviewComponent,
+    InterviewValiderComponent
   ],
   imports: [
     BrowserModule,

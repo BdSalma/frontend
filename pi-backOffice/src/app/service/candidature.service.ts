@@ -116,6 +116,31 @@ export class CandidatureService {
       }),
     });
   }
+  refuserCandidature(id: number): Observable<Candidature> {
+    const url = `${this.baseUrl}/refuserCandidat/${id}`;
+    return this.http.put<Candidature>(url, {}, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
+  }
+  getNewCandidaturesCount(): Observable<number> {
+    const url = `${this.baseUrl}/new-count`;
+    return this.http.get<number>(url, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      })
+    });
+  }
+  
+  accepterI(id: number): Observable<Interview> {
+    const url = `${this.baseUrl1}/valider/${id}`;
+    return this.http.put<Interview>(url, {}, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+      }),
+    });
+  }
   updateInterview(id:number, updatedI: any):Observable<any>{
     return this.http.put(`${this.baseUrl1}/updateI/${id}`, updatedI, {
       headers: new HttpHeaders({
@@ -147,6 +172,14 @@ export class CandidatureService {
       }),
     });
  }
+ getInterviewsByEtat(etat: string,id:number ): Observable<Interview[]> {
+  const url = `${this.baseUrl1}/byEtatAndOffer/${etat}/${id}`; // Construct the URL for the API endpoint
+  return this.http.get<Interview[]>(url, {
+    headers: new HttpHeaders({
+      Authorization: `Bearer ${this.auth.token}`
+    })
+  });
+}
 
   addInterview(url: string, interview: any): Observable<any> {
     return this.http.post(url, interview , {

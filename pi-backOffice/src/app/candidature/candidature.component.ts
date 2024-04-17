@@ -23,7 +23,8 @@ export class CandidatureComponent {
       (response: Candidature[]) => {
         console.log('API Response:', response); // Log the API response
         this.candidat = response;
-        console.log('candidat:', this.candidat); 
+        console.log('candidat:', this.candidat);
+         
       },
       error => {
         console.error('Error fetching candidat', error);
@@ -46,12 +47,29 @@ export class CandidatureComponent {
   updateIntrview(idI:number){
     this.router.navigate(['/updateI',idI]);
   }
-  goToInterview() {
-    // Navigate to the update component with the client's ID as parameter
-    this.router.navigate(['/listInterv']);
+  goToInterview(id: number) {
+    // Naviguer vers le composant de liste des entretiens avec l'ID de l'offre en tant que paramètre
+    this.router.navigate(['/listInterv', { id: id }]);
+  }
+
+  goToInterviewvalider(id: number) {
+    // Naviguer vers le composant de liste des entretiens validés avec l'ID de l'offre en tant que paramètre
+    this.router.navigate(['/valideInterview', { id: id }]);
   }
   acceptCandidature(candidateId: number) {
     this.candidatureService.accepterCandidature(candidateId).subscribe(
+      (response: Candidature) => {
+        console.log('Candidature accepted:', response);
+        this.fetchCandidat();
+      },
+      error => {
+        console.error('Error accepting candidature', error);
+        // Handle error as needed
+      }
+    );
+  }
+  refuseCandidature(candidateId: number) {
+    this.candidatureService.refuserCandidature(candidateId).subscribe(
       (response: Candidature) => {
         console.log('Candidature accepted:', response);
         this.fetchCandidat();

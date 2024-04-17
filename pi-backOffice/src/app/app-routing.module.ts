@@ -52,6 +52,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { EditSposorComponent } from './edit-sposor/edit-sposor.component';
 import { DetailCandidatComponent } from './detail-candidat/detail-candidat.component';
 import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
+import { InterviewValiderComponent } from './interview/interview-valider/interview-valider.component';
 
 
 const routes: Routes = [
@@ -73,7 +74,7 @@ const routes: Routes = [
 {path:'template',component:TemplateComponent},
 {path:'updateC/:id',component:UpdateComponent},
 {path:'addInterv/:id',component:InterviewComponent},
-{path:'listInterv',component:ListInterviewComponent},
+{path:'listInterv/:id',component:ListInterviewComponent},
 {path:'listCandidat',component:ListCandidatureComponent,canActivate: [AuthGuardGuard]},
 {path:'postuler/:id',component:PostulerComponent},
 { path: 'emailVerification', component: EmailVerificationComponent },
@@ -96,6 +97,7 @@ const routes: Routes = [
 { path: 'icons', component: IconsComponent },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
+  {path:'valideInterview/:id',component:InterviewValiderComponent},
   { path: 'rtl', component: RtlComponent },
   { path: 'typography', component: TypographyComponent },
   { path: 'virtualReality', component: VirtualRealityComponent },

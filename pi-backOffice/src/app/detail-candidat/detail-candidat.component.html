@@ -55,13 +55,16 @@
                                 <p class="text-success">Votre candidature a été acceptée , choisir votre date d'interview et type d'interview:</p>
                                 <form
                                 role="form"
-                                [formGroup]="registerForm" (ngSubmit)="scheduleMeeting()"  >
+                                [formGroup]="registerForm" (ngSubmit)="onSubmit()"  >
                                
                                 <div class="input-group input-group-outline row mb-3">
                                   <label class="col-sm-4 col-form-label">Date</label>
-                                    <select class="form-control" [formControlName]="'date'">
-                                      <option *ngFor="let date of candidatArray" [ngValue]="date">{{ date | date }}</option>
-                                    </select>
+                                  <select class="form-control" formControlName="date" (change)="onSelectDate($event)">
+                                    <option *ngFor="let date of candidatArray" [ngValue]="date">{{ date | date }}</option>
+                                  </select>
+                                  
+                                  
+                                  
 
                                 </div>
 

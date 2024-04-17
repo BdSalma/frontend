@@ -37,6 +37,7 @@
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">options</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Candidature</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Interviews</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -81,7 +82,11 @@
   </div>
 </td>                   <td><a  class="btn bg-gradient-dark" [routerLink]="['/candidat', offer?.idOffre]">
                           candidature
-                        </a></td>
+                        </a></td><td> <div class="col-6 text-end" >
+            
+                          <a  class="btn bg-gradient-dark" [routerLink]="['/listInterv', offer?.idOffre]">interviews en attentes</a>
+                          <a  class="btn bg-gradient-dark" [routerLink]="['/valideInterview', offer?.idOffre]" >interview Valider</a>
+                        </div></td>
                         </tr>
                       </tbody>
                     </table>

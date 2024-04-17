@@ -6,7 +6,7 @@ import { Room } from '../model/room';
 import { Interview } from '../model/interview';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../service/user-service.service';
-declare var createGoogleEvent: any;
+
 @Component({
   selector: 'app-detail-candidat',
   templateUrl: './detail-candidat.component.html',
@@ -67,24 +67,17 @@ export class DetailCandidatComponent {
         }
       );
       
-      this.fetchInterviews();
      }
   
-     fetchInterviews() {
-      this.candidatureService.getInterview().subscribe( );
-    }
+     
     reset() {
       this.registerForm.reset();
     }
-    onSelectDate(date: Date) {
-      this.selectedDate = date;
-      if (this.interviewData && this.interviewData.date) {
-        // You can now use interviewData.date (assuming it's a LocalDateTime object)
-        const newDate = this.interviewData.date; // Assuming you want to add 30 minutes
-        console.log(newDate);
-      } else {
-        console.warn('Interview date not available');
-      }
+    onSelectDate(event: any) {
+      const selectedValue = (event.target as HTMLSelectElement).value;
+      this.selectedDate = new Date(selectedValue);
+      // Remove selected date from candidatArray
+      this.candidatArray = this.candidatArray.filter(d => d !== this.selectedDate);
     }
     
     
@@ -114,31 +107,11 @@ export class DetailCandidatComponent {
         }
       );
     }
-    Add() {
-      console.log('Data to be sent:', this.registerForm.value);
-    
-      const interviewD = {
-        idInterview: this.id,
-        interviewType: this.registerForm.value.interviewType,
-        date: this.registerForm.get('date')?.value,
-        lien: this.registerForm.value.lien,
-        titre :this.registerForm.value.titre
-      };
-    
-      const roomNum = this.registerForm.value.room;
-      const url = `http://localhost:8087/interview/addI/${this.id}?room=${roomNum}`;
-      
-      this.candidatureService.addInterview(url, interviewD).subscribe(
-        {
-          next: () => this.router.navigateByUrl('/listCandidat'),
-          error: (error) => console.log(error)
-        }
-      );
-    }
+   
     Add1(){
       console.log('Data to be sent:', this.registerForm.value);
     
-      const interviewData = {
+      const Data = {
         idInterview: this.id,
         interviewType: this.registerForm.value.interviewType,
         date: this.registerForm.get('date')?.value,
@@ -148,7 +121,7 @@ export class DetailCandidatComponent {
     
       const url = `http://localhost:8087/interview/addIEnligne/${this.id}`;
       
-      this.candidatureService.addInterview(url, interviewData).subscribe( (response) =>
+      this.candidatureService.addInterview(url, Data).subscribe( (response) =>
         {
           console.log('Interview ajoutée avec succès:', response);
            this.router.navigateByUrl('/listCandidat');
@@ -157,28 +130,5 @@ export class DetailCandidatComponent {
        
       );   
     }
-//api google calender 
-// Function to handle the button click event to schedule a meeting.
-scheduleMeeting() {
-  console.log(this.registerForm.value);
-  let date = new Date(this.registerForm.value.date);
-  // Convert the date to the desired format with a custom offset (e.g., -07:00)
-  const startTime = date.toISOString().slice(0, 18) ;
-  const endTime = this.getEndTime(date);
-  const eventDetails = {
-    email: this.candidat.individu.email,
-    startTime: startTime,
-    endTime: endTime,
-  };
-  console.info(eventDetails);
-  //this.generateICSFile()
-  createGoogleEvent(eventDetails);
-}
 
-getEndTime(appointmentTime: Date) {
-  // Add one hour to the date
-  appointmentTime.setHours(appointmentTime.getHours() + 1);
-  const endTime = appointmentTime.toISOString().slice(0, 18) ;
-  return endTime;
-}  
 }
