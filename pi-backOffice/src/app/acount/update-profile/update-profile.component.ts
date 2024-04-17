@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Authentication } from '../../service/authentication.service';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -42,23 +43,30 @@ export class UpdateProfileComponent {
 
       firstName: [''],
       lastName: [''],
+      description: [''],
+      portfolio: [''],
+      linkedin: [''],
     });
     this.updateProfile.patchValue(this.userData);
   }
+
   update(form: any) {
     this.isLoading = true;
-    this.consumer.updateUser(form).subscribe({
-      next: (response) => {
-        localStorage.setItem('user', JSON.stringify(response));
-        this.consumer.updateLocalUser(response);
-        this.toastr.success('Your account has been updated successfully');
-        this.router.navigate(['/profile']);
-      },
-      error: (error) => {
-        this.toastr.error(error.error.message);
-      },complete: () => {
-        this.isLoading = false;
-      },
-    });
+    this.consumer
+      .updateUser(form)
+      .subscribe({
+        next: (response) => {
+          localStorage.setItem('user', JSON.stringify(response));
+          this.consumer.updateLocalUser(response);
+          this.toastr.success('Your account has been updated successfully');
+          this.router.navigate(['/profile']);
+        },
+        error: (error) => {
+          this.toastr.error(error.error.message);
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
   }
 }

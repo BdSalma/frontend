@@ -1,67 +1,79 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CandidatureService } from 'src/app/service/candidature.service';
 import { Interview } from 'src/app/model/interview';
+
 @Component({
   selector: 'app-list-interview',
   templateUrl: './list-interview.component.html',
   styleUrls: ['./list-interview.component.css']
 })
-export class ListInterviewComponent {
-  interview: Interview [] = [];
-  constructor(private http: HttpClient,private router: Router,private candidatureService: CandidatureService){}
-  ngOnInit():void {
-    this.fetchInterview();
-    
+export class ListInterviewComponent implements OnInit {
+  interviews: Interview[] = [];
+  id!: number;
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private candidatureService: CandidatureService,private route: ActivatedRoute
+  ) {  this.id=this.route.snapshot.params['id']}
+
+  ngOnInit(): void {
+    this.fetchInterviewsByEtat('Non_Valider');
   }
+
+  fetchInterviewsByEtat(etat: string): void {
+    this.candidatureService.getInterviewsByEtat(etat,this.id).subscribe(
+      interviews => {
+        this.interviews = interviews;
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
   deleteInterview(id: number): void {
     this.candidatureService.delete(id).subscribe(
       {
         next: () => {
           console.log('Interview deleted successfully');
-          // Optionally, you can reload the interview list after deletion
-          this.fetchInterview();
+          // Reload the interview list after deletion
+          this.fetchInterviewsByEtat('Non_Valider');
         },
         error: (error) => console.log('Error deleting interview', error)
       }
     );
   }
-  onDeleteClick(clientId: number) {
-    const confirmation = window.confirm('Are you sure you want to delete this interview?');//changer l'alert
-  
-    if (confirmation) {
-      console.log('Deleting client with ID:', clientId);
-  
-      const url = `http://localhost:8087/interview/deleteI/${clientId}`;
-      this.http.delete(url).subscribe(
-        response => {
-          console.log('Client deleted successfully', response);
-          // Refresh the list of clients after deletion
-          this.fetchInterview();
-        },
-        error => {
-          console.error('Error deleting client', error);
-          console.log('Full error details:', error);
-          // Handle error as needed
-        }
-        
-      );
-    }
-  }
-  
-  fetchInterview() {
-    this.candidatureService.getInterview().subscribe(
-      (response: Interview[]) => {
-        console.log('API Response:', response); // Log the API response
-        this.interview = response;
-        console.log('interview:', this.interview); 
+  acceptCandidature(candidateId: number) {
+    this.candidatureService.accepterI(candidateId).subscribe(
+      (response: Interview) => {
+        console.log('Candidature accepted:', response);
+        this.fetchInterviewsByEtat('Non_Valider');
       },
       error => {
-        console.error('Error fetching interview', error);
+        console.error('Error accepting candidature', error);
         // Handle error as needed
       }
     );
   }
 
+  onDeleteClick(interviewId: number): void {
+    const confirmation = window.confirm('Are you sure you want to delete this interview?');
+
+    if (confirmation) {
+      console.log('Deleting interview with ID:', interviewId);
+
+      this.candidatureService.delete(interviewId).subscribe(
+        () => {
+          console.log('Interview deleted successfully');
+          // Refresh the list of interviews after deletion
+          this.fetchInterviewsByEtat('Non_Valider');
+        },
+        error => {
+          console.error('Error deleting interview', error);
+        }
+      );
+    }
+  }
 }

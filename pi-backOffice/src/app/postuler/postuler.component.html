@@ -7,17 +7,17 @@
     </div>
     </div>
     <header class="header-2">
-        <div class="page-header min-vh-75 relative"style="background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80); background-size: cover;" >
-          <span class="mask bg-gradient-primary opacity-4"></span>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-7 text-center mx-auto">
-                <h1 class="text-white pt-3 mt-n5">Add Candidat </h1>
-                  </div>
+      <div class="page-header min-vh-75 relative" style="background-image: url('../assets/imgB/bg2.jpg')">
+        <span class="mask bg-gradient-primary opacity-4"></span>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 text-center mx-auto">
+              <h1 class="text-white pt-3 mt-n5 animated-text">Ajouter candidature</h1>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
     <div class="card card-body blur shadow-blur mx-2 mx-md-2 mt-n9">
         <section class="pt-3 pb-4" id="count-stats">
             <div class="container">
@@ -29,7 +29,7 @@
                               <div class="card card-plain">
                                   <div class="card-header">
                                     <h4 class="font-weight-bolder">Postuler</h4>
-                                    <p class="mb-0">ajouter candidature</p>
+                                    <p class="mb-0">ajouter candidature pour l'offre: {{offer.offerName}}</p>
                                   </div>
                                   <div class="card-body">
                                     <form role="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" >
@@ -54,7 +54,8 @@
                                         <button (click)="Add()"  type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Add</button>
                                       </div>
                                       <div class="text-center">
-                                          <a (click)="goToCandidature()"  type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Cancel</a>
+                                          <a (click)="goToCandidature()"  type="button"  class="btn bg-gradient-dark w-100 my-4 mb-2">Cancel</a>
+                                      
                                         </div>
                                     </form>
                                   </div>

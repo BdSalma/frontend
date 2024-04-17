@@ -7,7 +7,7 @@ import { SignInComponent } from './acount/sign-in/sign-in.component';
 import { SignUpComponent } from './acount/sign-up/sign-up.component';
 import { CandidatureComponent } from './candidature management/candidature/candidature.component';
 import { NavbarComponent } from './globals/navbar/navbar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RequestsComponent } from './requests management/requests/requests.component';
 import { AddRequestComponent } from './requests management/add-request/add-request.component';
 import { InvoicesComponent } from './invoices management/invoices/invoices.component';
@@ -17,7 +17,6 @@ import { AddDevisComponent } from './devis management/add-devis/add-devis.compon
 import { UpdateInvoiceComponent } from './invoices management/update-invoice/update-invoice.component';
 import { UpdateDevisComponent } from './devis management/update-devis/update-devis.component';
 import { UpdateRequestComponent } from './requests management/update-request/update-request.component';
-
 import { UpdateComponent } from './candidature management/candidature/update.component';
 import { InterviewComponent } from './interview/interview.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
@@ -37,7 +36,6 @@ import { DetailOfferComponent } from './offers management/detail-offer/detail-of
 import { OfferBySocietyComponent } from './offers management/offer-by-society/offer-by-society.component';
 import { IndexComponent } from './screens/index/index.component';
 import { NavbarIndexComponent } from './globals/navbar-index/navbar-index.component';
-import { FooterIndexComponent } from './globals/footer-index/footer-index.component';
 import { HeaderComponent } from './globals/header/header.component';
 import { ContactUsComponent } from './screens/contact-us/contact-us.component';
 import { ListCandidatureComponent } from './candidature management/list-candidature/list-candidature.component';
@@ -55,19 +53,12 @@ import { MyInvoicesComponent } from './invoices management/my-invoices/my-invoic
 import { ForumComponent } from './ForumComponenets/forum/forum.component';
 import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.component';
 import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
-import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
 import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
 import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
 import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
 import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
-import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
-import { AllRequestsIndexComponent } from './requests management/all-requests-index/all-requests-index.component';
-import { OldRequestsComponent } from './requests management/old-requests/old-requests.component';
-import { OldInvoicesComponent } from './invoices management/old-invoices/old-invoices.component';
-import { MyOldInvoicesComponent } from './invoices management/my-old-invoices/my-old-invoices.component';
-import { OldDevisBySocietyComponent } from './devis management/old-devis-by-society/old-devis-by-society.component';
 import { SidebarComponent } from './globals/sidebar/sidebar.component';
 import { Authentication } from './service/authentication.service';
 import { AboutUsComponent } from './screens/about-us/about-us.component';
@@ -76,6 +67,24 @@ import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.c
 import { ImagePopupComponent } from './globals/image-popup/image-popup.component';
 import { PopupDialogComponent } from './globals/popup-dialog/popup-dialog.component';
 import { PersonalizedPackComponent } from './PackComponents/personalized-pack/personalized-pack.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+import { RatingComponent } from './reclamation management/rating/rating.component';
+import { FavoriteComponent } from './reclamation management/favorite/favorite.component';
+import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
+import { InterviewValiderComponent } from './interview/interview-valider/interview-valider.component';
+import { DetailCandidatComponent } from './candidature management/detail-candidat/detail-candidat.component';
+import { FooterIndexComponent } from './globals/footer-index/footer-index.component';
+import { MyOldInvoicesComponent } from './invoices management/my-old-invoices/my-old-invoices.component';
+import { OldInvoicesComponent } from './invoices management/old-invoices/old-invoices.component';
+import { OldDevisBySocietyComponent } from './devis management/old-devis-by-society/old-devis-by-society.component';
+import { AllRequestsIndexComponent } from './requests management/all-requests-index/all-requests-index.component';
+import { OldRequestsComponent } from './requests management/old-requests/old-requests.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +105,6 @@ import { PersonalizedPackComponent } from './PackComponents/personalized-pack/pe
     UpdateInvoiceComponent,
     UpdateDevisComponent,
     UpdateRequestComponent,
-    CandidatureComponent,
     UpdateComponent,
     InterviewComponent,
     ListInterviewComponent,
@@ -132,7 +140,6 @@ import { PersonalizedPackComponent } from './PackComponents/personalized-pack/pe
     EditStandComponent,
     EditForumComponent,
     ForumPacksComponent,
-    ReservationPackComponent,
     AboutUsComponent,
     ListCandidatureComponent,
     PostulerComponent,
@@ -151,6 +158,12 @@ import { PersonalizedPackComponent } from './PackComponents/personalized-pack/pe
     ImagePopupComponent,
     PopupDialogComponent,
     PersonalizedPackComponent,
+    RatingComponent,
+    FavoriteComponent,
+    UpdateInterviewComponent,
+    InterviewValiderComponent,
+    DetailCandidatComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -161,7 +174,15 @@ import { PersonalizedPackComponent } from './PackComponents/personalized-pack/pe
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,   
+    NgxPaginationModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     ToastrModule.forRoot({
       timeOut: 5000,
       tapToDismiss: true,
@@ -170,7 +191,7 @@ import { PersonalizedPackComponent } from './PackComponents/personalized-pack/pe
       progressBar: true,
       disableTimeOut: false,
       positionClass: 'toast-top-right',
-    })
+    }),
   ],
   providers: [Authentication],
   bootstrap: [AppComponent],

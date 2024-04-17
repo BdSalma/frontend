@@ -4,21 +4,23 @@
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-9">
-      <app-navbar [currentScreen]="'Individus'"></app-navbar>
+      <app-navbar [currentScreen]="'Individuals' | translate"></app-navbar>
       <main class="main-content position-relative border-radius-lg">
         <div class="col-md-12 mb-lg-0 mb-4">
           <div class="card mt-4">
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">List of individuals</h6>
+                  <h6 class="mb-0">{{ "List of individuals" | translate }}</h6>
                 </div>
                 <div class="col-6 text-end">
                   <a
                     class="btn bg-gradient-dark mb-0"
                     routerLink="/associations"
                     ><i class="material-icons text-lg">link</i
-                    ><span class="ms-1">List of associations</span></a
+                    ><span class="ms-1">{{
+                      "List of associations" | translate
+                    }}</span></a
                   >
                 </div>
               </div>
@@ -44,7 +46,9 @@
                     <div class="row">
                       <div class="col-md-4 mb-3">
                         <select class="form-select" formControlName="role">
-                          <option value="" selected>Select Role</option>
+                          <option value="" selected>
+                            {{ "Select Role" | translate }}
+                          </option>
                           <option
                             *ngFor="let role of individuRole"
                             [value]="role"
@@ -58,7 +62,7 @@
                           type="text"
                           class="form-control bg-light"
                           formControlName="search"
-                          placeholder="Search..."
+                          placeholder="{{ 'Search...' | translate }}"
                         />
                       </div>
                       <div class="col-md-4">
@@ -66,7 +70,7 @@
                           type="submit"
                           class="btn bg-gradient-dark w-100"
                         >
-                          Search
+                          {{ "Search" | translate }}
                         </button>
                       </div>
                     </div>
@@ -81,27 +85,27 @@
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
-                          First name
+                          {{ "First name" | translate }}
                         </th>
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
-                          Last name
+                          {{ "Last name" | translate }}
                         </th>
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
-                          Identity
+                          {{ "Identity" | translate }}
                         </th>
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
-                          Role
+                          {{ "Role" | translate }}
                         </th>
                         <th
                           class="text-start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
-                          Actions
+                          {{ "Actions" | translate }}
                         </th>
                         <th class="text-secondary opacity-7"></th>
                       </tr>
@@ -132,25 +136,43 @@
                           <div class="mr-2 ms-1" *ngIf="!individu.approve">
                             <button
                               class="btn btn-danger btn-sm"
-                              (click)="openDialog(individu.id, 'approve')"
+                              (click)="
+                                openDialog(
+                                  individu.id,
+                                  'approve',
+                                  individu.activate
+                                )
+                              "
                             >
-                              Inapproved
+                              {{ "Inapproved" | translate }}
                             </button>
                           </div>
                           <div class="mr-2 ms-1" *ngIf="individu.activate">
                             <button
                               class="btn btn-info btn-sm"
-                              (click)="openDialog(individu.id, 'activate')"
+                              (click)="
+                                openDialog(
+                                  individu.id,
+                                  'activate',
+                                  individu.activate
+                                )
+                              "
                             >
-                              Activated
+                              {{ "Activated" | translate }}
                             </button>
                           </div>
                           <div class="mr-2 ms-1" *ngIf="!individu.activate">
                             <button
                               class="btn btn-danger btn-sm"
-                              (click)="openDialog(individu.id, 'activate')"
+                              (click)="
+                                openDialog(
+                                  individu.id,
+                                  'activate',
+                                  individu.activate
+                                )
+                              "
                             >
-                              Desactivated
+                              {{ "Desactivated" | translate }}
                             </button>
                           </div>
                           <div class="mr-2 ms-1">
@@ -158,14 +180,14 @@
                               class="btn btn-dark btn-sm"
                               [routerLink]="['/user-details', individu.id]"
                             >
-                              More details
+                              {{ "More details" | translate }}
                             </button>
                           </div>
                         </td>
                       </tr>
                       <tr *ngIf="!individus || individus.length === 0">
                         <td colspan="5" class="text-center">
-                          No data available
+                          {{ "No data available" | translate }}
                         </td>
                       </tr>
                     </tbody>
@@ -175,18 +197,24 @@
             </div>
           </div>
         </div>
+
         <br />
         <br />
         <app-footer-index></app-footer-index>
         <app-popup-dialog
           [id]="currentId"
           [title]="
-            currentAction === 'approve' ? 'Approve user' : 'Activate user'
+            currentAction === 'approve'
+              ? ('Approve user' | translate)
+              : ((typeOfActivation ? 'Deactivate' : 'Activate') + ' user'
+                | translate)
           "
           [content]="
             currentAction === 'approve'
-              ? 'Do you want to approve this user?'
-              : 'Do you want to activate this user?'
+              ? ('Do you want to approve this user?' | translate)
+              : ('Do you want to ' +
+                  (typeOfActivation ? 'deactivate' : 'activate') +
+                  ' this user?' | translate)
           "
           (send)="handleDialogAction($event)"
         ></app-popup-dialog>

@@ -39,6 +39,12 @@
             </a>
           </li>
         </ul>
+        <div class="d-flex align-items-center ms-auto">
+          <a (click)="showNotificationMessage()">
+            <i class="fa fa-bell"></i> <!-- Utilisez une icône de cloche pour représenter une notification -->
+            <span class="badge bg-danger">{{ newCandidaturesCount }}</span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>

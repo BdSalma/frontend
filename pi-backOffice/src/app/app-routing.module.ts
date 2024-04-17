@@ -31,31 +31,25 @@ import { AddForumComponent } from './ForumComponenets/add-forum/add-forum.compon
 import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
 import { PacksListComponent } from './PackComponents/packs-list/packs-list.component';
 import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
-import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
 import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.component';
 import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
 import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
-
 import { UpdateComponent } from './candidature management/candidature/update.component';
 import { InterviewComponent } from './interview/interview.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
-
 import { ListCandidatureComponent } from './candidature management/list-candidature/list-candidature.component';
 import { PostulerComponent } from './postuler/postuler.component';
 import { ReclamationComponent } from './reclamation management/reclamation/reclamation.component';
-
 import { OffersComponent } from './offers management/offers/offers.component';
 import { AddOfferComponent } from './offers management/add-offer/add-offer.component';
 import { UpdateOfferComponent } from './offers management/update-offer/update-offer.component';
 import { DetailOfferComponent } from './offers management/detail-offer/detail-offer.component';
 import { OfferBySocietyComponent } from './offers management/offer-by-society/offer-by-society.component';
-
 import { IndexOffersComponent } from './offers management/index-offers/index-offers.component';
 import { PageOffersComponent } from './offers management/page-offers/page-offers.component';
 import { ListOffersComponent } from './offers management/list-offers/list-offers.component';
-
 import { FeedBackComponent } from './reclamation management/feed-back/feed-back.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AllRequestsIndexComponent } from './requests management/all-requests-index/all-requests-index.component';
@@ -68,10 +62,14 @@ import { AboutUsComponent } from './screens/about-us/about-us.component';
 import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowrd.component';
 import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
 import { PersonalizedPackComponent } from './PackComponents/personalized-pack/personalized-pack.component';
+import { FavoriteComponent } from './reclamation management/favorite/favorite.component';
+import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
+import { DetailCandidatComponent } from './candidature management/detail-candidat/detail-candidat.component';
+import { InterviewValiderComponent } from './interview/interview-valider/interview-valider.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
-  { path: '', component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },
   { path: 'offersIndex', component: IndexOffersComponent },
   { path: 'offre', component: OffersComponent },
@@ -82,22 +80,15 @@ const routes: Routes = [
   },
   { path: 'DetailOffre/:id', component: DetailOfferComponent },
   { path: 'editOffer/:id', component: UpdateOfferComponent },
+  { path: 'feed/favorite', component: FavoriteComponent },
+
   { path: 'addOffer', component: AddOfferComponent },
   {
     path: 'dashboard',
     component: DashboradComponent,
     canActivate: [AuthGuardGuard],
   },
-  { path: 'candidat/:id', component: CandidatureComponent },
-  { path: 'updateC/:id', component: UpdateComponent },
-  { path: 'addInterv/:id', component: InterviewComponent },
-  { path: 'listInterv', component: ListInterviewComponent },
-  {
-    path: 'listCandidat',
-    component: ListCandidatureComponent,
-    canActivate: [AuthGuardGuard],
-  },
-  { path: 'postuler/:id', component: PostulerComponent },
+  
   {
     path: 'supplyrequests',
     component: RequestsComponent,
@@ -205,8 +196,27 @@ const routes: Routes = [
     component: ResetPassowrdComponent,
     // canActivate: [AuthGuardGuard],
   },
+  
+{path:'candidat/:id',component:CandidatureComponent},
+{path:'updateC/:id',component:UpdateComponent},
+{path:'addInterv/:id',component:InterviewComponent},
+{path:'listInterv/:id',component:ListInterviewComponent},
+{path:'listCandidat',component:ListCandidatureComponent,canActivate: [AuthGuardGuard]},
+{path:'postuler/:id',component:PostulerComponent},
+
+{path:'updateI/:id',component:UpdateInterviewComponent},
+{path:'detail-candidat/:id',component:DetailCandidatComponent},
+{path: 'user-details/:id',component: UserDetailsComponent,},
+{path: 'associations',component: AssociationsComponent,canActivate: [AuthGuardGuard],},
+{path: 'profile',component: ProfileComponent,canActivate: [AuthGuardGuard],},
+{path: 'update-profile',component: UpdateProfileComponent,canActivate: [AuthGuardGuard],},
+
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
+  {path:'valideInterview/:id',component:InterviewValiderComponent},
+
+
+
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'contact', component: ContactUsComponent },

@@ -1,4 +1,5 @@
 <main class="main-content mt-0">
+  <app-navbar-index></app-navbar-index>
   <div
     class="page-header align-items-start min-vh-100"
     style="
@@ -8,14 +9,14 @@
     <span class="mask bg-gradient-dark opacity-6"></span>
     <div class="container my-auto">
       <div class="row">
-        <div class="col-lg-4 col-md-8 col-12 mx-auto">
+        <div class="col-lg-4 col-md-8 col-12 mx-auto"><br><br><br>
           <div class="card z-index-0 fadeIn3 fadeInBottom">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2" >
               <div
-                class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1"
+                class=" shadow-primary border-radius-lg py-3 pe-1 bg-gradient-primary" 
               >
                 <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
-                  Se connecter
+                  {{ 'Se connecter' | translate }}
                 </h4>
                 <div class="row mt-3">
                   <div class="col-2 text-center ms-auto">
@@ -47,7 +48,7 @@
                     type="text"
                     class="form-control"
                     formControlName="username"
-                    placeholder="Pseudo-nom ou e-mail"
+                    placeholder="{{ 'Pseudo-nom ou e-mail' | translate }}"
                   />
                 </div>
                 <div
@@ -57,14 +58,14 @@
                     signInForm.get('username')?.touched
                   "
                 >
-                  Ce champ est obligatoire
+                  {{ 'Ce champ est obligatoire' | translate }}
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <input
                     type="password"
                     class="form-control"
                     formControlName="password"
-                    placeholder="Mot de passe"
+                    placeholder="{{ 'Mot de passe' | translate }}"
                   />
                 </div>
                 <div
@@ -74,31 +75,31 @@
                     signInForm.get('password')?.touched
                   "
                 >
-                  Le mot de passe est obligatoire
+                  {{ 'Le mot de passe est obligatoire' | translate }}
                 </div>
                 <div class="text-center">
-                  <button
+                  <button style="background-color: #ed3637;"
                     type="submit"
                     class="btn bg-gradient-primary w-100 my-4"
                     [disabled]="signInForm.invalid || isLoading"
                   >
-                    {{ isLoading ? "Loading..." : "Se connecter" }}
+                    {{ isLoading ? 'Loading...' : 'Se connecter' | translate }}
                   </button>
                 </div>
                 <p class="mt-2 text-sm text-center">
-                  Vous n'avez pas de compte ?
+                  {{ "Vous n'avez pas de compte ?" | translate }}
                   <a
                     routerLink="/signUp"
                     class="text-primary text-gradient font-weight-bold"
-                    >S'inscrire</a
+                    >{{ "S'inscrire" | translate }}</a
                   >
                 </p>
                 <p class="text-sm text-center">
-                  Avez-vous oublié votre mot de passe?
+                  {{ "Avez-vous oublié votre mot de passe?" | translate }}
                   <a
                     routerLink="/forget-password"
                     class="text-primary text-gradient font-weight-bold"
-                    >Réinitialiser</a
+                    >{{ 'Réinitialiser' | translate }}</a
                   >
                 </p>
               </form>

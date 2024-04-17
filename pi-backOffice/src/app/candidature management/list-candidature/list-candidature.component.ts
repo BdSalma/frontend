@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CandidatureService } from '../../service/candidature.service';
-import { Candidature } from '../../model/candidature';
+import { CandidatureService } from 'src/app/service/candidature.service';
+import { Candidature } from 'src/app/model/candidature';
 @Component({
   selector: 'app-list-candidature',
   templateUrl: './list-candidature.component.html',

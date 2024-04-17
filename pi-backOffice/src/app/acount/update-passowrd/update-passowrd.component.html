@@ -19,7 +19,7 @@
         <h1
           class="text-white animated-text position-absolute top-50 start-50 translate-middle"
         >
-          Modifier profile
+          {{ "Modifier profile" | translate }}
         </h1>
       </div>
       <div class="card card-body mx-3 mx-md-8 mt-n6">
@@ -32,13 +32,13 @@
             >
               <div class="input-group input-group-outline row mb-3">
                 <label for="oldPassword" class="col-sm-4 col-form-label"
-                  >Ancien mot de passe :</label
+                  >{{ "Ancien mot de passe :" | translate }}</label
                 >
                 <input
                   type="password"
                   class="form-control"
                   formControlName="oldPassword"
-                  placeholder="Mot de passe"
+                  placeholder="{{ 'Mot de passe' | translate }}"
                   id="oldPassword"
                 />
               </div>
@@ -49,17 +49,17 @@
                   updatePassword.get('oldPassword')?.touched
                 "
               >
-                Le mot de passe est obligatoire
+                {{ "Le mot de passe est obligatoire" | translate }}
               </div>
               <div class="input-group input-group-outline row mb-3">
                 <label for="newPassword" class="col-sm-4 col-form-label"
-                  >Nouveau mot de passe :</label
+                  >{{ "Nouveau mot de passe :" | translate }}</label
                 >
                 <input
                   type="password"
                   class="form-control"
                   formControlName="newPassword"
-                  placeholder="Mot de passe"
+                  placeholder="{{ 'Mot de passe' | translate }}"
                   id="newPassword"
                 />
               </div>
@@ -70,17 +70,17 @@
                   updatePassword.get('newPassword')?.touched
                 "
               >
-                Le mot de passe est obligatoire
+                {{ "Le mot de passe est obligatoire" | translate }}
               </div>
               <div class="input-group input-group-outline row mb-3">
                 <label for="confirmPassword" class="col-sm-4 col-form-label"
-                  >Confirmez le mot de passe :</label
+                  >{{ "Confirmez le mot de passe :" | translate }}</label
                 >
                 <input
                   type="password"
                   class="form-control"
                   formControlName="confirmPassword"
-                  placeholder="Mot de passe"
+                  placeholder="{{ 'Mot de passe' | translate }}"
                   id="confirmPassword"
                 />
               </div>
@@ -92,7 +92,7 @@
                   ) && updatePassword.get('confirmPassword')?.touched
                 "
               >
-                Le mot de passe est obligatoire
+                {{ "Le mot de passe est obligatoire" | translate }}
               </div>
               <div
                 class="text-danger"
@@ -103,7 +103,7 @@
                     updatePassword.get('newPassword')?.value
                 "
               >
-                The password doesn’t match
+                {{ "The password doesn’t match" | translate }}
               </div>
               <div class="text-center col-md-3 mx-auto">
                 <button
@@ -116,7 +116,7 @@
                       updatePassword.get('newPassword')?.value
                   "
                 >
-                  {{ isLoading ? "Loading..." : "Mettre à jour" }}
+                  {{ isLoading ? "Loading..." : "Mettre à jour" | translate }}
                 </button>
               </div>
             </form>

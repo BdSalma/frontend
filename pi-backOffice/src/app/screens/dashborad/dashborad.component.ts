@@ -1,21 +1,26 @@
-import { PackServiceService } from 'src/app/Service/pack-service.service';
-import { ForumServiceService } from 'src/app/Service/forum-service.service';
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../service/offer.service';
-import { RequestSupplyService } from 'src/app/service/request-supply.service';
-import { Authentication } from 'src/app/service/authentication.service';
 import { Chart, registerables } from 'node_modules/chart.js';
+import { Category } from 'src/app/model/category';
 import { InvoiceService } from 'src/app/service/invoice.service';
+import { Authentication } from 'src/app/service/authentication.service';
+import { RequestSupplyService } from 'src/app/service/request-supply.service';
+import { ForumServiceService } from 'src/app/Service/forum-service.service';
+import { PackServiceService } from 'src/app/Service/pack-service.service';
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashborad',
   templateUrl: './dashborad.component.html',
-  styleUrls: ['./dashborad.component.css']
+  styleUrls: ['./dashborad.component.css'],
 })
 export class DashboradComponent implements OnInit {
-  averageOffersPerDay:any;
-  OffreEnAttente:any;
+  averageOffersPerDay: any;
+  listOffer!: any;
+  OffreEnAttente: any;
+  categoryOptions: string[] = Object.keys(Category).filter((key: any) => !isNaN(Number(Category[key])));
+  categoryCounts: any; // Variable to store category counts from the backend
+  candidatCounts: any;
   individuStatistics: any;
   societyStat:any;
   user!: any;
@@ -27,7 +32,6 @@ export class DashboradComponent implements OnInit {
 
   constructor(private invoiceService: InvoiceService,private consumer: Authentication,private offerService: OfferService, private requestSupplyService: RequestSupplyService, private forumService:ForumServiceService, private packService : PackServiceService) { }
  
-
   ngOnInit(): void {
     this.user = this.consumer.user;
     this.packService.calculatePackIncomes().subscribe(
@@ -40,23 +44,7 @@ export class DashboradComponent implements OnInit {
         console.log('Error fetching forum incomes:', error);
       }
     );
-    this.offerService.getAverageOffersPerDay().subscribe(
-      average => {
-        this.averageOffersPerDay = average;
-        this.plotChart();
-      },
-      error => {
-        console.log('Error fetching average offers per day:', error);
-      }
-    );
-    this.offerService.getNbAcceptedOffer().subscribe(
-      average => {
-        this.OffreEnAttente = average;
-      },
-      error => {
-        console.log('Error fetching average offers per day:', error);
-      }
-    );
+
     this.requestSupplyService.getIndividuStatistics().subscribe(
       individuStatistics => {
         this.individuStatistics = individuStatistics;
@@ -98,8 +86,19 @@ export class DashboradComponent implements OnInit {
       }
     );
     
-    
-    
+    this.offerService.getNbAcceptedOffer().subscribe(
+      (average) => {
+        this.OffreEnAttente = average;
+      },
+      (error) => {
+        console.log('Error fetching average offers per day:', error);
+      }
+    );
+    this.fetchCategoryCounts();
+    this.loadOffers(); // Load offers before fetching candidature counts and rendering the chart
+ 
+ 
+
   }
   pieChartForIndividus(): void {
     const canvas = document.getElementById('individuChart') as HTMLCanvasElement;
@@ -185,35 +184,96 @@ export class DashboradComponent implements OnInit {
       options: options
     });
   }
-  
-  plotChart(): void {
-    const canvas = document.getElementById('myChart') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d')!; // Add non-null assertion operator
-  
-    const data = {
-      labels: ['Average Offers per Day'],
-      datasets: [{
-        label: 'Average Offers per Day',
-        data: [this.averageOffersPerDay],
-        backgroundColor: ['rgba(75, 192, 192, 0.2)'],
-        borderColor: ['rgba(75, 192, 192, 1)'],
-        borderWidth: 1
-      }]
-    };
-  
-    const options = {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+  fetchCategoryCounts() {
+    this.offerService.getOfferCountsByCategory().subscribe(
+      (data: any) => {
+        this.categoryCounts = data; // Assign fetched data to categoryCounts variable
+        this.PieChartOfferByCategory(); // Call method to render pie chart with fetched data
+      },
+      (error: any) => {
+        console.error('Error fetching category counts:', error);
       }
-    };
+    );
+  }
+
+  fetchCandidatureCounts() {
+    if (!this.listOffer) {
+      // If listOffer is not populated, return or handle accordingly
+      return;
+    }
   
-    new Chart(ctx, {
-      type: 'pie', // Change chart type to pie
-      data: data,
-      options: options
-    });
+    this.offerService.getCandidaturesByOffer().subscribe(
+      (data: any) => {
+        // Extract offer names and candidature counts from the response object
+        const offerNames = Object.keys(data);
+        const candidatureCounts = Object.values(data) as number[];
+        this.PieChartCandidat(offerNames, candidatureCounts);
+      },
+      (error: any) => {
+        console.error('Error fetching candidat counts:', error);
+      }
+    );
   }
   
+
+  PieChartOfferByCategory() {
+    const myChartOfUsers = new Chart('pie-chart-offer', {
+      type: 'pie',
+      data: {
+        labels: this.categoryOptions,
+        datasets: [{
+          backgroundColor: [
+            '#e63946',
+            '#fb8500',
+            '#ffb703',
+            '#023047',
+            '#219ebc',
+            '#8ecae6',
+          ],
+          data: this.categoryOptions.map(option => this.categoryCounts[option] || 0), // Use category counts data here
+          label: 'Offre par catégorie',
+        }],
+      },
+      options: {
+        responsive: true,
+      },
+    });
+  }
+
+  PieChartCandidat(offerNames: string[], candidatureCounts: number[]) {
+
+    const myChartOfCandidat = new Chart('pie-chart', {
+      type: 'pie',
+      data: {
+        labels: offerNames,
+        datasets: [{
+          backgroundColor: [
+            '#e63946',
+            '#fb8500',
+            '#ffb703',
+            '#023047',
+            '#219ebc',
+            '#8ecae6',
+          ],
+          data: candidatureCounts,
+          label: 'Candidatures par offre',
+        }],
+      },
+      options: {
+        responsive: true,
+      },
+    });
+  }  
+
+  loadOffers() {
+    this.offerService.getOffers().subscribe(
+      (data) => {
+        this.listOffer = data;
+        this.fetchCandidatureCounts(); // Call fetchCandidatureCounts once listOffer is populated
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

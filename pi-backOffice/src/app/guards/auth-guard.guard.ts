@@ -28,7 +28,7 @@ export class AuthGuardGuard implements CanActivate {
       '/update-profile': [],
       '/individuals': ['Admin'],
       '/associations': ['Admin'],
-      '/offerBySociety': ['Exposant'],
+      '/offerBySociety': ['Exposant','Professor'],
       '/offre': ['Admin','Community'],
       '/listCandidat': ['Student','Alumini'],
       '/dashboard': ['Admin', 'Exposant','Professor','Community','FinancialDirection','Fourniseur'],

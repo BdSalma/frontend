@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { Pack } from '../../model/pack';
 import { reservationStatus } from '../../model/reservationStatus';

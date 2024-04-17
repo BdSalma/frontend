@@ -2,7 +2,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ForumServiceService } from 'src/app/Service/forum-service.service';
-
 import { OfferService } from 'src/app/service/offer.service';
 
 

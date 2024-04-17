@@ -37,7 +37,7 @@
                       </div>
                     </div>
                   <div class="input-group input-group-outline mb-3">
-                    <label class="col-sm-4 col-form-label" >Nombre Candidat :</label>
+                    <label for="candidatnumber" class="col-sm-4 col-form-label" >Nombre Candidat :</label>
                     <input type="number" class="form-control" formControlName="candidatnumber" placeholder="Nombre de Candidat Souhaité">
                   </div>
                   <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].errors && registerForm.get('candidatnumber')?.touched">
@@ -56,8 +56,30 @@
                       <input type="text" class="form-control" formControlName="duree" placeholder="Duree de l'offre">
                     </div>
                     <div class="text-danger mb-3" *ngIf="registerForm.controls['duree'].errors && registerForm.get('duree')?.touched">
-                        <div class="text-danger mb-3" *ngIf="registerForm.controls['duree'].hasError('required')">ce champ est obligatoire</div>
+                      <div class="text-danger mb-3" *ngIf="registerForm.controls['duree'].hasError('required')">ce champ est obligatoire</div>
+                  </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="col-sm-4 col-form-label">Date 1 :</label>
+                      <input type="datetime-local" class="form-control" formControlName="date1">
                     </div>
+                    <div class="text-danger mb-3" *ngIf="registerForm.controls['date1'].errors && registerForm.get('date1')?.touched">
+                      <div class="text-danger mb-3" *ngIf="registerForm.controls['date1'].hasError('required')">ce champ est obligatoire</div>
+                  </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="col-sm-4 col-form-label">Date 2 :</label>
+                      <input type="datetime-local" class="form-control" formControlName="date2">
+                    </div>
+                    <div class="text-danger mb-3" *ngIf="registerForm.controls['date2'].errors && registerForm.get('date2')?.touched">
+                      <div class="text-danger mb-3" *ngIf="registerForm.controls['date2'].hasError('required')">ce champ est obligatoire</div>
+                  </div>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="col-sm-4 col-form-label">Date 3 :</label>
+                      <input type="datetime-local" class="form-control" formControlName="date3">
+                    </div>
+                    <div class="text-danger mb-3" *ngIf="registerForm.controls['date3'].errors && registerForm.get('date3')?.touched">
+                      <div class="text-danger mb-3" *ngIf="registerForm.controls['date3'].hasError('required')">ce champ est obligatoire</div>
+                  </div>
+                
                     <div class="input-group input-group-outline mb-3">
                       <label class="col-sm-4 col-form-label" >Description :</label>
                       <textarea  class="form-control" formControlName="description" placeholder="Description de l'offre"></textarea>

@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CandidatureService } from '../service/candidature.service';
 import { Room } from '../model/room';
+import { OfferService } from '../service/offer.service';
 @Component({
   selector: 'app-postuler',
   templateUrl: './postuler.component.html',
@@ -12,6 +13,7 @@ import { Room } from '../model/room';
 export class PostulerComponent {
   id!: number;
   candidat: any;
+  offer:any;
   registerForm!: FormGroup;
   selectedFile: File | undefined;
   selectedFile1: File | undefined;
@@ -20,13 +22,15 @@ export class PostulerComponent {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private candidatureService: CandidatureService
+    private candidatureService: CandidatureService,
+    private offerService:OfferService
   ) {this.id=this.route.snapshot.params['id']}
   ngOnInit(): void {
+    this.offerService.getById(this.id).subscribe({next:(data)=>this.offer=data}
+      );
     this.registerForm = this.fb.group({
       cv: ['',Validators.required],
       lettre:['',Validators.required],
-      
     });
   
   }
@@ -52,7 +56,6 @@ export class PostulerComponent {
     const formData = new FormData();
     formData.append('cv', this.selectedFile!, this.selectedFile!.name);
     formData.append('lettre', this.selectedFile1!, this.selectedFile1!.name);
-  
     this.candidatureService.addCandidat(this.id,formData).subscribe({
       next: (candidature) => {
         // Handle successful response
