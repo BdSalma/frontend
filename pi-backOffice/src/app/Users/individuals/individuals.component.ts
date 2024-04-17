@@ -21,6 +21,7 @@ export class IndividualsComponent {
   individus: Individu[] = [];
   currentId: any;
   currentAction: any;
+  typeOfActivation: boolean = false;
   listFilter!: FormGroup;
   individuRole: IndividuRole[] = Object.values(IndividuRole).filter((role) => {
     return (
@@ -71,9 +72,10 @@ export class IndividualsComponent {
     });
   }
 
-  openDialog(id: string, action: string) {
+  openDialog(id: string, action: string, type: boolean) {
     this.currentId = id;
     this.currentAction = action;
+    this.typeOfActivation = type;
     const modelDiv = document.getElementById('popup');
     if (modelDiv != null) {
       modelDiv.style.display = 'block';
@@ -101,6 +103,12 @@ export class IndividualsComponent {
           this.toastr.success('User approved successfully');
           this.currentId = '';
           this.currentAction = '';
+          if (
+            this.individus[index].role == IndividuRole.Alumni ||
+            this.individus[index].role == IndividuRole.Student
+          ) {
+            this.sendQRCode(id);
+          }
         },
         error: (error: any) => {
           this.toastr.error(error.error.message);
@@ -131,5 +139,18 @@ export class IndividualsComponent {
         },
       });
     }
+  }
+
+  sendQRCode(id: string) {
+    this.consumer.generateQRCode(id).subscribe({
+      next: () => {
+        this.toastr.success(
+          'un email a été envoyé contenant un code qr pour ce etudiant'
+        );
+      },
+      error: (error) => {
+        this.toastr.error(error);
+      },
+    });
   }
 }

@@ -4,6 +4,13 @@
   "newProjectRoot": "projects",
   "projects": {
     "pi-backOffice": {
+      "i18n": {
+        "sourceLocale": "fr",
+        "locales": {
+          "fs":"src/assets/i18n/fr.json",
+          "en":"src/assets/i18n/en.json"
+        }
+      },
       "projectType": "application",
       "schematics": {},
       "root": "",

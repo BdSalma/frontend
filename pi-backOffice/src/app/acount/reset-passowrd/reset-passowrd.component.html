@@ -15,7 +15,7 @@
                 class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1"
               >
                 <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
-                  Reset password
+                  {{ "Reset password" | translate }}
                 </h4>
                 <div class="row mt-3">
                   <div class="col-2 text-center ms-auto">
@@ -47,7 +47,7 @@
                     type="text"
                     class="form-control"
                     formControlName="username"
-                    placeholder="Pseudo-nom ou e-mail"
+                    placeholder="{{ 'Pseudo-nom ou e-mail' | translate }}"
                   />
                 </div>
                 <div
@@ -57,7 +57,7 @@
                     resetForm.get('username')?.touched
                   "
                 >
-                  Ce champ est obligatoire
+                  {{ 'Ce champ est obligatoire' | translate }}
                 </div>
                 <div class="text-center">
                   <button
@@ -65,15 +65,15 @@
                     class="btn bg-gradient-primary w-100 my-4 mb-2"
                     [disabled]="isLoading || resetForm.invalid"
                   >
-                    {{ isLoading ? "Loading..." : "Soumettre" }}
+                    {{ isLoading ? "Loading..." : "Soumettre" | translate }}
                   </button>
                 </div>
                 <p class="mt-4 text-sm text-center">
-                  Vous souvenez-vous de votre compte ?
+                  {{ 'Vous souvenez-vous de votre compte ?' | translate }}
                   <a
                     routerLink="/signIn"
                     class="text-primary text-gradient font-weight-bold"
-                    >Se connecter</a
+                    >{{ 'Se connecter' | translate }}</a
                   >
                 </p>
               </form>

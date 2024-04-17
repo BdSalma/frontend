@@ -15,7 +15,7 @@
                 class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1"
               >
                 <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
-                  S'inscrire
+                  {{ "S'inscrire" | translate }}
                 </h4>
                 <div class="row mt-3">
                   <div class="col-2 text-center ms-auto">
@@ -47,7 +47,7 @@
                     type="text"
                     class="form-control"
                     formControlName="username"
-                    placeholder="Pseudo-nom"
+                    placeholder="{{ 'Pseudo-nom' | translate }}"
                   />
                 </div>
                 <div
@@ -57,7 +57,7 @@
                     signUpForm.get('username')?.touched
                   "
                 >
-                  Ce champ est obligatoire
+                  {{ 'Ce champ est obligatoire' | translate }}
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <input
@@ -74,7 +74,7 @@
                     signUpForm.get('email')?.touched
                   "
                 >
-                  Ce champ est obligatoire
+                  {{ 'Ce champ est obligatoire' | translate }}
                 </div>
                 <div
                   class="text-danger my-3"
@@ -83,14 +83,14 @@
                     signUpForm.get('email')?.touched
                   "
                 >
-                  Ce n'est pas un e-mail correct
+                  {{ "Ce n'est pas un e-mail correct" | translate }}
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <input
                     type="password"
                     class="form-control"
                     formControlName="password"
-                    placeholder="Mot de passe"
+                    placeholder="{{ 'Mot de passe' | translate }}"
                   />
                 </div>
                 <div
@@ -100,14 +100,14 @@
                     signUpForm.get('password')?.touched
                   "
                 >
-                  Le mot de passe est obligatoire
+                  {{ 'Le mot de passe est obligatoire' | translate }}
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <input
                     type="password"
                     class="form-control"
                     formControlName="confirmPassword"
-                    placeholder="Confirmez le mot de passe"
+                    placeholder="{{ 'Confirmez le mot de passe' | translate }}"
                   />
                 </div>
                 <div
@@ -118,7 +118,7 @@
                     ) && signUpForm.get('confirmPassword')?.touched
                   "
                 >
-                  Le mot de passe est obligatoire
+                  {{ 'Le mot de passe est obligatoire' | translate }}
                 </div>
                 <div
                   class="text-danger my-3"
@@ -129,11 +129,11 @@
                       signUpForm.get('password')?.value
                   "
                 >
-                  Le mot de passe ne correspond pas
+                  {{ 'Le mot de passe ne correspond pas' | translate }}
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <select class="form-select" formControlName="role">
-                    <option value="" disabled selected>Select Role</option>
+                    <option value="" disabled selected>{{ 'Select Role' | translate }}</option>
                     <option *ngFor="let role of roles" [value]="role">
                       {{ role }}
                     </option>
@@ -147,10 +147,10 @@
                 >
                   <div class="input-group input-group-outline mb-3">
                     <input
-                      type="number"
+                      type="text"
                       class="form-control"
                       formControlName="matricule"
-                      placeholder="Matricule"
+                      placeholder="{{ 'Matricule' | translate }}"
                     />
                   </div>
                   <div class="input-group input-group-outline mb-3">
@@ -158,7 +158,7 @@
                       type="text"
                       class="form-control"
                       formControlName="adresse"
-                      placeholder="Adresse"
+                      placeholder="{{ 'Adresse' | translate }}"
                     />
                   </div>
                   <div class="input-group input-group-outline mb-3">
@@ -166,7 +166,7 @@
                       type="text"
                       class="form-control"
                       formControlName="representative"
-                      placeholder="Représentant(e)"
+                      placeholder="{{ 'Représentant(e)' | translate }}"
                     />
                   </div>
                   <div class="input-group input-group-outline mb-3">
@@ -174,7 +174,7 @@
                       type="text"
                       class="form-control"
                       formControlName="sector"
-                      placeholder="Secteur"
+                      placeholder="{{ 'Secteur' | translate }}"
                     />
                   </div>
                 </div>
@@ -190,7 +190,7 @@
                       type="text"
                       class="form-control"
                       formControlName="identity"
-                      placeholder="Identité"
+                      placeholder="{{ 'Identité' | translate }}"
                     />
                   </div>
                   <div class="input-group input-group-outline mb-3">
@@ -198,7 +198,7 @@
                       type="text"
                       class="form-control"
                       formControlName="firstName"
-                      placeholder="Prénom"
+                      placeholder="{{ 'Prénom' | translate }}"
                     />
                   </div>
                   <div class="input-group input-group-outline mb-3">
@@ -206,7 +206,7 @@
                       type="text"
                       class="form-control"
                       formControlName="lastName"
-                      placeholder="Nom"
+                      placeholder="{{ 'Nom' | translate }}"
                     />
                   </div>
                 </div>
@@ -221,15 +221,15 @@
                         signUpForm.get('password')?.value
                     "
                   >
-                    {{ isLoading ? "Loading..." : "S'inscrire" }}
+                    {{ isLoading ? "Loading..." : "S'inscrire" | translate }}
                   </button>
                 </div>
                 <p class="mt-4 text-sm text-center">
-                  Vous avez déjà un compte?
+                  {{ "Vous avez déjà un compte?" | translate }}
                   <a
                     routerLink="/signIn"
                     class="text-primary text-gradient font-weight-bold"
-                    >Se connecter</a
+                    >{{ "Se connecter" | translate }}</a
                   >
                 </p>
               </form>
