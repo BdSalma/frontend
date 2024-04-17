@@ -24,7 +24,10 @@ export class AddOfferComponent {
       candidatProfil: new FormControl('',Validators.required),
       duree:new FormControl('',Validators.required),
       description:new FormControl('',Validators.required),
-      file:new FormControl('')
+      file:new FormControl(''),
+      date1:new FormControl('',Validators.required),
+      date2:new FormControl('',Validators.required),
+      date3:new FormControl('',Validators.required)
 
     });
 

@@ -18,6 +18,7 @@ export class InterviewComponent implements OnInit {
   calendarConfig = {}; 
   isOnline: boolean = false;
   isInRoom: boolean = false;
+  interviewData: Interview | null = null;
   
   constructor(
     private fb: FormBuilder,
@@ -74,24 +75,21 @@ export class InterviewComponent implements OnInit {
   }
 
   Annuler() {
-    this.router.navigate(['/listInterv']);
+    this.router.navigate(['/offerBySociety']);
   }
-
+  openCalendar() {
+    // Check if interviewData has a titre property before accessing it
+    if (this.interviewData && this.interviewData.titre) {
+      const url = `mailto:?subject=Interview Scheduled&body=${this.interviewData.titre} - ${this.interviewData.date}`;
+      window.location.href = url;
+    } else {
+      console.warn('Interview data not available for calendar event.');
+    }
+  }
   onSubmit() {
     console.log(this.registerForm.value);
   }
 
-  /*Add() {
-    console.log('Data to be sent:', this.registerForm.value);
-
-    const roomNum = this.registerForm.value.room !== null ? this.registerForm.value.room.toString() : null;
-    this.candidatureService.addInterview(this.id, this.registerForm.value, roomNum).subscribe(
-      {
-        next: () => this.router.navigateByUrl('/candidat'),
-        error: (error) => console.log(error)
-      }
-    );
-  }*/
   Add() {
     console.log('Data to be sent:', this.registerForm.value);
   
@@ -100,14 +98,7 @@ export class InterviewComponent implements OnInit {
       interviewType: this.registerForm.value.interviewType,
       date: this.registerForm.value.date,
       lien: this.registerForm.value.lien,
-      titre :this.registerForm.value.titre,
-      room: [
-        {
-          idRoom: this.registerForm.value.room,
-          num: this.registerForm.value.room,
-          status: 'AVAILABLE'
-        }
-      ]
+      titre :this.registerForm.value.titre
     };
   
     const roomNum = this.registerForm.value.room;
@@ -115,7 +106,7 @@ export class InterviewComponent implements OnInit {
     
     this.candidatureService.addInterview(url, interviewData).subscribe(
       {
-        next: () => this.router.navigateByUrl('/listInterv'),
+        next: () => this.router.navigateByUrl('/offerBySociety'),
         error: (error) => console.log(error)
       }
     );
@@ -127,18 +118,19 @@ export class InterviewComponent implements OnInit {
       idInterview: this.id,
       interviewType: this.registerForm.value.interviewType,
       date: this.registerForm.value.date,
-      lien: this.registerForm.value.lien,
       titre :this.registerForm.value.titre,
       
     };
   
     const url = `http://localhost:8087/interview/addIEnligne/${this.id}`;
     
-    this.candidatureService.addInterview(url, interviewData).subscribe(
+    this.candidatureService.addInterview(url, interviewData).subscribe( (response) =>
       {
-        next: () => this.router.navigateByUrl('/listInterv'),
-        error: (error) => console.log(error)
-      }
+        console.log('Interview ajoutée avec succès:', response);
+         this.router.navigateByUrl('/offerBySociety');
+      },
+       (error) => console.log('Erreur lors de l\'ajout de l\'interview:',error)
+     
     );   
   }
 

@@ -7,17 +7,17 @@
     </div>
     </div>
     <header class="header-2">
-        <div class="page-header min-vh-75 relative" style="background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80); background-size: cover;">
-          <span class="mask bg-gradient-primary opacity-4"></span>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-7 text-center mx-auto">
-                <h1 class="text-white pt-3 mt-n5">list Candidat </h1>
-                  </div>
+      <div class="page-header min-vh-75 relative" style="background-image: url('./assets/imgB/bg2.jpg')">
+        <span class="mask bg-gradient-primary opacity-4"></span>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7 text-center mx-auto">
+              <h1 class="text-white pt-3 mt-n5 animated-text">List des candidature</h1>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
     <div class="card card-body blur shadow-blur mx-2 mx-md-2 mt-n9">
         <section class="pt-3 pb-4" id="count-stats">
             <div class="container">
@@ -28,26 +28,30 @@
                           <table class="table align-items-center mb-0">
                             <thead>
                               <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Offer</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Society</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
                                
                               </tr>
                             </thead>
                             <tbody>
                               <tr *ngFor="let c of candidat">
+                                
                                 <td>
                                   <div class="d-flex px-2 py-1">
                                 
                                     <div class="d-flex flex-column justify-content-center">
-                                      <h6 class="mb-0 text-sm"> {{c.individu.firstName}}</h6>
-                                      <p class="text-xs text-secondary mb-0">votre candidature et en cours de traitement</p>
+                                      <h6 class="mb-0 text-sm"> {{ c.offer.offerName }}</h6>
                                     </div>
                                   </div>
                                 </td>
+                                <td >{{c.offer.society.username}}</td>
                                
-                                <td class="align-middle text-center text-sm">
+                                <td>
                                   <span class="badge badge-sm bg-gradient-success">{{c.status}}</span>
                                 </td>
+                                <td ><a [routerLink]="['/detail-candidat', c?.idCandidature]">Details</a></td>
                               </tr>
                             </tbody>
                           </table>

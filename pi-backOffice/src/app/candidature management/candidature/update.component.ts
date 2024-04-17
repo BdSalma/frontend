@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CandidatureService } from '../../service/candidature.service';
-import { Status } from '../../model/status';
+import { CandidatureService } from 'src/app/service/candidature.service';
+import { Status } from 'src/app/model/status';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html'

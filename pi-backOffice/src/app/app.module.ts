@@ -36,7 +36,6 @@ import { DetailOfferComponent } from './offers management/detail-offer/detail-of
 import { OfferBySocietyComponent } from './offers management/offer-by-society/offer-by-society.component';
 import { IndexComponent } from './screens/index/index.component';
 import { NavbarIndexComponent } from './globals/navbar-index/navbar-index.component';
-import { FooterIndexComponent } from './globals/footer-index/footer-index.component';
 import { HeaderComponent } from './globals/header/header.component';
 import { ContactUsComponent } from './screens/contact-us/contact-us.component';
 import { ListCandidatureComponent } from './candidature management/list-candidature/list-candidature.component';
@@ -76,6 +75,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 import { RatingComponent } from './reclamation management/rating/rating.component';
 import { FavoriteComponent } from './reclamation management/favorite/favorite.component';
 import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
+import { InterviewValiderComponent } from './interview/interview-valider/interview-valider.component';
+import { DetailCandidatComponent } from './candidature management/detail-candidat/detail-candidat.component';
+import { FooterIndexComponent } from './globals/footer-index/footer-index.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +99,6 @@ import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
     UpdateInvoiceComponent,
     UpdateDevisComponent,
     UpdateRequestComponent,
-    CandidatureComponent,
     UpdateComponent,
     InterviewComponent,
     ListInterviewComponent,
@@ -146,6 +148,10 @@ import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
     PopupDialogComponent,
     RatingComponent,
     FavoriteComponent,
+    UpdateInterviewComponent,
+    InterviewValiderComponent,
+    DetailCandidatComponent,
+    
   ],
   imports: [
     BrowserModule,

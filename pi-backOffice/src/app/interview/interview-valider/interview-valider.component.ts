@@ -5,11 +5,11 @@ import { CandidatureService } from 'src/app/service/candidature.service';
 import { Interview } from 'src/app/model/interview';
 
 @Component({
-  selector: 'app-list-interview',
-  templateUrl: './list-interview.component.html',
-  styleUrls: ['./list-interview.component.css']
+  selector: 'app-interview-valider',
+  templateUrl: './interview-valider.component.html',
+  styleUrls: ['./interview-valider.component.css']
 })
-export class ListInterviewComponent implements OnInit {
+export class InterviewValiderComponent  implements OnInit {
   interviews: Interview[] = [];
   id!: number;
   constructor(
@@ -19,7 +19,7 @@ export class ListInterviewComponent implements OnInit {
   ) {  this.id=this.route.snapshot.params['id']}
 
   ngOnInit(): void {
-    this.fetchInterviewsByEtat('Non_Valider');
+    this.fetchInterviewsByEtat('Valider');
   }
 
   fetchInterviewsByEtat(etat: string): void {

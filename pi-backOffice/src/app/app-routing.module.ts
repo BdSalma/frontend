@@ -58,10 +58,12 @@ import { UpdatePassowrdComponent } from './acount/update-passowrd/update-passowr
 import { ResetPassowrdComponent } from './acount/reset-passowrd/reset-passowrd.component';
 import { FavoriteComponent } from './reclamation management/favorite/favorite.component';
 import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
+import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
+import { DetailCandidatComponent } from './candidature management/detail-candidat/detail-candidat.component';
+import { InterviewValiderComponent } from './interview/interview-valider/interview-valider.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
-  { path: '', component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },
   { path: 'offersIndex', component: IndexOffersComponent },
   { path: 'offre', component: OffersComponent },
@@ -80,16 +82,7 @@ const routes: Routes = [
     component: DashboradComponent,
     canActivate: [AuthGuardGuard],
   },
-  { path: 'candidat/:id', component: CandidatureComponent },
-  { path: 'updateC/:id', component: UpdateComponent },
-  { path: 'addInterv/:id', component: InterviewComponent },
-  { path: 'listInterv', component: ListInterviewComponent },
-  {
-    path: 'listCandidat',
-    component: ListCandidatureComponent,
-    canActivate: [AuthGuardGuard],
-  },
-  { path: 'postuler/:id', component: PostulerComponent },
+  
   {
     path: 'supplyrequests',
     component: RequestsComponent,
@@ -181,8 +174,27 @@ const routes: Routes = [
     component: ResetPassowrdComponent,
     // canActivate: [AuthGuardGuard],
   },
+  
+{path:'candidat/:id',component:CandidatureComponent},
+{path:'updateC/:id',component:UpdateComponent},
+{path:'addInterv/:id',component:InterviewComponent},
+{path:'listInterv/:id',component:ListInterviewComponent},
+{path:'listCandidat',component:ListCandidatureComponent,canActivate: [AuthGuardGuard]},
+{path:'postuler/:id',component:PostulerComponent},
+
+{path:'updateI/:id',component:UpdateInterviewComponent},
+{path:'detail-candidat/:id',component:DetailCandidatComponent},
+{path: 'user-details/:id',component: UserDetailsComponent,},
+{path: 'associations',component: AssociationsComponent,canActivate: [AuthGuardGuard],},
+{path: 'profile',component: ProfileComponent,canActivate: [AuthGuardGuard],},
+{path: 'update-profile',component: UpdateProfileComponent,canActivate: [AuthGuardGuard],},
+
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
+  {path:'valideInterview/:id',component:InterviewValiderComponent},
+
+
+
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'contact', component: ContactUsComponent },
