@@ -53,7 +53,19 @@ export class PageOffersComponent {
     this.offerS.getFavoriteOffers().subscribe(
       (data) => {
         this.FavoriteOffer = data;
-        console.log(this.FavoriteOffer)
+  },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  deleteFavoris(id:number) {
+    // Appeler le service pour récupérer les offres favorites de l'utilisateur
+    this.offerS.DeleteFavoris(id).subscribe(
+      (data) => {
+        this.FavoriteOffer = data;
+        this.loadFavoriteOffers;
+        this.loadOffers;
   },
       (error) => {
         console.log(error);

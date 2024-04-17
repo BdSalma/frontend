@@ -32,7 +32,13 @@ export class OfferService {
     })
   
   }
-
+  DeleteFavoris(id:number){
+    return this.http.delete(`http://localhost:8087/Offer/deleteFavoris/${id}`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`
+      }),
+    })
+  }
   DeleteOffer(id:number){
     return this.http.delete(`http://localhost:8087/Offer/deleteOffer/${id}`,{
       headers: new HttpHeaders({
@@ -55,8 +61,8 @@ export class OfferService {
       }),
     })
   }
-  affectOfferToSociety(o:Offer){
-        return this.http.post('http://localhost:8087/Offer/add-offer',o, {
+  affectOfferToSociety(o:Offer): Observable<boolean>{
+        return this.http.post<boolean>('http://localhost:8087/Offer/add-offer',o, {
           headers: new HttpHeaders({
             Authorization: `Bearer ${this.auth.token}`
           }),

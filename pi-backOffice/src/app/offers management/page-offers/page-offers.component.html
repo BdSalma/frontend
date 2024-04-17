@@ -79,7 +79,12 @@
                     <a (click)="Favoris(favoris.offer.idOffre)">
                     <i class="fas fa-star"  [ngStyle]="j % 2 !== 0 ? {'color': 'white'}:{'color': '#d63384'}"></i>
                     </a>
-                  </div> 
+                  </div>
+                  <div class="rating mt-3">
+                    <a (click)="deleteFavoris(favoris.id)">
+                      <i class="fas fa-times" [ngStyle]="j % 2 !== 0 ? {'color': 'white'}:{'color': '#d63384'}"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
