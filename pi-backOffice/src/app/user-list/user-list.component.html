@@ -74,7 +74,7 @@
                                                 <td class="align-middle text-center">
                                                     <!-- Lien pour modifier un sponsor -->
                                                     <a [routerLink]="['/edituser', sponsor.idSponsor]" class="btn btn-link text-dark px-3 mb-0">
-                                                        <i class="material-icons text-sm">edit</i>Modifier
+                                                        <i class="material-icons text-sm">edit</i>details 
                                                     </a>
                                                     <!-- Lien pour supprimer un sponsor -->
                                                     <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;" (click)="deleteSponsor(sponsor.idSponsor)">
@@ -84,8 +84,38 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                   <!-- Bouton pour ouvrir le chatbot -->
+
+  <!-- Section pour afficher le sponsor le plus vu -->
+  <div *ngIf="mostViewedSponsor" class="most-viewed-container">
+    <div class="most-viewed-card">
+      <div class="card-header">
+        <h5>Sponsor le Plus Vu</h5>
+      </div>
+      <div class="card-body">
+        <h6>{{ mostViewedSponsor.name }}</h6>
+        <p><strong>ID:</strong> {{ mostViewedSponsor.idSponsor }}</p>
+        <p>Email: {{ mostViewedSponsor.contactEmail }}</p>
+        <p>Téléphone: {{ mostViewedSponsor.contactPhone }}</p>
+        <a href="{{ mostViewedSponsor.website }}" target="_blank" class="website-link">Visiter le site web</a>
+      </div>
+    </div>
+  </div>
   
+  
+  <!-- Tableau des sponsors existants -->
+  <table class="table align-items-center mb-0">
+    <!-- Contenu existant du tableau -->
+  </table>
+  
+  <!-- Votre code existant pour afficher la liste des sponsors -->
+  
+                                   <!-- Bouton pour ouvrir le chatbot -->
+                                   <a href="https://www.facebook.com/sharer/sharer.php?u=URL_A_PARTAGER" target="_blank">Partager sur Facebook</a>
+  
+                                   <!-- Bouton de partage Twitter -->
+                                   <a href="https://twitter.com/intent/tweet?url=URL_A_PARTAGER&text=TEXT_DE_PARTAGE" target="_blank">Partager sur Twitter</a>
+
+                                   
   
   <!-- Ici, votre liste des sponsors, sans aucune rÃŠfÃŠrence au chatbot -->
   

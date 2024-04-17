@@ -11,6 +11,7 @@ import { UserService } from '../user-service.service';
 export class UserListComponent implements OnInit {
   sponsors!: Sponsor[];
   sponsor: Sponsor = new Sponsor(); // Make sure this matches your model
+  mostViewedSponsor?: Sponsor; // Ajoutez cette propriété pour le sponsor le plus vu
 
 
   initiateCall(phoneNumber: string): void {
@@ -35,9 +36,22 @@ export class UserListComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.loadAllSponsors();
+    this.loadMostViewedSponsor(); // Appelez cette méthode dans ngOnInit pour charger le sponsor le plus vu
+  }
+
+  loadAllSponsors(): void {
     this.userService.findAll().subscribe(data => {
       this.sponsors = data;
+    });
+  }
+
+  loadMostViewedSponsor(): void {
+    this.userService.getMostViewedSponsor().subscribe(data => {
+      this.mostViewedSponsor = data; // Stockez les informations du sponsor le plus vu
+    }, error => {
+      console.error('Erreur lors du chargement du sponsor le plus vu:', error);
     });
   }
 
@@ -71,4 +85,9 @@ export class UserListComponent implements OnInit {
       }
     });
   }
+
+
+
+  
+  
 }

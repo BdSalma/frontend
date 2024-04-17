@@ -58,7 +58,9 @@ import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 import { UserService } from './user-service.service';
 import { CommonModule } from '@angular/common';
-
+import { AdModalComponent } from './ad-modal/ad-modal.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +118,10 @@ SidebarComponent,
     IndexOffersComponent,
     PageOffersComponent,
     ListOffersComponent,
-    FeedBackComponent
+    FeedBackComponent,
+    AdModalComponent,
+    AnnouncementComponent,
+    StandListComponent
   ],
   imports: [
     BrowserModule,

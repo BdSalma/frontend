@@ -21,13 +21,16 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.11",
+    "@ng-bootstrap/ng-bootstrap": "^16.0.0",
+    "@stripe/stripe-js": "^3.3.0",
+    "@zxing/ngx-scanner": "^17.0.1",
     "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.2",
     "cors": "^2.8.5",
-    "ngx-pagination": "^6.0.3",
-    "ngx-toastr": "^18.0.0",
     "http": "^0.0.1-security",
     "jwt-decode": "^4.0.0",
+    "ngx-pagination": "^6.0.3",
+    "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "toastr": "^2.1.4",
     "tslib": "^2.6.2",
@@ -45,6 +48,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.9.4"
+    "typescript": "4.9"
   }
 }

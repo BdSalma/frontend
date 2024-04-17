@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AdModalComponent } from '../ad-modal/ad-modal.component';
 
 import { ChatbotDialogComponent } from './chatbot-dialog.component';
 

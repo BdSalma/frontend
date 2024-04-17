@@ -28,8 +28,7 @@ import { NotApprovedComponent } from './not-approved/not-approved.component';
 import { IndividualsComponent } from './Users/individuals/individuals.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { UserDetailsComponent } from './Users/user-details/user-details.component';
-
-
+import { StandListComponent } from './StandComponents/stand-list/stand-list.component';
 import { OffersComponent } from './offers/offers.component';
 import { AddOfferComponent } from './add-offer/add-offer.component';
 import { UpdateOfferComponent } from './update-offer/update-offer.component';
@@ -52,6 +51,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { UserService } from './user-service.service';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
+import { AddStandComponent } from './StandComponents/add-stand/add-stand.component';
+import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
 const routes: Routes = [
 {path:'',component:IndexComponent},
 {path:'moreOffers',component:PageOffersComponent},
@@ -114,6 +115,17 @@ const routes: Routes = [
   { path: 'rtl', component: RtlComponent },
   { path: 'typography', component: TypographyComponent },
   { path: 'virtualReality', component: VirtualRealityComponent },
+
+
+
+  { path: 'addStand', component: AddStandComponent },
+  {
+    path: 'standList', component: StandListComponent,
+    
+  },
+  
+  { path: 'editStand/:id', component: EditStandComponent },
+ 
 
   { path: 'edituser/:id', component: SponsorEditComponent },
   { path: 'sponsor', component: ChatbotDialogComponent },

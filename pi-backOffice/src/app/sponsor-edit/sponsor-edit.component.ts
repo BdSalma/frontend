@@ -13,20 +13,30 @@ export class SponsorEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {}
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      const id = params['id']; // Assuming your route parameter is 'id'
-      this.userService.findSponsorById(id).subscribe(sponsor => {
-        this.sponsor = sponsor;
+ // Dans votre fichier de composant, par exemple sponsor-edit.component.ts
+
+ngOnInit() {
+  this.route.params.subscribe(params => {
+    const id = +params['id']; // Convertit 'id' en nombre
+    if (id) {
+      this.userService.recordSponsorView(id).subscribe(sponsor => {
+        this.sponsor = sponsor; // Mettez à jour votre modèle avec les détails du sponsor
+        console.log(`View recorded for sponsor ${id}`);
+      }, error => {
+        console.error(`Failed to record view for sponsor ${id}:`, error);
       });
-    });
-  }
+    }
+  });
+}
+
 
   onSubmit() {
     this.userService.updateSponsor(this.sponsor).subscribe(updatedSponsor => {
       console.log('Sponsor updated successfully:', updatedSponsor);
-      // Optionally, navigate back to the sponsor list or another page
+      // Vous pouvez naviguer de retour à la liste des sponsors ou à une autre page
       this.router.navigate(['/users']);
     });
   }
+
+  // Assurez-vous d'avoir la méthode recordSponsorView dans votre service
 }

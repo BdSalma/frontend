@@ -40,7 +40,7 @@ export class UserService {
     });
   }
   
- 
+
 
   public findSponsorById(id: number): Observable<Sponsor> {
     const url = `${this.usersUrl}/${id}`;
@@ -64,6 +64,31 @@ export class UserService {
   }
 
 
+// Dans votre service Angular (UserService)
+public recordSponsorView(sponsorId: number): Observable<any> {
+  const url = `${this.usersUrl}/${sponsorId}/details`;
+  return this.http.get(url, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.auth.token}` // Assurez-vous d'ajouter votre jeton d'authentification si nécessaire
+    })
+  });
+}
+
+// Ajoutez cette méthode dans votre classe UserService
+
+public getMostViewedSponsor(): Observable<Sponsor> {
+  return this.http.get<Sponsor>(`${this.usersUrl}/most-viewed`, {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth.token}` // Assurez-vous d'ajouter votre jeton d'authentification si nécessaire
+    })
+  });
+}
+
+
+
+
   makeCall(phoneNumber: string): Observable<any> {
     // Implémentez ici la logique pour initier l'appel avec le numéro de téléphone donné
     // Par exemple, vous pouvez appeler une API qui gère les appels
@@ -72,5 +97,21 @@ export class UserService {
     // Retournez un observable pour gérer la réponse de l'appel
     return this.http.post<any>('http://example.com/make-call', { phoneNumber });
   }
+
+
+
+
+
+
+  processPayment(token: string, amount: number, currency: string) {
+    const paymentData = {
+      token: token,
+      amount: amount,
+      currency: currency
+    };
+    return this.http.post('/api/payment/process', paymentData);
+  }
+
+
 
 }

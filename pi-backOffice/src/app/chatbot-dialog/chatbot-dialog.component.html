@@ -1,4 +1,5 @@
 <body class="index-page bg-gray-200">
+
   <div class="container position-sticky z-index-sticky top-0">
       <div class="row">
           <div class="col-12">
@@ -10,12 +11,38 @@
   <app-header></app-header>
   
 
+
+
+  <div class="virus-ad" *ngIf="isVisible">
+    <div class="ad-content">
+      <h2>Découvrez le Futur de l'Innovation!</h2>
+      <p>Rejoignez notre forum d'entreprise pour une expérience unique.</p>
+      <button (click)="closeAd()">Fermer</button>
+    </div>
+  </div>
+  
+<!-- Le reste de votre contenu existant -->
+
+
   <div class="centered-container">
     <img src="assets/chatbot.png" alt="Chatbot Logo" class="chatbot-logo" />
     <button (click)="toggleChatVisibility()">Discuter avec le chatbot</button>
   </div>
 
+
+
+  
   <div class="chat-container" *ngIf="isChatVisible">
+    
+   <!-- Add a reference variable `langSelect` to the select element -->
+<select #langSelect (change)="changeLanguage(langSelect.value)">
+  <option value="en">English</option>
+  <option value="fr">Français</option>
+  <option value="es">Español</option>
+</select>
+
+
+    
     <div class="messages">
       <div *ngFor="let message of messages" [ngClass]="{'user-msg': message.sender === 'user', 'bot-msg': message.sender === 'bot'}">
         {{ message.text }}
@@ -29,8 +56,29 @@
     <input type="text" [(ngModel)]="userInput" (keyup.enter)="sendMessage(userInput); userInput='';" placeholder="Posez votre question...">
     <button (click)="close()">Fermer le Chat</button>
     <button (click)="downloadDiscussion()">Télécharger la Discussion</button>
-  </div>
+<!-- Existing HTML elements for chat and other functionalities -->
+<div id="card-element"></div> <!-- Stripe Card Element -->
+<button (click)="submitPayment(100, 'EUR')">Pay Now</button> <!-- Example button to submit payment -->
+
   
+    <!-- Ajouté à l'intérieur de votre chat-container ou à l'endroit approprié -->
+<div class="file-upload">
+  <input type="file" (change)="onFileSelected($event)" id="file">
+</div>
+
+  </div>
+
+
+
+  <div class="announcement-container" *ngIf="showAnnouncement">
+    <div class="announcement-content">
+      <h4>Ne manquez pas notre Forum d'Entreprise !</h4>
+      <p>Rejoignez-nous pour explorer les dernières innovations. 25 Octobre 2024.</p>
+      <a href="#" class="btn btn-primary">En savoir plus</a>
+      <button type="button" class="close-btn" (click)="closeAnnouncement()">×</button>
+    </div>
+  </div>
+
 <section class="pt-3 pb-4" id="count-stats">
   <div class="container">
       <div class="row">
@@ -345,6 +393,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
 <script src="../assets/jsB/material-kit.min.js?v=3.0.4" type="text/javascript"></script>
 
+<script src="https://js.stripe.com/v3/"></script>
 
 <script type="text/javascript">
 

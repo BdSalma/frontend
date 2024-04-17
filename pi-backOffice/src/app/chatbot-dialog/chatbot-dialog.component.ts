@@ -1,12 +1,54 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { UserService } from '../user-service.service';
+import { loadStripe } from '@stripe/stripe-js';
+import {  Stripe, StripeCardElement } from '@stripe/stripe-js';
+import { of, throwError } from 'rxjs';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import {  waitForAsync } from '@angular/core/testing';
+import { LocalizationService } from '../services/localization.service';
+import { ChatMessage } from '../model/ChatMessage';
+
+declare var Stripe: any; // Déclarer Stripe pour éviter les erreurs TypeScript
 
 @Component({
   selector: 'app-chatbot-dialog',
   templateUrl: './chatbot-dialog.component.html',
-  styleUrls: ['./chatbot-dialog.component.css']
+  styleUrls: ['./chatbot-dialog.component.css'],
+  animations: [
+    trigger('triggerAnimation', [
+      // Vous pouvez définir votre animation ici
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1s', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('1s', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
-export class ChatbotDialogComponent {
+export class ChatbotDialogComponent  {
+  stripePromise = loadStripe('pk_test_51P4NGxRt7CIhgIC0089qYLfXFOnIfnFTnE5QdUmnYBt5qSewnVR2TnMJSo2cKfoYnedjpkLa19HJ10Ud4roZbaF900QkKN22LO');
+  stripe: Stripe | null = null;
+  card: StripeCardElement | null = null;
+  showVirusAd: boolean = true;
+  showAnnouncement: boolean = true; // Control the display of the announcement
+  isVisible: boolean = true;
+ 
 
+  closeAd(): void {
+    this.isVisible = false;
+  }
+  closeAnnouncement(): void {
+    this.showAnnouncement = false; // Cache l'annonce
+  }
+
+  closeVirusAd() {
+    this.showVirusAd = false;
+  }
   isChatVisible: boolean = true;
   messages: { text: string, sender: 'user' | 'bot', suggestions?: string[] }[] = [];
   @Output() closeChatbot = new EventEmitter<void>();
@@ -23,16 +65,64 @@ export class ChatbotDialogComponent {
     this.messages.push({ text: message, sender: 'user' });
     this.processMessage(message);
     this.userInput = '';
+    
   }
 
 
-
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
   
+    if (input.files && input.files.length) {
+      const file: File = input.files[0];
+      console.log(file.name);
+      // Envoyer le nom du fichier comme message ou traiter le fichier comme nécessaire
+      this.sendMessage(`Fichier joint : ${file.name}`);
+    }
+  }
+  
+  
+  getTimeBasedGreeting(): string {
+    const hour = new Date().getHours(); // Obtient l'heure actuelle
+    if (hour < 12) {
+      return "Bonne matinée ! Comment puis-je vous aider ?";
+    } else if (hour < 18) {
+      return "Bonne après-midi ! Avez-vous des questions pour moi ?";
+    } else {
+      return "Bonsoir ! Je suis là pour vous aider.";
+    }
+  }
+  
+  getDayBasedMessage(): string {
+    const day = new Date().getDay(); // Obtient le jour actuel (0 = Dimanche, 1 = Lundi, etc.)
+    switch (day) {
+      case 1:
+        return "C'est lundi, une nouvelle semaine commence !";
+      case 5:
+        return "C'est vendredi, le week-end est proche !";
+      case 6:
+      case 0:
+        return "Profitez de votre week-end !";
+      default:
+        return "Bonne journée ! Comment puis-je vous assister ?";
+    }
+  }
+  
+
+
   processMessage(message: string) {
     let response = 'Je ne comprends pas la question.';
     let suggestions: string[] = [];
     message = message.toLowerCase();
 
+
+    
+    if (message.includes("heure") || message.includes("temps")) {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      response = `Il est actuellement ${hours}h${minutes < 10 ? '0' + minutes : minutes}.`;
+  } 
+  
     // Conditions for responding to user messages
     if (message.includes("quand")) {
       response = "Le forum d'entreprise aura lieu le 25 Octobre 2024.";suggestions = [
@@ -41,7 +131,8 @@ export class ChatbotDialogComponent {
         "Quel est le thème du forum cette année ?",
         "Comment puis-je m'inscrire ?",
       ];
-    } else if (message.includes("où")) {
+    }
+     else if (message.includes("où")) {
       response = "Il se déroulera au Centre de Conventions Internationales, Paris.";
       suggestions = [
         "Quand aura lieu le forum d'entreprise ?",
@@ -49,15 +140,33 @@ export class ChatbotDialogComponent {
         "Quel est le thème du forum cette année ?",
         "Comment puis-je m'inscrire ?",
       ];
-    } else if (message.includes('salut') || message.includes('bonjour')) {
+    } else   if (message.includes('salut') || message.includes('bonjour')) {
       response = 'Salut ! Comment puis-je vous aider ?';
       suggestions = [
         "Quand aura lieu le forum d'entreprise ?",
         "Où se déroulera le forum ?",
         "Quel est le thème du forum cette année ?",
-        "Comment puis-je m'inscrire ?",
+        "Comment puis-je m'inscrire à une formation ?",
+        "Je veux en savoir plus sur la préparation du CV."
       ];
-    } else if (message.includes("thème") || message.includes("sujet")) {
+    } else if (message.includes("formation")) {
+      response = "Nous proposons les formations suivantes. Veuillez choisir une option:";
+      suggestions = ["Préparation de CV", "Préparation d'entretien", "Techniques de négociation"];
+    // Confirmation de la sélection de la formation
+    } else if (message.includes("préparation de cv")) {
+      response = "Vous avez choisi la formation 'Préparation de CV'. Voulez-vous procéder au paiement ?";
+      suggestions = ["Oui, procéder au paiement", "Non, choisir une autre formation"];
+    // Confirmation pour procéder au paiement
+    } else if (message.includes("procéder au paiement")) {
+      this.setupPayment();
+      return;  // Return immediately since we handle the payment setup differently
+    }
+    
+
+    
+      
+    
+     else if (message.includes("thème") || message.includes("sujet")) {
       response = "Le thème de notre forum d'entreprise cette année est 'Innovation et Collaboration'.";
       suggestions = [
         "Qui sont les intervenants ?",
@@ -133,4 +242,82 @@ export class ChatbotDialogComponent {
   close() {
     this.closeChatbot.emit();
   }
+
+  inputPlaceholder: string; // Declare the input placeholder property
+
+  constructor(private userService: UserService,private localizationService: LocalizationService ) {    this.inputPlaceholder = this.localizationService.translate('chat_input_placeholder');
+}
+
+  async ngOnInit() {
+    this.stripe = await this.stripePromise;
+    if (this.stripe) {
+      const elements = this.stripe.elements();
+      this.card = elements.create('card');
+      this.card.mount('#card-element');
+    } else {
+      console.error('Failed to load Stripe');
+      // Optionally, notify the user that Stripe didn't load
+    }
+  }
+
+
+
+  showStripeCardInput() {
+    if (!this.stripe) {
+      this.sendMessage("Erreur de chargement du système de paiement. Veuillez réessayer plus tard.");
+      return;
+    }
+    const elements = this.stripe.elements();
+    this.card = elements.create('card');
+    this.card.mount('#card-element');  // Make sure this ID exists in your HTML
+  }
+
+  async submitPayment(amount: number, currency: string) {
+    if (!this.card || !this.stripe) {
+      this.sendMessage("Le système de paiement n'est pas correctement initialisé.");
+      return;
+    }
+
+    const { token, error } = await this.stripe.createToken(this.card);
+    if (error) {
+      this.sendMessage(`Erreur de paiement : ${error.message}`);
+    } else if (token) {
+      this.userService.processPayment(token.id, amount, currency).subscribe({
+        next: response => {
+          this.sendMessage('Paiement réussi ! Merci pour votre achat.');
+        },
+        error: err => {
+          this.sendMessage("Le traitement de votre paiement a échoué. Veuillez réessayer plus tard.");
+        }
+      });
+    }
+  }
+  
+ 
+  
+  setupPayment() {
+    this.sendMessage('Veuillez entrer vos informations de paiement ci-dessous:');
+    this.showStripeCardInput();  // Function to show Stripe input form
+  }
+
+
+
+  changeLanguage(lang: string): void {
+    this.localizationService.setLanguage(lang);
+    // Re-translate all messages to reflect the new language
+    this.messages = this.messages.map(msg => ({
+      ...msg,
+      text: this.localizationService.translate(msg.text)
+    }));
+    // If you have any static texts or placeholders that need translation:
+    this.updateStaticTexts();
+  }
+  
+  updateStaticTexts(): void {
+    // Update the placeholder with a translated value
+    this.inputPlaceholder = this.localizationService.translate('chat_input_placeholder');
+  }
+  
+  
+
 }
