@@ -19,7 +19,6 @@ import { RequestsIndexComponent } from './requests management/requests-index/req
 import { DevisBySocietyComponent } from './devis management/devis-by-society/devis-by-society.component';
 import { MyInvoicesComponent } from './invoices management/my-invoices/my-invoices.component';
 import { UpdateProfileComponent } from './acount/update-profile/update-profile.component';
-import { AuthGuardGuard } from './Service/guards/auth-guard.guard';
 import { NotFoundComponent } from './globals/not-found/not-found.component';
 import { AssociationsComponent } from './Users/associations/associations.component';
 import { IndividualsComponent } from './Users/individuals/individuals.component';
@@ -73,6 +72,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { UserService } from './user-service.service';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
+import { AuthGuardGuard } from './service/guards/auth-guard.guard';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },
