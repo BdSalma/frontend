@@ -83,7 +83,7 @@ export class InvoiceService {
   getFileContent(fileName: string) {
     const url = `http://localhost:8087/invoice/file/${fileName}`;
     return this.http.get(url, {
-      responseType: 'text' // Ensure response is treated as text (Base64)
+      responseType: 'text' // Ensure response is treated as text (Base64)git checkout 
     });
   }
   // Calculate the total amount of money for accepted devis by each individu
