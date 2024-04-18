@@ -7,6 +7,8 @@ import { Authentication } from 'src/app/service/authentication.service';
 import { RequestSupplyService } from 'src/app/service/requeest-supply.service';
 import { ForumServiceService } from 'src/app/service/foruum-service.service';
 import { PackServiceService } from 'src/app/service/pacck-service.service';
+import { ReclamationService } from 'src/app/service/reclamation.service';
+import { ToastrService } from 'ngx-toastr';
 Chart.register(...registerables);
 
 @Component({
@@ -29,11 +31,14 @@ export class DashboradComponent implements OnInit {
   totalAmountByIndividu: any;
   invoiceAcceptancePercentage: any; 
   id!:string;
-
-  constructor(private invoiceService: InvoiceService,private consumer: Authentication,private offerService: OfferService, private requestSupplyService: RequestSupplyService, private forumService:ForumServiceService, private packService : PackServiceService) { }
+  usersRole: String[] = [];
+  usersCount: number[] = [];
+  constructor(      private toastr: ToastrService,
+    private reclamationService : ReclamationService ,private invoiceService: InvoiceService,private consumer: Authentication,private offerService: OfferService, private requestSupplyService: RequestSupplyService, private forumService:ForumServiceService, private packService : PackServiceService) { }
  
   ngOnInit(): void {
     this.user = this.consumer.user;
+    console.log("userrrrrrrrrrrrrrr",this.user && this.user.role === 'Admin');
     this.packService.calculatePackIncomes().subscribe(
       data => {
         console.log("we are in");
@@ -44,7 +49,8 @@ export class DashboradComponent implements OnInit {
         console.log('Error fetching forum incomes:', error);
       }
     );
-
+    this.PieChartForUsers();
+    this.PieChartForReclamation();
     this.requestSupplyService.getIndividuStatistics().subscribe(
       individuStatistics => {
         this.individuStatistics = individuStatistics;
@@ -116,14 +122,15 @@ export class DashboradComponent implements OnInit {
           this.individuStatistics['RefusedInvoices']
         ],
         backgroundColor: [
+          '#8ecae6', 
+          '#9e2a2b', 
+          '#335c67' ,
           '#e63946', 
           '#fb8500', 
           '#ffb703', 
           '#023047', 
           '#219ebc', 
-          '#8ecae6', 
-          '#9e2a2b', 
-          '#335c67' 
+         
             ],
         
       }]
@@ -138,7 +145,7 @@ export class DashboradComponent implements OnInit {
     };
   
     new Chart(ctx, {
-      type: 'pie',
+      type: 'bar',
       data: data,
       options: options
     });
@@ -275,5 +282,77 @@ export class DashboradComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  PieChartForUsers() {
+    this.consumer.getCountUsersByRole().subscribe({
+      next: (response: any) => {
+        console.log('Response:', response);
+        const roles = Object.keys(response);
+        const counts = Object.values(response);
+        const backgroundColors = [
+          '#e63946',
+          '#fb8500',
+          '#ffb703',
+          '#023047',
+          '#219ebc',
+          '#8ecae6',
+          '#9e2a2b',
+          '#335c67',
+        ];
+        const myChartOfUsers = new Chart('pie-chart', {
+          type: 'pie',
+          data: {
+            labels: roles,
+            datasets: [
+              {
+                backgroundColor: backgroundColors,
+                data: counts,
+                label: ' Nombre',
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+          },
+        });
+      },
+      error: () => {
+        this.toastr.error('Something went wrong');
+      },
+    });
+  }
+  
+  PieChartForReclamation() {
+    this.reclamationService.getCountReclamationByType().subscribe({
+      next: (response: any) => {
+        console.log('Response:', response);
+        const roles = Object.keys(response);
+        const counts = Object.values(response);
+        const backgroundColors = [
+          '#e63946',
+          '#fb8500',
+        ];
+        const myChartOfUsers = new Chart('reclamation-chart', {
+          type: 'pie',
+          data: {
+            labels: roles,
+            datasets: [
+              {
+                backgroundColor: backgroundColors,
+                data: counts,
+                label: ' Nombre',
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+          },
+        });
+      },
+      error: (er) => {
+        console.log("sdas");
+        
+      },
+    });
   }
 }
