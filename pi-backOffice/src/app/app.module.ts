@@ -85,7 +85,12 @@ import { OldInvoicesComponent } from './invoices management/old-invoices/old-inv
 import { OldDevisBySocietyComponent } from './devis management/old-devis-by-society/old-devis-by-society.component';
 import { AllRequestsIndexComponent } from './requests management/all-requests-index/all-requests-index.component';
 import { OldRequestsComponent } from './requests management/old-requests/old-requests.component';
-
+import { UserService } from './user-service.service';
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
+import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -163,7 +168,10 @@ import { OldRequestsComponent } from './requests management/old-requests/old-req
     UpdateInterviewComponent,
     InterviewValiderComponent,
     DetailCandidatComponent,
-    
+    ChatbotDialogComponent,
+    SponsorEditComponent,
+    UserListComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -193,7 +201,7 @@ import { OldRequestsComponent } from './requests management/old-requests/old-req
       positionClass: 'toast-top-right',
     }),
   ],
-  providers: [Authentication],
+  providers: [Authentication,UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

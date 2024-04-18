@@ -19,7 +19,7 @@ import { RequestsIndexComponent } from './requests management/requests-index/req
 import { DevisBySocietyComponent } from './devis management/devis-by-society/devis-by-society.component';
 import { MyInvoicesComponent } from './invoices management/my-invoices/my-invoices.component';
 import { UpdateProfileComponent } from './acount/update-profile/update-profile.component';
-import { AuthGuardGuard } from './service/guards/auth-guard.guard';
+import { AuthGuardGuard } from './Service/guards/auth-guard.guard';
 import { NotFoundComponent } from './globals/not-found/not-found.component';
 import { AssociationsComponent } from './Users/associations/associations.component';
 import { IndividualsComponent } from './Users/individuals/individuals.component';
@@ -52,6 +52,7 @@ import { PageOffersComponent } from './offers management/page-offers/page-offers
 import { ListOffersComponent } from './offers management/list-offers/list-offers.component';
 import { FeedBackComponent } from './reclamation management/feed-back/feed-back.component';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AllRequestsIndexComponent } from './requests management/all-requests-index/all-requests-index.component';
 import { OldRequestsComponent } from './requests management/old-requests/old-requests.component';
 import { OldInvoicesComponent } from './invoices management/old-invoices/old-invoices.component';
@@ -67,7 +68,11 @@ import { AddPackComponent } from './PackComponents/add-pack/add-pack.component';
 import { UpdateInterviewComponent } from './interview/update-interview/update-interview.component';
 import { DetailCandidatComponent } from './candidature management/detail-candidat/detail-candidat.component';
 import { InterviewValiderComponent } from './interview/interview-valider/interview-valider.component';
-
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
+import { UserService } from './user-service.service';
+import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },
@@ -221,11 +226,15 @@ const routes: Routes = [
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'about', component: AboutUsComponent },
+  { path: 'edituser/:id', component: SponsorEditComponent },
+  { path: 'sponsor', component: ChatbotDialogComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'adduser', component: UserFormComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule,RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {
