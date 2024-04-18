@@ -70,9 +70,9 @@ import { InterviewValiderComponent } from './interview/interview-valider/intervi
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
-import { UserService } from './user-service.service';
+import { UserService } from './service/user-service.service';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
-import { AuthGuardGuard } from './service/guards/auth-guard.guard';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },

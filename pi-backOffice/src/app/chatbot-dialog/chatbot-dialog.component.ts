@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { UserService } from '../user-service.service';
+import { UserService } from '../service/user-service.service';
 import { loadStripe } from '@stripe/stripe-js';
 import {  Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { of, throwError } from 'rxjs';

@@ -7,7 +7,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Authentication } from '../authentication.service';
+import { Authentication } from '../service/authentication.service';
 
 @Injectable({
   providedIn: 'root',

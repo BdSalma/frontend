@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForumServiceService } from 'src/app/service/foruum-service.service';
 import { Forum } from 'src/app/model/forum';
-import { PopUpComponent } from 'src/app/pop-up/pop-up.component';
 import { Router } from '@angular/router';
 
 

@@ -1,6 +1,6 @@
 import { Forum } from "./forum";
 import { Reclamation } from "./reclamation";
-import { Sponsor } from "../sponsor";
+import { Sponsor } from "./sponsor";
 
 export class User {
     id!: string;

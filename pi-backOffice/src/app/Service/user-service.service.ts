@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Sponsor } from './sponsor';
+import { Sponsor } from '../model/sponsor';
 import { Observable } from 'rxjs';
-import { Authentication } from './services/authentication.service';
+import { Authentication } from '../services/authentication.service';
 
 @Injectable()
 export class UserService {

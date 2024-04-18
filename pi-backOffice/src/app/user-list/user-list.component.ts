@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Sponsor } from '../sponsor';
-import { UserService } from '../user-service.service';
+import { Sponsor } from '../model/sponsor';
+import { UserService } from '../service/user-service.service';
 
 
 @Component({
