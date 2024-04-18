@@ -79,4 +79,9 @@ export class ForumServiceService {
       }),
     });
   }
+
+  getCurrentForumOrLatest(): Observable<Forum> {
+    const url = `${this.apiURL}/find-current-forum-or_latest`;
+    return this.http.get<Forum>(url);
+  }
 }

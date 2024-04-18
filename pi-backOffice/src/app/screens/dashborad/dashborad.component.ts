@@ -20,68 +20,77 @@ export class DashboradComponent implements OnInit {
   averageOffersPerDay: any;
   listOffer!: any;
   OffreEnAttente: any;
-  categoryOptions: string[] = Object.keys(Category).filter((key: any) => !isNaN(Number(Category[key])));
+  categoryOptions: string[] = Object.keys(Category).filter(
+    (key: any) => !isNaN(Number(Category[key]))
+  );
   categoryCounts: any; // Variable to store category counts from the backend
   candidatCounts: any;
   individuStatistics: any;
-  societyStat:any;
+  societyStat: any;
   user!: any;
-  forumIncomes : any; 
-  packIncomes : any;
+  forumIncomes: any;
+  packIncomes: any;
   totalAmountByIndividu: any;
-  invoiceAcceptancePercentage: any; 
-  id!:string;
+  invoiceAcceptancePercentage: any;
+  id!: string;
   usersRole: String[] = [];
   usersCount: number[] = [];
-  constructor(      private toastr: ToastrService,
-    private reclamationService : ReclamationService ,private invoiceService: InvoiceService,private consumer: Authentication,private offerService: OfferService, private requestSupplyService: RequestSupplyService, private forumService:ForumServiceService, private packService : PackServiceService) { }
- 
+  constructor(
+    private toastr: ToastrService,
+    private reclamationService: ReclamationService,
+    private invoiceService: InvoiceService,
+    private consumer: Authentication,
+    private offerService: OfferService,
+    private requestSupplyService: RequestSupplyService,
+    private forumService: ForumServiceService,
+    private packService: PackServiceService
+  ) {}
+
   ngOnInit(): void {
     this.user = this.consumer.user;
-    console.log("userrrrrrrrrrrrrrr",this.user && this.user.role === 'Admin');
+    console.log('userrrrrrrrrrrrrrr', this.user && this.user.role === 'Admin');
     this.packService.calculatePackIncomes().subscribe(
-      data => {
-        console.log("we are in");
+      (data) => {
+        console.log('we are in');
         this.packIncomes = data;
         console.log(this.packIncomes);
       },
-      error => {
+      (error) => {
         console.log('Error fetching forum incomes:', error);
       }
     );
     this.PieChartForUsers();
     this.PieChartForReclamation();
     this.requestSupplyService.getIndividuStatistics().subscribe(
-      individuStatistics => {
+      (individuStatistics) => {
         this.individuStatistics = individuStatistics;
         this.pieChartForIndividus();
-        console.log(individuStatistics)
+        console.log(individuStatistics);
       },
-      error => {
+      (error) => {
         console.error('Error fetching individu statistics:', error);
       }
     );
     this.requestSupplyService.getSocietyStatistics().subscribe(
-      societyStat => {
+      (societyStat) => {
         this.societyStat = societyStat;
         this.pieChartForSociety();
-        console.log(societyStat)
+        console.log(societyStat);
       },
-      error => {
+      (error) => {
         console.error('Error fetching society statistics:', error);
       }
     );
 
     this.forumService.calculateForumIncomes().subscribe(
-      data => {
+      (data) => {
         this.forumIncomes = data;
       },
-      error => {
+      (error) => {
         console.log('Error fetching forum incomes:', error);
       }
     );
 
-    
     this.invoiceService.calculateTotalAmountByIndividu(this.id).subscribe(
       (data: any) => {
         console.log('Total amount data:', data);
@@ -91,7 +100,7 @@ export class DashboradComponent implements OnInit {
         console.error('Error fetching total amount by individu:', error);
       }
     );
-    
+
     this.offerService.getNbAcceptedOffer().subscribe(
       (average) => {
         this.OffreEnAttente = average;
@@ -102,93 +111,105 @@ export class DashboradComponent implements OnInit {
     );
     this.fetchCategoryCounts();
     this.loadOffers(); // Load offers before fetching candidature counts and rendering the chart
- 
- 
-
   }
   pieChartForIndividus(): void {
-    const canvas = document.getElementById('individuChart') as HTMLCanvasElement;
+    const canvas = document.getElementById(
+      'individuChart'
+    ) as HTMLCanvasElement;
     const ctx = canvas.getContext('2d')!; // Add non-null assertion operator
-  
+
     const data = {
-      labels: ['Running Requests', 'Accepted Devis', 'Refused Devis', 'Accepted Invoices', 'Refused Invoices'],
-      datasets: [{
-        label: ' Statistics',
-        data: [
-          this.individuStatistics['RunningRequests'],
-          this.individuStatistics['AcceptedDevis'],
-          this.individuStatistics['RefusedDevis'],
-          this.individuStatistics['AcceptedInvoices'],
-          this.individuStatistics['RefusedInvoices']
-        ],
-        backgroundColor: [
-          '#8ecae6', 
-          '#9e2a2b', 
-          '#335c67' ,
-          '#e63946', 
-          '#fb8500', 
-          '#ffb703', 
-          '#023047', 
-          '#219ebc', 
-         
-            ],
-        
-      }]
+      labels: [
+        'Running Requests',
+        'Accepted Devis',
+        'Refused Devis',
+        'Accepted Invoices',
+        'Refused Invoices',
+      ],
+      datasets: [
+        {
+          label: ' Statistics',
+          data: [
+            this.individuStatistics['RunningRequests'],
+            this.individuStatistics['AcceptedDevis'],
+            this.individuStatistics['RefusedDevis'],
+            this.individuStatistics['AcceptedInvoices'],
+            this.individuStatistics['RefusedInvoices'],
+          ],
+          backgroundColor: [
+            '#8ecae6',
+            '#9e2a2b',
+            '#335c67',
+            '#e63946',
+            '#fb8500',
+            '#ffb703',
+            '#023047',
+            '#219ebc',
+          ],
+        },
+      ],
     };
-  
+
     const options = {
       scales: {
         y: {
-          beginAtZero: true
-        }
-      }
+          beginAtZero: true,
+        },
+      },
     };
-  
+
     new Chart(ctx, {
       type: 'bar',
       data: data,
-      options: options
+      options: options,
     });
   }
   pieChartForSociety(): void {
     const canvas = document.getElementById('societyChart') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d')!; // Add non-null assertion operator
-  
+
     const data = {
-      labels: ['Accepted Devis', 'Refused Devis', 'Accepted Invoices', 'Refused Invoices'],
-      datasets: [{
-        label: '  Statistics',
-        data: [
-          this.societyStat['AcceptedDevis'],
-          this.societyStat['RefusedDevis'],
-          this.societyStat['AcceptedInvoices'],
-          this.societyStat['RefusedInvoices']
-        ],
-        backgroundColor: [
-          '#e63946',
-          '#fb8500',
-          '#ffb703',
-          '#023047',
-          '#219ebc',
-          '#8ecae6',
-          '#9e2a2b',
-          '#335c67',
-        ]
-      }]
+      labels: [
+        'Accepted Devis',
+        'Refused Devis',
+        'Accepted Invoices',
+        'Refused Invoices',
+      ],
+      datasets: [
+        {
+          label: '  Statistics',
+          data: [
+            this.societyStat['AcceptedDevis'],
+            this.societyStat['RefusedDevis'],
+            this.societyStat['AcceptedInvoices'],
+            this.societyStat['RefusedInvoices'],
+          ],
+          backgroundColor: [
+            '#e63946',
+            '#fb8500',
+            '#ffb703',
+            '#023047',
+            '#219ebc',
+            '#8ecae6',
+            '#9e2a2b',
+            '#335c67',
+          ],
+        },
+      ],
     };
-  
+
     const options = {
       scales: {
         y: {
-          beginAtZero: true
-        }
-      }
+          beginAtZero: true,
+        },
+      },
     };
-  
+
     new Chart(ctx, {
       type: 'pie',
       data: data,
-      options: options
+      options: options,
     });
   }
   fetchCategoryCounts() {
@@ -208,7 +229,7 @@ export class DashboradComponent implements OnInit {
       // If listOffer is not populated, return or handle accordingly
       return;
     }
-  
+
     this.offerService.getCandidaturesByOffer().subscribe(
       (data: any) => {
         // Extract offer names and candidature counts from the response object
@@ -221,25 +242,28 @@ export class DashboradComponent implements OnInit {
       }
     );
   }
-  
 
   PieChartOfferByCategory() {
     const myChartOfUsers = new Chart('pie-chart-offer', {
       type: 'pie',
       data: {
         labels: this.categoryOptions,
-        datasets: [{
-          backgroundColor: [
-            '#e63946',
-            '#fb8500',
-            '#ffb703',
-            '#023047',
-            '#219ebc',
-            '#8ecae6',
-          ],
-          data: this.categoryOptions.map(option => this.categoryCounts[option] || 0), // Use category counts data here
-          label: 'Offre par catégorie',
-        }],
+        datasets: [
+          {
+            backgroundColor: [
+              '#e63946',
+              '#fb8500',
+              '#ffb703',
+              '#023047',
+              '#219ebc',
+              '#8ecae6',
+            ],
+            data: this.categoryOptions.map(
+              (option) => this.categoryCounts[option] || 0
+            ), // Use category counts data here
+            label: 'Offre par catégorie',
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -248,29 +272,30 @@ export class DashboradComponent implements OnInit {
   }
 
   PieChartCandidat(offerNames: string[], candidatureCounts: number[]) {
-
-    const myChartOfCandidat = new Chart('pie-chart', {
+    const myChartOfCandidat = new Chart('pie-chart-candidat', {
       type: 'pie',
       data: {
         labels: offerNames,
-        datasets: [{
-          backgroundColor: [
-            '#e63946',
-            '#fb8500',
-            '#ffb703',
-            '#023047',
-            '#219ebc',
-            '#8ecae6',
-          ],
-          data: candidatureCounts,
-          label: 'Candidatures par offre',
-        }],
+        datasets: [
+          {
+            backgroundColor: [
+              '#e63946',
+              '#fb8500',
+              '#ffb703',
+              '#023047',
+              '#219ebc',
+              '#8ecae6',
+            ],
+            data: candidatureCounts,
+            label: 'Candidatures par offre',
+          },
+        ],
       },
       options: {
         responsive: true,
       },
     });
-  }  
+  }
 
   loadOffers() {
     this.offerService.getOffers().subscribe(
@@ -321,17 +346,14 @@ export class DashboradComponent implements OnInit {
       },
     });
   }
-  
+
   PieChartForReclamation() {
     this.reclamationService.getCountReclamationByType().subscribe({
       next: (response: any) => {
         console.log('Response:', response);
         const roles = Object.keys(response);
         const counts = Object.values(response);
-        const backgroundColors = [
-          '#e63946',
-          '#fb8500',
-        ];
+        const backgroundColors = ['#e63946', '#fb8500'];
         const myChartOfUsers = new Chart('reclamation-chart', {
           type: 'pie',
           data: {
@@ -350,8 +372,7 @@ export class DashboradComponent implements OnInit {
         });
       },
       error: (er) => {
-        console.log("sdas");
-        
+        console.log('sdas');
       },
     });
   }

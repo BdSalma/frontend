@@ -53,7 +53,7 @@
                     <a
                       class="dropdown-item border-radius-md d-flex align-items-center"
                       [ngClass]="{ 'text-primary': currentLanguage === 'fr' }"
-                      
+                      (click)="changeLanguage('fr')"
                     >
                       <img
                         src="./assets/img/flags/france.png"
@@ -67,7 +67,7 @@
                     <a
                       class="dropdown-item border-radius-md d-flex align-items-center"
                       [ngClass]="{ 'text-primary': currentLanguage === 'en' }"
-                      
+                      (click)="changeLanguage('en')"
                     >
                       <img
                         src="./assets/img/flags/uk.png"

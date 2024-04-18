@@ -17,7 +17,7 @@ export class IndexComponent {
   constructor(private offerS:OfferService,private router:Router, private forumService:ForumServiceService){}
   ngOnInit(): void {
     this.loadOffers();
-    this.forumService.getCurrentForum().subscribe((data)=> this.forum = data)
+    this.forumService.getCurrentForumOrLatest().subscribe((data)=> this.forum = data)
   }
 
   loadOffers() {

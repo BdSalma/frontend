@@ -13,19 +13,23 @@
           <div class="col-lg-8 text-center mx-auto my-auto">
             <br /><br />
             <h1 class="text-white">
-              Explorez les opportunités passionnantes lors de nos forums
-              universitaires
+              {{
+                "Explorez les opportunités passionnantes lors de nos forums universitaires"
+                  | translate
+              }}
             </h1>
             <p class="lead mb-4 text-white opacity-8">
-              Connectez-vous avec les meilleures entreprises et découvrez des
-              offres d'emploi, des stages et bien plus encore lors de nos forums
-              universitaires. Rejoignez-nous pour façonner votre carrière future
-              !
+              {{
+                "Connectez-vous avec les meilleures entreprises et découvrez des offres d'emploi, des stages et bien plus encore lors de nos forums universitaires. Rejoignez-nous pour façonner votre carrière future !"
+                  | translate
+              }}
             </p>
             <button routerLink="/signIn" class="btn bg-white text-dark">
-              Créer un compte
+              {{ "Créer un compte" | translate }}
             </button>
-            <h6 class="text-white mb-2 mt-5">Trouvez-nous sur</h6>
+            <h6 class="text-white mb-2 mt-5">
+              {{ "Trouvez-nous sur" | translate }}
+            </h6>
             <div class="d-flex justify-content-center">
               <a href="javascript:;"
                 ><i class="fab fa-facebook text-lg text-white me-4"></i
@@ -57,11 +61,12 @@
                     class="material-icons text-3xl text-gradient text-info mb-3"
                     >public</i
                   >
-                  <h5>Collaborez avec Nous</h5>
+                  <h5>{{ "Collaborez avec Nous" | translate }}</h5>
                   <p>
-                    Rejoignez-nous dans notre mission de fournir des
-                    opportunités complètes aux entreprises et aux étudiants.
-                    Ensemble, nous pouvons faire la différence.
+                    {{
+                      "Rejoignez-nous dans notre mission de fournir des opportunités complètes aux entreprises et aux étudiants. Ensemble, nous pouvons faire la différence."
+                        | translate
+                    }}
                   </p>
                 </div>
               </div>
@@ -71,11 +76,12 @@
                     class="material-icons text-3xl text-gradient text-info mb-3"
                     >payments</i
                   >
-                  <h5>Sponsorisez Votre Entreprise</h5>
+                  <h5>{{ "Sponsorisez Votre Entreprise" | translate }}</h5>
                   <p>
-                    Sponsorisez votre entreprise via notre plateforme et accédez
-                    à un large public de collaborateurs potentiels et de
-                    talents.
+                    {{
+                      "Sponsorisez votre entreprise via notre plateforme et accédez à un large public de collaborateurs potentiels et de talents."
+                        | translate
+                    }}
                   </p>
                 </div>
               </div>
@@ -87,10 +93,12 @@
                     class="material-icons text-3xl text-gradient text-info mb-3"
                     >apps</i
                   >
-                  <h5>Rejoignez Nos Forums</h5>
+                  <h5>{{ "Rejoignez Nos Forums" | translate }}</h5>
                   <p>
-                    Participez à nos forums pour explorer une variété
-                    d'opportunités, des offres d'emploi aux stages et au-delà.
+                    {{
+                      "Participez à nos forums pour explorer une variété d'opportunités, des offres d'emploi aux stages et au-delà."
+                        | translate
+                    }}
                   </p>
                 </div>
               </div>
@@ -100,10 +108,12 @@
                     class="material-icons text-3xl text-gradient text-info mb-3"
                     >3p</i
                   >
-                  <h5>Connectez-vous avec les Étudiants</h5>
+                  <h5>{{ "Connectez-vous avec les Étudiants" | translate }}</h5>
                   <p>
-                    Engagez-vous avec notre communauté étudiante diversifiée et
-                    découvrez de nouvelles perspectives et des idées innovantes.
+                    {{
+                      "Engagez-vous avec notre communauté étudiante diversifiée et découvrez de nouvelles perspectives et des idées innovantes."
+                        | translate
+                    }}
                   </p>
                 </div>
               </div>
@@ -124,23 +134,21 @@
               </div>
               <div class="card-body text-center">
                 <h5 class="font-weight-normal">
-                  <a routerLink="/contact"
-                    >Contactez-nous pour Plus d'Informations</a
-                  >
+                  <a routerLink="/contact">{{
+                    "Contactez-nous pour Plus d'Informations" | translate
+                  }}</a>
                 </h5>
                 <p class="mb-0">
-                  Vous souhaitez en savoir plus sur nos offres de stages, nos
-                  forums, nos collaborations et bien plus encore ? N'hésitez pas
-                  à nous contacter pour obtenir des informations détaillées et
-                  personnalisées. Notre équipe se fera un plaisir de répondre à
-                  toutes vos questions et de vous accompagner dans vos
-                  démarches.
+                  {{
+                    "Vous souhaitez en savoir plus sur nos offres de stages, nos forums, nos collaborations et bien plus encore ? N'hésitez pas à nous contacter pour obtenir des informations détaillées et personnalisées. Notre équipe se fera un plaisir de répondre à toutes vos questions et de vous accompagner dans vos démarches."
+                      | translate
+                  }}
                 </p>
                 <button
                   routerLink="/contact"
                   class="btn bg-gradient-primary btn-sm mb-0 mt-3"
                 >
-                  En savoir plus
+                  {{ "En savoir plus" | translate }}
                 </button>
               </div>
             </div>
@@ -148,45 +156,18 @@
         </div>
       </div>
     </section>
-
-    <!-- <section class="pt-4 pb-6" id="count-stats">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-md-3">
-            <h1 class="text-gradient text-info" id="state1" countTo="5234">
-              0
-            </h1>
-            <h5>Projects</h5>
-            <p>
-              Of “high-performing” level are led by a certified project manager
-            </p>
-          </div>
-          <div class="col-md-3">
-            <h1 class="text-gradient text-info">
-              <span id="state2" countTo="3400">0</span>+
-            </h1>
-            <h5>Hours</h5>
-            <p>That meets quality standards required by our users</p>
-          </div>
-          <div class="col-md-3">
-            <h1 class="text-gradient text-info">
-              <span id="state3" countTo="24">0</span>/7
-            </h1>
-            <h5>Support</h5>
-            <p>Actively engage team members that finishes on time</p>
-          </div>
-        </div>
-      </div>
-    </section> -->
     <section class="pb-5 position-relative bg-gradient-dark mx-n3">
       <div class="container">
         <div class="row">
           <div class="col-md-8 text-start mb-5 mt-5">
             <h3 class="text-white z-index-1 position-relative">
-              L'équipe de direction
+              {{ "L'équipe de direction" | translate }}
             </h3>
             <p class="text-white opacity-8 mb-0">
-              Rien que je voulais faire dans la vie sans y exceller. C'est mon talent.
+              {{
+                "Rien que je voulais faire dans la vie sans y exceller. C'est mon talent."
+                  | translate
+              }}
             </p>
           </div>
         </div>
@@ -208,9 +189,13 @@
                 <div class="col-lg-8 col-md-6 col-12 my-auto">
                   <div class="card-body ps-lg-0">
                     <h5 class="mb-0">Helmi Ben Romdhane</h5>
-                    <h6 class="text-info">Étudiant</h6>
+                    <h6 class="text-info">{{ "Étudiant" | translate }}</h6>
                     <p class="mb-0">
-                      étudiant travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel
+                      {{ "Étudiant" | translate }}
+                      {{
+                        " travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel"
+                          | translate
+                      }}
                     </p>
                   </div>
                 </div>
@@ -234,9 +219,13 @@
                 <div class="col-lg-8 col-md-6 col-12 my-auto">
                   <div class="card-body ps-lg-0">
                     <h5 class="mb-0">Fatma Jrad</h5>
-                    <h6 class="text-info">Étudiante</h6>
+                    <h6 class="text-info">{{ "Étudiante" | translate }}</h6>
                     <p class="mb-0">
-                      étudiant travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel
+                      {{ "Étudiante" | translate }}
+                      {{
+                        " travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel"
+                          | translate
+                      }}
                     </p>
                   </div>
                 </div>
@@ -262,9 +251,13 @@
                 <div class="col-lg-8 col-md-6 col-12 my-auto">
                   <div class="card-body ps-lg-0">
                     <h5 class="mb-0">Ryhem Allouchi</h5>
-                    <h6 class="text-info">Étudiante</h6>
+                    <h6 class="text-info">{{ "Étudiante" | translate }}</h6>
                     <p class="mb-0">
-                      étudiant travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel
+                      {{ "Étudiante" | translate }}
+                      {{
+                        " travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel"
+                          | translate
+                      }}
                     </p>
                   </div>
                 </div>
@@ -288,9 +281,13 @@
                 <div class="col-lg-8 col-md-6 col-12 my-auto">
                   <div class="card-body ps-lg-0">
                     <h5 class="mb-0">Hadil Dghaies</h5>
-                    <h6 class="text-info">Étudiante</h6>
+                    <h6 class="text-info">{{ "Étudiante" | translate }}</h6>
                     <p class="mb-0">
-                      étudiant travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel
+                      {{ "Étudiante" | translate }}
+                      {{
+                        " travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel"
+                          | translate
+                      }}
                     </p>
                   </div>
                 </div>
@@ -315,9 +312,13 @@
                   <div class="col-lg-8 col-md-6 col-12 my-auto">
                     <div class="card-body ps-lg-0">
                       <h5 class="mb-0">Salma Beddakhlia</h5>
-                      <h6 class="text-info">Étudiante</h6>
+                      <h6 class="text-info">{{ "Étudiante" | translate }}</h6>
                       <p class="mb-0">
-                         étudiant travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel
+                        {{ "Étudiante" | translate }}
+                        {{
+                          " travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel"
+                            | translate
+                        }}
                       </p>
                     </div>
                   </div>
@@ -341,9 +342,13 @@
                   <div class="col-lg-8 col-md-6 col-12 my-auto">
                     <div class="card-body ps-lg-0">
                       <h5 class="mb-0">Wale Hamdi</h5>
-                      <h6 class="text-info">Étudiant</h6>
+                      <h6 class="text-info">{{ "Étudiant" | translate }}</h6>
                       <p class="mb-0">
-                         étudiant travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel
+                        {{ "Étudiant" | translate }}
+                        {{
+                          " travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel"
+                            | translate
+                        }}
                       </p>
                     </div>
                   </div>
@@ -369,9 +374,13 @@
                   <div class="col-lg-8 col-md-6 col-12 my-auto">
                     <div class="card-body ps-lg-0">
                       <h5 class="mb-0">Amine Souissi</h5>
-                      <h6 class="text-info">Étudiant</h6>
+                      <h6 class="text-info">{{ "Étudiant" | translate }}</h6>
                       <p class="mb-0">
-                         étudiant travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel
+                        {{ "Étudiant" | translate }}
+                        {{
+                          " travaillant sur un projet universitaire de cycle d'ingénierie en génie logiciel"
+                            | translate
+                        }}
                       </p>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/model/user';
 import { Authentication } from 'src/app/service/authentication.service';
-//import { TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar-index',
@@ -15,7 +15,7 @@ export class NavbarIndexComponent {
     private router: Router,
     private consumer: Authentication,
     private toastr: ToastrService,
-    //private translateService: TranslateService
+    private translateService: TranslateService
   ) {}
   login: boolean = false;
   currentLanguage!: string;
@@ -28,11 +28,11 @@ export class NavbarIndexComponent {
     this.currentLanguage = localStorage.getItem('selectedLanguage') || 'fr';
   }
 
-  /*changeLanguage(language: string) {
+  changeLanguage(language: string) {
     localStorage.setItem('selectedLanguage', language);
     this.translateService.use(language);
     this.currentLanguage = language;
-  }*/
+  }
 
   logout() {
     this.consumer.logout().subscribe({
