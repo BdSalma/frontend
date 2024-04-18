@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { Authentication } from 'src/app/service/authentication.service';
 
+
+import { Authentication } from 'src/app/service/authentication.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
