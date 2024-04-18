@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DevisService } from '../../service/devis.service';
+import { DeviisService } from '../../service/deviis.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class OldDevisBySocietyComponent {
   listDeviss!:any;
   idsociety!:string;
   
-    constructor(private devis:DevisService,private router:Router){}
+    constructor(private devis:DeviisService,private router:Router){}
     ngOnInit(): void {
      
         this.loadDeviss();

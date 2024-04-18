@@ -1,9 +1,9 @@
-import { StandServiceService } from './../../Service/stand-service.service';
+import { StandServiceService } from '../../service/stannd-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
+import { PackServiceService } from 'src/app/service/pacck-service.service';
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
 

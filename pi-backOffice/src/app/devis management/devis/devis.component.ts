@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DevisService } from '../../service/devis.service';
+import { DeviisService } from '../../service/deviis.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -13,7 +13,7 @@ export class DevisComponent {
   requestId!: any; 
   currentId: any;
   currentAction: any;
-  constructor(private devis:DevisService,private router:Router,   private route: ActivatedRoute ,  private toastr: ToastrService   ){}
+  constructor(private devis:DeviisService,private router:Router,   private route: ActivatedRoute ,  private toastr: ToastrService   ){}
   ngOnInit(): void {
     const params = this.route.snapshot.params;
     if (params['requestId']) {

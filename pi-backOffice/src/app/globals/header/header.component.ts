@@ -1,7 +1,7 @@
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs'; 
-import { ForumServiceService } from 'src/app/Service/forum-service.service';
+import { ForumServiceService } from 'src/app/service/foruum-service.service';
 
 @Component({
   selector: 'app-header',

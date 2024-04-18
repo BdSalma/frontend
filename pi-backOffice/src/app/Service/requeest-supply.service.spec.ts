@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RequestSupplyService } from './request-supply.service';
+import { RequestSupplyService } from './requeest-supply.service';
 
 describe('RequestSupplyServiceService', () => {
   let service: RequestSupplyService;

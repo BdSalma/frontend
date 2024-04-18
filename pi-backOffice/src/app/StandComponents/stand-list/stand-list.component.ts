@@ -1,7 +1,7 @@
 import { Stand } from './../../model/stand';
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { StandServiceService } from 'src/app/Service/stand-service.service';
+import { StandServiceService } from 'src/app/service/stannd-service.service';
 
 
 @Component({

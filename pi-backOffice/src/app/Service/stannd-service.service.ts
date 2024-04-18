@@ -1,10 +1,11 @@
-import { Status } from './../model/status';
+import { Status } from '../model/status';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Stand } from '../model/stand';
-import { Authentication } from '../services/authentication.service';
+import { Authentication } from './authentication.service';
+
 
 @Injectable({
   providedIn: 'root'

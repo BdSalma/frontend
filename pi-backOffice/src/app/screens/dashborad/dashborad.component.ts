@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { OfferService } from '../../service/offer.service';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { Category } from 'src/app/model/category';
-import { InvoiceService } from 'src/app/service/invoice.service';
+import { InvoiceService } from 'src/app/service/invoiice.service';
 import { Authentication } from 'src/app/service/authentication.service';
-import { RequestSupplyService } from 'src/app/service/request-supply.service';
-import { ForumServiceService } from 'src/app/Service/forum-service.service';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
+import { RequestSupplyService } from 'src/app/service/requeest-supply.service';
+import { ForumServiceService } from 'src/app/service/foruum-service.service';
+import { PackServiceService } from 'src/app/service/pacck-service.service';
 Chart.register(...registerables);
 
 @Component({

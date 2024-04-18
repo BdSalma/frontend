@@ -1,4 +1,4 @@
-import { StandServiceService } from './../../Service/stand-service.service';
+import { StandServiceService } from '../../service/stannd-service.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RequestSupplyService } from '../../service/request-supply.service';
+import { RequestSupplyService } from '../../service/requeest-supply.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 

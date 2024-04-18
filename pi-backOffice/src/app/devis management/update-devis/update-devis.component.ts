@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DevisService } from '../../service/devis.service';
+import { DeviisService } from '../../service/deviis.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class UpdateDevisComponent {
   id!:number;
   devis:any
   updateFormD!: FormGroup;
-  constructor(private fb:FormBuilder,private devisS:DevisService,private router:Router,private route: ActivatedRoute){  
+  constructor(private fb:FormBuilder,private devisS:DeviisService,private router:Router,private route: ActivatedRoute){  
 }
 ngOnInit(){
   this.updateFormD= new FormGroup({

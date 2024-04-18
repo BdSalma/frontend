@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { DevisService } from '../../service/devis.service';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DeviisService } from 'src/app/service/deviis.service';
 
 @Component({
   selector: 'app-devis-by-society',
@@ -13,7 +14,7 @@ export class DevisBySocietyComponent {
 idsociety!:string;
 currentId: any;
 currentAction: any;
-  constructor(private devis:DevisService,private router:Router,  private toastr: ToastrService ){}
+  constructor(private devis:DeviisService,private router:Router,  private toastr: ToastrService ){}
   ngOnInit(): void {
    
       this.loadDeviss();

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { RequestSupplyService } from '../../service/request-supply.service';
+import { RequestSupplyService } from '../../service/requeest-supply.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 

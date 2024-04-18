@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RequestSupplyService } from '../../service/request-supply.service';
+import { RequestSupplyService } from '../../service/requeest-supply.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 

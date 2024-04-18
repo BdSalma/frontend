@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PackServiceService } from 'src/app/Service/pack-service.service';
-import { StandServiceService } from 'src/app/Service/stand-service.service';
+import { PackServiceService } from 'src/app/service/pacck-service.service';
+import { StandServiceService } from 'src/app/service/stannd-service.service';
 import { Pack } from 'src/app/model/pack';
 import { Stand } from 'src/app/model/stand';
 import { TypePack } from 'src/app/model/typePack';

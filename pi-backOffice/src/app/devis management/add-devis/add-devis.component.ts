@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DevisService } from '../../service/devis.service';
+
 import { ToastrService } from 'ngx-toastr';
+import { DeviisService } from 'src/app/service/deviis.service';
 
 @Component({
   selector: 'app-add-devis',
@@ -16,7 +17,7 @@ export class AddDevisComponent {
  requestId!: number; 
 
   constructor(
-    private devis: DevisService,
+    private devis: DeviisService,
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService

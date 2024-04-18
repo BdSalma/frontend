@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Pack } from '../../model/pack';
 import { reservationStatus } from '../../model/reservationStatus';
-import { PackServiceService } from '../../Service/pack-service.service';
+import { PackServiceService } from '../../service/pacck-service.service';
 import { RouteReuseStrategy, Router } from '@angular/router';
-import { StandServiceService } from '../../Service/stand-service.service';
+import { StandServiceService } from '../../service/stannd-service.service';
 import { Stand } from '../../model/stand';
 import { TypePack } from 'src/app/model/typePack';
 

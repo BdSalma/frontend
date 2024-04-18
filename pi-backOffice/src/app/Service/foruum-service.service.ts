@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Forum } from '../model/forum';
 import { Observable } from 'rxjs';
-import { Authentication } from '../services/authentication.service';
+import { Authentication } from './authentication.service';
+
 
 @Injectable({
   providedIn: 'root',
