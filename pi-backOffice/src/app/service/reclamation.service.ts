@@ -42,8 +42,8 @@ export class ReclamationService {
     })
    }
    
-   Contact(email: String){
-    return  this.http.post('http://localhost:8087/reclamation/contact/'+email,
+   Contact(email: String,message:String){
+    return  this.http.post('http://localhost:8087/reclamation/contact/'+email,{message},
     httpOptions)
    }
    getFeed(){

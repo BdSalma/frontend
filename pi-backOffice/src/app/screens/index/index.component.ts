@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ForumServiceService } from 'src/app/service/foruum-service.service';
 import { OfferService } from 'src/app/service/offer.service';
+import { PackServiceService } from 'src/app/service/pacck-service.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -11,13 +13,23 @@ import { OfferService } from 'src/app/service/offer.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent {
-  listOffer!:any;
+  listOffer!: any;
   forum !: any;
-
-  constructor(private offerS:OfferService,private router:Router, private forumService:ForumServiceService){}
+  users !: any[];
+  url: any;
+  constructor(private packService: PackServiceService, private offerS: OfferService, private router: Router, private forumService: ForumServiceService) { }
   ngOnInit(): void {
+    this.url = environment.apiUrl;
     this.loadOffers();
-    this.forumService.getCurrentForumOrLatest().subscribe((data)=> this.forum = data)
+    this.forumService.getCurrentForumOrLatest().subscribe((data) =>
+      this.forum = data)
+    console.log(this.forum);
+
+    this.packService.getParticipants().subscribe((data) => {
+      this.users = data;
+      console.log(this.users);
+    });
+
   }
 
   loadOffers() {

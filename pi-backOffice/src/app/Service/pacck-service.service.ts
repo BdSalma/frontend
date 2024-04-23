@@ -41,7 +41,7 @@ export class PackServiceService {
     const url = `${this.apiURL}/getListOfParticipants`;
     return this.http.get<any[]>(url, {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.auth.token}`
+        'Content-Type': 'application/json',
       }),
     });
   }

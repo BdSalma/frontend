@@ -43,7 +43,9 @@
                   <p class="pb-3">
                     {{"Pour d’autres questions, y compris des opportunités de partenariat, des stages, veuillez envoyer un e-mail à notre formulaire de contact." | translate }}
                   </p>
-                  <form id="contact-form" method="post" autocomplete="off">
+                  <form id="contact-form" method="post" autocomplete="off" [formGroup]="listFilter"
+                  
+                  (ngSubmit)="Contact(nom,listFilter)">
                     <div class="card-body p-0 my-3">
                       <div class="row">
                         <div class="col-md-6">
@@ -76,18 +78,18 @@
                             id="message"
                             rows="6"
                             placeholder="{{'Décrivez votre problème en au moins 250 caractères'| translate }}"
+                            formControlName="message"
                           ></textarea>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12 text-center">
                           <button
-                            type="submit"
-                            class="btn bg-gradient-primary mt-3 mb-0"
-                            (click)="Contact(nom)"
-                          >
-                            {{"Envoyer Message" | translate }}
-                          </button>
+                          type="submit"
+                          class="btn bg-gradient-dark w-100"
+                        >
+                          {{ "Submit" | translate }}
+                        </button>
                         </div>
                       </div>
                     </div>

@@ -63,39 +63,12 @@
     <div class="row my-5">
       <div class="col-12">
         <div class="overflow-hidden" style="white-space: nowrap">
-          <div class="row" id="moving-row">
-            <div class="col-lg-2 col-md-4 col-6">
+          <div  class="row" id="moving-row">
+            <div *ngFor="let user of users" class="col-lg-2 col-md-4 col-6">
               <img
                 class="w-100 opacity-6"
-                src="./assets/imgB/logos/gray-logos/logo-apple.svg"
-                alt="Logo"
-              />
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-              <img
-                class="w-100 opacity-6"
-                src="./assets/imgB/logos/gray-logos/logo-facebook.svg"
-                alt="Logo"
-              />
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-              <img
-                class="w-100 opacity-6"
-                src="./assets/imgB/logos/gray-logos/logo-nasa.svg"
-                alt="Logo"
-              />
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-              <img
-                class="w-100 opacity-6"
-                src="./assets/imgB/logos/gray-logos/logo-vodafone.svg"
-                alt="Logo"
-              />
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-              <img
-                class="w-100 opacity-6"
-                src="./assets/imgB/logos/gray-logos/logo-digitalocean.svg"
+                id="userImage"
+                [src]="url + '/user-images/' + user.image"
                 alt="Logo"
               />
             </div>
