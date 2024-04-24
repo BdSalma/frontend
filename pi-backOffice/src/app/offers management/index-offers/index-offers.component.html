@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mx-auto text-center">
-        <h2 class="text-gradient text-primary mb-3">Les offres disponibles</h2>
-        <h2 class="mb-0">Les offres les plus demandées</h2>
+        <h2 class="text-gradient text-primary mb-3">{{"Les offres disponibles" | translate }}</h2>
+        <h2 class="mb-0">{{"Les offres les plus demandées" | translate }}</h2>
         <!-- Condition pour afficher le texte -->
       </div>
     </div>
@@ -39,7 +39,7 @@
                 class="mt-4"
                 [ngClass]="i % 2 === 0 ? 'card-plain' : ' text-white'"
               >
-                Profil souhaité : {{ offer.candidatProfil }}
+                {{"Profil souhaité" | translate }} : {{ offer.candidatProfil }}
               </p>
               <p
                 class="mt-4"
@@ -78,7 +78,7 @@
           routerLink="/moreOffers"
           class="btn bg-gradient-primary mb-5 mb-sm-0"
         >
-          Voir plus
+          {{"Voir plus" | translate }}
         </a>
       </div>
     </div>
