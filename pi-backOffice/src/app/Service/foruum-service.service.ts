@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Forum } from '../model/forum';
 import { Observable } from 'rxjs';
 import { Authentication } from './authentication.service';
+import { User } from '../model/user';
 
 
 @Injectable({
@@ -22,6 +23,7 @@ export class ForumServiceService {
     const url = `${this.apiURL}/find-all-forums`;
     return this.http.get<Forum[]>(url);
   }
+ 
 
   getForumById(id: number): Observable<Forum> {
     const url = `${this.apiURL}/find-forum/${id}`;

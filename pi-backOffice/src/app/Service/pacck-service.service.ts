@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Pack } from '../model/pack';
 import { Authentication } from './authentication.service';
+import { User } from '../model/user';
 
 
 @Injectable({
@@ -27,6 +28,15 @@ export class PackServiceService {
     });
   }
 
+  public findListOfParticipants(): Observable<User[]> {
+    const url = `${this.apiURL}/getListOfParticipants`;
+    return this.http.get<User[]>(url,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.auth.token}`,
+        'Content-Type': 'application/json',
+      }),
+    });
+  }
   calculatePackIncomes(): Observable<any> {
     const url = `${this.apiURL}/getPacksStatistics`;
     return this.http.get<any>(url, {
@@ -37,11 +47,11 @@ export class PackServiceService {
   }
 
 
-  getParticipants(): Observable<any> {
+  getParticipants(): Observable<any[]> {
     const url = `${this.apiURL}/getListOfParticipants`;
     return this.http.get<any[]>(url, {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.auth.token}`
+        'Content-Type': 'application/json',
       }),
     });
   }
