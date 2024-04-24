@@ -63,8 +63,8 @@
     <div class="row my-5">
       <div class="col-12">
         <div class="overflow-hidden" style="white-space: nowrap">
-          <div *ngFor="let user of users" class="row" id="moving-row">
-            <div class="col-lg-2 col-md-4 col-6">
+          <div  class="row" id="moving-row">
+            <div *ngFor="let user of users" class="col-lg-2 col-md-4 col-6">
               <img
                 class="w-100 opacity-6"
                 id="userImage"

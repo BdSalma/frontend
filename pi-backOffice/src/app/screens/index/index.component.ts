@@ -25,13 +25,11 @@ export class IndexComponent {
     private forumService: ForumServiceService
   ) {}
   ngOnInit(): void {
-    this.userImageUrl = 'C:/Users/MSI/piForumProject/backend/fils';
     this.url = environment.apiUrl;
     this.loadOffers();
     this.forumService
       .getCurrentForumOrLatest()
       .subscribe((data) => (this.forum = data));
-    console.log("we're in");
     this.packService.getParticipants().subscribe((data) => {
       this.users = data;
       console.log(this.users);
