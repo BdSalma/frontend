@@ -3041,7 +3041,7 @@
   }
   
   .form-check-input:checked[type="radio"] {
-    background-image: linear-gradient(195deg, #EC407A 0%, #de203d 100%);
+    background-image: linear-gradient(195deg, #ED3736 0%, #de203d 100%);
   }
   
   .form-check-input[type="checkbox"]:indeterminate {
@@ -3711,7 +3711,7 @@
     --bs-btn-bg: #0a0303;
     --bs-btn-border-color: #0a0303;
     --bs-btn-hover-color: #000;
-    --bs-btn-hover-bg: #ec407a;
+    --bs-btn-hover-bg: #ED3736;
     --bs-btn-hover-border-color: #eb3573;
     --bs-btn-focus-shadow-rgb: 198, 26, 84;
     --bs-btn-active-color: #000;
@@ -20334,7 +20334,7 @@
   
   */
   .alert-primary {
-    background-image: linear-gradient(195deg, #EC407A 0%, #de203d 100%);
+    background-image: linear-gradient(195deg, #ED3736 0%, #de203d 100%);
   }
   
   .alert-secondary {
@@ -21303,7 +21303,7 @@
   }
   
   .card.card-background.card-background-mask-primary:after {
-    background-image: linear-gradient(195deg, #EC407A 0%, #de203d 100%);
+    background-image: linear-gradient(195deg, #ED3736 0%, #de203d 100%);
     opacity: .85;
   }
   
@@ -21462,7 +21462,7 @@
     top: 0;
     content: "";
     border-radius: 0.5rem;
-    background-image: linear-gradient(195deg, #EC407A, #de203d);
+    background-image: linear-gradient(195deg, #ED3736, #de203d);
     opacity: .85;
   }
   
@@ -22580,7 +22580,7 @@
     width: 0.8375rem;
     height: 0.8375rem;
     border-radius: 50%;
-    background-image: linear-gradient(195deg, #EC407A 0%, #de203d 100%), var(--bs-gradient);
+    background-image: linear-gradient(195deg, #ED3736 0%, #de203d 100%), var(--bs-gradient);
     opacity: 0;
     left: 0;
     right: 0;
@@ -22741,7 +22741,7 @@
   }
   
   .bg-gradient-primary {
-    background-image: linear-gradient(195deg, #EC407A 0%, #de203d 100%);
+    background-image: linear-gradient(195deg, #ED3736 0%, #de203d 100%);
   }
   
   .bg-gradient-secondary {
@@ -23002,7 +23002,7 @@
   }
   
   svg.text-primary .color-foreground {
-    fill: #EC407A;
+    fill: #ED3736;
   }
   
   svg.text-primary .color-background {
@@ -23128,7 +23128,7 @@
   }
   
   *.gradient-animation {
-    background: linear-gradient(-45deg, #49a3f1, #F44335, #fb8c00, #EC407A, #344767);
+    background: linear-gradient(-45deg, #49a3f1, #F44335, #fb8c00, #ED3736, #344767);
     background-size: 400% 400% !important;
     animation: gradient 10s ease infinite;
   }
@@ -24888,8 +24888,8 @@
   }
   
   .nav.nav-pills.nav-pills-primary .moving-tab .nav-link.active {
-    background: #EC407A;
-    color: #EC407A;
+    background: #ED3736;
+    color: #ED3736;
   }
   
   .nav.nav-pills.nav-pills-info {
@@ -25009,7 +25009,7 @@
   .pagination.pagination-primary .page-item.active>.page-link,
   .pagination.pagination-primary .page-item.active>.page-link:focus,
   .pagination.pagination-primary .page-item.active>.page-link:hover {
-    background-image: linear-gradient(195deg, #EC407A 0%, #de203d 100%);
+    background-image: linear-gradient(195deg, #ED3736 0%, #de203d 100%);
     border: none;
   }
   
@@ -26230,7 +26230,7 @@
   }
   
   .text-gradient.text-primary {
-    background-image: linear-gradient(195deg, #EC407A, #de203d);
+    background-image: linear-gradient(195deg, #ED3736, #de203d);
   }
   
   .text-gradient.text-info {
