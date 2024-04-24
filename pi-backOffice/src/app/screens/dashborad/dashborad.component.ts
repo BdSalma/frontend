@@ -23,7 +23,7 @@ export class DashboradComponent implements OnInit {
   categoryOptions: string[] = Object.keys(Category).filter(
     (key: any) => !isNaN(Number(Category[key]))
   );
-  categoryCounts: any; // Variable to store category counts from the backend
+  categoryCounts: any;
   candidatCounts: any;
   individuStatistics: any;
   societyStat: any;
@@ -48,10 +48,8 @@ export class DashboradComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.consumer.user;
-    console.log('userrrrrrrrrrrrrrr', this.user && this.user.role === 'Admin');
     this.packService.calculatePackIncomes().subscribe(
       (data) => {
-        console.log('we are in');
         this.packIncomes = data;
         console.log(this.packIncomes);
       },
@@ -59,8 +57,6 @@ export class DashboradComponent implements OnInit {
         console.log('Error fetching forum incomes:', error);
       }
     );
-    this.PieChartForUsers();
-    this.PieChartForReclamation();
     this.requestSupplyService.getIndividuStatistics().subscribe(
       (individuStatistics) => {
         this.individuStatistics = individuStatistics;
@@ -81,7 +77,6 @@ export class DashboradComponent implements OnInit {
         console.error('Error fetching society statistics:', error);
       }
     );
-
     this.forumService.calculateForumIncomes().subscribe(
       (data) => {
         this.forumIncomes = data;
@@ -90,17 +85,15 @@ export class DashboradComponent implements OnInit {
         console.log('Error fetching forum incomes:', error);
       }
     );
-
     this.invoiceService.calculateTotalAmountByIndividu(this.id).subscribe(
       (data: any) => {
         console.log('Total amount data:', data);
-        this.totalAmountByIndividu = data; // No need to access a property here, as the response itself should contain the total amount
+        this.totalAmountByIndividu = data;
       },
       (error) => {
         console.error('Error fetching total amount by individu:', error);
       }
     );
-
     this.offerService.getNbAcceptedOffer().subscribe(
       (average) => {
         this.OffreEnAttente = average;
@@ -109,14 +102,16 @@ export class DashboradComponent implements OnInit {
         console.log('Error fetching average offers per day:', error);
       }
     );
+    this.PieChartForUsers();
+    this.PieChartForReclamation();
     this.fetchCategoryCounts();
-    this.loadOffers(); // Load offers before fetching candidature counts and rendering the chart
+    this.loadOffers();
   }
   pieChartForIndividus(): void {
     const canvas = document.getElementById(
       'individuChart'
     ) as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d')!; // Add non-null assertion operator
+    const ctx = canvas.getContext('2d')!;
 
     const data = {
       labels: [
@@ -166,7 +161,7 @@ export class DashboradComponent implements OnInit {
   }
   pieChartForSociety(): void {
     const canvas = document.getElementById('societyChart') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d')!; // Add non-null assertion operator
+    const ctx = canvas.getContext('2d')!;
 
     const data = {
       labels: [
@@ -215,24 +210,20 @@ export class DashboradComponent implements OnInit {
   fetchCategoryCounts() {
     this.offerService.getOfferCountsByCategory().subscribe(
       (data: any) => {
-        this.categoryCounts = data; // Assign fetched data to categoryCounts variable
-        this.PieChartOfferByCategory(); // Call method to render pie chart with fetched data
+        this.categoryCounts = data;
+        this.PieChartOfferByCategory();
       },
       (error: any) => {
         console.error('Error fetching category counts:', error);
       }
     );
   }
-
   fetchCandidatureCounts() {
     if (!this.listOffer) {
-      // If listOffer is not populated, return or handle accordingly
       return;
     }
-
     this.offerService.getCandidaturesByOffer().subscribe(
       (data: any) => {
-        // Extract offer names and candidature counts from the response object
         const offerNames = Object.keys(data);
         const candidatureCounts = Object.values(data) as number[];
         this.PieChartCandidat(offerNames, candidatureCounts);
@@ -242,7 +233,6 @@ export class DashboradComponent implements OnInit {
       }
     );
   }
-
   PieChartOfferByCategory() {
     const myChartOfUsers = new Chart('pie-chart-offer', {
       type: 'pie',
@@ -260,7 +250,7 @@ export class DashboradComponent implements OnInit {
             ],
             data: this.categoryOptions.map(
               (option) => this.categoryCounts[option] || 0
-            ), // Use category counts data here
+            ),
             label: 'Offre par catégorie',
           },
         ],
@@ -270,7 +260,6 @@ export class DashboradComponent implements OnInit {
       },
     });
   }
-
   PieChartCandidat(offerNames: string[], candidatureCounts: number[]) {
     const myChartOfCandidat = new Chart('pie-chart-candidat', {
       type: 'pie',
@@ -296,12 +285,11 @@ export class DashboradComponent implements OnInit {
       },
     });
   }
-
   loadOffers() {
     this.offerService.getOffers().subscribe(
       (data) => {
         this.listOffer = data;
-        this.fetchCandidatureCounts(); // Call fetchCandidatureCounts once listOffer is populated
+        this.fetchCandidatureCounts();
       },
       (error) => {
         console.log(error);
@@ -346,7 +334,6 @@ export class DashboradComponent implements OnInit {
       },
     });
   }
-
   PieChartForReclamation() {
     this.reclamationService.getCountReclamationByType().subscribe({
       next: (response: any) => {

@@ -48,10 +48,8 @@ import { DetailOfferComponent } from './offers management/detail-offer/detail-of
 import { OfferBySocietyComponent } from './offers management/offer-by-society/offer-by-society.component';
 import { IndexOffersComponent } from './offers management/index-offers/index-offers.component';
 import { PageOffersComponent } from './offers management/page-offers/page-offers.component';
-import { ListOffersComponent } from './offers management/list-offers/list-offers.component';
 import { FeedBackComponent } from './reclamation management/feed-back/feed-back.component';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AllRequestsIndexComponent } from './requests management/all-requests-index/all-requests-index.component';
 import { OldRequestsComponent } from './requests management/old-requests/old-requests.component';
 import { OldInvoicesComponent } from './invoices management/old-invoices/old-invoices.component';
@@ -70,7 +68,6 @@ import { InterviewValiderComponent } from './interview/interview-valider/intervi
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
-import { UserService } from './service/user-service.service';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 const routes: Routes = [
@@ -125,7 +122,6 @@ const routes: Routes = [
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'contact', component: ContactUsComponent },
   { path: 'about', component: AboutUsComponent },
-  { path: 'reclamation', component: ReclamationComponent },
   {
     path: 'createDevisAndAssignToRequest/:requestId',
     component: AddDevisComponent,
