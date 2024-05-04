@@ -6,7 +6,6 @@
     <div class="col-9">
       <app-navbar [currentScreen]="'Reclamation'"></app-navbar>
       <main class="main-content position-relative border-radius-lg">
-        <br />
         <div class="row">
           <div class="col-12">
             <div class="card my-4">
@@ -26,12 +25,10 @@
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                       
-
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
-                          Description
+                          Utilisateur
                         </th>
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
@@ -47,35 +44,46 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let reclamation of reclamations">
-                       
-
                         <td class="align-middle text-center text-sm">
-                          <span  class="text-secondary  font-weight-bold">{{
-                            reclamation.description
+                          <span class="text-secondary font-weight-bold">{{
+                            reclamation?.user?.username
                           }}</span>
                         </td>
-                        <!-- YourComponent.component.html -->
-
                         <td class="align-middle text-center">
                           <span
                             *ngIf="reclamation.typeReclamation !== undefined"
-                            class="text-secondary  font-weight-bold"
+                            class="text-secondary font-weight-bold"
                           >
                             {{ reclamation.typeReclamation }}
                           </span>
                         </td>
-
                         <td class="align-middle text-center">
-                         
-                          <button class="btn btn-link text-danger text-gradient px-3 mb-0" (click)="deleteReclamation(reclamation)">
-                            <i class="material-icons text-sm me-2">delete</i> Supprimer
+                          <button
+                            class="btn btn-link text-danger text-gradient px-3 mb-0"
+                            (click)="deleteReclamation(reclamation)"
+                          >
+                            <i class="material-icons text-sm me-2">delete</i>
+                            Supprimer
                           </button>
-                          
-                          <button class="btn btn-link text-success text-gradient px-3 mb-0" (click)="ReviewReclamation(reclamation.user)">
-                            <i class="material-icons text-sm me-2">assignment_turned_in</i> Review
+                          <button
+                            class="btn btn-link text-success text-gradient px-3 mb-0"
+                            (click)="openDialog(reclamation.user)"
+                          >
+                            <i class="material-icons text-sm me-2"
+                              >assignment_turned_in</i
+                            >
+                            Review
                           </button>
-                          
-                          
+                          <button
+                            class="btn btn-link text-info text-gradient px-3 mb-0"
+                            [routerLink]="[
+                              '/reclamation-details',
+                              reclamation.id
+                            ]"
+                          >
+                            <i class="material-icons text-sm me-2">info</i>
+                            Plus details
+                          </button>
                         </td>
                       </tr>
                     </tbody>
@@ -85,7 +93,12 @@
             </div>
           </div>
         </div>
-
+        <app-popup-dialog
+          [id]="currentUser"
+          [title]="'Review' | translate"
+          [content]="'Do you want to submit the review' | translate"
+          (send)="handleDialog($event)"
+        ></app-popup-dialog>
         <app-footer-index></app-footer-index>
       </main>
     </div>

@@ -18,7 +18,7 @@ Chart.register(...registerables);
 })
 export class DashboradComponent implements OnInit {
   averageOffersPerDay: any;
-  totalUsers: number=0;
+  totalUsers: number = 0;
   listOffer!: any;
   OffreEnAttente: any;
   categoryOptions: string[] = Object.keys(Category).filter(
@@ -117,10 +117,10 @@ export class DashboradComponent implements OnInit {
     const data = {
       labels: [
         'Demandes en cours',
-      'Devis acceptés',
-      'Devis refusés',
-      'Factures acceptées',
-      'Factures refusées',
+        'Devis acceptés',
+        'Devis refusés',
+        'Factures acceptées',
+        'Factures refusées',
       ],
       datasets: [
         {
@@ -163,7 +163,7 @@ export class DashboradComponent implements OnInit {
   pieChartForSociety(): void {
     const canvas = document.getElementById('societyChart') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d')!;
-  
+
     const data = {
       labels: [
         'Devis acceptés',
@@ -180,16 +180,11 @@ export class DashboradComponent implements OnInit {
             this.societyStat['AcceptedInvoices'],
             this.societyStat['RefusedInvoices'],
           ],
-          backgroundColor: [
-            '#e63946',
-            '#fb8500',
-            '#ffb703',
-            '#023047',
-          ],
+          backgroundColor: ['#e63946', '#fb8500', '#ffb703', '#023047'],
         },
       ],
     };
-  
+
     const options = {
       scales: {
         y: {
@@ -197,14 +192,14 @@ export class DashboradComponent implements OnInit {
         },
       },
     };
-  
+
     new Chart(ctx, {
       type: 'pie',
       data: data,
       options: options,
     });
   }
-  
+
   fetchCategoryCounts() {
     this.offerService.getOfferCountsByCategory().subscribe(
       (data: any) => {
@@ -232,7 +227,6 @@ export class DashboradComponent implements OnInit {
     );
   }
   PieChartOfferByCategory() {
-    
     const myChartOfUsers = new Chart('pie-chart-offer', {
       type: 'pie',
       data: {
@@ -258,13 +252,13 @@ export class DashboradComponent implements OnInit {
         responsive: true,
         scales: {
           x: {
-            beginAtZero: true
-          }
-        }
+            beginAtZero: true,
+          },
+        },
       },
     });
   }
-  
+
   PieChartCandidat(offerNames: string[], candidatureCounts: number[]) {
     const myChartOfCandidat = new Chart('pie-chart-candidat', {
       type: 'pie',
@@ -308,13 +302,13 @@ export class DashboradComponent implements OnInit {
         console.log('Response:', response);
         const roles = Object.keys(response);
         const counts: number[] = Object.values(response); // Explicitly typed as number[]
-  
+
         const totalUsers = counts.reduce((total, count) => total + count, 0);
         console.log('Total Users:', totalUsers);
-  
+
         // Update the totalUsers property
         this.totalUsers = totalUsers;
-  
+
         const backgroundColors = [
           '#e63946',
           '#fb8500',
@@ -347,16 +341,14 @@ export class DashboradComponent implements OnInit {
       },
     });
   }
-  
-  
-  
+
   PieChartForReclamation() {
     this.reclamationService.getCountReclamationByType().subscribe({
       next: (response: any) => {
         console.log('Response:', response);
         const roles = Object.keys(response);
         const counts = Object.values(response);
-        const backgroundColors = [  '#8ecae6','#023047'];
+        const backgroundColors = ['#8ecae6', '#023047'];
         const myChartOfUsers = new Chart('reclamation-chart', {
           type: 'doughnut',
           data: {

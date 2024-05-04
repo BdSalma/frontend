@@ -17,7 +17,9 @@
                     <i class="material-icons opacity-10">diamond</i>
                   </div>
                   <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">Vente des packs</p>
+                    <p class="text-sm mb-0 text-capitalize">
+                      {{ "Vente des packs" | translate }}
+                    </p>
                     <h4 class="mb-0">{{ forumIncomes.SumPrixPrcks }}</h4>
                   </div>
                 </div>
@@ -36,7 +38,7 @@
                     >
                       {{ forumIncomes.TauxAugmentation }}%
                     </span>
-                    que l'année dernière
+                    {{ "que l'année dernière" | translate }}
                   </p>
                 </div>
               </div>
@@ -55,7 +57,9 @@
                     <a><i class="material-icons opacity-10">description</i></a>
                   </div>
                   <div class="text-end pt-1">
-                    <p class="text-sm mb-0">Montant total à payer :</p>
+                    <p class="text-sm mb-0">
+                      {{ "Montant total à payer :" | translate }}
+                    </p>
 
                     <h4 class="mb-0">
                       <span
@@ -73,7 +77,7 @@
                     <span class="text-danger text-sm font-weight-bolder">
                       {{ individuStatistics.AcceptedDevis }}
                     </span>
-                    devis a payé
+                    {{ "devis a payé" | translate }}
                   </p>
                 </div>
               </div>
@@ -90,7 +94,9 @@
                     >
                   </div>
                   <div class="text-end pt-1">
-                    <p class="text-sm mb-0">Les offres en attentes</p>
+                    <p class="text-sm mb-0">
+                      {{ "Les offres en attentes" | translate }}
+                    </p>
                     <br />
                     <h4 class="mb-0">+{{ OffreEnAttente }}</h4>
                   </div>
@@ -102,11 +108,15 @@
             <div class="col-xl-3 col-sm-6">
               <div class="card">
                 <div class="card-header p-3 pt-2">
-                  <div class="icon icon-lg icon-shape bg-gradient-danger shadow-danger text-center border-radius-xl mt-n4 position-absolute">
+                  <div
+                    class="icon icon-lg icon-shape bg-gradient-danger shadow-danger text-center border-radius-xl mt-n4 position-absolute"
+                  >
                     <i class="material-icons opacity-10">people</i>
                   </div>
                   <div class="text-end pt-1">
-                    <p class="text-sm mb-0">Total Users</p>
+                    <p class="text-sm mb-0">
+                      {{ "Nombre des utilisateurs" | translate }}
+                    </p>
                     <br />
                     <h4 class="mb-0">{{ totalUsers }}</h4>
                   </div>
@@ -115,13 +125,12 @@
                 <div class="card-footer p-3"></div>
               </div>
             </div>
-            
           </div>
           <div class="row">
             <div class="col-lg-4 col-md-6 mt-4 mb-4">
               <div class="card z-index-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h4 class="mb-0">Offres par Categorie</h4>
+                  <h4 class="mb-0">{{ "Offres par Categorie" | translate }}</h4>
 
                   <canvas id="pie-chart-offer"></canvas>
                 </div>
@@ -130,8 +139,9 @@
             <div class="col-lg-4 col-md-6 mt-4 mb-4">
               <div class="card z-index-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h4 class="mb-0">Condidatures par Offre</h4>
-
+                  <h4 class="mb-0">
+                    {{ "Condidatures par Offre" | translate }}
+                  </h4>
                   <canvas id="pie-chart-candidat"></canvas>
                 </div>
               </div>
@@ -141,7 +151,7 @@
               <div class="card z-index-2">
                 <div class="card z-index-2">
                   <div class="card-body d-flex flex-column align-items-center">
-                    <h4 class="mb-0">Suivi des demandes</h4>
+                    <h4 class="mb-0">{{ "Suivi des demandes" | translate }}</h4>
 
                     <canvas
                       id="individuChart"
@@ -157,7 +167,9 @@
             <div class="col-lg-4 col-md-6 mt-4 mb-4">
               <div class="card z-index-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h4 class="mb-0">Nombre d'utilisateurs</h4>
+                  <h4 class="mb-0">
+                    {{ "Nombre d'utilisateurs par role" | translate }}
+                  </h4>
                   <canvas id="pie-chart" class="mt-3"></canvas>
                 </div>
               </div>
@@ -165,7 +177,9 @@
             <div class="col-lg-4 col-md-6 mt-4 mb-4">
               <div class="card z-index-2">
                 <div class="card-body d-flex flex-column align-items-center">
-                  <h4 class="mb-0">Reclamation</h4>
+                  <h4 class="mb-0 text-center">
+                    {{ "Nombre des Réclamation par type" | translate }}
+                  </h4>
                   <canvas id="reclamation-chart" class="mt-3"></canvas>
                 </div>
               </div>
@@ -173,23 +187,18 @@
             <div class="col-lg-4 col-md-6 mt-4 mb-4">
               <div class="card h-100">
                 <div class="card-header pb-0">
-                  <h6>Suivi des pack</h6>
-                  <p class="text-sm">
-                    <i
-                      class="fa fa-arrow-up text-success"
-                      aria-hidden="true"
-                    ></i>
-                    <span class="font-weight-bold">24%</span> this month
-                  </p>
+                  <h6>{{ "Suivi des pack" | translate }}</h6>
                 </div>
                 <div class="card-body p-3">
                   <div class="timeline timeline-one-side">
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-success text-gradient"
-                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/diamant.png"
-                          alt="Diamond Logo"></i
-                        >
+                          ><img
+                            style="width: 30px; height: 30px"
+                            src="../../../assets/img/icons/diamant.png"
+                            alt="Diamond Logo"
+                        /></i>
                       </span>
                       <div class="timeline-content">
                         <h6 class="text-dark text-sm font-weight-bold mb-0">
@@ -198,48 +207,58 @@
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                        {{packIncomes.Platinum.Percentage| number:'1.2-2' }}%
-                    
+                          {{
+                            packIncomes.Platinum.Percentage | number : "1.2-2"
+                          }}%
                         </p>
                         <p
-                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
-                      >
-                     
-                      {{packIncomes.Diamond.Revenue | currency:'TND':'symbol':'1.2-2' }}
-                      </p>
+                          class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                        >
+                          {{
+                            packIncomes.Diamond.Revenue
+                              | currency : "TND" : "symbol" : "1.2-2"
+                          }}
+                        </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-danger text-gradient"
-                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/platinum.png"
-                          alt="Diamond Logo"></i
-                        >
+                          ><img
+                            style="width: 30px; height: 30px"
+                            src="../../../assets/img/icons/platinum.png"
+                            alt="Diamond Logo"
+                        /></i>
                       </span>
                       <div class="timeline-content">
                         <h6 class="text-dark text-sm font-weight-bold mb-0">
-                         Platinum
+                          Platinum
                         </h6>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                        {{packIncomes.Platinum.Percentage| number:'1.2-2' }}%
-                        
+                          {{
+                            packIncomes.Platinum.Percentage | number : "1.2-2"
+                          }}%
                         </p>
                         <p
-                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
-                      >
-                    
-                      {{packIncomes.Platinum.Revenue | currency:'TND':'symbol':'1.2-2' }}
-                      </p>
+                          class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                        >
+                          {{
+                            packIncomes.Platinum.Revenue
+                              | currency : "TND" : "symbol" : "1.2-2"
+                          }}
+                        </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-info text-gradient"
-                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/lingot-dor.png"
-                          alt="Diamond Logo"></i
-                        >
+                          ><img
+                            style="width: 30px; height: 30px"
+                            src="../../../assets/img/icons/lingot-dor.png"
+                            alt="Diamond Logo"
+                        /></i>
                       </span>
                       <div class="timeline-content">
                         <h5 class="text-dark text-sm font-weight-bold mb-0">
@@ -248,65 +267,77 @@
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                          {{packIncomes.Gold.Percentage| number:'1.2-2' }}%
-                        
+                          {{ packIncomes.Gold.Percentage | number : "1.2-2" }}%
                         </p>
                         <p
-                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
-                      >
-                        {{packIncomes.Gold.Revenue| currency:'TND':'symbol':'1.2-2' }}%
-                      
-                      </p>
+                          class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                        >
+                          {{
+                            packIncomes.Gold.Revenue
+                              | currency : "TND" : "symbol" : "1.2-2"
+                          }}%
+                        </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-warning text-gradient"
-                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/silver.png"
-                          alt="Diamond Logo"></i
-                        >
+                          ><img
+                            style="width: 30px; height: 30px"
+                            src="../../../assets/img/icons/silver.png"
+                            alt="Diamond Logo"
+                        /></i>
                       </span>
                       <div class="timeline-content">
                         <h5 class="text-dark text-sm font-weight-bold mb-0">
-                         Silver
+                          Silver
                         </h5>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                        {{packIncomes.Silver.Percentage| number:'1.2-2' }}%
-                       
+                          {{
+                            packIncomes.Silver.Percentage | number : "1.2-2"
+                          }}%
                         </p>
                         <p
-                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
-                      >
-                     
-                      {{packIncomes.Silver.Revenue | currency:'TND':'symbol':'1.2-2' }}
-                      </p>
+                          class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                        >
+                          {{
+                            packIncomes.Silver.Revenue
+                              | currency : "TND" : "symbol" : "1.2-2"
+                          }}
+                        </p>
                       </div>
                     </div>
                     <div class="timeline-block mb-3">
                       <span class="timeline-step">
                         <i class="material-icons text-primary text-gradient"
-                          ><img style="width: 30px; height: 30px;" src="../../../assets/img/icons/star_616489.png"
-                          alt="Diamond Logo"></i
-                        >
+                          ><img
+                            style="width: 30px; height: 30px"
+                            src="../../../assets/img/icons/star_616489.png"
+                            alt="Diamond Logo"
+                        /></i>
                       </span>
                       <div class="timeline-content">
                         <h5 class="text-dark text-sm font-weight-bold mb-0">
-                         Personalisé
+                          {{ "Personalisé" | translate }}
                         </h5>
                         <p
                           class="text-secondary font-weight-bold text-xs mt-1 mb-0"
                         >
-                        {{packIncomes.Personalized.Percentage| number:'1.2-2' }}%
-                       
+                          {{
+                            packIncomes.Personalized.Percentage
+                              | number : "1.2-2"
+                          }}%
                         </p>
                         <p
-                        class="text-secondary font-weight-bold text-xs mt-1 mb-0"
-                      >
-                     
-                      {{packIncomes.Personalized.Revenue | currency:'TND':'symbol':'1.2-2' }}
-                      </p>
+                          class="text-secondary font-weight-bold text-xs mt-1 mb-0"
+                        >
+                          {{
+                            packIncomes.Personalized.Revenue
+                              | currency : "TND" : "symbol" : "1.2-2"
+                          }}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -314,7 +345,6 @@
               </div>
             </div>
           </div>
-          
         </div>
         <app-footer-index></app-footer-index>
       </main>

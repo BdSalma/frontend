@@ -70,6 +70,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { ReclamationDetailsComponent } from './reclamation management/reclamation-details/reclamation-details.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },
@@ -90,7 +91,7 @@ const routes: Routes = [
     component: DashboradComponent,
     canActivate: [AuthGuardGuard],
   },
-  
+
   {
     path: 'supplyrequests',
     component: RequestsComponent,
@@ -115,7 +116,10 @@ const routes: Routes = [
   { path: 'editInvoice/:id', component: UpdateInvoiceComponent },
   { path: 'editDevis/:id', component: UpdateDevisComponent },
   { path: 'editRequest/:id', component: UpdateRequestComponent },
-  { path: 'createDevisAndAssignToRequest/:requestId', component: AddDevisComponent },
+  {
+    path: 'createDevisAndAssignToRequest/:requestId',
+    component: AddDevisComponent,
+  },
   { path: 'supply-requests', component: RequestsIndexComponent },
   { path: 'my-invoices', component: MyInvoicesComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
@@ -131,6 +135,7 @@ const routes: Routes = [
     component: ReclamationComponent,
     canActivate: [AuthGuardGuard],
   },
+  { path: 'reclamation-details/:id', component: ReclamationDetailsComponent },
   { path: 'feed', component: FeedBackComponent },
   {
     path: 'forumList',
@@ -162,7 +167,6 @@ const routes: Routes = [
   { path: 'MyOldInvoices', component: MyOldInvoicesComponent },
   { path: 'MyOldDevis', component: OldDevisBySocietyComponent },
 
-
   {
     path: 'individuals',
     component: IndividualsComponent,
@@ -190,34 +194,44 @@ const routes: Routes = [
   {
     path: 'update-password',
     component: UpdatePassowrdComponent,
-    // canActivate: [AuthGuardGuard],
   },
   {
     path: 'forget-password',
     component: ResetPassowrdComponent,
-    // canActivate: [AuthGuardGuard],
   },
-  
-{path:'candidat/:id',component:CandidatureComponent},
-{path:'updateC/:id',component:UpdateComponent},
-{path:'addInterv/:id',component:InterviewComponent},
-{path:'listInterv/:id',component:ListInterviewComponent},
-{path:'listCandidat',component:ListCandidatureComponent,canActivate: [AuthGuardGuard]},
-{path:'postuler/:id',component:PostulerComponent},
 
-{path:'updateI/:id',component:UpdateInterviewComponent},
-{path:'detail-candidat/:id',component:DetailCandidatComponent},
-{path: 'user-details/:id',component: UserDetailsComponent,},
-{path: 'associations',component: AssociationsComponent,canActivate: [AuthGuardGuard],},
-{path: 'profile',component: ProfileComponent,canActivate: [AuthGuardGuard],},
-{path: 'update-profile',component: UpdateProfileComponent,canActivate: [AuthGuardGuard],},
+  { path: 'candidat/:id', component: CandidatureComponent },
+  { path: 'updateC/:id', component: UpdateComponent },
+  { path: 'addInterv/:id', component: InterviewComponent },
+  { path: 'listInterv/:id', component: ListInterviewComponent },
+  {
+    path: 'listCandidat',
+    component: ListCandidatureComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  { path: 'postuler/:id', component: PostulerComponent },
 
+  { path: 'updateI/:id', component: UpdateInterviewComponent },
+  { path: 'detail-candidat/:id', component: DetailCandidatComponent },
+  { path: 'user-details/:id', component: UserDetailsComponent },
+  {
+    path: 'associations',
+    component: AssociationsComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
+  {
+    path: 'update-profile',
+    component: UpdateProfileComponent,
+    canActivate: [AuthGuardGuard],
+  },
   { path: 'signIn', component: SignInComponent },
   { path: 'signUp', component: SignUpComponent },
-  {path:'valideInterview/:id',component:InterviewValiderComponent},
-
-
-
+  { path: 'valideInterview/:id', component: InterviewValiderComponent },
   { path: 'emailVerification', component: EmailVerificationComponent },
   { path: 'notApproved', component: NotApprovedComponent },
   { path: 'contact', component: ContactUsComponent },
@@ -230,10 +244,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule,RouterModule.forRoot(routes)],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
- 
-  }
-    
+export class AppRoutingModule {}

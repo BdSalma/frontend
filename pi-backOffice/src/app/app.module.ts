@@ -91,6 +91,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 import { CommonModule } from '@angular/common';
+import { ReclamationDetailsComponent } from './reclamation management/reclamation-details/reclamation-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -172,6 +173,7 @@ import { CommonModule } from '@angular/common';
     SponsorEditComponent,
     UserListComponent,
     UserFormComponent,
+    ReclamationDetailsComponent,
   ],
   imports: [
     BrowserModule,

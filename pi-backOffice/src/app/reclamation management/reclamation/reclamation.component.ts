@@ -8,24 +8,23 @@ import { Authentication } from '../../service/authentication.service';
 @Component({
   selector: 'app-reclamation',
   templateUrl: './reclamation.component.html',
-  styleUrls: ['./reclamation.component.css']
+  styleUrls: ['./reclamation.component.css'],
 })
 export class ReclamationComponent {
   constructor(
     private reclamationService: ReclamationService,
-    private auth : Authentication
+    private auth: Authentication
   ) {}
-  reclamations : Reclamation[] = [];
+  reclamations: Reclamation[] = [];
   reclamationType = TypeReclamation;
-  users : any[]=[];
+  users: any[] = [];
+  currentUser: User | undefined;
 
   ngOnInit(): void {
     this.reclamationService.getReclamation().subscribe((data) => {
-      console.log(data);
       this.reclamations = data;
     });
     this.auth.getAllUsers().subscribe((data) => {
-      console.log(data);
       this.users = data;
     });
   }
@@ -53,15 +52,24 @@ export class ReclamationComponent {
       );
   }
 
-  ReviewReclamation(user : User){
+  ReviewReclamation(user: User) {
     this.reclamationService
-    .Review(user.id)
-    .subscribe(
-      () =>
-        (this.users = this.users.filter(
-          (rec: User) => rec != user
-        ))
-    );
+      .Review(user.id)
+      .subscribe(
+        () => (this.users = this.users.filter((rec: User) => rec != user))
+      );
+  }
+
+  openDialog(user: User) {
+    this.currentUser = user;
+    const modelDiv = document.getElementById('popup');
+    if (modelDiv != null) {
+      modelDiv.style.display = 'block';
+    }
+  }
+
+  handleDialog(event: any) {
+    this.ReviewReclamation(event);
   }
 
   addFavorite(reclamation: Reclamation) {
@@ -74,5 +82,4 @@ export class ReclamationComponent {
           ))
       );
   }
-  
 }
