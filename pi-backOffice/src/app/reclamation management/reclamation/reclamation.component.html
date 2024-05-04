@@ -26,11 +26,7 @@
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <th
-                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
-                          ID
-                        </th>
+                       
 
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
@@ -51,12 +47,10 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let reclamation of reclamations">
-                        <td>
-                          <h6 class="mb-0 text-sm">{{ reclamation.id }}</h6>
-                        </td>
+                       
 
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary">{{
+                          <span  class="text-secondary  font-weight-bold">{{
                             reclamation.description
                           }}</span>
                         </td>
@@ -65,33 +59,23 @@
                         <td class="align-middle text-center">
                           <span
                             *ngIf="reclamation.typeReclamation !== undefined"
-                            class="text-secondary text-xs font-weight-bold"
+                            class="text-secondary  font-weight-bold"
                           >
                             {{ reclamation.typeReclamation }}
                           </span>
                         </td>
 
                         <td class="align-middle text-center">
-                          <a
-                            href="javascript:;"
-                            class="text-center text-secondary font-weight-bold text-xs"
-                            style="color: brown !important"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                            (click)="deleteReclamation(reclamation)"
-                          >
-                            Delete
-                          </a>
-                          <a
-                            href="javascript:;"
-                            style="color: darkgreen !important"
-                            class="text-center text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                            (click)="ReviewReclamation(reclamation.user)"
-                          >
-                            Review
-                          </a>
+                         
+                          <button class="btn btn-link text-danger text-gradient px-3 mb-0" (click)="deleteReclamation(reclamation)">
+                            <i class="material-icons text-sm me-2">delete</i> Supprimer
+                          </button>
+                          
+                          <button class="btn btn-link text-success text-gradient px-3 mb-0" (click)="ReviewReclamation(reclamation.user)">
+                            <i class="material-icons text-sm me-2">assignment_turned_in</i> Review
+                          </button>
+                          
+                          
                         </td>
                       </tr>
                     </tbody>

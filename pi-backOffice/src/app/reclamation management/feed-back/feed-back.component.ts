@@ -63,7 +63,7 @@ export class FeedBackComponent {
 
 
   currentPage: number = 1;
-  itemsPerPage: number = 9;
+  itemsPerPage: number = 3;
   get startIndex(): number {
     return (this.currentPage - 1) * this.itemsPerPage;
   }

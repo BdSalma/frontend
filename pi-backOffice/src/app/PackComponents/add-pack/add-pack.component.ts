@@ -52,7 +52,7 @@ export class AddPackComponent {
     this.packService.addpack(this.pack,this.id).subscribe({
       next: () => {
         this.isLoading = false;
-        this.toastr.success('Le pack a été modifié avec succes');
+        this.toastr.success('Le pack a été ajouté avec succes');
         this.router.navigate(['/packList']);
       },
       error: (error) => {

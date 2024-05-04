@@ -4,43 +4,30 @@
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-9">
-      <app-navbar></app-navbar>
+      <app-navbar [currentScreen]="'Offres'"></app-navbar>
       <main class="main-content position-relative border-radius-lg">
-        <div class="col-md-12 mb-lg-0 mb-4">
-          <div class="card mt-4">
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Liste des offres</h6>
-                </div>
-                
-              </div>
-            </div>
-            <div class="card-body p-2"></div>
-          </div>
-        </div>
+        
         <br />
         <div class="row">
           <div class="col-12">
             <div class="card my-4">
               <div
-                class="card-header p-0 position-relative mt-n4 mx-3 z-index-1"
+              class="card-header p-0 position-relative mt-n4 mx-3 z-index-2"
+            >
+              <div
+                class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
               >
-                <div
-                  class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 px-3"
-                >
-                </div>
+                <h6 class="text-white text-capitalize ps-3">
+                  Liste des offres 
+                </h6>
               </div>
+            </div>
               <div class="card-body px-0 pb-2">
                 <div class="table-responsive p-0">
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
-                          Etat
-                        </th>
+                        
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
@@ -72,6 +59,11 @@
                       Durée
                     </th>
                     <th
+                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        >
+                          Etat
+                        </th>
+                    <th
                       class="text-start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                     >
                       Actions
@@ -81,14 +73,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let offer of listOffer">
-                        <td>
-                          <span class="badge badge-sm"
-    [class.bg-gradient-success]="offer.etatOffer === 'Approuvé'"
-    [class.bg-gradient-warning]="offer.etatOffer === 'Enattente'"
-    [class.bg-gradient-danger]="offer.etatOffer === 'réfusée'">
-    {{ offer.etatOffer }}
-</span>
-                        </td>
+
                         <td>
                           <h6 class="mb-0 text-sm text-center">
                             {{ offer?.offerName ?? "_" }}
@@ -119,23 +104,28 @@
                             {{ offer?.duree }}
                           </h6>
                         </td>
+                        <td>
+                          <span class="badge badge-sm"
+    [class.bg-gradient-success]="offer.etatOffer === 'Approuvé'"
+    [class.bg-gradient-warning]="offer.etatOffer === 'Enattente'"
+    [class.bg-gradient-danger]="offer.etatOffer === 'réfusée'">
+    {{ offer.etatOffer }}
+</span>
+                        </td>
                         <td class="align-middle">
-                          <td class="align-middle">
-                            <div class="ms-auto text-end">
-                              <button class="btn btn-link text-success text-gradient px-3 mb-0" href="javascript:;" (click)="acceptOffer(offer.idOffre)">
-                                <i class="fas fa-check-circle text-sm me-2"></i> Valider
-                              </button>
+                          <div class="ms-auto text-end">
+                            <button class="btn btn-link text-success text-gradient px-3 mb-0" href="javascript:;" (click)="acceptOffer(offer.idOffre)">
+                              <i class="fas fa-check-circle text-sm me-2"></i> Valider
+                            </button>
                           
-                              <button class="btn btn-link text-warning text-gradient px-3 mb-0" href="javascript:;" (click)="refuseOffer(offer.idOffre)">
-                                <i class="fas fa-times-circle text-sm me-2"></i> Annuler
-                              </button>
-                              <button
-                            class="btn btn-dark btn-sm"
-                            [routerLink]="['/DetailOffre', offer.idOffre]"
-                          >
-                            details
-                          </button>
-                            </div>
+                            <button class="btn btn-link text-warning text-gradient px-3 mb-0" href="javascript:;" (click)="refuseOffer(offer.idOffre)">
+                              <i class="fas fa-times-circle text-sm me-2"></i> Annuler
+                            </button>
+                          
+                            <button class="btn btn-link text-dark text-decoration-none px-3 mb-0" [routerLink]="['/DetailOffre', offer.idOffre]">
+                              <i class="fas fa-info-circle text-sm me-2"></i> Détails
+                            </button>
+                          </div>
                           
                       </td>
 

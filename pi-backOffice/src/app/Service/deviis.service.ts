@@ -84,6 +84,7 @@ updateDevisStatus(id: number, newStatus: string) {
 }
 
 getFileUrl(fileName: string): string {
+  
   // Assuming your backend endpoint for serving files is '/devis/file'
   return `http://localhost:8087/devis/file/${fileName}`;
 }

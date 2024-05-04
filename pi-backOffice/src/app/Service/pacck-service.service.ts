@@ -95,7 +95,6 @@ export class PackServiceService {
     console.log(pack);
     const url = `${this.apiURL}/createPersonalizedPackPrice/${standId}`;
     console.log(url);
-    
     return this.http.post<Pack>(url, pack, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`

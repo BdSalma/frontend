@@ -8,48 +8,11 @@
   </div>
   <app-header></app-header>
   <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
-    <section class="pt-3 pb-4" id="count-stats">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9 mx-auto py-3">
-            <div class="row">
-              <div class="col-md-4 position-relative">
-                <div class="p-3 text-center">
-                  <h1 class="text-gradient text-primary">
-                    <span id="state1" countTo="70">22</span>+
-                  </h1>
-                  <h5 class="mt-3">Reviews</h5>
-                </div>
-                <hr class="vertical dark" />
-              </div>
-              <div class="col-md-4 position-relative">
-                <div class="p-3 text-center">
-                  <h1 class="text-gradient text-primary">
-                    <span id="state2" countTo="15">1000</span>+
-                  </h1>
-                  <h5 class="mt-3">Active accounts</h5>
-                </div>
-                <hr class="vertical dark" />
-              </div>
-              <div class="col-md-4">
-                <div class="p-3 text-center">
-                  <h1 class="text-gradient text-primary" id="state3" countTo="4">
-                    50+
-                  </h1>
-                  <h5 class="mt-3">Sponsors</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
 
     <section class="py-7">
-      <div class="button-container">
-        <button routerLink="favorite" class="custom-button col-md-4 ">Favorites</button>
-      </div>
+     
       <div class="container">
         <div class="row mt-6">
           <div class="col-lg-4 col-md-8" *ngFor="
@@ -83,13 +46,16 @@
           </div>
         </div>
         <div class="pagination">
-          <button class="btn btn-link" (click)="prevPage()" [disabled]="currentPage === 1">
+          <button class="btn btn-link" (click)="prevPage()" [disabled]="currentPage === 1" style="color: black;">
             <i class="fas fa-chevron-left"></i> Previous
           </button>
           <span>{{ currentPage }} / {{ totalPages() }}</span>
-          <button class="btn btn-link" (click)="nextPage()" [disabled]="currentPage === totalPages()">
+          <button class="btn btn-link" (click)="nextPage()" [disabled]="currentPage === totalPages()" style="color: black;">
             Next <i class="fas fa-chevron-right"></i>
           </button>
+        </div>
+        <div class="button-container">
+          <button routerLink="favorite" class="btn bg-gradient-dark">Favorites</button>
         </div>
 
       </div>

@@ -69,20 +69,20 @@
                       <tbody>
                         <tr *ngFor="let request of listRequests">
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.quantity}}</span>
+                            <span class="text-secondary text-sm font-weight-bold">{{request.quantity}}</span>
                           </td>
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.category}}</span>
+                            <span class="text-secondary text-sm font-weight-bold">{{request.category}}</span>
                           </td>
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.date}}</span>
+                            <span class="text-secondary text-sm font-weight-bold">{{request.date}}</span>
                           </td>
                          
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.validity}}</span>
+                            <span class="text-secondary text-sm font-weight-bold">{{request.validity}}</span>
                           </td>
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.description}}</span>
+                            <span class="text-secondary text-sm font-weight-bold">{{request.description}}</span>
                           </td>
                           <td class="align-middle">
                             <button mat-raised-button color="warn" class="btn btn-link text-danger text-gradient px-3 mb-0" (click)="confirmDelete(request.idRequestSupply)">

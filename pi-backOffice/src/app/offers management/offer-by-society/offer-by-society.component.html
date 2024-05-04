@@ -4,7 +4,7 @@
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-9">
-      <app-navbar></app-navbar>
+      <app-navbar [currentScreen]="'Offres'"></app-navbar>
       <main class="main-content position-relative border-radius-lg">
         <div class="col-md-12 mb-lg-0 mb-4">
           <div class="card mt-4">
@@ -18,7 +18,7 @@
                     class="btn bg-gradient-dark mb-0"
                     routerLink="/addOffer"
                     ><i class="material-icons text-lg">link</i
-                    ><span class="ms-1">Ajouter</span></a
+                    ><span class="ms-1">Ajouter offre</span></a
                   >
                 </div>
               </div>
@@ -51,11 +51,7 @@
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
-                          Etat
-                        </th>
+                       
                         <th
                           class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                         >
@@ -81,16 +77,23 @@
                       >
                         Profil
                       </th>
+                      
                       <th
                       class="text-start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                     >
                       Durée
                     </th>
                     <th
+                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                  >
+                    Etat
+                  </th>
+                    <th
                       class="text-start text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                     >
                       Actions
                     </th>
+                    
                         <th class="text-secondary opacity-7"></th>
                         
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Candidature</th>
@@ -99,14 +102,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let offer of listOffer">
-                        <td>
-                          <span class="badge badge-sm"
-    [class.bg-gradient-success]="offer.etatOffer === 'Approuvé'"
-    [class.bg-gradient-warning]="offer.etatOffer === 'Enattente'"
-    [class.bg-gradient-danger]="offer.etatOffer === 'réfusée'">
-    {{ offer.etatOffer }}
-</span>
-                        </td>
+                       
                         <td>
                           <h6 class="mb-0 text-sm text-center">
                             {{ offer?.offerName ?? "_" }}
@@ -136,6 +132,14 @@
                           <h6 class="mb-0 text-sm text-center">
                             {{ offer?.duree }}
                           </h6>
+                        </td>
+                        <td>
+                          <span class="badge badge-sm"
+    [class.bg-gradient-success]="offer.etatOffer === 'Approuvé'"
+    [class.bg-gradient-warning]="offer.etatOffer === 'Enattente'"
+    [class.bg-gradient-danger]="offer.etatOffer === 'réfusée'">
+    {{ offer.etatOffer }}
+</span>
                         </td>
                         <td class="align-middle">
                           <div class="ms-auto text-end">

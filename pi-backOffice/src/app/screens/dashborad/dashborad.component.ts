@@ -18,6 +18,7 @@ Chart.register(...registerables);
 })
 export class DashboradComponent implements OnInit {
   averageOffersPerDay: any;
+  totalUsers: number=0;
   listOffer!: any;
   OffreEnAttente: any;
   categoryOptions: string[] = Object.keys(Category).filter(
@@ -115,15 +116,15 @@ export class DashboradComponent implements OnInit {
 
     const data = {
       labels: [
-        'Running Requests',
-        'Accepted Devis',
-        'Refused Devis',
-        'Accepted Invoices',
-        'Refused Invoices',
+        'Demandes en cours',
+      'Devis acceptés',
+      'Devis refusés',
+      'Factures acceptées',
+      'Factures refusées',
       ],
       datasets: [
         {
-          label: ' Statistics',
+          label: ' Statistiques',
           data: [
             this.individuStatistics['RunningRequests'],
             this.individuStatistics['AcceptedDevis'],
@@ -162,17 +163,17 @@ export class DashboradComponent implements OnInit {
   pieChartForSociety(): void {
     const canvas = document.getElementById('societyChart') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d')!;
-
+  
     const data = {
       labels: [
-        'Accepted Devis',
-        'Refused Devis',
-        'Accepted Invoices',
-        'Refused Invoices',
+        'Devis acceptés',
+        'Devis refusés',
+        'Factures acceptées',
+        'Factures refusées',
       ],
       datasets: [
         {
-          label: '  Statistics',
+          label: 'Statistiques',
           data: [
             this.societyStat['AcceptedDevis'],
             this.societyStat['RefusedDevis'],
@@ -184,15 +185,11 @@ export class DashboradComponent implements OnInit {
             '#fb8500',
             '#ffb703',
             '#023047',
-            '#219ebc',
-            '#8ecae6',
-            '#9e2a2b',
-            '#335c67',
           ],
         },
       ],
     };
-
+  
     const options = {
       scales: {
         y: {
@@ -200,13 +197,14 @@ export class DashboradComponent implements OnInit {
         },
       },
     };
-
+  
     new Chart(ctx, {
       type: 'pie',
       data: data,
       options: options,
     });
   }
+  
   fetchCategoryCounts() {
     this.offerService.getOfferCountsByCategory().subscribe(
       (data: any) => {
@@ -234,6 +232,7 @@ export class DashboradComponent implements OnInit {
     );
   }
   PieChartOfferByCategory() {
+    
     const myChartOfUsers = new Chart('pie-chart-offer', {
       type: 'pie',
       data: {
@@ -257,9 +256,15 @@ export class DashboradComponent implements OnInit {
       },
       options: {
         responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true
+          }
+        }
       },
     });
   }
+  
   PieChartCandidat(offerNames: string[], candidatureCounts: number[]) {
     const myChartOfCandidat = new Chart('pie-chart-candidat', {
       type: 'pie',
@@ -296,12 +301,20 @@ export class DashboradComponent implements OnInit {
       }
     );
   }
+
   PieChartForUsers() {
     this.consumer.getCountUsersByRole().subscribe({
       next: (response: any) => {
         console.log('Response:', response);
         const roles = Object.keys(response);
-        const counts = Object.values(response);
+        const counts: number[] = Object.values(response); // Explicitly typed as number[]
+  
+        const totalUsers = counts.reduce((total, count) => total + count, 0);
+        console.log('Total Users:', totalUsers);
+  
+        // Update the totalUsers property
+        this.totalUsers = totalUsers;
+  
         const backgroundColors = [
           '#e63946',
           '#fb8500',
@@ -334,15 +347,18 @@ export class DashboradComponent implements OnInit {
       },
     });
   }
+  
+  
+  
   PieChartForReclamation() {
     this.reclamationService.getCountReclamationByType().subscribe({
       next: (response: any) => {
         console.log('Response:', response);
         const roles = Object.keys(response);
         const counts = Object.values(response);
-        const backgroundColors = ['#e63946', '#fb8500'];
+        const backgroundColors = [  '#8ecae6','#023047'];
         const myChartOfUsers = new Chart('reclamation-chart', {
-          type: 'pie',
+          type: 'doughnut',
           data: {
             labels: roles,
             datasets: [

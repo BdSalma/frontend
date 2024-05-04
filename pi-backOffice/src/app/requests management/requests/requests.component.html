@@ -11,14 +11,14 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                       <div class="col-6 d-flex align-items-center">
-                          <h6 class="mb-0"> list des demandes </h6>
+                          <h6 class="mb-0"> Liste des demandes </h6>
                       </div>
                       <div class="col-6 text-end">
                           <a class="btn bg-gradient-dark mb-0" routerLink="/addRequest"><i
                                   class="material-icons text-sm">add</i>&nbsp;&nbsp;ajouter demande</a>
                                   &nbsp;&nbsp;&nbsp;&nbsp;
                                   <a class="btn bg-gradient-dark mb-0" routerLink="/Oldrequests"><i 
-                                    class="material-icons text-lg">link</i><span class="ms-1">Anciennes Demandes List </span></a>
+                                    class="material-icons text-lg">link</i><span class="ms-1">Liste des Anciennes Demandes  </span></a>
                       </div>
                   
                   </div>
@@ -60,20 +60,20 @@
                       <tbody>
                         <tr *ngFor="let request of listRequests">
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.quantity}}</span>
+                            <span class="text-secondary text-sm font-weight-bold">{{request.quantity}}</span>
                           </td>
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.category}}</span>
+                            <span class="text-secondary  text-sm font-weight-bold">{{request.category}}</span>
                           </td>
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.date}}</span>
+                            <span class="text-secondary  text-sm font-weight-bold">{{request.date}}</span>
                           </td>
                          
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.validity}}</span>
+                            <span class="text-secondary  text-sm font-weight-bold">{{request.validity}}</span>
                           </td>
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{request.description}}</span>
+                            <span class="text-secondary text-sm font-weight-bold">{{request.description}}</span>
                           </td>
                           <td class="align-middle">
                             <button mat-raised-button color="warn" class="btn btn-link text-danger text-gradient px-3 mb-0" (click)="openDialog(request.idRequestSupply, 'delete')">
