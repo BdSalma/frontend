@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Category } from '../model/category';
 import { Society } from '../model/society';
 import { interval } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 import { Authentication } from './authentication.service';
 @Injectable({
   providedIn: 'root'
@@ -162,6 +162,20 @@ Favoris(idOffer: number): Observable<any> {
         Authorization: `Bearer ${this.auth.token}`
       }),
     });
+  }
+  predict(profile: any, offer: any, skill1: any, skill2: any): Observable<any> {
+    const data = {
+      profile: profile,
+      offer: offer,
+      skill1: skill1,
+      skill2: skill2
+    };
+    return this.http.post<any>('http://localhost:5001/predictOffre', data).pipe(
+      catchError((error: any) => {
+        console.error('An error occurred:', error);
+        throw error;
+      })
+    );
   }
   
 }

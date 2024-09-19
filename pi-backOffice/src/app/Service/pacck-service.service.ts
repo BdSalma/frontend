@@ -14,10 +14,10 @@ import { User } from '../model/user';
 export class PackServiceService {
  
  
-
+  flaskApiUrl: string = 'http://127.0.0.1:5000/predict';
   apiURL: string = 'http://localhost:8087/pack';
   
-  constructor(private router: Router, private http: HttpClient, private auth : Authentication ) { }
+  constructor(private router: Router, private http:HttpClient,private auth:Authentication ) { }
 
   listpack(): Observable<Pack[]>{
     const url = `${this.apiURL}/find-all-packs`;
@@ -91,14 +91,12 @@ export class PackServiceService {
   }
 
   createPersonalizedPack(standId : number, pack : Pack): Observable<Pack> {
-    console.log(standId);
-    console.log(pack);
     const url = `${this.apiURL}/createPersonalizedPackPrice/${standId}`;
     console.log(url);
-    return this.http.post<Pack>(url, pack, {
+    return this.http.post<Pack>(url, pack,{
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.auth.token}`
-      }),
+        Authorization: `Bearer ${this.auth.token}`,
+      })
     });
   }
 
@@ -145,6 +143,13 @@ export class PackServiceService {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`
       }),
+    });
+  }
+  packPredict(standId: number, pack: any): Observable<any> {
+    return this.http.post<any>(this.flaskApiUrl, { standId,pack }, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
     });
   }
 }

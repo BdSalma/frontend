@@ -24,14 +24,14 @@ export class ForumPacksComponent {
     Silver:TypePack =  TypePack.Silver;
     Diamond :TypePack =  TypePack.Diamond;
  
-  stands : Stand[]=[];
-  packs: Pack[]=[];
-  ngOnInit(): void {
+    stands : Stand[]=[];
+    packs: Pack[]=[];
+    ngOnInit(): void {
    
-  }
+    }
   
   ShowAvailablePackages(typePack : TypePack){
-    this.Router.navigate(['reservationPack/' + typePack]);
+    this.Router.navigate(['reservationPack/'+ typePack]);
   }
 
   renderToPersonalized(){

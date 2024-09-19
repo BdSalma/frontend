@@ -92,6 +92,9 @@ import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 import { CommonModule } from '@angular/common';
 import { ReclamationDetailsComponent } from './reclamation management/reclamation-details/reclamation-details.component';
+import { PackDataMiningComponent } from './pack-data-mining/pack-data-mining.component';
+import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
+import { ReclamationpopupComponent } from './globals/reclamationpopup/reclamationpopup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -174,6 +177,9 @@ import { ReclamationDetailsComponent } from './reclamation management/reclamatio
     UserListComponent,
     UserFormComponent,
     ReclamationDetailsComponent,
+    PackDataMiningComponent,
+    ReservationPackComponent,
+    ReclamationpopupComponent
   ],
   imports: [
     BrowserModule,

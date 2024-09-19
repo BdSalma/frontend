@@ -26,7 +26,7 @@
                     </div>
                     <div class="input-group input-group-outline mb-3">
                         <label for="category" class="col-sm-4 col-form-label">Catégorie :</label>
-                        <select class="form-control" id="category" formControlName="offreCategory">
+                        <select class="form-control" id="category" formControlName="offreCategory" >
                             <option value="" disabled selected>Veuillez choisir une catégorie</option>
                           <option *ngFor="let category of categoryOptions" [value]="category">{{ category }}</option>
                         </select>
@@ -34,20 +34,22 @@
                           <div class="text-danger mb-3" *ngIf="registerForm.controls['offreCategory'].hasError('required')">ce champ est obligatoire</div>
                         </div>
                       </div>
+
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="col-sm-4 col-form-label" >Profil candidat :</label>
+                      <input type="text" class="form-control" formControlName="candidatProfil" placeholder="le profil souhaité" (change)="predict()">
+                    </div>
+                    <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatProfil'].errors && registerForm.get('candidatProfil')?.touched">
+                        <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatProfil'].hasError('required')">ce champ est obligatoire</div>
+                    </div>
                     <div class="input-group input-group-outline mb-3">
                       <label class="col-sm-4 col-form-label" >Nombre Candidat :</label>
                       <input type="number" class="form-control" formControlName="candidatnumber" placeholder="Nombre de Candidat Souhaité">
                     </div>
+                    <div *ngIf="predictedNumber !== null" class="text-muted mb-3">Nombre prédit: {{ predictedNumber }}</div>
                     <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].errors && registerForm.get('candidatnumber')?.touched">
                         <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].hasError('required')">ce champ est obligatoire</div>
                         <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatnumber'].hasError('minlength')">minimum 2 candidature</div>
-                    </div>
-                    <div class="input-group input-group-outline mb-3">
-                      <label class="col-sm-4 col-form-label" >Profil candidat :</label>
-                      <input type="text" class="form-control" formControlName="candidatProfil" placeholder="le profil souhaité">
-                    </div>
-                    <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatProfil'].errors && registerForm.get('candidatProfil')?.touched">
-                        <div class="text-danger mb-3" *ngIf="registerForm.controls['candidatProfil'].hasError('required')">ce champ est obligatoire</div>
                     </div>
                     <div class="input-group input-group-outline mb-3">
                       <label class="col-sm-4 col-form-label">Durée :</label>

@@ -104,7 +104,7 @@ export class PageOffersComponent {
             this.listOffer.forEach((offer: any) => {
                 // Decode the file name from base64
                 const decodedBase64 = atob(offer.file);
-
+console.log("********************",data)
                 // Remove the path from the file name using a regular expression
                 const fileNameWithoutPath = decodedBase64.replace(/^.*[\\/]/, '');
 

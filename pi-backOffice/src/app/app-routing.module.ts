@@ -34,7 +34,7 @@ import { EditPackComponent } from './PackComponents/edit-pack/edit-pack.componen
 import { EditStandComponent } from './StandComponents/edit-stand/edit-stand.component';
 import { EditForumComponent } from './ForumComponenets/edit-forum/edit-forum.component';
 import { ForumPacksComponent } from './PackComponents/forum-packs/forum-packs.component';
-import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
+
 import { UpdateComponent } from './candidature management/candidature/update.component';
 import { InterviewComponent } from './interview/interview.component';
 import { ListInterviewComponent } from './interview/list-interview/list-interview.component';
@@ -71,6 +71,8 @@ import { SponsorEditComponent } from './sponsor-edit/sponsor-edit.component';
 import { ChatbotDialogComponent } from './chatbot-dialog/chatbot-dialog.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { ReclamationDetailsComponent } from './reclamation management/reclamation-details/reclamation-details.component';
+import { PackDataMiningComponent } from './pack-data-mining/pack-data-mining.component';
+import { ReservationPackComponent } from './PackComponents/reservation-pack/reservation-pack.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: IndexComponent },
   { path: 'moreOffers', component: PageOffersComponent },
@@ -240,9 +242,11 @@ const routes: Routes = [
   { path: 'sponsor', component: ChatbotDialogComponent },
   { path: 'users', component: UserListComponent },
   { path: 'adduser', component: UserFormComponent },
+  { path: 'predict', component: PackDataMiningComponent },
+
   { path: '**', component: NotFoundComponent },
 ];
-
+  
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],

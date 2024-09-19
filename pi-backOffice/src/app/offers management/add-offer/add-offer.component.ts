@@ -12,7 +12,7 @@ import { Category } from '../../model/category';
 export class AddOfferComponent {
   registerForm!: any;
   categoryOptions: string[] = Object.keys(Category).filter((key:any) => !isNaN(Number(Category[key])));
-
+  predictedNumber: number | null = null;
   fileBase64: string | ArrayBuffer | null = null;
 
   constructor(private offerS:OfferService,private router:Router){}
@@ -51,6 +51,7 @@ export class AddOfferComponent {
     ajouter() {
       // Check if registerForm is null
       if (this.registerForm) {
+        this.predict();
         const fileBase64: string | null = this.registerForm.get('file').value;
         this.registerForm.patchValue({
           fileBase64: fileBase64
@@ -83,6 +84,27 @@ export class AddOfferComponent {
         // Handle case where registerForm is null
         console.error("Register form is null.");
       }
+    }
+    predict(): void {
+      // Extract necessary data for prediction
+      const profile = this.registerForm.get('candidatProfil').value;
+      const offer = this.registerForm.get('offreCategory').value;
+      const skill1 = 'JavaScript'; // Extract skill1 from the form
+      const skill2 = 'No SQL'; // Extract skill2 from the form
+  
+      // Call the predict method from PredictionService
+      this.offerS.predict(profile, offer, skill1, skill2).subscribe({
+        next: (prediction) => {
+          console.log('Prediction:', prediction);
+          this.predictedNumber = prediction.prediction; // Set predicted number
+
+          // Do something with the prediction
+        },
+        error: (error) => {
+          console.error('Error predicting:', error);
+          // Handle error if necessary
+        }
+      });
     }
     
     

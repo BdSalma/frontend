@@ -9,12 +9,8 @@
         <div class="row">
           <div class="col-12">
             <div class="card my-4">
-              <div
-                class="card-header p-0 position-relative mt-n4 mx-3 z-index-2"
-              >
-                <div
-                  class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
-                >
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                   <h6 class="text-white text-capitalize ps-3">
                     Liste des Reclamation
                   </h6>
@@ -25,19 +21,13 @@
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                           Utilisateur
                         </th>
-                        <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                           Type Reclamation
                         </th>
-                        <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                           Actions
                         </th>
                       </tr>
@@ -47,43 +37,36 @@
                         <td class="align-middle text-center text-sm">
                           <span class="text-secondary font-weight-bold">{{
                             reclamation?.user?.username
-                          }}</span>
+                            }}</span>
                         </td>
                         <td class="align-middle text-center">
-                          <span
-                            *ngIf="reclamation.typeReclamation !== undefined"
-                            class="text-secondary font-weight-bold"
-                          >
+                          <span *ngIf="reclamation.typeReclamation !== undefined"
+                            class="text-secondary font-weight-bold">
                             {{ reclamation.typeReclamation }}
                           </span>
                         </td>
                         <td class="align-middle text-center">
-                          <button
-                            class="btn btn-link text-danger text-gradient px-3 mb-0"
-                            (click)="deleteReclamation(reclamation)"
-                          >
+                          <button class="btn btn-link text-danger text-gradient px-3 mb-0"
+                            (click)="deleteReclamation(reclamation)">
                             <i class="material-icons text-sm me-2">delete</i>
                             Supprimer
                           </button>
-                          <button
-                            class="btn btn-link text-success text-gradient px-3 mb-0"
-                            (click)="openDialog(reclamation.user)"
-                          >
-                            <i class="material-icons text-sm me-2"
-                              >assignment_turned_in</i
-                            >
+                          <button class="btn btn-link text-success text-gradient px-3 mb-0"
+                            (click)="openDialog(reclamation.user)">
+                            <i class="material-icons text-sm me-2">assignment_turned_in</i>
                             Review
                           </button>
-                          <button
-                            class="btn btn-link text-info text-gradient px-3 mb-0"
-                            [routerLink]="[
+                          <button class="btn btn-link text-info text-gradient px-3 mb-0" [routerLink]="[
                               '/reclamation-details',
                               reclamation.id
-                            ]"
-                          >
+                            ]">
                             <i class="material-icons text-sm me-2">info</i>
                             Plus details
                           </button>
+                          <button class="btn btn-danger btn-sm" (click)="analyzeSentiment(reclamation.description)"
+                            [disabled]="isLoading && reclamation.id">
+                            {{isLoading ? "Loading ..." : "Analyze Sentiment"}}
+                            </button>
                         </td>
                       </tr>
                     </tbody>
@@ -93,12 +76,9 @@
             </div>
           </div>
         </div>
-        <app-popup-dialog
-          [id]="currentUser"
-          [title]="'Review' | translate"
-          [content]="'Do you want to submit the review' | translate"
-          (send)="handleDialog($event)"
-        ></app-popup-dialog>
+        <app-popup-dialog [id]="currentUser" [title]="'Review' | translate"
+          [content]="'Do you want to submit the review' | translate" (send)="handleDialog($event)"></app-popup-dialog>
+          <app-reclamationpopup [nega]="nega" [neu]="neu" [pos]="pos" [result]="sentimentResult" [reclamation]="text" ></app-reclamationpopup>
         <app-footer-index></app-footer-index>
       </main>
     </div>

@@ -4,6 +4,7 @@ import { User } from '../../model/user';
 import { TypeReclamation } from '../../model/typeReclamation';
 import { ReclamationService } from '../../service/reclamation.service';
 import { Authentication } from '../../service/authentication.service';
+import { SentimentalAnalysisService } from 'src/app/Service/sentimental-analysis.service';
 
 @Component({
   selector: 'app-reclamation',
@@ -13,12 +14,19 @@ import { Authentication } from '../../service/authentication.service';
 export class ReclamationComponent {
   constructor(
     private reclamationService: ReclamationService,
-    private auth: Authentication
-  ) {}
+    private auth: Authentication,
+    private sentimentService: SentimentalAnalysisService
+  ) { }
   reclamations: Reclamation[] = [];
   reclamationType = TypeReclamation;
   users: any[] = [];
   currentUser: User | undefined;
+  sentimentResult: any;
+  isLoading: boolean = false;
+  text!:String;
+  nega!:number;
+  neu!:number;
+  pos!:number;
 
   ngOnInit(): void {
     this.reclamationService.getReclamation().subscribe((data) => {
@@ -46,9 +54,9 @@ export class ReclamationComponent {
       .deleteReclamation(reclamation.id)
       .subscribe(
         () =>
-          (this.reclamations = this.reclamations.filter(
-            (rec: Reclamation) => rec != reclamation
-          ))
+        (this.reclamations = this.reclamations.filter(
+          (rec: Reclamation) => rec != reclamation
+        ))
       );
   }
 
@@ -77,9 +85,34 @@ export class ReclamationComponent {
       .addToFavorites(reclamation.id)
       .subscribe(
         () =>
-          (this.reclamations = this.reclamations.filter(
-            (rec: Reclamation) => rec != reclamation
-          ))
+        (this.reclamations = this.reclamations.filter(
+          (rec: Reclamation) => rec != reclamation
+        ))
       );
+  }
+  openDialog1() {
+    const modelDiv = document.getElementById('popup1');
+    if (modelDiv != null) {
+      modelDiv.style.display = 'block';
+    }
+  }
+  analyzeSentiment(text: string) {
+    this.isLoading=true;
+    this.sentimentService.analyzeSentiment(text).subscribe(
+      (response) => {
+        this.sentimentResult = response;
+        this.nega = response["roberta_neg"];
+        this.neu = response["roberta_neu"];
+        this.pos = response["roberta_pos"];
+        this.isLoading=false;
+        this.text=text;
+        this.openDialog1();
+      },
+      
+      (error) => {
+        console.error('Error performing sentiment analysis:', error);
+        this.isLoading=false;
+      }
+    );
   }
 }

@@ -61,8 +61,6 @@ export class PersonalizedPackComponent  implements OnInit {
     this.selectedStand = stand.id;
     }
    });
-   console.log(this.pack);
-   
      this.packService.createPersonalizedPack(this.selectedStand,this.pack).subscribe({
       next: () => {
         console.log(this.pack);
@@ -73,6 +71,4 @@ export class PersonalizedPackComponent  implements OnInit {
         this.toastr.error(error.error.message);
       },
     });
-  
-
   }}
